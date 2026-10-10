@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="How we source" description="The verification method behind every claim on Tabula.">
+  <article class="prose">
+    <h1>How we source</h1>
+    <p>Popular history of medicine is full of myths and contested "firsts". Tabula treats accuracy as a gate, not a nicety: the site will not build if any rule below is broken.</p>
+    <h2>The rules</h2>
+    <ol>
+      <li><strong>Every factual claim is a numbered note</strong> with its own sources.</li>
+      <li><strong>Two sources per claim</strong>, at least one of them scholarly: peer-reviewed history of medicine, a university press, or a major institution such as a national library, museum or learned society. A primary source is cited where one exists.</li>
+      <li><strong>General encyclopaedias don't count</strong> (Wikipedia, Britannica). They can lead us to sources, but they are never cited as one. Specialist peer-reviewed reference works can count.</li>
+      <li><strong>We search for the myth on purpose.</strong> For every "first", date and attribution we look for debunkings, priority disputes and alternative dates, and record what we found.</li>
+      <li><strong>Dates carry their precision</strong> (exact, circa, range, century). Day-and-month dates need a citation and a calendar (Julian or Gregorian).</li>
+      <li><strong>Status labels are public.</strong> <span class="badge badge-established">Established</span> means no significant scholarly dispute. <span class="badge badge-contested">Contested</span> means credible scholars disagree, and the note says who and about what. <span class="badge badge-revised">Revised</span> means a popular claim that is wrong, kept so the myth gets corrected rather than spread.</li>
+      <li><strong>A verification log</strong> records, for every story, the sources consulted, the myth checks run and a verdict. If a claim is edited, the log goes stale and the build fails until it is re-verified.</li>
+    </ol>
+    <h2>Who verifies</h2>
+    <p>Verification is done by Claude, an AI model, working to the method above, with the sources linked on every note. AI-assisted verification reduces errors but does not guarantee there are none. Some key scholarship is in print-only books, and claims we could check only through summaries are labelled <em>read via summaries</em>. Sources whose byline or title we have not fully confirmed are labelled <em>details pending</em>, and their links are authoritative. The data model also records human specialist reviews, if one is added.</p>
+    <h2>Found a mistake?</h2>
+    <p>Every note has a "Suggest a correction" link, with an email option if you don't have a GitHub account. Accepted corrections are published in the <a href="/corrections/">corrections log</a>.</p>
+  </article>
+</Layout>

@@ -1,0 +1,32 @@
+---
+import { panoramaSvg } from '../art/panorama';
+import type { ClientModel } from '../lib/model';
+import { makeScale, formatYear } from '../lib/scale';
+interface Props { model: ClientModel; year: number }
+const { model, year } = Astro.props;
+const scale = makeScale(model.anchors);
+const era = [...model.eras].reverse().find((e) => e.yearStart <= year) ?? model.eras[0];
+const present = model.fog.present;
+---
+<section class="timeline" aria-label="Timeline">
+  <div class="era-caption" data-era-caption aria-live="polite">
+    <span class="era-label smallcaps" data-era-label>{era.label}</span>
+    <span class="era-text" data-era-text data-script={era.script}>{era.caption}</span>
+  </div>
+  <div class="slider-wrap">
+    <svg class="panorama" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><Fragment set:html={panoramaSvg()} /></svg>
+    <div class="slider" role="slider" tabindex="0" aria-label="Year" data-slider
+      aria-valuemin={scale.min} aria-valuemax={present} aria-valuenow={year}
+      aria-valuetext={`${formatYear(year, present)}. ${era.caption}`}>
+      <div class="slider-track"><div class="slider-fill" style={`width:${scale.toPos(year) * 100}%`} data-fill></div></div>
+      <div class="slider-thumb" style={`left:${scale.toPos(year) * 100}%`} data-thumb><span class="lens-glass" aria-hidden="true"></span><span class="thumb-year" data-thumb-year>{formatYear(year, present)}</span></div>
+    </div>
+  </div>
+  <div class="anchors" role="group" aria-label="Jump to an era">
+    <button type="button" class="btn" data-step="-1" aria-label="Previous era">‹</button>
+    {model.eras.map((e) => <button type="button" class="btn anchor" data-anchor={e.yearStart} aria-pressed={e.yearStart === era.yearStart ? 'true' : 'false'}>{e.label}</button>)}
+    <button type="button" class="btn" data-step="1" aria-label="Next era">›</button>
+    <button type="button" class="btn play" data-play aria-pressed="false">▶ Play history</button>
+  </div>
+  <p class="counter" data-counter aria-live="polite"></p>
+</section>

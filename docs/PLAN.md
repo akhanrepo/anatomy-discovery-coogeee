@@ -9,12 +9,12 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 |---|---|---|---|---|
 | 0 | Repo rules, plan, name/icon brief, AC IDs | CLAUDE.md, name/icon brief | ✅ done | — |
 | 1 | Scaffold Astro + test harness (unit / smoke / functional / perf) + traceability test + PostToolUse hook | infra | ✅ done | [00-infra](plans/00-infra.md) |
-| 2 | Content system: schemas, loader, gates, verification logs | F05, F06 | 🔨 building | [F05-F06](plans/F05-F06.md) |
+| 2 | Content system: schemas, loader, gates, verification logs | F05, F06 | ✅ done | [F05-F06](plans/F05-F06.md) |
 | 3 | Content: 26 discoveries, people, sources, misbeliefs, eras, threads | F04 | ✅ done | [F04](plans/F04.md) |
-| 4 | Visual system + brand: tokens, paper/era textures, type, icon, wordmark | F16, F17 | ⏳ | [F16-F17](plans/F16-F17.md) |
-| 5 | Body (male/female, ~40 structures) + flaps | F01, F13 | ⏳ | [F01-F13](plans/F01-F13.md) |
-| 6 | Fog engine + slider + panorama | F02 | ⏳ | [F02](plans/F02.md) |
-| 7 | Story panel + misbeliefs | F03, F09 | ⏳ | [F03-F09](plans/F03-F09.md) |
+| 4 | Visual system + brand: tokens, paper/era textures, type, icon, wordmark | F16, F17 | ✅ done | [F16-F17](plans/F16-F17.md) |
+| 5 | Body (male/female, ~40 structures) + flaps | F01, F13 | ✅ done | [F01-F13](plans/F01-F13.md) |
+| 6 | Fog engine + slider + panorama | F02 | ✅ done | [F02](plans/F02.md) |
+| 7 | Story panel + misbeliefs | F03, F09 | ✅ done | [F03-F09](plans/F03-F09.md) |
 | 8 | Timeline / people / threads + tours | F11 | ⏳ | [F11](plans/F11.md) |
 | 9 | Traditions lens | F10 | ⏳ | [F10](plans/F10.md) |
 | 10 | Share cards, /today, OG images, RSS, email signup | F07, F15 | ⏳ | [F07-F15](plans/F07-F15.md) |
@@ -37,4 +37,5 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 - **Commerce, email, analytics:** built and wired, but disabled until account IDs are set in `src/config/site.ts`.
 
 ## Changelog
+- 2026-10-10: core experience done (F16, F17, F01, F13, F02, F03, F09). Unit 45 ✓, e2e + perf 45 ✓. Bugs caught by tests and fixed: heart unclickable under the aorta's hit stroke; back gesture leaving the page after Esc; tap→story 121ms → < 100ms (panel first, ink after paint; content-visibility on footnotes).
 - 2026-10-10: plan created; F17 brief added; AC IDs added to all briefs.

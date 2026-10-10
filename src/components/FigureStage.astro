@@ -1,0 +1,19 @@
+---
+import { defs, baseContent, layerContent, FIGURE_CSS, VIEWBOX } from '../art/render';
+import { LAYERS } from '../art/figure';
+import type { InkState, MisbeliefPhase } from '../lib/state';
+interface Props { states: Record<string, InkState>; phases: Record<string, MisbeliefPhase>; names: Record<string, string>; layer: string; fig: 'male' | 'female' }
+const { states, phases, names, layer, fig } = Astro.props;
+const opts = { fig, states, phases, names, interactive: true };
+const deepestFirst = [...LAYERS].reverse();
+---
+<style is:global set:html={FIGURE_CSS} />
+<div class="figure-stage tabula-fig" data-fig={fig} data-layer={layer} data-beliefs="on">
+  <svg class="fig-base" viewBox={VIEWBOX} aria-hidden="true" focusable="false"><Fragment set:html={defs()} /><Fragment set:html={baseContent()} /></svg>
+  {deepestFirst.map((l) => (
+    <div class="flap" data-flap={l} aria-hidden={l !== layer ? 'true' : 'false'}>
+      <svg viewBox={VIEWBOX} role="group" aria-label={`${l} layer`} focusable="false"><Fragment set:html={layerContent(l, opts)} /></svg>
+    </div>
+  ))}
+  <p class="fig-label smallcaps" aria-live="polite" data-fig-label></p>
+</div>

@@ -1,3 +1,11 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App.astro';
+import { corpus } from '../lib/content/load';
+import { buildClientModel } from '../lib/model';
+import { eraAt } from '../lib/era';
+const m = buildClientModel(corpus());
 ---
-<html><body><h1>Tabula</h1></body></html>
+<Layout paper={eraAt(m.eras, m.fog.present).paper} bodyClass="home">
+  <App />
+</Layout>

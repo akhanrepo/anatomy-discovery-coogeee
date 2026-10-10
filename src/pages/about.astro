@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+---
+<Layout title="About" description="Why Tabula, what the fog means, and how the art works.">
+  <article class="prose">
+    <h1>About {site.name}</h1>
+    <h2 id="the-name">The name</h2>
+    <p data-testid="name-meanings"><strong>{site.name}</strong> means three things at once, and all three are the product:</p>
+    <ol>
+      <li><strong>A plate.</strong> Anatomical illustrations are <em>tabulae</em>, and every discovery here is a numbered plate: Tab. I to Tab. XXVI.</li>
+      <li><strong>A blank slate</strong>, the <em>tabula rasa</em>. The body begins as unwritten paper and is inked in over 3,600 years.</li>
+      <li><strong>Vesalius's first anatomy</strong>, the <em>Tabulae anatomicae sex</em> of 1538: six broadsheets with pictures keyed to captions. That is what this site is, five centuries on.</li>
+    </ol>
+    <h2 id="the-fog">About the fog</h2>
+    <p>The timeline asks a deliberately modern question: <em>how much of today's anatomy was known in a given year?</em> That is a measure of the past against the present, and we say so plainly. Past physicians had complete, coherent models of their own. You can see those models in <span class="misbelief-word">red ink</span> (beliefs of the time) and in the Traditions lens.</p>
+    <p>The rules for what is drawn are simple and public:</p>
+    <ul>
+      <li><strong>Blank paper</strong> (a faint contour only): no story in our set has described this part yet.</li>
+      <li><strong>Outline</strong>: described. The part was seen and recorded, including at microscopic scale, but what it does was not yet understood.</li>
+      <li><strong>Hatching and colour</strong>: understood. Its function, or its working at molecular level, was explained.</li>
+      <li><strong>Red ink</strong>: a belief held at the time. It fades when first challenged and is scraped away when the mainstream gives it up.</li>
+      <li>Organs visible to the naked eye that have no story yet (the liver, stomach or spine, say) are shown in outline throughout. <strong>Today</strong> is the modern reference, so everything is fully inked.</li>
+      <li>Plates marked <em>Revised</em> correct a popular myth. They never ink anything in.</li>
+    </ul>
+    <p>The order in which knowledge arrived is uneven, and that is the point.</p>
+    <h2 id="the-art">The art</h2>
+    <p>Knowledge is shown as ink because that is how the history was made: in manuscripts, woodcuts and copperplates. The figure here is Tabula's own schematic engraving, drawn as a stand-in for a commissioned engraving. The paper behind it changes with the era, from papyrus to vellum to laid rag paper to modern stock.</p>
+    <h2>Accuracy</h2>
+    <p>Every claim is cited and checked. See <a href="/how-we-source/">how we source</a>, the full <a href="/sources/">list of sources</a> and the public <a href="/corrections/">corrections log</a>.</p>
+  </article>
+</Layout>

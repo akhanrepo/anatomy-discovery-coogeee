@@ -1,0 +1,30 @@
+---
+import type { Misbelief } from '../lib/content/schema';
+import { corpus } from '../lib/content/load';
+import { formatCitations, personName } from '../lib/format';
+import { buildCorrectionUrl } from '../lib/corrections';
+import { layerOf } from '../lib/model';
+interface Props { m: Misbelief }
+const { m } = Astro.props;
+const c = corpus();
+const sources = new Map(c.sources.map((s) => [s.id, s]));
+const holders = m.heldBy.map((id) => c.people.find((p) => p.id === id)!);
+const log = c.logs.find((l) => l.subject === m.id)!;
+const fmtY = (y: number) => (y < 0 ? `${-y} BCE` : `${y}`);
+---
+<article class="story misbelief" id={`misbelief-${m.id}`} data-misbelief={m.id} data-year={m.yearStart} data-layer={layerOf(c, m.structures)} hidden aria-labelledby={`hm-${m.id}`} tabindex="-1">
+  <header class="story-head">
+    <p class="plate-no smallcaps misbelief-note">A belief of its time · from {fmtY(m.yearStart)}</p>
+    <h2 id={`hm-${m.id}`}>{m.title}</h2>
+    <p class="story-meta">Held by <Fragment set:html={holders.map(personName).join(', ')} /></p>
+  </header>
+  <div class="story-body"><p>{m.belief}</p></div>
+  <section class="story-section"><h3 class="smallcaps">Corrected</h3>
+    <ul>{m.corrections.map((k) => <li>{k.scope === 'first' ? 'First challenged' : 'Overturned in the mainstream'} in {fmtY(k.year)} by {k.discovery ? <a href={`/tab/${k.discovery}/`} data-open-story={k.discovery}>{k.by}</a> : k.by}</li>)}</ul>
+  </section>
+  <section class="story-section sources" aria-label="Sources">
+    <h3 class="smallcaps">Sources</h3>
+    <ol class="footnotes">{Object.entries(m.claims).map(([k, cl]) => <li id={`fn-${m.id}-${k}`}><p class="claim">{cl.text}</p><ul class="cites">{formatCitations(cl, sources).map((h) => <li set:html={h} />)}</ul><a class="correction" href={buildCorrectionUrl({ discoveryId: m.id, claimId: k })} rel="noopener">Suggest a correction</a></li>)}</ol>
+    <p class="verified">Verified {log.date} by Claude (AI-assisted).</p>
+  </section>
+</article>

@@ -1,0 +1,81 @@
+---
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
+import '@fontsource/eb-garamond/500.css';
+import '@fontsource/im-fell-english/400.css';
+import '@fontsource/amiri/400.css';
+import '@fontsource/noto-serif-sc/400.css';
+import '@fontsource/noto-serif-devanagari/400.css';
+import '../styles/global.css';
+import { site } from '../config/site';
+import { analyticsSnippet } from '../lib/analytics';
+import { LIGHT, DARK } from '../styles/tokens';
+
+interface Props { title?: string; description?: string; ogImage?: string; canonical?: string; paper?: string; bodyClass?: string }
+const { title, description = site.description, ogImage = '/og/default.png', canonical, paper = 'ivory', bodyClass = '' } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name}: ${site.tagline}`;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const ogAbs = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const url = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/icon-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name}: This week in anatomy`} href="/feed.xml" />
+    <meta name="theme-color" content={LIGHT.paper} media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content={DARK.paper} media="(prefers-color-scheme: dark)" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title ?? `${site.name}: ${site.tagline}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title ?? `${site.name}: ${site.tagline}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogAbs} />
+    <Fragment set:html={analyticsSnippet()} />
+  </head>
+  <body class={`paper ${bodyClass}`} data-paper={paper}>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div>
+        <a class="wordmark" href="/"><span class="mark" aria-hidden="true">☞</span>{site.name}</a>
+        <span class="tagline">{site.tagline}</span>
+      </div>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/timeline/">Timeline</a>
+        <a href="/people/">People</a>
+        <a href="/threads/">Tours</a>
+        <a href="/today/">This week</a>
+        <a href="/teachers/">Teachers</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <nav aria-label="Trust and more">
+        <a href="/how-we-source/">How we source</a>
+        <a href="/sources/">Sources</a>
+        <a href="/corrections/">Corrections</a>
+        <a href="/about/#the-fog">About the fog</a>
+        <a href="/edition/">The edition</a>
+        <a href="/support/">Support Tabula</a>
+        <a href="/feed.xml">RSS</a>
+      </nav>
+      <p>The modern body here is an artful schematic, not a reference atlas. Tabula is a history of how the body came to be understood, not medical advice.</p>
+      {site.sponsors.filter((s) => s.scope === 'site').map((s) => <p>Supported by <a href={s.url}>{s.name}</a>. Sponsors never review or influence content.</p>)}
+    </footer>
+  </body>
+</html>

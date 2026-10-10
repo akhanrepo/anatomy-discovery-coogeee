@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import App from '../../components/App.astro';
+import { corpus } from '../../lib/content/load';
+import { buildClientModel } from '../../lib/model';
+import { eraAt } from '../../lib/era';
+export function getStaticPaths() {
+  return corpus().discoveries.map((d) => ({ params: { id: d.id } }));
+}
+const c = corpus();
+const d = c.discoveries.find((x) => x.id === Astro.params.id)!;
+const m = buildClientModel(c);
+---
+<Layout title={`Tab. ${d.plate}: ${d.title}`} description={d.hook} ogImage={`/og/${d.id}.png`} paper={eraAt(m.eras, d.yearStart).paper}>
+  <App open={d.id} />
+</Layout>

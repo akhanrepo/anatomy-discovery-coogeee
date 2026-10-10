@@ -1,0 +1,85 @@
+---
+import { corpus } from '../lib/content/load';
+import { buildClientModel, layerOf } from '../lib/model';
+import { stateAt, activeMisbeliefs, indexByStructure } from '../lib/state';
+import FigureStage from './FigureStage.astro';
+import Timeline from './Timeline.astro';
+import StoryPanel from './StoryPanel.astro';
+import MisbeliefPanel from './MisbeliefPanel.astro';
+import LensView from './LensView.astro';
+import { TRACK_JS } from '../lib/analytics';
+import { LAYERS } from '../art/figure';
+import { site } from '../config/site';
+import '../styles/app.css';
+
+interface Props { year?: number; open?: string; layer?: string; fig?: 'male' | 'female' }
+const c = corpus();
+const model = buildClientModel(c);
+const { open } = Astro.props;
+const openD = open ? c.discoveries.find((d) => d.id === open) : undefined;
+const year = Astro.props.year ?? openD?.yearStart ?? model.fog.present;
+const fig = Astro.props.fig ?? (openD?.structures.some((s) => c.structures.find((x) => x.id === s)?.sex === 'female') ? 'female' : 'male');
+const layer = Astro.props.layer ?? (openD ? layerOf(c, openD.structures) : 'viscera');
+const idx = indexByStructure(model.fog);
+const states = Object.fromEntries(c.structures.map((s) => [s.id, stateAt(s.id, year, model.fog, idx)]));
+const phases = activeMisbeliefs(year, model.fog);
+const names = Object.fromEntries(c.structures.map((s) => [s.id, s.name]));
+const storied = c.structures.filter((s) => idx.has(s.id)).length;
+const layerNames: Record<string, string> = { surface: 'Skin', muscles: 'Muscles', viscera: 'Organs & vessels', skeleton: 'Bones & nerves' };
+---
+<div class="app" data-app data-site-name={site.name} data-year={year} data-open={openD?.id ?? ''}>
+  <script type="application/json" id="tabula-model" set:html={JSON.stringify(model)} />
+  <script is:inline set:html={TRACK_JS} />
+  <div class="stage-col">
+    <div class="stage-controls">
+      <div class="seg" role="group" aria-label="Figure">
+        <button type="button" class="btn" data-fig-btn="male" aria-pressed={fig === 'male' ? 'true' : 'false'}>Male</button>
+        <button type="button" class="btn" data-fig-btn="female" aria-pressed={fig === 'female' ? 'true' : 'false'}>Female</button>
+      </div>
+      <div class="seg layer-tabs" role="tablist" aria-label="Dissection layer">
+        {LAYERS.map((l) => <button type="button" class="btn" role="tab" data-layer-btn={l} aria-selected={l === layer ? 'true' : 'false'} tabindex={l === layer ? 0 : -1}>{layerNames[l]}</button>)}
+      </div>
+      <label class="lens-select">Lens
+        <select data-lens-select>
+          <option value="modern">Modern body</option>
+          {c.traditions.map((t) => <option value={t.id}>{t.name}</option>)}
+        </select>
+      </label>
+      <label class="beliefs-toggle"><input type="checkbox" data-beliefs-toggle checked /> Show beliefs of the time <span class="misbelief-key" aria-hidden="true"></span></label>
+    </div>
+    <div class="stage" data-stage>
+      <FigureStage states={states} phases={phases} names={names} layer={layer} fig={fig} />
+      <div class="lens-layer" data-lens-layer hidden><LensView /></div>
+    </div>
+    <Timeline model={model} year={year} />
+    <details class="struct-list" data-struct-list>
+      <summary>All structures (list view)</summary>
+      <ul>
+        {c.structures.map((s) => <li data-sex-item={s.sex}><button type="button" class="link-btn" data-structure={s.id}>{s.name}</button> <span class="smallcaps st-state" data-state-of={s.id}>{states[s.id]}</span></li>)}
+      </ul>
+    </details>
+  </div>
+  <aside class="panel" data-panel aria-label="Story">
+    <div class="panel-inner" data-panel-inner>
+      <button type="button" class="btn panel-close" data-close aria-label="Close story">✕</button>
+      <label class="stay-toggle"><input type="checkbox" data-stay /> Keep my year when opening a story</label>
+      <section class="intro" data-intro hidden={!!openD}>
+        <p class="smallcaps intro-kicker">{storied} structures · {c.discoveries.length} plates · 3,600 years</p>
+        <h1>The body, as it was written.</h1>
+        <p>Every part of this figure carries the story of who figured it out, how, and what they got wrong first. Knowledge appears as ink: an <em>outline</em> when a part was first described, <em>hatching and colour</em> once it was understood, and <span class="misbelief-word">red ink</span> for beliefs later scraped away.</p>
+        <p class="nudge">☞ Drag the year back to <button type="button" class="link-btn" data-anchor={200}>c. 200</button> and watch the page empty, then bring it forward.</p>
+        <p class="small">The fog measures the past against <em>today's</em> anatomy, a deliberately modern question. <a href="/about/#the-fog">About the fog</a>.</p>
+      </section>
+      <div class="stories">
+        {c.discoveries.map((d) => <StoryPanel d={d} open={d.id === openD?.id} />)}
+        {c.misbeliefs.map((m) => <MisbeliefPanel m={m} />)}
+      </div>
+      <div class="context-note" data-context-note hidden><h2 data-context-name></h2><p>No story yet for this structure. Organs visible to the naked eye are shown in outline throughout; this site follows the discoveries in its {c.discoveries.length} plates.</p></div>
+    </div>
+  </aside>
+  <p class="visually-hidden" aria-live="polite" data-announcer></p>
+</div>
+<script>
+  import { start } from '../client/app';
+  start();
+</script>

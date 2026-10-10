@@ -1,0 +1,70 @@
+---
+import type { Discovery } from '../lib/content/schema';
+import { corpus } from '../lib/content/load';
+import { renderStory, formatCitations, personName } from '../lib/format';
+import { buildCorrectionUrl, buildCorrectionMailto } from '../lib/corrections';
+import { authenticityLabel } from '../lib/assets';
+import { layerOf } from '../lib/model';
+
+interface Props { d: Discovery; open?: boolean }
+const { d, open = false } = Astro.props;
+const c = corpus();
+const sources = new Map(c.sources.map((s) => [s.id, s]));
+const people = d.people.map((id) => c.people.find((p) => p.id === id)!);
+const { html, order } = renderStory(d.body, d.id);
+const claimKeys = [...order, ...Object.keys(d.claims).filter((k) => !order.includes(k))];
+const log = c.logs.find((l) => l.subject === d.id)!;
+const asset = c.assets.find((a) => a.id === d.assets[0])!;
+const authLabel = authenticityLabel(asset);
+const corrected = d.corrects.map((id) => c.misbeliefs.find((m) => m.id === id)!);
+// Earlier/later on the same structures
+const related = c.discoveries.filter((x) => x.id !== d.id && x.structures.some((s) => d.structures.includes(s)));
+const earlier = related.filter((x) => x.yearStart <= d.yearStart).at(-1);
+const later = related.find((x) => x.yearStart > d.yearStart);
+const thread = c.threads.find((t) => t.discoveries.includes(d.id));
+const nextInThread = thread ? c.discoveries.find((x) => x.id === thread.discoveries[thread.discoveries.indexOf(d.id) + 1]) : undefined;
+const statusLabel = { established: 'Established', contested: 'Contested', revised: 'Revised' }[d.status];
+const layer = layerOf(c, d.structures);
+---
+<article class="story" id={`story-${d.id}`} data-story={d.id} data-year={d.yearStart} data-layer={layer} data-structures={d.structures.join(' ')} hidden={!open} aria-labelledby={`h-${d.id}`} tabindex="-1">
+  <header class="story-head">
+    <p class="plate-no smallcaps">Tab. {d.plate} · {d.displayDate}</p>
+    <h2 id={`h-${d.id}`}>{d.title}</h2>
+    <p class="story-meta"><Fragment set:html={people.map(personName).join(' · ')} /> <span class="sep">·</span> {d.place}</p>
+    <p class="status-row" data-testid="status"><span class={`badge badge-${d.status}`}>{statusLabel}</span>{d.contestNote && <span class="contest-note"> {d.contestNote}</span>}</p>
+    <p class="not-yet" hidden data-not-yet>Not yet discovered in <span data-cur-year></span>. <button type="button" class="btn" data-jump={d.yearStart}>Jump to {d.displayDate}</button></p>
+  </header>
+  <figure class="story-plate">
+    <img src={`/plates/${d.id}.svg`} alt={asset.altText} width="200" height="500" loading="lazy" decoding="async" />
+    <figcaption>{asset.title}. {authLabel && <span class="auth">{authLabel}. </span>}<span class="credit">{asset.credit}.</span> <a href={asset.recordUrl} rel="noopener">See the primary source</a></figcaption>
+  </figure>
+  <div class="story-body" set:html={html} />
+  <section class="story-section"><h3 class="smallcaps">How they knew</h3><p>{d.method}</p></section>
+  <section class="story-section"><h3 class="smallcaps">What it overturned</h3><p>{d.overturned}</p>
+    {corrected.length > 0 && <ul class="overturned-list">{corrected.map((m) => <li><button type="button" class="link-btn mb-link" data-open-misbelief={m.id}>{m.title}</button> <span class="misbelief-note">(shown in red ink)</span></li>)}</ul>}
+  </section>
+  <section class="story-section sources" aria-label="Sources">
+    <h3 class="smallcaps">Sources</h3>
+    <ol class="footnotes">
+      {claimKeys.map((k) => {
+        const cl = d.claims[k];
+        return (
+          <li id={`fn-${d.id}-${k}`}>
+            <p class="claim">{cl.text}{cl.status !== 'established' && <span class={`badge badge-${cl.status}`}>{cl.status}</span>}{cl.secondarySummary && <span class="src-tag">read via summaries</span>}</p>
+            {cl.contestNote && <p class="contest-note">{cl.contestNote}</p>}
+            <ul class="cites">{formatCitations(cl, sources).map((h) => <li set:html={h} />)}</ul>
+            <a class="correction" data-testid="correction-link" href={buildCorrectionUrl({ discoveryId: d.id, claimId: k, title: d.title })} rel="noopener" data-track="correction_start">Suggest a correction</a>
+          </li>
+        );
+      })}
+    </ol>
+    <p class="verified" data-testid="verified">Verified {log.date} by Claude (AI-assisted, see <a href="/how-we-source/">how we source</a>). No account? <a href={buildCorrectionMailto({ discoveryId: d.id })}>Email a correction</a>.</p>
+  </section>
+  <nav class="story-nav" aria-label="More stories">
+    {earlier && <a class="btn" href={`/tab/${earlier.id}/`} data-open-story={earlier.id}>← Earlier: {earlier.title}</a>}
+    {later && <a class="btn" href={`/tab/${later.id}/`} data-open-story={later.id}>Later: {later.title} →</a>}
+    {nextInThread && thread && <a class="btn" href={`/tab/${nextInThread.id}/`} data-open-story={nextInThread.id}>Next in “{thread.title}”: {nextInThread.title}</a>}
+    {thread && <a class="btn" href={`/edition/#${thread.id}`}>Read the long version</a>}
+    <button type="button" class="btn" data-share={d.id} data-track="share_click">Share</button>
+  </nav>
+</article>

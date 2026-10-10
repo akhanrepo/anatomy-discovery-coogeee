@@ -1,0 +1,20 @@
+import { chromium } from '@playwright/test';
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await b.newPage({ viewport: { width: 412, height: 915 } });
+await p.goto('http://127.0.0.1:4321/');
+const cdp = await p.context().newCDPSession(p);
+await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+const r = await p.evaluate(async () => {
+  const out = {};
+  const t = (k, f) => { const s = performance.now(); f(); out[k] = Math.round(performance.now() - s); };
+  const art = document.querySelector('[data-story="harvey-circulation"]');
+  t('unhide', () => { art.hidden = false; art.getBoundingClientRect(); });
+  art.hidden = true;
+  t('setAttrStates', () => { document.querySelectorAll('.st').forEach((g, i) => g.dataset.state = i % 2 ? 'described' : 'understood'); document.body.getBoundingClientRect(); });
+  t('paperChange', () => { document.body.dataset.paper = 'laid'; document.body.getBoundingClientRect(); });
+  const g = document.querySelector('.flap[data-flap="viscera"] .st[data-id="lungs"] .hit');
+  await new Promise((res) => requestAnimationFrame(res));
+  const s = performance.now(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); out.clickHandler = Math.round(performance.now() - s);
+  return out;
+});
+console.log(r); await b.close();

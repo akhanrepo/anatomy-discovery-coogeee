@@ -5,7 +5,7 @@
 See `docs/PRD.md` for full context. Feature specs live in `docs/features/` (F01–F17). The build plan and status are in `docs/PLAN.md`. Per-feature plans are in `docs/plans/`.
 
 ## Stack
-- **Astro 7 + TypeScript (strict)**, static output (`dist/`). Interactive islands in **Preact** (body, slider, story panel). No custom backend.
+- **Astro 7 + TypeScript (strict)**, static output (`dist/`). Everything is server-rendered: every structure, story panel and misbelief is in the HTML. A small **vanilla TypeScript** controller (`src/client/`) adds the slider, flaps, panel and lens behaviour. No UI framework and no custom backend.
 - **Content as code:** YAML + Markdown in `content/`, loaded and validated with **Zod** (`src/lib/content/`). The same loader serves Astro pages, scripts and tests.
 - **Art:** inline SVG (line art, hit regions, hatching patterns) + CSS paper textures. Design tokens are in `src/styles/tokens.css`.
 - **Build-time generation:** OG/share images (satori + resvg), RSS, classroom-pack PDFs (Playwright `page.pdf`), edition EPUB (pandoc).
@@ -43,7 +43,7 @@ True 3D body · user accounts/comments/UGC · comprehensive anatomy (stay at ~40
 ## Conventions
 - `content/` holds data only: `discoveries/*.md` (frontmatter + story body), `*.yaml` registries (structures, people, sources, misbeliefs, eras, threads, traditions, assets, share-dates), `logs/*.md` (verification logs). IDs are kebab-case and stable forever (URLs and tests depend on them).
 - `src/lib/` holds pure TypeScript logic (no DOM): `state.ts` (fog engine), `scale.ts` (slider scale), `url-state.ts`, `week.ts`, `content/` (schema + loader + gates). Everything in `src/lib/` gets unit tests.
-- `src/components/` holds `.astro` for static parts and `.tsx` (Preact) for islands. One component per file, PascalCase.
+- `src/components/` holds `.astro` components, one per file, in PascalCase. `src/client/` holds browser-only TypeScript modules that progressively enhance the server-rendered DOM, with no framework.
 - `src/art/` holds SVG geometry for figures, flaps, misbeliefs and the panorama, as TypeScript data. Structure IDs here must match `content/structures.yaml`.
 - `src/pages/` uses file-based routes; kebab-case.
 - Tests: `tests/unit/*.test.ts` (Vitest), `tests/e2e/{smoke,functional}/*.spec.ts` and `tests/perf/*.spec.ts` (Playwright).

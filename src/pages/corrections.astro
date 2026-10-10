@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { corpus } from '../lib/content/load';
+import { site } from '../config/site';
+const c = corpus();
+---
+<Layout title="Corrections" description="Public log of corrections to Tabula.">
+  <article class="prose">
+    <h1>Corrections</h1>
+    <p>Tabula is about people correcting errors, so we publish our own. Every accepted correction is listed here with the date and what changed.</p>
+    {c.corrections.length === 0
+      ? <p data-testid="corrections-empty"><em>No corrections yet.</em> If you find one, use the "Suggest a correction" link on any note, or <a href={`${site.repo}/issues/new?labels=correction`}>open an issue</a>.</p>
+      : <ul>{c.corrections.map((k) => <li><strong>{k.date}</strong> · <a href={`/tab/${k.subject}/`}>{k.subject}</a>: {k.summary}</li>)}</ul>}
+  </article>
+</Layout>

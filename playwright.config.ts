@@ -14,7 +14,7 @@ export default defineConfig({
   reporter: [['list']],
   use: { baseURL: 'http://127.0.0.1:4321', launchOptions },
   webServer: {
-    command: 'npm run preview',
+    command: 'node scripts/serve.mjs',
     url: 'http://127.0.0.1:4321',
     reuseExistingServer: true,
     timeout: 60_000,

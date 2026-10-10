@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { corpus } from '../lib/content/load';
+import { formatSource } from '../lib/format';
+const c = corpus();
+const sorted = [...c.sources].sort((a, b) => a.author.localeCompare(b.author));
+---
+<Layout title="Sources" description="Every source cited on Tabula.">
+  <article class="prose">
+    <h1>Sources</h1>
+    <p>{c.sources.length} sources, cited across {c.discoveries.length} plates, {c.misbeliefs.length} misbeliefs and {c.traditions.length} tradition lenses.</p>
+    <ul class="footnotes">{sorted.map((s) => <li id={`src-${s.id}`} set:html={formatSource(s)} />)}</ul>
+  </article>
+</Layout>

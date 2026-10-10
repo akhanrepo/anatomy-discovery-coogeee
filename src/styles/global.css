@@ -1,0 +1,98 @@
+/* Tabula, global styles (F16). Colours, type and spacing come only from these tokens. */
+:root {
+  --paper: #f2e9d8; --paper-shade: #ece1cb; --paper-deep: #e2d4b8; --ink: #2a2017; --ink-soft: #5c4a38; --ghost: #bba987;
+  --madder: #9e2b3a; --rose: #b9605f; --indigo: #2c4777; --orpiment: #b9851c; --verdigris: #2f7563; --ochre: #a26a22; --bone: #cdbb95; --umber: #7a5a3c;
+  --vermilion: #cf3a1c; --gold: #a87b22;
+  --font-text: 'EB Garamond', 'Garamond', Georgia, serif;
+  --font-display: 'IM Fell English', 'EB Garamond', Georgia, serif;
+  --font-ui: 'EB Garamond', Georgia, serif;
+  --font-arab: 'Amiri', 'EB Garamond', serif;
+  --font-hans: 'Noto Serif SC', serif;
+  --font-deva: 'Noto Serif Devanagari', serif;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
+  --radius: 2px;
+  --t-ink: 600ms; --t-hatch: 300ms; --t-wash: 300ms; --t-erase: 600ms;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1b1510; --paper-shade: #241c15; --paper-deep: #2d2319; --ink: #e6cf98; --ink-soft: #b59c70; --ghost: #5a4a36;
+    --madder: #d0606b; --rose: #d08a84; --indigo: #7f9bd0; --orpiment: #e2b04a; --verdigris: #62b39d; --ochre: #d39a50; --umber: #b08a64;
+    --vermilion: #ff6a45; --gold: #e2b04a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1b1510; --paper-shade: #241c15; --paper-deep: #2d2319; --ink: #e6cf98; --ink-soft: #b59c70; --ghost: #5a4a36;
+  --madder: #d0606b; --rose: #d08a84; --indigo: #7f9bd0; --orpiment: #e2b04a; --verdigris: #62b39d; --ochre: #d39a50; --umber: #b08a64;
+  --vermilion: #ff6a45; --gold: #e2b04a; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-text); font-size: 18px; line-height: 1.55;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+a:hover { color: var(--gold); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; letter-spacing: .01em; }
+.smallcaps { font-variant: small-caps; letter-spacing: .06em; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[lang="ar"], [lang="fa"], .script-arab, .script-fas { font-family: var(--font-arab); }
+[lang="zh"], .script-hans { font-family: var(--font-hans); }
+[lang="sa"], .script-deva { font-family: var(--font-deva); }
+.script-grek { font-family: var(--font-text); }
+
+/* ── Paper per era (F16 §3) ─────────────────────────────────────────── */
+.paper { background-color: var(--paper); transition: background-color 1.2s ease; }
+.paper[data-paper="papyrus"] {
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--ochre) 5%, transparent) 0 1px, transparent 1px 7px, color-mix(in srgb, var(--ochre) 3%, transparent) 7px 8px, transparent 8px 13px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ochre) 3%, transparent) 0 2px, transparent 2px 17px, color-mix(in srgb, var(--ochre) 4%, transparent) 17px 18px, transparent 18px 31px);
+  background-color: color-mix(in srgb, var(--paper) 90%, var(--ochre));
+}
+.paper[data-paper="vellum"] {
+  background-image: radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--paper) 70%, #fff) 0, transparent 60%), radial-gradient(ellipse at 80% 90%, color-mix(in srgb, var(--ochre) 10%, transparent), transparent 55%);
+  background-color: color-mix(in srgb, var(--paper) 92%, var(--rose));
+}
+.paper[data-paper="laid"], .paper[data-paper="laid-fine"] {
+  background-image:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ink) 6%, transparent) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 3%, transparent) 0 1px, transparent 1px 3px);
+}
+.paper[data-paper="laid-fine"] { background-size: 22px 100%, auto; }
+.paper[data-paper="wove"] {
+  background-image: radial-gradient(circle at 12% 30%, color-mix(in srgb, var(--ochre) 12%, transparent) 0 3px, transparent 4px), radial-gradient(circle at 78% 62%, color-mix(in srgb, var(--ochre) 10%, transparent) 0 2px, transparent 3px);
+  background-size: 380px 420px;
+}
+.paper[data-paper="coated"] {
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 0.6px, transparent 0.8px);
+  background-size: 5px 5px; background-color: color-mix(in srgb, var(--paper) 85%, #fff);
+}
+.paper[data-paper="ivory"] { background-image: none; }
+
+/* ── Chrome ─────────────────────────────────────────────────────────── */
+.site-header { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); padding: var(--s3) var(--s4); border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+.wordmark { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .28em; text-decoration: none; text-transform: uppercase; }
+.wordmark .mark { color: var(--gold); letter-spacing: 0; margin-right: .3em; }
+.tagline { font-style: italic; color: var(--ink-soft); font-size: .95rem; }
+.site-nav { display: flex; gap: var(--s4); flex-wrap: wrap; font-size: .95rem; }
+.site-nav a { text-decoration: none; }
+.site-footer { margin-top: var(--s7); padding: var(--s5) var(--s4); border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); font-size: .9rem; color: var(--ink-soft); }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: var(--s4); margin-bottom: var(--s3); }
+.prose { max-width: 42rem; margin: 0 auto; padding: var(--s5) var(--s4); }
+.prose h1 { font-size: 2.4rem; margin: var(--s4) 0; }
+.badge { display: inline-block; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; padding: 1px 8px; border: 1px solid currentColor; border-radius: var(--radius); }
+.badge-contested { color: var(--gold); }
+.badge-revised { color: var(--indigo); }
+.badge-established { color: var(--verdigris); }
+.btn { font: inherit; font-size: .95rem; color: var(--ink); background: transparent; border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent); border-radius: var(--radius); padding: 4px 12px; cursor: pointer; min-height: 36px; }
+.btn[aria-pressed="true"], .btn[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.btn:hover { border-color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-ink: 0ms; --t-hatch: 0ms; --t-wash: 0ms; --t-erase: 0ms; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

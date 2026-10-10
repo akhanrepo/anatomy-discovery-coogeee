@@ -1,0 +1,50 @@
+---
+import { corpus } from '../lib/content/load';
+import { formatCitations } from '../lib/format';
+import { LENS_ART, lensSilhouette } from '../art/lenses';
+import { VIEWBOX } from '../art/render';
+const c = corpus();
+const sources = new Map(c.sources.map((s) => [s.id, s]));
+const scriptLang: Record<string, string> = { arab: 'ar', fas: 'fa', hans: 'zh', deva: 'sa', grek: 'grc', latn: 'la' };
+const relText = { corresponds: 'corresponds to', partially: 'partly corresponds to', none: 'has no modern anatomical equivalent' } as const;
+---
+{c.traditions.map((t) => {
+  const plate = c.assets.find((a) => a.id === t.plateAsset)!;
+  const original = t.originalAsset ? c.assets.find((a) => a.id === t.originalAsset) : undefined;
+  const showOriginal = !!(original && original.licenceVerified && original.file);
+  return (
+    <section class="lens-view" data-lens-view={t.id} hidden aria-label={`${t.name} lens`}>
+      <p class="lens-disclaimer" data-testid="lens-disclaimer">Historical description, not medical advice.</p>
+      <div class="lens-plate">
+        {showOriginal
+          ? <img src={original!.file} alt={original!.altText} data-testid="lens-original" />
+          : <svg viewBox={VIEWBOX} class="lens-svg" role="img" aria-label={plate.altText} data-testid="lens-schematic"><path class="lens-sil" d={lensSilhouette} />{LENS_ART[t.id].paths.map((p) => <path class={`lens-${p.cls}`} d={p.d} />)}</svg>}
+        {t.concepts.map((k, i) => (
+          <button type="button" class="hotspot" style={`left:${k.hotspot[0] * 100}%;top:${k.hotspot[1] * 100}%`} data-open-concept={k.id} aria-label={`${i + 1}. ${k.name}`}>{i + 1}</button>
+        ))}
+      </div>
+      <p class="lens-credit">{showOriginal ? original!.credit : <>Schematic drawn for Tabula after {plate.sourceInstitution}. {original && <>See the original: <a href={original.recordUrl} rel="noopener">{original.title}</a> ({original.sourceInstitution}).</>}</>}</p>
+      <div class="lens-intro"><h2>{t.name} <span class="smallcaps">· {t.era}</span></h2><p>{t.intro}</p></div>
+    </section>
+  );
+})}
+{c.traditions.flatMap((t) => t.concepts.map((k) => {
+  const log = c.logs.find((l) => l.subject === k.id)!;
+  return (
+    <article class="story concept" id={`concept-${k.id}`} data-concept={k.id} data-lens={t.id} hidden tabindex="-1" aria-labelledby={`hk-${k.id}`}>
+      <header class="story-head">
+        <p class="plate-no smallcaps">{t.name}</p>
+        <h2 id={`hk-${k.id}`}>{k.name} {k.nameOriginal && <span class="orig" lang={scriptLang[k.script ?? 'latn']} dir={k.script === 'arab' || k.script === 'fas' ? 'rtl' : undefined}>{k.nameOriginal}</span>}</h2>
+      </header>
+      <p class="lens-disclaimer">Historical description, not medical advice.</p>
+      <div class="story-body"><p>{k.story}</p></div>
+      <section class="story-section"><h3 class="smallcaps">Relation to modern anatomy</h3>
+        <ul>{k.relatesTo.map((r) => <li>{r.structure ? <>This concept {relText[r.relation]} the <strong>{c.structures.find((s) => s.id === r.structure)!.name.toLowerCase()}</strong>.</> : <>This concept {relText[r.relation]}.</>}</li>)}</ul>
+      </section>
+      <section class="story-section sources" aria-label="Sources"><h3 class="smallcaps">Sources</h3>
+        <ol class="footnotes">{Object.entries(k.claims).map(([key, cl]) => <li id={`fn-${k.id}-${key}`}><p class="claim">{cl.text}</p>{cl.contestNote && <p class="contest-note">{cl.contestNote}</p>}<ul class="cites">{formatCitations(cl, sources).map((h) => <li set:html={h} />)}</ul></li>)}</ol>
+        <p class="verified">Verified {log.date} by Claude (AI-assisted).</p>
+      </section>
+    </article>
+  );
+}))}
