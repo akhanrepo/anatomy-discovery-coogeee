@@ -1,0 +1,9 @@
+# Verified day-month dates only (F07). Calendar must be stated; pre-1752 English dates are often Julian.
+- discovery: sliding-filaments
+  month: 5
+  day: 22
+  year: 1954
+  calendar: gregorian
+  basis: publication
+  citation: "kcl-hanson:Publication of the results in Nature, 1954"
+  caption: On this day in 1954, Nature printed two papers side by side explaining how muscle contracts. Their authors included two unrelated Huxleys.

@@ -1,0 +1,9 @@
+# Anchor eras for the slider (F02) and their paper treatment (F16). An era applies from its year until the next.
+- { id: papyrus, yearStart: -1600, label: c. 1600 BCE, caption: "Egypt: a surgeon's case notes give the brain its first written name.", paper: papyrus, script: hieratic, anchor: true }
+- { id: galen, yearStart: 200, label: c. 200, caption: "Rome: Galen's anatomy, much of it learned from apes and pigs, will rule for over a thousand years.", paper: papyrus, script: greek, anchor: true }
+- { id: nafis, yearStart: 1242, label: c. 1242, caption: "Cairo: Ibn al-Nafis argues there are no pores in the heart's wall; blood must pass through the lungs.", paper: vellum, script: arabic, anchor: true }
+- { id: vesalius, yearStart: 1543, label: "1543", caption: "Basel and Padua: Vesalius's Fabrica shows that Galen's human anatomy was partly animal anatomy.", paper: laid, script: roman, anchor: true }
+- { id: harvey, yearStart: 1628, label: "1628", caption: "Frankfurt: Harvey's arithmetic shows the blood must go round.", paper: laid-fine, script: fell, anchor: true }
+- { id: bichat, yearStart: 1800, label: "1800", caption: "Paris: Bichat sorts the body into tissues, without a microscope.", paper: wove, script: didone, anchor: true }
+- { id: huxley, yearStart: 1950, label: "1950", caption: "The century of cells, hormones and molecules: function catches up with form.", paper: coated, script: grotesque, anchor: true }
+- { id: today, yearStart: 2026, label: Today, caption: "Today: the modern reference. Even now, 'new' structures are argued over.", paper: ivory, script: modern, anchor: true }

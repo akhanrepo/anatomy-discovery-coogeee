@@ -1,0 +1,45 @@
+- { id: egyptian-surgeons, name: "Anonymous Egyptian surgeon(s)", dates: "text older than its c. 1600 BCE copy", place: "Egypt", tradition: egyptian }
+- { id: alcmaeon, name: "Alcmaeon of Croton", nameOriginal: Ἀλκμαίων, script: grek, dates: "fl. c. 500 BCE", place: "Croton (southern Italy)", tradition: greek }
+- { id: herophilus, name: "Herophilus of Chalcedon", nameOriginal: Ἡρόφιλος, script: grek, dates: "fl. c. 300 BCE", place: "Alexandria", tradition: hellenistic }
+- { id: erasistratus, name: "Erasistratus of Ceos", nameOriginal: Ἐρασίστρατος, script: grek, dates: "fl. c. 260 BCE", place: "Alexandria", tradition: hellenistic }
+- { id: huangdi-compilers, name: "Compilers of the Huangdi Neijing", nameOriginal: 黃帝內經, script: hans, dates: "c. 2nd–1st c. BCE", place: "Han China", tradition: chinese }
+- { id: vossius, name: "Isaac Vossius", dates: "1618–1689", place: "Netherlands and England", tradition: early-modern }
+- { id: sushruta, name: "Suśruta (attributed)", nameOriginal: सुश्रुत, script: deva, dates: "date uncertain", place: "India (by tradition Kashi)", tradition: indian }
+- { id: galen, name: "Galen of Pergamon", nameOriginal: Γαληνός, script: grek, dates: "129–c. 216", place: "Pergamon and Rome", tradition: greco-roman }
+- { id: ibn-sina, name: "Ibn Sina (Avicenna)", nameOriginal: ابن سينا, script: arab, dates: "980–1037", place: "Bukhara, Hamadan, Isfahan", tradition: islamic-world }
+- { id: ibn-al-haytham, name: "Ibn al-Haytham (Alhazen)", nameOriginal: ابن الهيثم, script: arab, dates: "c. 965–c. 1040", place: "Basra and Cairo", tradition: islamic-world }
+- { id: ibn-al-nafis, name: "Ibn al-Nafis", nameOriginal: ابن النفيس, script: arab, dates: "1210 or 1213–1288", place: "Damascus and Cairo", tradition: islamic-world }
+- { id: mansur-ibn-ilyas, name: "Mansur ibn Ilyas", nameOriginal: منصور بن الیاس, script: arab, dates: "fl. 1394–1409", place: "Shiraz", tradition: islamic-world }
+- { id: wang-weiyi, name: "Wang Weiyi", nameOriginal: 王惟一, script: hans, dates: "987–1067", place: "Song China", tradition: chinese }
+- { id: leonardo, name: "Leonardo da Vinci", dates: "1452–1519", place: "Florence, Milan, Rome", tradition: renaissance }
+- { id: vesalius, name: "Andreas Vesalius", dates: "1514–1564", place: "Padua", tradition: renaissance }
+- { id: servetus, name: "Michael Servetus", dates: "c. 1511–1553", place: "Vienne and Geneva", tradition: renaissance }
+- { id: valverde, name: "Juan Valverde de Hamusco", dates: "16th c.", place: "Rome", tradition: renaissance }
+- { id: colombo, name: "Realdo Colombo", dates: "c. 1516–1559", place: "Padua, Pisa, Rome", tradition: renaissance }
+- { id: falloppio, name: "Gabriele Falloppio", dates: "1523–1562", place: "Padua", tradition: renaissance }
+- { id: fabricius, name: "Hieronymus Fabricius ab Aquapendente", dates: "1533–1619", place: "Padua", tradition: renaissance }
+- { id: aselli, name: "Gaspare Aselli", dates: "1581–1625/26", place: "Pavia and Milan", tradition: early-modern }
+- { id: pecquet, name: "Jean Pecquet", dates: "1622–1674", place: "Montpellier and Paris", tradition: early-modern }
+- { id: harvey, name: "William Harvey", dates: "1578–1657", place: "London", tradition: early-modern }
+- { id: malpighi, name: "Marcello Malpighi", dates: "1628–1694", place: "Bologna and Pisa", tradition: early-modern }
+- { id: willis, name: "Thomas Willis", dates: "1621–1675", place: "Oxford and London", tradition: early-modern }
+- { id: wren, name: "Christopher Wren", dates: "1632–1723", place: "Oxford and London", tradition: early-modern }
+- { id: johan-ham, name: "Johan Ham", dates: "fl. 1677", place: "Leiden", tradition: early-modern }
+- { id: leeuwenhoek, name: "Antonie van Leeuwenhoek", dates: "1632–1723", place: "Delft", tradition: early-modern }
+- { id: bichat, name: "Xavier Bichat", dates: "1771–1802", place: "Paris", tradition: modern }
+- { id: langerhans, name: "Paul Langerhans", dates: "1847–1888", place: "Berlin", tradition: modern }
+- { id: cajal, name: "Santiago Ramón y Cajal", dates: "1852–1934", place: "Valencia, Barcelona, Madrid", tradition: modern }
+- { id: golgi, name: "Camillo Golgi", dates: "1843–1926", place: "Pavia", tradition: modern }
+- { id: banting, name: "Frederick Banting", dates: "1891–1941", place: "Toronto", tradition: modern }
+- { id: best, name: "Charles Best", dates: "1899–1978", place: "Toronto", tradition: modern }
+- { id: collip, name: "James Bertram Collip", dates: "1892–1965", place: "Toronto", tradition: modern }
+- { id: macleod, name: "J. J. R. Macleod", dates: "1876–1935", place: "Toronto", tradition: modern }
+- { id: af-huxley, name: "Andrew F. Huxley", dates: "1917–2012", place: "Cambridge", tradition: modern }
+- { id: niedergerke, name: "Rolf Niedergerke", dates: "20th c.", place: "Cambridge", tradition: modern }
+- { id: he-huxley, name: "Hugh E. Huxley", dates: "1924–2013", place: "Cambridge, Mass. and London", tradition: modern }
+- { id: hanson, name: "Jean Hanson", dates: "1919–1973", place: "London (King's College)", tradition: modern }
+- { id: mascagni, name: "Paolo Mascagni", dates: "1755–1815", place: "Siena", tradition: early-modern }
+- { id: key-retzius, name: "Axel Key and Gustaf Retzius", dates: "19th c.", place: "Stockholm", tradition: modern }
+- { id: louveau-kipnis, name: "Antoine Louveau, Jonathan Kipnis and colleagues", dates: "21st c.", place: "Charlottesville", tradition: contemporary }
+- { id: aspelund-alitalo, name: "Aleksanteri Aspelund and colleagues", dates: "21st c.", place: "Helsinki", tradition: contemporary }
+- { id: benias-theise, name: "Petros Benias, Neil Theise and colleagues", dates: "21st c.", place: "New York", tradition: contemporary }

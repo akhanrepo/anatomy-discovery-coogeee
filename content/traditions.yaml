@@ -1,0 +1,166 @@
+# Traditions lens (F10). Each lens shows a schematic drawn after the tradition's own historical plate, with concepts
+# explained in their own terms. relatesTo: corresponds | partially | none (no modern equivalent).
+- id: islamic-galenic
+  name: Islamic world (Galenic anatomy)
+  era: c. 1390s
+  intro: "Mansur ibn Ilyas's Persian treatise pictures the body as five systems: bones, nerves, muscles, veins and arteries. Each is drawn as a full-page figure. This anatomy is Galenic in content, and it is the first known Islamic work with full-body illustrations."
+  plateAsset: lens-islamic-schematic
+  originalAsset: tashrih-nlm-1488
+  concepts:
+    - id: tashrih-treatise
+      name: "The Tashrīḥ-i Manṣūrī"
+      nameOriginal: تشریح منصوری
+      script: fas
+      story: Written in Persian in Shiraz and dedicated to Pir Muhammad Bahadur, ruler of Fars, this is the first known Islamic anatomical text to illustrate the whole body. The National Library of Medicine holds a copy completed in 1488.
+      hotspot: [0.5, 0.1]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "Mansur ibn Ilyas's treatise was dedicated to Pir Muhammad Bahadur, ruler of Fars, and is the first known Islamic anatomical text with full-body illustrations.", citations: ["nlm-tashrih:catalogue essay", "cam-mansur:exhibition text"] }
+    - id: tashrih-bones
+      name: The system of bones
+      story: The first of the five system-figures maps the skeleton. The bones are named and described as a framework.
+      hotspot: [0.5, 0.35]
+      relatesTo: [{ structure: skull, relation: partially }, { structure: spine, relation: partially }]
+      claims:
+        k1: { text: "The treatise has five chapters on five systems (bones, nerves, muscles, veins and arteries), each illustrated with a full-page diagram.", citations: ["nlm-tashrih:catalogue essay", "akm-tashrih:collection record"] }
+    - id: tashrih-nerves
+      name: The system of nerves
+      story: The nerve figure shows nerves arising from the brain and spinal cord, following Galen's account of how sensation and movement are carried.
+      hotspot: [0.42, 0.5]
+      relatesTo: [{ structure: nerves, relation: partially }, { structure: spinal-cord, relation: partially }]
+      claims:
+        k1: { text: "One of the treatise's five full-page system diagrams is devoted to the nerves.", citations: ["nlm-tashrih:catalogue essay", "akm-tashrih:collection record"] }
+    - id: tashrih-muscles
+      name: The system of muscles
+      story: A full-page figure of the muscles completes the picture of how the body moves.
+      hotspot: [0.6, 0.6]
+      relatesTo: [{ structure: skeletal-muscle, relation: partially }]
+      claims:
+        k1: { text: "One of the treatise's five full-page system diagrams is devoted to the muscles.", citations: ["nlm-tashrih:catalogue essay", "akm-tashrih:collection record"] }
+    - id: tashrih-veins
+      name: The system of veins
+      story: The veins are drawn as a separate system. In Galenic anatomy they rise from the liver and carry nourishing blood outwards. Compare the red-ink belief on the modern figure.
+      hotspot: [0.38, 0.72]
+      relatesTo: [{ structure: veins, relation: partially }]
+      claims:
+        k1: { text: "One of the treatise's five full-page system diagrams is devoted to the veins.", citations: ["nlm-tashrih:catalogue essay", "akm-tashrih:collection record"] }
+    - id: tashrih-arteries
+      name: The system of arteries
+      story: The arteries are drawn as a system of their own, separate from the veins, rising from the heart as Galen taught.
+      hotspot: [0.62, 0.82]
+      relatesTo: [{ structure: arteries, relation: partially }]
+      claims:
+        k1: { text: "One of the treatise's five full-page system diagrams is devoted to the arteries.", citations: ["nlm-tashrih:catalogue essay", "akm-tashrih:collection record"] }
+
+- id: chinese-classical
+  name: Classical Chinese (channels and points)
+  era: 1027; woodcuts of 1443 and 1537
+  intro: "In 1026–27 the Song court commissioned bronze figures marked with needling points, and an illustrated book to go with them. The body here is mapped by channels and points: a different question from Western anatomy's, answered on its own terms."
+  plateAsset: lens-chinese-schematic
+  originalAsset: bronze-man-wellcome-1537
+  concepts:
+    - id: bronze-man
+      name: The Bronze Man
+      nameOriginal: 銅人
+      script: hans
+      story: The court physician Wang Weiyi oversaw the casting of bronze acupuncture figures and the writing of a three-volume illustrated book, completed around 1027. Together they set a national standard for where the channels and points lie.
+      hotspot: [0.5, 0.12]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "From 1026, by imperial edict, Wang Weiyi oversaw the making of bronze acupuncture figures and an accompanying book, completed around 1027, which served as a national standard for channels and points.", citations: ["hkbu-cm-museum:Orientation Zone panel", "cmc-song-bronze:abstract"] }
+        k2: { text: "Sources disagree on how many points the figures carried; counts of 657 and 365 are both reported.", citations: ["hkbu-cm-museum:Orientation Zone panel", "cmc-song-bronze:abstract"], status: contested, contestNote: "Different sources report different point counts for the Song figures." }
+    - id: bronze-man-exam
+      name: A body that tested students
+      story: For teaching and examinations the figure was coated in wax and filled with water. A needle placed on the right point released a drop of fluid.
+      hotspot: [0.66, 0.4]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "When used for teaching and examinations, the figure's surface was covered with wax and its interior filled with water, so that fluid ran out when a point was correctly pierced.", citations: ["hkbu-cm-museum:Orientation Zone panel", "cmc-song-bronze:abstract"] }
+    - id: channels-organs
+      name: Channels named for organs
+      nameOriginal: 經絡
+      script: hans
+      story: "The woodcuts trace channels across the body, each named for an organ and a limb: the lung channel of the hand taiyin, the heart-envelope channel, the gallbladder and bladder channels of the foot."
+      hotspot: [0.4, 0.45]
+      relatesTo: [{ structure: lungs, relation: partially }, { structure: heart, relation: partially }]
+      claims:
+        k1: { text: "The 1537 woodcuts of the Bronze Man show channels named for organs, including the lung channel of hand taiyin, the heart-envelope (pericardium) channel, and the gallbladder and bladder channels of the foot.", citations: ["wellcome-bronze-man-front:catalogue record", "wellcome-bronze-man-side:catalogue record"] }
+    - id: qi-in-vessels
+      name: Qi in the vessels
+      nameOriginal: 氣
+      script: hans
+      story: In the classical texts the vessels carry qi, and only sometimes blood. This is a model of flow and correspondence, not a pump-and-pipes circulation. That's why Tab. IV is marked Revised.
+      hotspot: [0.5, 0.58]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "In the Huangdi Neijing the vessels carry qi and only sometimes blood, and specialist translators read it as describing neither blood circulation nor a pumping heart.", citations: ["unschuld-1985:chapters on the vessels", "nature-2000-circulation-letter:letter text", wujastyk-indology-1999], secondarySummary: true }
+    - id: forbidden-points
+      name: Where not to needle
+      story: Woodcuts dated 1443 from the same tradition set out rules for points that must not be needled, a reminder that the system was practical medicine with safety rules.
+      hotspot: [0.34, 0.7]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "A Chinese woodcut dated 1443 sets out rules for acupuncture prohibitions.", citations: ["wellcome-prohibitions-1443:catalogue record", "wellcome-four-flower-1443:catalogue record"] }
+    - id: four-flower-points
+      name: The Four Flower points
+      story: Another 1443 woodcut shows how to locate the "Four Flower" points by measuring the body itself. Proportion stands in for a ruler.
+      hotspot: [0.62, 0.66]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "A Chinese woodcut dated 1443 shows the location of the Four Flower points.", citations: ["wellcome-four-flower-1443:catalogue record", "wellcome-prohibitions-1443:catalogue record"] }
+
+- id: ayurveda
+  name: Ayurveda
+  era: 18th century (Nepal)
+  intro: "A painted body from Kathmandu shows organs and channels as Ayurvedic texts describe them, with Sanskrit captions taken from a 16th- or 17th-century compendium. Read the image and the words together."
+  plateAsset: lens-ayurveda-schematic
+  originalAsset: ayurvedic-man-wellcome
+  concepts:
+    - id: ayurvedic-man
+      name: The Ayurvedic Man
+      story: A gouache painting of a male body, probably made in Kathmandu around 1800, now in the Wellcome Collection (ref. 574912i). It was exhibited in London in 2017–18.
+      hotspot: [0.5, 0.1]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "The Ayurvedic Man is a gouache painting of a male body dated to the 18th century (catalogued as c. 1800?), held by the Wellcome Collection as 574912i.", citations: ["wellcome-ayurvedic-man-record:catalogue record", "wellcome-ayurvedic-man-essay:essay"] }
+    - id: ayurvedic-man-makers
+      name: Physician, painters and a scribe
+      story: The painting was probably a collaboration between an Ayurvedic physician, Tibetan artists and a calligrapher in Kathmandu. The calligrapher may not have known Sanskrit well.
+      hotspot: [0.75, 0.2]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "The painting was probably a collaboration between an Ayurvedic physician, Tibetan artists and a calligrapher in Kathmandu, the calligrapher probably unfamiliar with Sanskrit.", citations: ["wellcome-ayurvedic-man-essay:essay", "wujastyk-2008:abstract"] }
+    - id: organs-as-vessels
+      name: Organs as receptacles
+      nameOriginal: आशय
+      script: deva
+      story: The organs on the torso are drawn as receptacles, each holding one of the body's fluids. It is a physiology of containers and flows.
+      hotspot: [0.5, 0.45]
+      relatesTo: [{ structure: stomach, relation: partially }, { structure: heart, relation: partially }]
+      claims:
+        k1: { text: "The painting shows the organs of the torso, each treated as a receptacle for one of the bodily fluids.", citations: ["wellcome-ayurvedic-man-record:catalogue record", "wellcome-ayurvedic-man-essay:essay"], secondarySummary: true }
+    - id: channels-ayurveda
+      name: Channels
+      nameOriginal: स्रोतस्
+      script: deva
+      story: Channels run across the torso, carrying the body's fluids between the receptacles. This is the Ayurvedic idea of the body as a network of passages.
+      hotspot: [0.4, 0.55]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "The painting draws channels on the torso alongside the organs, according to Ayurvedic literature.", citations: ["wellcome-ayurvedic-man-record:catalogue record", "wellcome-ayurvedic-man-essay:essay"], secondarySummary: true }
+    - id: bhavaprakasha-captions
+      name: Words from the Bhāvaprakāśa
+      nameOriginal: भावप्रकाश
+      script: deva
+      story: The Sanskrit captions are taken from the Bhāvaprakāśa, an Ayurvedic compendium by Bhāvamiśra. Its date is itself uncertain. The catalogue says 1550–1590, and the leading study says around 1650–90.
+      hotspot: [0.2, 0.6]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "The painting's captions are extracts from the Bhāvaprakāśa of Bhāvamiśra, whose date is given variously as 1550–1590 and c. 1650–90.", citations: ["wellcome-ayurvedic-man-record:catalogue record", "wujastyk-2008:abstract", "wellcome-ayurvedic-man-essay:essay"], status: contested, contestNote: "The Wellcome catalogue and Wujastyk's study give different dates for the Bhāvaprakāśa." }
+    - id: read-together
+      name: Read the picture and the text together
+      story: The image isn't a free-standing anatomical drawing. Its meaning depends on the Sanskrit around it, and the leading study argues they have to be read as one work.
+      hotspot: [0.8, 0.7]
+      relatesTo: [{ relation: none }]
+      claims:
+        k1: { text: "The Sanskrit passages on the painting have been identified and translated, and the text and image need to be read together.", citations: ["wujastyk-2008:abstract", "wellcome-ayurvedic-man-essay:essay"] }

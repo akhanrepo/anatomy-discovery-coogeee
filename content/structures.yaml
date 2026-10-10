@@ -1,0 +1,46 @@
+# ~40 structures across four flap layers (F01, F13). Stable IDs: the art, URLs and tests depend on them.
+# surface
+- { id: skin, name: Skin, system: integumentary, layer: surface }
+- { id: eye, name: Eye, system: sensory, layer: surface }
+# muscles
+- { id: skeletal-muscle, name: Skeletal muscle, system: musculoskeletal, layer: muscles }
+- { id: interstitium, name: Interstitium (fluid-filled spaces under the skin and around organs), system: general, layer: muscles }
+- { id: diaphragm, name: Diaphragm, system: respiratory, layer: muscles }
+# viscera
+- { id: heart, name: Heart, system: circulatory, layer: viscera }
+- { id: aortic-valve, name: Aortic valve, system: circulatory, layer: viscera }
+- { id: interventricular-septum, name: Interventricular septum, system: circulatory, layer: viscera }
+- { id: arteries, name: Arteries, system: circulatory, layer: viscera }
+- { id: veins, name: Veins, system: circulatory, layer: viscera }
+- { id: venous-valves, name: Venous valves, system: circulatory, layer: viscera }
+- { id: capillaries, name: Capillaries, system: circulatory, layer: viscera }
+- { id: lungs, name: Lungs, system: respiratory, layer: viscera }
+- { id: pulmonary-artery, name: Pulmonary artery, system: circulatory, layer: viscera }
+- { id: pulmonary-vein, name: Pulmonary veins, system: circulatory, layer: viscera }
+- { id: liver, name: Liver, system: digestive, layer: viscera }
+- { id: stomach, name: Stomach, system: digestive, layer: viscera }
+- { id: intestines, name: Intestines, system: digestive, layer: viscera }
+- { id: pancreas, name: Pancreas and its islets, system: endocrine, layer: viscera }
+- { id: lacteals, name: Lacteals (lymph vessels of the gut), system: lymphatic, layer: viscera }
+- { id: thoracic-duct, name: Thoracic duct, system: lymphatic, layer: viscera }
+- { id: kidneys, name: Kidneys, system: general, layer: viscera }
+- { id: uterus, name: Uterus, system: reproductive, layer: viscera, sex: female }
+- { id: uterine-tubes, name: Uterine (Fallopian) tubes, system: reproductive, layer: viscera, sex: female }
+- { id: testes, name: Testes, system: reproductive, layer: viscera, sex: male }
+- { id: trachea, name: Trachea and larynx, system: respiratory, layer: viscera }
+# skeleton & nervous system
+- { id: skull, name: Skull, system: musculoskeletal, layer: skeleton }
+- { id: skull-sutures, name: Cranial sutures, system: musculoskeletal, layer: skeleton }
+- { id: mandible, name: Mandible (lower jaw), system: musculoskeletal, layer: skeleton }
+- { id: sternum, name: Sternum, system: musculoskeletal, layer: skeleton }
+- { id: spine, name: Spine, system: musculoskeletal, layer: skeleton }
+- { id: brain, name: Brain, system: nervous, layer: skeleton }
+- { id: cerebellum, name: Cerebellum, system: nervous, layer: skeleton }
+- { id: meninges, name: Meninges (brain coverings), system: nervous, layer: skeleton }
+- { id: meningeal-lymphatics, name: Meningeal lymphatic vessels, system: lymphatic, layer: skeleton }
+- { id: arterial-circle, name: Arterial circle at the base of the brain, system: circulatory, layer: skeleton }
+- { id: optic-nerves, name: Optic nerves, system: nervous, layer: skeleton }
+- { id: cranial-nerves, name: Cranial nerves, system: nervous, layer: skeleton }
+- { id: spinal-cord, name: Spinal cord, system: nervous, layer: skeleton }
+- { id: nerves, name: Peripheral nerves, system: nervous, layer: skeleton }
+- { id: recurrent-laryngeal-nerve, name: Recurrent laryngeal nerve, system: nervous, layer: skeleton }

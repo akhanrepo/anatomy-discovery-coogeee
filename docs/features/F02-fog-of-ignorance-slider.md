@@ -28,15 +28,19 @@ The fog **measures past knowledge against modern anatomy**. We accept that and s
 ## State engine (pure, unit-tested)
 ```
 stateAt(structure, year):
-  ds = discoveries touching structure with yearStart <= year
-  none                    -> UNKNOWN      (blank paper + plate-mark contour)
-  any kind != morphology  -> UNDERSTOOD   (line + hatch + wash)
-  else                    -> DESCRIBED    (line only)
+  year >= present           -> UNDERSTOOD   (Today = modern reference, fully inked)
+  structure has no stories  -> DESCRIBED    (context organ, outline only; see "About the fog")
+  ds = non-revised discoveries touching structure with yearStart <= year
+  any kind in {function, molecular}      -> UNDERSTOOD   (line + hatch + wash)
+  any kind in {morphology, microscopic}  -> DESCRIBED    (line only: seen, not yet understood)
+  none                                   -> UNKNOWN      (blank paper + plate-mark contour)
 
 activeMisbeliefs(year):
-  misbeliefs with yearStart <= year and (correctedBy.yearStart > year)
-  -> drawn in vermilion; on crossing correctedBy year -> erasure animation, ghost remains
+  misbeliefs with yearStart <= year, not yet corrected in the mainstream
+  -> vermilion; after the "first" correction a partial ghost, after "mainstream" a full erasure
 ```
+- `revised` stories (myths, e.g. Tab. IV) never ink anything in. They're in the panel, not the fog.
+- *Microscopic* observation counts as *described*, not understood: Langerhans saw the islets in 1869, and their function waited until 1921.
 - The body isn't blank at c. 200. Egyptian, Alexandrian and Galenic knowledge are already inked. The unevenness is the point.
 - Contested-date discoveries reveal at `yearStart`, with a "date contested" mark in the margin.
 - Default landing year is **Today** (most beautiful), with a nudge to drag back.

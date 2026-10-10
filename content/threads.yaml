@@ -1,0 +1,25 @@
+# Guided tours (F11): each plays as a sequence on the body; also the basis for packs (F12) and edition chapters (F14).
+- id: circulation
+  title: The circulation of the blood
+  intro: From Galen's arteries to Malpighi's capillaries, the long argument about where blood goes. It moves through Rome, Cairo, Padua and London, and it is full of half-right answers.
+  discoveries: [galen-arteries-blood, ibn-al-nafis-pulmonary-circulation, pulmonary-circulation-europe, fabricius-venous-valves, harvey-circulation, malpighi-capillaries]
+- id: brain-and-nerves
+  title: The brain and nerves
+  intro: How the head became the seat of thought, how nerves were told apart from everything else, and how the nervous system turned out to be made of separate cells.
+  discoveries: [edwin-smith-papyrus, alcmaeon-brain-sensation, herophilus-nerves, galen-recurrent-laryngeal, willis-arterial-circle, cajal-neurons]
+- id: microscopy
+  title: Seeing the invisible
+  intro: What changed when anatomists could see below the naked eye, and why seeing a structure is not the same as understanding it.
+  discoveries: [malpighi-capillaries, ham-leeuwenhoek-spermatozoa, bichat-tissues, langerhans-islets, insulin-islets-function, cajal-neurons]
+- id: myths-and-firsts
+  title: Myths and "firsts"
+  intro: Six plates where the popular story is wrong, contested or more interesting than the legend. A tour for sceptics.
+  discoveries: [huangdi-circulation-myth, leonardo-aortic-valve, pulmonary-circulation-europe, ham-leeuwenhoek-spermatozoa, meningeal-lymphatics, interstitium-organ]
+- id: beyond-europe
+  title: Beyond Europe
+  intro: Egyptian, Indian, Chinese and Islamic-world contributions, told carefully, including one popular claim that does not survive scrutiny. Pair this tour with the Traditions lens.
+  discoveries: [edwin-smith-papyrus, huangdi-circulation-myth, sushruta-dissection, ibn-al-haytham-vision, ibn-al-nafis-pulmonary-circulation]
+- id: hidden-vessels
+  title: The hidden vessels
+  intro: The lymphatic system was found twice, in the gut in 1622 and around the brain in 1787 and again in 2015.
+  discoveries: [aselli-lacteals, meningeal-lymphatics]

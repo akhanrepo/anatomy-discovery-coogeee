@@ -1,0 +1,744 @@
+# Source registry (F05). type: primary | secondary | tertiary. scholarly: peer-reviewed, university press,
+# or a major institution (library, museum, learned society). Tertiary sources never count toward the two-source rule.
+# detailsPending: byline/title not fully confirmed; the URL is authoritative.
+
+# ── Egypt ───────────────────────────────────────────────────────────────
+- id: breasted-1930
+  type: primary
+  author: James Henry Breasted (ed. and trans.)
+  title: The Edwin Smith Surgical Papyrus
+  year: 1930
+  publisher: University of Chicago Press
+- id: kamp-2012
+  type: secondary
+  scholarly: true
+  author: M. A. Kamp, Y. Tahsim-Oglou, H.-J. Steiger, D. Hänggi
+  title: "Traumatic Brain Injuries in the Ancient Egypt: Insights from the Edwin Smith Papyrus"
+  year: 2012
+  publisher: Journal of Neurological Surgery Part A
+  doi: 10.1055/s-0032-1313635
+  url: https://www.thieme-connect.de/products/ejournals/abstract/10.1055/s-0032-1313635
+- id: chudler-papyrus
+  type: secondary
+  author: Eric H. Chudler (University of Washington)
+  title: The Edwin Smith Surgical Papyrus
+  year: n.d.
+  url: https://faculty.washington.edu/chudler/papy.html
+
+# ── Greek & Hellenistic ─────────────────────────────────────────────────
+- id: huffman-sep-alcmaeon
+  type: secondary
+  scholarly: true
+  author: Carl Huffman
+  title: Alcmaeon (Stanford Encyclopedia of Philosophy)
+  year: 2026
+  url: https://plato.stanford.edu/archives/sum2026/entries/alcmaeon/
+- id: hektoen-alcmaeon
+  type: secondary
+  author: Hektoen International
+  title: "Alcmaeon of Croton: philosopher-physician"
+  year: 2017
+  url: https://hekint.org/2017/01/22/alcmaeon-of-croton-philosopher-physician/
+- id: theophrastus-de-sensibus
+  type: primary
+  author: Theophrastus
+  title: De sensibus (On the Senses)
+  year: c. 300 BCE
+- id: calcidius-timaeus
+  type: primary
+  author: Calcidius
+  title: Commentary on Plato's Timaeus
+  year: 4th c. CE
+- id: pearce-2013
+  type: secondary
+  scholarly: true
+  author: J. M. S. Pearce
+  title: The Neuroanatomy of Herophilus
+  year: 2013
+  publisher: European Neurology 69(5):292–295
+  url: https://karger.com/ene/article/69/5/292/124592/The-Neuroanatomy-of-Herophilus
+- id: celsus-de-medicina
+  type: primary
+  author: Aulus Cornelius Celsus
+  title: De medicina
+  year: 1st c. CE
+- id: bibalex-herophilus
+  type: secondary
+  author: Bibliotheca Alexandrina, SCIplanet
+  title: "Herophilus and Erasistratus: The Butchers of Alexandria"
+  year: n.d.
+  url: https://www.bibalex.org/SCIplanet/en/Article/Details.aspx?id=10296
+
+# ── Galen ───────────────────────────────────────────────────────────────
+- id: galen-arteries
+  type: primary
+  author: Galen
+  title: Whether Blood Is Naturally Contained in the Arteries
+  year: 2nd c. CE
+- id: galen-usu-partium
+  type: primary
+  author: Galen
+  title: De usu partium (On the Usefulness of the Parts)
+  year: 2nd c. CE
+- id: galen-bones
+  type: primary
+  author: Galen
+  title: On Bones for Beginners
+  year: 2nd c. CE
+- id: furley-wilkie-1984
+  type: secondary
+  scholarly: true
+  author: David J. Furley, J. S. Wilkie
+  title: Galen on Respiration and the Arteries
+  year: 1984
+  publisher: Princeton University Press
+- id: pmc-galen-libel
+  type: secondary
+  author: (19th-century correspondent)
+  title: Exposition of a Libel upon the Memory of the Ancients
+  year: 19th c.
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5614023/
+  detailsPending: true
+- id: kaplan-2009
+  type: secondary
+  scholarly: true
+  author: E. L. Kaplan, G. I. Salti, M. Roncella, N. Fulton, M. Kadowaki
+  title: "History of the recurrent laryngeal nerve: from Galen to Lahey"
+  year: 2009
+  publisher: World Journal of Surgery 33(3):386–393
+  doi: 10.1007/s00268-008-9798-z
+- id: bubb-pig-voice
+  type: secondary
+  author: Claire Bubb
+  title: Finding your pig's voice (Classics for All)
+  year: n.d.
+  url: https://classicsforall.org.uk/reading-room/ad-familiares/finding-your-pigs-voice
+
+# ── China ───────────────────────────────────────────────────────────────
+- id: huangdi-neijing
+  type: primary
+  author: (compiled, attributed to the Yellow Emperor)
+  title: Huangdi Neijing (Inner Classic of the Yellow Emperor)
+  year: c. 2nd–1st c. BCE
+- id: vossius-1685
+  type: primary
+  author: Isaac Vossius
+  title: Variarum observationum liber
+  year: 1685
+- id: hom-vossius
+  type: secondary
+  author: Jeremy M. Norman (HistoryofMedicine.com)
+  title: "[Entry on Isaak Vossius and the claim that the Chinese knew the circulation]"
+  year: n.d.
+  url: https://www.historyofmedicine.com/id/13919
+- id: nature-2000-circulation-letter
+  type: secondary
+  scholarly: true
+  author: Nature correspondence
+  title: "[Letter on Needham's and Unschuld's readings of Chinese circulation passages]"
+  year: 2000
+  url: https://www.nature.com/articles/35016743
+  detailsPending: true
+- id: unschuld-1985
+  type: secondary
+  scholarly: true
+  author: Paul U. Unschuld
+  title: "Medicine in China: A History of Ideas"
+  year: 1985
+  publisher: University of California Press
+- id: hkbu-cm-museum
+  type: secondary
+  scholarly: true
+  author: Hong Kong Baptist University, Chinese Medicine Museum
+  title: Orientation Zone (history of the bronze acupuncture figures)
+  year: n.d.
+  url: https://cmmuseum.hkbu.edu.hk/eng/zone1.html
+- id: cmc-song-bronze
+  type: secondary
+  scholarly: true
+  author: Chinese Medicine and Culture
+  title: "A historical model informing the future: acupuncture standardization in the Northern Song dynasty"
+  year: n.d.
+  doi: 10.1097/mc9.0000000000000193
+  url: https://www.citedrive.com/en/discovery/a-historical-model-informing-the-future-acupuncture-standardization-in-the-northern-song-dynasty/
+  detailsPending: true
+- id: wellcome-bronze-man-front
+  type: secondary
+  scholarly: true
+  author: Wellcome Collection (catalogue record)
+  title: Bronze Man acupuncture figurine, front view, Chinese woodcut (1537 edition)
+  year: 1537
+  url: https://content.www.wellcomecollection.org/works/xhqf9s5k
+- id: wellcome-bronze-man-side
+  type: secondary
+  scholarly: true
+  author: Wellcome Collection (catalogue record)
+  title: Bronze Man acupuncture figurine, side view, Chinese woodcut (1537 edition)
+  year: 1537
+  url: https://wellcomecollection.org/works/b7wy9b7s
+- id: wellcome-prohibitions-1443
+  type: secondary
+  scholarly: true
+  author: Wellcome Collection (catalogue record)
+  title: Rules for acupuncture prohibitions, Chinese woodcut, 1443
+  year: 1443
+  url: https://content.www.wellcomecollection.org/works/ru2wgufk
+
+# ── India ───────────────────────────────────────────────────────────────
+- id: sushruta-samhita
+  type: primary
+  author: (attributed to Suśruta)
+  title: Suśrutasaṃhitā, Śārīrasthāna
+  year: compiled over centuries
+- id: meulenbeld-1999
+  type: secondary
+  scholarly: true
+  author: G. Jan Meulenbeld
+  title: A History of Indian Medical Literature
+  year: 1999–2002
+  publisher: Egbert Forsten, Groningen
+- id: pmc-sushruta-review
+  type: secondary
+  scholarly: true
+  author: (review article, PubMed Central)
+  title: "[Review of Sushruta as the Father of Surgery]"
+  year: 2024
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11527508/
+  detailsPending: true
+- id: wjoud-sushruta
+  type: secondary
+  author: World Journal of Dentistry (review)
+  title: "[Review of Sushruta and ancient Indian surgery]"
+  year: n.d.
+  url: https://www.wjoud.com/abstractArticleContentBrowse/WJOUD/23349/JPJ/fullText
+  detailsPending: true
+- id: wellcome-ayurvedic-man-record
+  type: secondary
+  scholarly: true
+  author: Wellcome Collection (catalogue record, ref. 574912i)
+  title: Ayurvedic Man
+  year: c. 1800?
+  url: https://wellcomecollection.org/works/dfcp3k9d
+- id: wujastyk-2008
+  type: secondary
+  scholarly: true
+  author: Dominik Wujastyk
+  title: "[Study of the Wellcome Ayurvedic Man painting and its Sanskrit text, UCL Discovery eprint 15130]"
+  year: 2008
+  url: https://discovery.ucl.ac.uk/id/eprint/15130
+  detailsPending: true
+- id: wellcome-ayurvedic-man-essay
+  type: secondary
+  scholarly: true
+  author: Wellcome Collection (essay)
+  title: Mapping the body with Ayurvedic Man
+  year: 2017
+  url: https://content.wellcomecollection.org/articles/WhhNDSkAACgAhF_o
+
+# ── Islamic world ───────────────────────────────────────────────────────
+- id: sabra-1989
+  type: primary
+  author: Ibn al-Haytham; A. I. Sabra (trans.)
+  title: "The Optics of Ibn al-Haytham, Books I–III: On Direct Vision"
+  year: 1989
+  publisher: Warburg Institute, London
+- id: smith-2001-alhacen
+  type: secondary
+  scholarly: true
+  author: A. Mark Smith
+  title: "Alhacen's Theory of Visual Perception (De aspectibus, Books I–III)"
+  year: 2001
+  publisher: Transactions of the American Philosophical Society 91
+- id: muslimheritage-haytham
+  type: secondary
+  author: Muslim Heritage
+  title: Ibn al-Haytham on eye and brain
+  year: n.d.
+  url: https://muslimheritage.com/ibn-haytham-eye-brain/
+- id: nafis-sharh
+  type: primary
+  author: Ibn al-Nafis
+  title: Sharḥ Tashrīḥ al-Qānūn (Commentary on the Anatomy of Avicenna's Canon)
+  year: c. 1242
+- id: akmal-2010
+  type: secondary
+  scholarly: true
+  author: M. Akmal, M. Zulkifle, A. H. Ansari
+  title: Ibn Nafis – a forgotten genius in the discovery of pulmonary blood circulation
+  year: 2010
+  publisher: Heart Views 11(1):26–30
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2964710/
+- id: buchs-nafis
+  type: secondary
+  scholarly: true
+  author: Buchs
+  title: "History of a Discovery: Ibn Al-Nafis and the Lung Circulation"
+  year: n.d.
+  publisher: Medicina nei Secoli
+  url: https://rosa.uniroma1.it/rosa01/medicina_nei_secoli/article/view/1265
+  detailsPending: true
+- id: hektoen-nafis
+  type: secondary
+  author: Hektoen International
+  title: Ibn al-Nafis and the pulmonary circulation
+  year: 2017
+  url: https://hekint.org/2017/12/20/ibn-al-nafis-pulmonary-circulation/
+- id: nlm-tashrih
+  type: secondary
+  scholarly: true
+  author: U.S. National Library of Medicine, Islamic Medical Manuscripts
+  title: "Anatomy: Mansur ibn Ilyas, Tashrih-i Mansuri"
+  year: n.d.
+  url: https://www.nlm.nih.gov/hmd/arabic/p19.html
+- id: cam-mansur
+  type: secondary
+  scholarly: true
+  author: Cambridge University Library (Lines of Thought exhibition)
+  title: Mansur ibn Ilyas (active 1394–1409)
+  year: n.d.
+  url: https://exhibitions.lib.cam.ac.uk/linesofthought/?p=190
+- id: akm-tashrih
+  type: secondary
+  scholarly: true
+  author: Aga Khan Museum (collection record AKM525)
+  title: Manuscript of Tashrih-e Mansuri (Mansur's Anatomy)
+  year: 17th c. copy
+  url: https://www.agakhanmuseum.org/collection/artifact/manuscript-tashrih-e-mansuri-mansurs-anatomy-akm525
+
+# ── Renaissance ─────────────────────────────────────────────────────────
+- id: rct-919082
+  type: secondary
+  scholarly: true
+  author: Royal Collection Trust
+  title: Leonardo da Vinci, The aortic valve c.1512–13 (RCIN 919082)
+  year: n.d.
+  url: https://www.rct.uk/collection/919082
+- id: boon-2009
+  type: secondary
+  scholarly: true
+  author: B. Boon
+  title: Leonardo da Vinci on atherosclerosis and the function of the sinuses of Valsalva
+  year: 2009
+  publisher: Netherlands Heart Journal 17(12):496–499
+  doi: 10.1007/BF03086311
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2804084
+- id: vesalius-fabrica
+  type: primary
+  author: Andreas Vesalius
+  title: De humani corporis fabrica libri septem
+  year: 1543
+  publisher: Johannes Oporinus, Basel
+- id: vesalius-epitome
+  type: primary
+  author: Andreas Vesalius
+  title: De humani corporis fabrica librorum epitome
+  year: 1543
+  publisher: Johannes Oporinus, Basel
+- id: pranghofer-2009
+  type: secondary
+  scholarly: true
+  author: Sebastian Pranghofer
+  title: "'It could be Seen more Clearly in Unreasonable Animals than in Humans': The Representation of the Rete Mirabile in Early Modern Anatomy"
+  year: 2009
+  publisher: Medical History 53(4):561–586
+  doi: 10.1017/s0025727300000557
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2766140
+- id: cpp-fabrica
+  type: secondary
+  scholarly: true
+  author: The College of Physicians of Philadelphia Digital Library
+  title: "Vesalius: Fabrica (Histories of Anatomy exhibit)"
+  year: n.d.
+  url: https://cppdigitallibrary.org/exhibits/show/histanat/vesalius/fabrica
+- id: cam-vesalius
+  type: secondary
+  scholarly: true
+  author: Cambridge University Library
+  title: Vesalius exhibition (muscle-men landscape series; male and female nudes)
+  year: n.d.
+  url: https://exhibitions.lib.cam.ac.uk/vesalius/?p=177
+- id: servetus-1553
+  type: primary
+  author: Michael Servetus
+  title: Christianismi restitutio
+  year: 1553
+- id: valverde-1556
+  type: primary
+  author: Juan Valverde de Hamusco
+  title: Historia de la composicion del cuerpo humano
+  year: 1556
+- id: colombo-1559
+  type: primary
+  author: Realdo Colombo
+  title: De re anatomica libri XV
+  year: 1559
+- id: museo-galileo-colombo
+  type: secondary
+  scholarly: true
+  author: Museo Galileo, Florence
+  title: Realdo Colombo (biography)
+  year: n.d.
+  url: https://brunelleschi.imss.fi.it/itineraries/biography/RealdoColombo.html
+- id: hoi-pulmonary
+  type: secondary
+  author: Jeremy M. Norman (HistoryofInformation.com)
+  title: "Who Discovered the Pulmonary Circulation? Servetus, Valverde or Colombo?"
+  year: n.d.
+  url: https://www.historyofinformation.com/detail.php?id=1867
+- id: falloppio-1561
+  type: primary
+  author: Gabriele Falloppio
+  title: Observationes anatomicae
+  year: 1561
+  publisher: Marcus Antonius Ulmus, Venice
+- id: unipd-falloppio
+  type: secondary
+  scholarly: true
+  author: University of Padua (800 Anni)
+  title: Gabriele Falloppio o Falloppia
+  year: n.d.
+  url: https://800anniunipd.it/en/storia/gabriele-falloppio-o-falloppia/
+- id: litfl-falloppio
+  type: secondary
+  author: Life in the Fast Lane (eponym library)
+  title: Gabriele Falloppio
+  year: n.d.
+  url: https://litfl.com/gabriele-falloppio/
+- id: fabricius-1603
+  type: primary
+  author: Hieronymus Fabricius ab Aquapendente
+  title: De venarum ostiolis
+  year: 1603
+  publisher: Padua
+- id: mizzou-fabricius
+  type: secondary
+  scholarly: true
+  author: University of Missouri Digital Library (record)
+  title: De Venarum Ostiolis
+  year: n.d.
+  url: https://digital.library.missouri.edu/node/190415
+- id: hom-fabricius
+  type: secondary
+  author: Jeremy M. Norman (HistoryofMedicine.com, Garrison-Morton)
+  title: Fabricius, De venarum ostiolis
+  year: n.d.
+  url: https://historyofmedicine.com/id/1744
+
+# ── Early modern ────────────────────────────────────────────────────────
+- id: aselli-1627
+  type: primary
+  author: Gaspare Aselli
+  title: De lactibus sive lacteis venis
+  year: 1627
+  publisher: Milan
+- id: rcs-aselli
+  type: secondary
+  scholarly: true
+  author: Royal College of Surgeons of England, Library
+  title: Gaspare Aselli, De lactibus sive lacteis venis (1627)
+  year: n.d.
+  url: https://rcseng.ac.uk/library-and-publications/library/blog/gaspare-aselli-de-lactibus-sive-lacteis-venis-1627/
+- id: hom-aselli
+  type: secondary
+  author: Jeremy M. Norman (HistoryofMedicine.com, Garrison-Morton)
+  title: Aselli, De lactibus
+  year: n.d.
+  url: https://www.historyofmedicine.com/id/916
+- id: pecquet-1651
+  type: primary
+  author: Jean Pecquet
+  title: Experimenta nova anatomica
+  year: 1651
+- id: harvey-1628
+  type: primary
+  author: William Harvey
+  title: Exercitatio anatomica de motu cordis et sanguinis in animalibus
+  year: 1628
+  publisher: William Fitzer, Frankfurt
+  url: https://www.archive.org/download/exercitatioanato00harv/exercitatioanato00harv_bw.pdf
+- id: neuss-2018
+  type: secondary
+  scholarly: true
+  author: Neuss
+  title: "Blood money: Harvey's De motu cordis (1628) as an exercise in accounting"
+  year: 2018
+  publisher: British Journal for the History of Science
+  url: https://resolve.cambridge.org/core/journals/british-journal-for-the-history-of-science/article/abs/blood-money-harveys-de-motu-cordis-1628-as-an-exercise-in-accounting/5E160F467F6A6A5A195CF882C263AE6E
+  detailsPending: true
+- id: stanford-harvey
+  type: secondary
+  author: Stanford University, History 13 course reader
+  title: William Harvey (1578–1657)
+  year: n.d.
+  url: https://web.stanford.edu/class/history13/Readings/harvey.html
+- id: malpighi-1661
+  type: primary
+  author: Marcello Malpighi
+  title: De pulmonibus observationes anatomicae (two letters to Borelli)
+  year: 1661
+  publisher: Bologna
+- id: tonetti-2015
+  type: secondary
+  scholarly: true
+  author: Luca Tonetti
+  title: Frogs' lungs and Malpighi's discovery of pulmonary capillaries
+  year: 2015
+  publisher: Acta Phlebologica 16(1):41–51
+  url: https://research.unipd.it/retrieve/b68024ba-4b93-489b-b9a4-5e160f4a796b/Tonetti_Frogs_lungs_2015.pdf
+- id: unibo-malpighi
+  type: secondary
+  scholarly: true
+  author: University of Bologna (Scienza Giovane)
+  title: Malpighi (continued)
+  year: n.d.
+  url: https://scienzagiovane.unibo.it/English/scientists/malpighi-2.html
+- id: willis-1664
+  type: primary
+  author: Thomas Willis (plates by Christopher Wren)
+  title: Cerebri anatome
+  year: 1664
+  publisher: London
+- id: rcp-willis
+  type: secondary
+  scholarly: true
+  author: Royal College of Physicians
+  title: "Thomas Willis: the father of neurology"
+  year: n.d.
+  url: https://history.rcp.ac.uk/blog/thomas-willis-father-neurology
+- id: rbn-willis
+  type: secondary
+  scholarly: true
+  author: Revista Brasileira de Neurologia (História da Neurologia)
+  title: "[The arterial circle of Willis and its precursors]"
+  year: 2021
+  url: https://docs.bvsalud.org/biblioref/2022/02/1359227/rbn-574-6-the-arterial-circle-willis-and-precursors.pdf
+  detailsPending: true
+- id: leeuwenhoek-1677
+  type: primary
+  author: Antonie van Leeuwenhoek
+  title: Observationes de natis e semine genitali animalculis (Philosophical Transactions 12, no. 142, p. 1040)
+  year: 1677
+- id: leeuwenhoek-brieven
+  type: primary
+  author: Antonie van Leeuwenhoek
+  title: Alle de brieven van Antoni van Leeuwenhoek (collected letters)
+  year: 1939–
+  url: https://www.dbnl.org/tekst/leeu027alle12_01/leeu027alle12_01_0029.php
+- id: royalsoc-el-l3-7
+  type: secondary
+  scholarly: true
+  author: Royal Society Archive catalogue
+  title: Leeuwenhoek letter on spermatozoa, 1677 (EL/L3/7)
+  year: n.d.
+  url: https://catalogues.royalsociety.org/CalmView/rdf/catalog/EL/L3/7
+
+# ── Modern ──────────────────────────────────────────────────────────────
+- id: bichat-1800
+  type: primary
+  author: Xavier Bichat
+  title: Traité des membranes en général et de diverses membranes en particulier
+  year: 1800
+  publisher: Paris
+- id: pmc-bichat
+  type: secondary
+  scholarly: true
+  author: (article, PubMed Central)
+  title: "[Article on Xavier Bichat and the Traité des membranes]"
+  year: n.d.
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC10919061
+  detailsPending: true
+- id: heirs-bichat
+  type: secondary
+  scholarly: true
+  author: University of Iowa, Heirs of Hippocrates
+  title: Bichat, Traité des membranes (record 1256)
+  year: n.d.
+  url: https://heirs.lib.uiowa.edu/record.php?id=1256
+- id: langerhans-1869
+  type: primary
+  author: Paul Langerhans
+  title: Beiträge zur mikroskopischen Anatomie der Bauchspeicheldrüse
+  year: 1869
+  publisher: Berlin
+- id: rsb-insulin
+  type: secondary
+  scholarly: true
+  author: Royal Society of Biology
+  title: Insulin (Biology Changing the World stories)
+  year: n.d.
+  url: https://heteaching.rsb.org.uk/bcw-stories/insulin
+- id: endocrine-insulin-100
+  type: secondary
+  scholarly: true
+  author: Endocrine Society, Endocrine Reviews
+  title: Insulin discovery 100th anniversary
+  year: 2021
+  url: https://www.endocrine.org/journals/endocrine-reviews/insulin-discovery-100th-anniversary
+- id: dcb-collip
+  type: secondary
+  scholarly: true
+  author: Dictionary of Canadian Biography
+  title: Collip, James Bertram
+  year: n.d.
+  url: https://www.biographi.ca/en/bio/collip_james_bertram_19E.html
+- id: pmc-insulin-2022
+  type: secondary
+  scholarly: true
+  author: (article, PubMed Central)
+  title: "[Centenary article on the discovery of insulin]"
+  year: 2022
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8725132
+  detailsPending: true
+- id: nobel-1923
+  type: primary
+  author: The Nobel Foundation
+  title: The Nobel Prize in Physiology or Medicine 1923
+  year: 1923
+- id: cajal-1888
+  type: primary
+  author: Santiago Ramón y Cajal
+  title: Estructura de los centros nerviosos de las aves
+  year: 1888
+  publisher: Revista Trimestral de Histología Normal y Patológica
+- id: nobel-1906
+  type: primary
+  author: The Nobel Foundation
+  title: The Nobel Prize in Physiology or Medicine 1906 (Golgi and Cajal), with Nobel lectures
+  year: 1906
+- id: csic-cajal
+  type: secondary
+  scholarly: true
+  author: CSIC (Spanish National Research Council)
+  title: Santiago Ramón y Cajal (1852–1934), the Cajal Legacy
+  year: n.d.
+  url: https://csic.es/en/cajal-legacy
+- id: scientifica-cajal
+  type: secondary
+  author: Scientifica
+  title: "Meet the Nobels: Golgi and Cajal"
+  year: n.d.
+  url: https://www.scientifica.uk.com/neurowire/meet-the-nobels-golgi-and-cajal
+- id: huxley-niedergerke-1954
+  type: primary
+  author: A. F. Huxley, R. Niedergerke
+  title: "Structural changes in muscle during contraction: interference microscopy of living muscle fibres"
+  year: 1954
+  publisher: Nature 173:971–973
+- id: huxley-hanson-1954
+  type: primary
+  author: H. E. Huxley, J. Hanson
+  title: "Changes in the cross-striations of muscle during contraction and stretch and their structural interpretation"
+  year: 1954
+  publisher: Nature 173:973–976
+- id: kcl-hanson
+  type: secondary
+  scholarly: true
+  author: King's College London Archives
+  title: Publication of the results in Nature, 1954 (Jean Hanson exhibition)
+  year: n.d.
+  url: https://kingscollections.org/exhibitions/archives/veldt/hanson/hypothesis
+- id: jgp-2004-sliding
+  type: secondary
+  scholarly: true
+  author: Journal of General Physiology
+  title: 50 Year Anniversary of Sliding Filament
+  year: 2004
+  publisher: J Gen Physiol 123(6):629
+  url: https://rupress.org/jgp/article/123/6/629/44502/50-Year-Anniversary-of-Sliding-Filament
+
+# ── Contemporary ────────────────────────────────────────────────────────
+- id: louveau-2015
+  type: primary
+  author: A. Louveau et al.
+  title: Structural and functional features of central nervous system lymphatic vessels
+  year: 2015
+  publisher: Nature 523
+- id: aspelund-2015
+  type: primary
+  author: A. Aspelund et al.
+  title: A dural lymphatic vascular system that drains brain interstitial fluid and macromolecules
+  year: 2015
+  publisher: Journal of Experimental Medicine 212
+- id: mascagni-1787
+  type: primary
+  author: Paolo Mascagni
+  title: Vasorum lymphaticorum corporis humani historia et ichnographia
+  year: 1787
+  publisher: Siena
+- id: retzius-key-1875
+  type: primary
+  author: Axel Key, Gustaf Retzius
+  title: Studien in der Anatomie des Nervensystems und des Bindegewebes
+  year: 1875–1876
+  publisher: Stockholm
+- id: pmc-cns-lymph-history
+  type: secondary
+  scholarly: true
+  author: (review, PubMed Central)
+  title: "So You've Made a Novel Discovery: The History of Our Knowledge of Central Nervous System Lymphatics May Change Your Mind"
+  year: n.d.
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12858316/
+  detailsPending: true
+- id: frontiers-2019-lymph
+  type: secondary
+  scholarly: true
+  author: Frontiers in Immunology (review)
+  title: "[Review of meningeal lymphatics including their history, article 3043]"
+  year: 2019
+  url: https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2019.03043/pdf
+  detailsPending: true
+- id: benias-2018
+  type: primary
+  author: P. C. Benias, R. G. Wells, B. Sackey-Aboagye, et al. (N. D. Theise)
+  title: Structure and Distribution of an Unrecognized Interstitium in Human Tissues
+  year: 2018
+  publisher: Scientific Reports 8:4947
+- id: hytiroglou-wanless-2018
+  type: secondary
+  scholarly: true
+  author: Prodromos Hytiroglou, Ian R. Wanless
+  title: The Interstitial Space Takes Shape
+  year: 2018
+  publisher: Hepatology 69(4):1830–1832
+  doi: 10.1002/hep.30268
+- id: mcgill-interstitium
+  type: secondary
+  scholarly: true
+  author: McGill University, Office for Science and Society
+  title: "[Retrospective on the 2018 interstitium 'new organ' claim]"
+  year: n.d.
+  url: https://www.mcgill.ca/oss/node/12148
+  detailsPending: true
+- id: nyunews-interstitium
+  type: secondary
+  author: Washington Square News (NYU)
+  title: Langone Discovered New Organ in the Human Body
+  year: 2018
+  url: https://nyunews.com/2018/04/05/04-05-news-organ/
+- id: buffalo-papyrus
+  type: secondary
+  author: University at Buffalo, History of Communication Disorders
+  title: Edwin Smith Papyrus 1700 BC
+  year: n.d.
+  url: https://ubwp.buffalo.edu/history-of-cds/?p=370
+- id: ora-vossius-hooke
+  type: secondary
+  scholarly: true
+  author: Oxford University Research Archive
+  title: "[Paper on Isaac Vossius and Robert Hooke and European views of Chinese learning]"
+  year: n.d.
+  url: https://ora.ox.ac.uk/objects/uuid:e5acc4b0-968e-45a8-938a-16a8b0f38570/files/rm900nv48g
+  detailsPending: true
+- id: wujastyk-indology-1999
+  type: secondary
+  author: Dominik Wujastyk (Indology list)
+  title: Blood circulation (list post)
+  year: 1999
+  url: https://list.indology.info/pipermail/indology/1999-July/017939.html
+- id: wellcome-four-flower-1443
+  type: secondary
+  scholarly: true
+  author: Wellcome Collection (catalogue record)
+  title: Location of the Four Flower Points, Chinese woodcut, 1443
+  year: 1443
+  url: https://identity.wellcomecollection.org/works/zypye54v

@@ -27,7 +27,7 @@ Drawing acupuncture channels or *marma* points on a modern anatomical figure imp
 `Tradition { id, name, plateAssetId, era, intro, sources[] }` · `TraditionConcept { id, traditionId, name, nameOriginal, script, story, claims[], hotspot (polygon on plate), relatesTo[]: { structureId, relation } }`
 
 ## Acceptance criteria
-- [ ] **F10-AC1** Each lens has ≥ 6 concepts, each verified (F05) with ≥ 1 **specialist** scholarly source (e.g. Unschuld, Wujastyk, Meulenbeld, Savage-Smith) and a page locator.
+- [ ] **F10-AC1** Each lens has ≥ 6 concepts, each verified (F05) with ≥ 1 **specialist** scholarly source (e.g. Unschuld, Wujastyk, Meulenbeld, Savage-Smith) and a locator (page, section or catalogue field).
 - [ ] **F10-AC2** Every concept has an explicit `relatesTo` (which may be empty, with "no modern equivalent").
 - [ ] **F10-AC3** Plate licences are confirmed on each record (F06). If one is NC, swap in an alternative plate before launch.
 - [ ] **F10-AC4** A disclaimer appears on every non-modern lens: "Historical description, not medical advice."

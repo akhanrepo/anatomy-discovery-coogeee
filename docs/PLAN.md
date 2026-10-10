@@ -9,8 +9,8 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 |---|---|---|---|---|
 | 0 | Repo rules, plan, name/icon brief, AC IDs | CLAUDE.md, name/icon brief | ✅ done | — |
 | 1 | Scaffold Astro + test harness (unit / smoke / functional / perf) + traceability test + PostToolUse hook | infra | ✅ done | [00-infra](plans/00-infra.md) |
-| 2 | Content system: schemas, loader, gates, verification logs | F05, F06 | ⏳ | [F05-F06](plans/F05-F06.md) |
-| 3 | Content: 26 discoveries, people, sources, misbeliefs, eras, threads | F04 | ⏳ | [F04](plans/F04.md) |
+| 2 | Content system: schemas, loader, gates, verification logs | F05, F06 | 🔨 building | [F05-F06](plans/F05-F06.md) |
+| 3 | Content: 26 discoveries, people, sources, misbeliefs, eras, threads | F04 | ✅ done | [F04](plans/F04.md) |
 | 4 | Visual system + brand: tokens, paper/era textures, type, icon, wordmark | F16, F17 | ⏳ | [F16-F17](plans/F16-F17.md) |
 | 5 | Body (male/female, ~40 structures) + flaps | F01, F13 | ⏳ | [F01-F13](plans/F01-F13.md) |
 | 6 | Fog engine + slider + panorama | F02 | ⏳ | [F02](plans/F02.md) |

@@ -1,0 +1,113 @@
+# Past beliefs drawn in vermilion (F09). corrections: "first" = partial ghost, "mainstream" = full erasure.
+- id: arteries-pneuma
+  title: Arteries carry pneuma, not blood
+  belief: Followers of Erasistratus held that the arteries carry an air-like pneuma, and that blood appears in a cut artery only because it rushes in from the veins.
+  heldBy: [erasistratus]
+  yearStart: -260
+  structures: [arteries]
+  corrections: [{ year: 170, by: Galen, discovery: galen-arteries-blood, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Erasistratus and his followers held that the arteries naturally contain pneuma rather than blood.", citations: [galen-arteries, furley-wilkie-1984, pmc-galen-libel], secondarySummary: true }
+    c: { text: "Galen showed by ligating an artery at two points that the isolated segment contains blood.", citations: [galen-arteries, furley-wilkie-1984, pmc-galen-libel], secondarySummary: true }
+- id: septal-pores
+  title: Pores in the heart's wall
+  belief: Blood seeps from the right to the left side of the heart through invisible pores in the septum.
+  heldBy: [galen, ibn-sina]
+  yearStart: 170
+  structures: [interventricular-septum]
+  corrections:
+    - { year: 1242, by: Ibn al-Nafis, discovery: ibn-al-nafis-pulmonary-circulation, scope: first }
+    - { year: 1628, by: William Harvey, discovery: harvey-circulation, scope: mainstream }
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Galen taught that blood passes through pores in the interventricular septum, and Ibn Sina's Canon repeated the teaching.", citations: [galen-usu-partium, akmal-2010, hektoen-nafis] }
+    c: { text: "Ibn al-Nafis rejected the septal pores and described blood passing through the lungs instead; in Europe the lung route was described again in the 1550s.", citations: [nafis-sharh, akmal-2010, museo-galileo-colombo] }
+- id: rete-mirabile
+  title: A "wonderful net" under the human brain
+  belief: A network of vessels at the base of the brain, the rete mirabile, refines vital spirit into animal spirit.
+  heldBy: [galen]
+  yearStart: 170
+  structures: [arterial-circle]
+  corrections: [{ year: 1543, by: Andreas Vesalius, discovery: vesalius-fabrica, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Galen described a rete mirabile at the base of the brain, a structure found in animals such as sheep and oxen, as part of human anatomy.", citations: [galen-usu-partium, pranghofer-2009, cpp-fabrica] }
+    c: { text: "Vesalius denied that the rete mirabile exists in humans, though it lingered in some anatomical writing after 1543.", citations: [vesalius-fabrica, pranghofer-2009, cpp-fabrica] }
+- id: two-part-mandible
+  title: The lower jaw is two bones
+  belief: The human lower jaw is made of two bones joined at the chin.
+  heldBy: [galen]
+  yearStart: 170
+  structures: [mandible]
+  corrections: [{ year: 1543, by: Andreas Vesalius, discovery: vesalius-fabrica, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Galen described the lower jaw as two bones, following animal anatomy.", citations: [galen-bones, cpp-fabrica] }
+    c: { text: "Vesalius showed that the human mandible is a single bone.", citations: [vesalius-fabrica, cpp-fabrica] }
+- id: venous-valves-brake
+  title: Valves slow the outward flow
+  belief: The valves of the veins act as brakes on blood flowing outwards from the liver, so it does not pool in the hands and feet.
+  heldBy: [fabricius]
+  yearStart: 1603
+  structures: [venous-valves]
+  corrections: [{ year: 1628, by: William Harvey, discovery: harvey-circulation, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Fabricius believed the venous valves slowed the flow of blood away from the heart.", citations: [fabricius-1603, mizzou-fabricius, hom-fabricius] }
+    c: { text: "Harvey showed that the venous valves allow blood to flow only towards the heart.", citations: [harvey-1628, mizzou-fabricius, hom-fabricius] }
+- id: liver-makes-blood
+  title: The liver makes the blood, and the body uses it up
+  belief: Blood is made continuously in the liver from digested food, flows outwards through the veins and is consumed by the tissues.
+  heldBy: [galen]
+  yearStart: 170
+  structures: [liver, veins]
+  corrections: [{ year: 1628, by: William Harvey, discovery: harvey-circulation, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "In Galenic physiology blood was made in the liver from food and consumed by the body rather than circulating.", citations: [galen-usu-partium, neuss-2018, stanford-harvey] }
+    c: { text: "Harvey's quantitative argument showed the heart moves far more blood than the body could produce from food, so the blood must circulate.", citations: [harvey-1628, neuss-2018, stanford-harvey] }
+- id: lacteals-to-liver
+  title: The milky veins run to the liver
+  belief: The lacteals carry chyle from the gut to the liver, where it is made into blood.
+  heldBy: [aselli]
+  yearStart: 1622
+  structures: [lacteals, liver]
+  corrections: [{ year: 1651, by: Jean Pecquet, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Aselli believed the lacteal vessels carried chyle to the liver.", citations: [aselli-1627, hom-aselli, rcs-aselli] }
+    c: { text: "Jean Pecquet's discovery of the thoracic duct showed that the lacteals do not lead to the liver.", citations: [pecquet-1651, hom-aselli, rcs-aselli] }
+- id: reticular-theory
+  title: The nervous system is one continuous net
+  belief: Nerve fibres fuse into a single continuous network rather than being made of separate cells.
+  heldBy: [golgi]
+  yearStart: 1873
+  structures: [brain, cerebellum, spinal-cord]
+  corrections:
+    - { year: 1888, by: Santiago Ramón y Cajal, discovery: cajal-neurons, scope: first }
+    - { year: 1891, by: "Most anatomists, after Waldeyer named the neuron doctrine", scope: mainstream }
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Camillo Golgi defended the reticular theory of a continuous nervous network, still doing so in his 1906 Nobel lecture.", citations: [nobel-1906, scientifica-cajal, csic-cajal] }
+    c: { text: "Cajal showed in 1888–89 that nerve cells are separate units, and by the early 1890s most scientists accepted the neuron doctrine.", citations: [cajal-1888, csic-cajal, scientifica-cajal] }
+- id: brain-no-lymphatics
+  title: The brain has no lymphatic vessels
+  belief: The brain and its coverings lack lymphatic vessels and drainage.
+  heldBy: [key-retzius]
+  yearStart: 1875
+  structures: [meningeal-lymphatics]
+  corrections: [{ year: 2015, by: Louveau et al.; Aspelund et al., discovery: meningeal-lymphatics, scope: mainstream }]
+  beliefClaim: b
+  correctionClaim: c
+  claims:
+    b: { text: "Nineteenth-century work by Key and Retzius influenced the long-held view that the brain lacks lymphatic drainage.", citations: [retzius-key-1875, pmc-cns-lymph-history] }
+    c: { text: "Two 2015 studies reported lymphatic vessels in the meninges, overturning the textbook view.", citations: [louveau-2015, aspelund-2015, pmc-cns-lymph-history] }
