@@ -11,7 +11,7 @@ import { emailIssue } from '../src/lib/email';
 
 if (!existsSync('dist/index.html')) { console.error('Run `npm run build` first.'); process.exit(1); }
 const PORT = 4329;
-const SITE = process.env.SITE_URL ?? 'https://tabula.netlify.app';
+const SITE = process.env.SITE_URL ?? 'https://tabula-anatomy.netlify.app';
 for (const d of ['artefacts/packs', 'artefacts/edition', 'artefacts/email', 'public/packs']) mkdirSync(d, { recursive: true });
 
 const server = spawn('node', ['scripts/serve.mjs'], { env: { ...process.env, PORT: String(PORT) }, stdio: 'ignore' });
