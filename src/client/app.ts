@@ -349,6 +349,26 @@ export function start() {
     } catch { /* user cancelled */ }
   }
 
+  // ── Zoom 1× / 2× / 4× (F01) ────────────────────────────────────────
+  const ZOOMS = [1, 2, 4];
+  let zi = 0;
+  const stageEl = $('[data-stage]')!;
+  const scroller = $('[data-stage-scroll]')!;
+  function setZoom(i: number) {
+    const sel = $('.st.selected', figure);
+    zi = Math.max(0, Math.min(ZOOMS.length - 1, i));
+    stageEl.style.setProperty('--zoom', String(ZOOMS[zi]));
+    stageEl.dataset.zoom = String(ZOOMS[zi]);
+    $('[data-zoom-level]')!.textContent = `${ZOOMS[zi]}×`;
+    // keep the selected structure (or the centre) in view
+    requestAnimationFrame(() => {
+      const r = sel?.getBoundingClientRect(), s = scroller.getBoundingClientRect();
+      if (r) scroller.scrollBy({ left: r.left + r.width / 2 - (s.left + s.width / 2), top: r.top + r.height / 2 - (s.top + s.height / 2) });
+      else scroller.scrollTo({ left: (scroller.scrollWidth - scroller.clientWidth) / 2, top: (scroller.scrollHeight - scroller.clientHeight) / 3 });
+    });
+  }
+  for (const b of $$('[data-zoom]')) b.addEventListener('click', () => setZoom(zi + Number(b.dataset.zoom)));
+
   // ── Guided tours (F11) ─────────────────────────────────────────────
   const bar = $('[data-tour-bar]')!;
   const pauseBtn = $('[data-tour-pause]')!;

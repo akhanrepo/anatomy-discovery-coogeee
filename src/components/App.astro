@@ -45,11 +45,18 @@ const layerNames: Record<string, string> = { surface: 'Skin', muscles: 'Muscles'
           {c.traditions.map((t) => <option value={t.id}>{t.name}</option>)}
         </select>
       </label>
+      <div class="seg" role="group" aria-label="Zoom">
+        <button type="button" class="btn" data-zoom="-1" aria-label="Zoom out">−</button>
+        <span class="btn zoom-level" aria-live="polite" data-zoom-level>1×</span>
+        <button type="button" class="btn" data-zoom="1" aria-label="Zoom in">+</button>
+      </div>
       <label class="beliefs-toggle"><input type="checkbox" data-beliefs-toggle checked /> Show beliefs of the time <span class="misbelief-key" aria-hidden="true"></span></label>
     </div>
+    <div class="stage-scroll" data-stage-scroll>
     <div class="stage" data-stage>
       <FigureStage states={states} phases={phases} names={names} layer={layer} fig={fig} />
       <div class="lens-layer" data-lens-layer hidden><LensView /></div>
+    </div>
     </div>
     <div class="tour-bar" data-tour-bar hidden role="region" aria-label="Guided tour">
       <span class="smallcaps" data-tour-title></span> <span class="small" data-tour-pos></span>

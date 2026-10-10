@@ -137,3 +137,8 @@ sup.fn a { text-decoration: none; color: var(--gold); padding: 0 2px; }
 .story .sources, .story .story-nav { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 .tour-bar { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin-top: var(--s2); padding: var(--s2) var(--s3); border: 1px solid var(--gold); background: color-mix(in srgb, var(--gold) 10%, var(--paper)); }
 .tour-bar[hidden] { display: none; }
+/* Zoom (F01): the stage scales inside a scrollable frame */
+.stage-scroll { overflow: auto; max-width: 100%; overscroll-behavior: contain; }
+.stage[data-zoom] { height: calc(min(calc(100vh - 400px), 980px) * var(--zoom, 1)); min-height: calc(380px * var(--zoom, 1)); }
+.zoom-level { min-width: 2.6em; text-align: center; cursor: default; }
+@media (max-width: 899px) { .stage[data-zoom] { height: calc(58vh * var(--zoom, 1)); min-height: calc(360px * var(--zoom, 1)); } }
