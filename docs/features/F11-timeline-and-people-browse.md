@@ -22,6 +22,6 @@ Non-spatial ways in, generated from existing content: a **timeline** of all disc
 - Thread intros (≈ 150 words) are verified like everything else.
 
 ## Acceptance criteria
-- [ ] All pages are statically generated with no new data beyond `Thread` records.
-- [ ] Tours are keyboard operable, with pause/resume.
-- [ ] Every person page links to every discovery and misbelief they're part of.
+- [ ] **F11-AC1** All pages are statically generated with no new data beyond `Thread` records.
+- [ ] **F11-AC2** Tours are keyboard operable, with pause/resume.
+- [ ] **F11-AC3** Every person page links to every discovery and misbelief they're part of.

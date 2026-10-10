@@ -24,6 +24,6 @@ Cookieless analytics with a few custom events. They compute the success metric (
 - `docs/metrics.md`: how to read the success metric.
 
 ## Acceptance criteria
-- [ ] No cookies; no personal data.
-- [ ] `stories_3plus / sessions` is readable directly in the dashboard.
-- [ ] Events are disabled in development and deploy previews.
+- [ ] **F08-AC1** No cookies; no personal data.
+- [ ] **F08-AC2** `stories_3plus / sessions` is readable directly in the dashboard.
+- [ ] **F08-AC3** Events are disabled in development and deploy previews.

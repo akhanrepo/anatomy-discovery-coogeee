@@ -33,11 +33,11 @@ The central canvas: a commissioned engraving-style human figure, in **male and f
 - Selected structure: shell-gold outline + its name in the margin in small caps.
 
 ## Acceptance criteria
-- [ ] Every `structureId` in content exists as exactly one hit region per applicable figure (CI).
-- [ ] A tap opens the story in < 100ms (no network on the critical path).
-- [ ] Every region is reachable by keyboard with a visible focus ring. The list view offers the same actions.
-- [ ] Works at 375px without horizontal scroll, and pinch-zoom doesn't break the layout.
-- [ ] The figure toggle keeps the slider year and the open story where applicable.
+- [ ] **F01-AC1** Every `structureId` in content exists as exactly one hit region per applicable figure (CI).
+- [ ] **F01-AC2** A tap opens the story in < 100ms (no network on the critical path).
+- [ ] **F01-AC3** Every region is reachable by keyboard with a visible focus ring. The list view offers the same actions.
+- [ ] **F01-AC4** Works at 375px without horizontal scroll, and pinch-zoom doesn't break the layout.
+- [ ] **F01-AC5** The figure toggle keeps the slider year and the open story where applicable.
 
 ## Data & dependencies
 `Structure { id, name, system, layer, sex, svgRegionId, parentId? }` · art layers from F16.

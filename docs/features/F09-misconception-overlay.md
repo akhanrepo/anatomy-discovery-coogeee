@@ -30,6 +30,6 @@ Past anatomical *beliefs* are drawn on the body in **vermilion**, in the form pe
 `Misbelief { id, title, heldBy[], yearStart, corrections[] ({ year, by: discoveryId | {who, citation}, scope: "first"|"mainstream" }), structures[], svgOverlayId, claims[] }`
 
 ## Acceptance criteria
-- [ ] Each misbelief cites a primary source *for the belief* and a scholarly source for its correction.
-- [ ] Erasure triggers exactly at each correction year (partial / full).
-- [ ] Red is never used for anything except misbeliefs (design-token lint).
+- [ ] **F09-AC1** Each misbelief cites a primary source *for the belief* and a scholarly source for its correction.
+- [ ] **F09-AC2** Erasure triggers exactly at each correction year (partial / full).
+- [ ] **F09-AC3** Red is never used for anything except misbeliefs (design-token lint).

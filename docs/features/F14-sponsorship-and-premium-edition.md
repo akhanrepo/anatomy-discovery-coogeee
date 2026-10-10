@@ -18,10 +18,10 @@
 - Policy (public): sponsors never review, approve or influence content. Excluded: pharma and medical-device companies (recommended, pending decision).
 
 ## Acceptance criteria
-- [ ] The edition regenerates from content. Its version number matches the site's content version.
-- [ ] Every edition claim traces to a verified Claim.
-- [ ] Edition and pack images are all commercially licensed (CI, F06).
-- [ ] The sponsor policy is published before any sponsor appears.
+- [ ] **F14-AC1** The edition regenerates from content. Its version number matches the site's content version.
+- [ ] **F14-AC2** Every edition claim traces to a verified Claim.
+- [ ] **F14-AC3** Edition and pack images are all commercially licensed (CI, F06).
+- [ ] **F14-AC4** The sponsor policy is published before any sponsor appears.
 
 ## Open questions
 - Print-on-demand in v1, or digital only?

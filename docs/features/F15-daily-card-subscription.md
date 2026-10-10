@@ -12,6 +12,6 @@ Readers can get **"This week in anatomy"** by RSS or weekly email. This is the r
 - Double opt-in. Compliant with the AU Spam Act and GDPR. One-click unsubscribe.
 
 ## Acceptance criteria
-- [ ] The feed validates (W3C).
-- [ ] Email issues render well in Gmail, Apple Mail and Outlook (plate-style header image, live text).
-- [ ] The `subscribe` event fires (F08).
+- [ ] **F15-AC1** The feed validates (W3C).
+- [ ] **F15-AC2** Email issues render well in Gmail, Apple Mail and Outlook (plate-style header image, live text).
+- [ ] **F15-AC3** The `subscribe` event fires (F08).

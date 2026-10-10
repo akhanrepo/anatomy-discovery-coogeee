@@ -23,9 +23,9 @@ A curated library of historical plates, manuscript pages and portraits for stori
 | Panorama reference | *Fabrica* muscle-men landscape backgrounds | PD |
 
 ## Acceptance criteria
-- [ ] Build fails on a missing `licence`, `recordUrl`, `credit` or `altText`, or on a disallowed licence.
-- [ ] Later depictions show a "Later depiction, {date}" label.
-- [ ] Story images are ≤ 200KB at mobile size.
+- [ ] **F06-AC1** Build fails on a missing `licence`, `recordUrl`, `credit` or `altText`, or on a disallowed licence.
+- [ ] **F06-AC2** Later depictions show a "Later depiction, {date}" label.
+- [ ] **F06-AC3** Story images are ≤ 200KB at mobile size.
 
 ## Risks
 - Royal Collection (Leonardo) images are often *not* openly licensed. Use PD scans from elsewhere, or link out.

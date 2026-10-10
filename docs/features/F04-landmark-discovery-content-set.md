@@ -79,7 +79,7 @@ verification: logs/ibn-al-nafis-pulmonary-circulation.md
 Body copy: Markdown, 150–300 words, with `[^c1]` claim references.
 
 ## Acceptance criteria
-- [ ] All 26 published, each with a passing verification log (F05).
-- [ ] Balance targets pass in CI.
-- [ ] Every discovery has `method`, `corrects` (or an explicit `corrects: none` + reason), `status`, ≥ 1 image.
-- [ ] Every non-European entry cites ≥ 1 specialist scholarly work (not a general popular history), with a page locator.
+- [ ] **F04-AC1** All 26 published, each with a passing verification log (F05).
+- [ ] **F04-AC2** Balance targets pass in CI.
+- [ ] **F04-AC3** Every discovery has `method`, `corrects` (or an explicit `corrects: none` + reason), `status`, ≥ 1 image.
+- [ ] **F04-AC4** Every non-European entry cites ≥ 1 specialist scholarly work (not a general popular history), with a page locator.

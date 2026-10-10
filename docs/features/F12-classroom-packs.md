@@ -19,9 +19,9 @@ Printable PDF packs for high-school teachers, each built from a thread: plates s
 - `/teachers` landing page with sample spreads.
 
 ## Acceptance criteria
-- [ ] Packs regenerate automatically when the underlying content changes, with a version number on the cover.
-- [ ] Every claim in a pack is traceable to a verified Claim (same IDs).
-- [ ] Purchase → delivery works without accounts. Invoices are school-friendly.
+- [ ] **F12-AC1** Packs regenerate automatically when the underlying content changes, with a version number on the cover.
+- [ ] **F12-AC2** Every claim in a pack is traceable to a verified Claim (same IDs).
+- [ ] **F12-AC3** Purchase → delivery works without accounts. Invoices are school-friendly.
 
 ## Open questions
 - First market: UK (best fit) or Australia (home)? This sets the currency display and syllabus mapping order.

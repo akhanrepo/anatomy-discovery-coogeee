@@ -85,11 +85,11 @@ Quill scratch on ink-in and a page-turn on era change. Muted by default, with on
 4. **Why not AI-generated art:** the licensing is uncertain (it blocks paid packs and the edition), it's hard to keep consistent across ~120 aligned layers, and it undercuts a brand built on authenticity and sourcing.
 
 ## Acceptance criteria
-- [ ] Reveal, misbelief and erasure animations run at 60fps on a mid-range phone.
-- [ ] Every state is distinguishable in greyscale, through line vs hatch vs wash.
-- [ ] Light and dark themes both pass WCAG AA for text.
-- [ ] The total first-load art payload at mobile size is ≤ 1.5MB. Layers lazy-load per flap.
-- [ ] Every original-script name renders with a proper font (no tofu).
+- [ ] **F16-AC1** Reveal, misbelief and erasure animations run at 60fps on a mid-range phone.
+- [ ] **F16-AC2** Every state is distinguishable in greyscale, through line vs hatch vs wash.
+- [ ] **F16-AC3** Light and dark themes both pass WCAG AA for text.
+- [ ] **F16-AC4** The total first-load art payload at mobile size is ≤ 1.5MB. Layers lazy-load per flap.
+- [ ] **F16-AC5** Every original-script name renders with a proper font (no tofu).
 
 ## Open questions
 - What's the illustrator budget ceiling? It sets the number of structures drawn in full and the misbelief count.

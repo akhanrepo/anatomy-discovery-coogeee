@@ -41,10 +41,10 @@ The first pass is already done for the candidate list: [accuracy-review-2026-10.
 - Archive.org snapshot URL stored for every web source.
 
 ## Acceptance criteria
-- [ ] 100% of v1 content passes the CI gates with no waivers.
-- [ ] Every story shows its verification date.
-- [ ] A correction submitted from a story arrives as an issue with IDs prefilled.
-- [ ] The corrections log is public and linked from the footer.
+- [ ] **F05-AC1** 100% of v1 content passes the CI gates with no waivers.
+- [ ] **F05-AC2** Every story shows its verification date.
+- [ ] **F05-AC3** A correction submitted from a story arrives as an issue with IDs prefilled.
+- [ ] **F05-AC4** The corrections log is public and linked from the footer.
 
 ## Preferred secondary sources (starting list, extend as authoring proceeds)
 Nutton, *Ancient Medicine*; Siraisi, *Medieval and Early Renaissance Medicine*; Savage-Smith (Islamic anatomy); Unschuld, *Huang Di Nei Jing Su Wen*; Meulenbeld, *History of Indian Medical Literature*; Wujastyk (Ayurveda); O'Malley, *Andreas Vesalius of Brussels*; French, *William Harvey's Natural Philosophy*; journals: *Medical History*, *J. Hist. Med. Allied Sci.*, *Bull. Hist. Med.*; NLM and Wellcome exhibition essays.

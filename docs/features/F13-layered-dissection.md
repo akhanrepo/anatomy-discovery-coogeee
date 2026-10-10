@@ -18,7 +18,7 @@ Depth without 3D. The figure can be opened **flap by flap** (skin â†’ muscles â†
 - Deep link: `?layer=viscera`.
 
 ## Acceptance criteria
-- [ ] Flap open/close is 60fps on a mid-range phone, with an instant swap under reduced motion.
-- [ ] Every layer is reachable by keyboard and labelled for screen readers.
-- [ ] Opening a story on a different layer switches layers automatically, with an announced change.
-- [ ] Layer art lazy-loads, and the first layer is interactive before the others finish loading.
+- [ ] **F13-AC1** Flap open/close is 60fps on a mid-range phone, with an instant swap under reduced motion.
+- [ ] **F13-AC2** Every layer is reachable by keyboard and labelled for screen readers.
+- [ ] **F13-AC3** Opening a story on a different layer switches layers automatically, with an announced change.
+- [ ] **F13-AC4** Layer art lazy-loads, and the first layer is interactive before the others finish loading.

@@ -23,11 +23,11 @@ Verified day-month dates are scarce: only **22 May 1954** so far. So **"This wee
 - An unlisted `/editor/cards` page lists the year's schedule with downloadable images and captions.
 
 ## Acceptance criteria
-- [ ] Any shared URL restores the full view state.
-- [ ] Every tab page passes the Facebook, LinkedIn and X card validators.
-- [ ] `/today` never shows an empty state.
-- [ ] Every ShareDate has a calendar and citation (CI).
-- [ ] `share_click` fires (F08).
+- [ ] **F07-AC1** Any shared URL restores the full view state.
+- [ ] **F07-AC2** Every tab page passes the Facebook, LinkedIn and X card validators.
+- [ ] **F07-AC3** `/today` never shows an empty state.
+- [ ] **F07-AC4** Every ShareDate has a calendar and citation (CI).
+- [ ] **F07-AC5** `share_click` fires (F08).
 
 ## Research backlog
 Verify candidate dates: the *Fabrica* colophon (June 1543, month only?); the German *Epitome* (9 Aug 1543?); the Louveau *Nature* online date; Leeuwenhoek's letter (November 1677, the day?); and the birth/death dates of Vesalius, Harvey and Cajal.

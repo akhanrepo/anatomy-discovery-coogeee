@@ -33,11 +33,11 @@ Selecting a structure opens its story, styled as a **plate with commentary**. It
 - Comments, audio narration.
 
 ## Acceptance criteria
-- [ ] Every discovery renders all 8 sections. A missing image fails CI (no placeholders at launch).
-- [ ] Every footnote resolves. A dangling reference fails the build.
-- [ ] The Contested/Revised badge is above the fold on mobile.
-- [ ] The panel is focus-trapped on mobile, closes with Esc or the back gesture, and focus returns to the structure.
-- [ ] URL `?y=&d=` is deep-linkable. `story_open` fires once per open.
+- [ ] **F03-AC1** Every discovery renders all 8 sections. A missing image fails CI (no placeholders at launch).
+- [ ] **F03-AC2** Every footnote resolves. A dangling reference fails the build.
+- [ ] **F03-AC3** The Contested/Revised badge is above the fold on mobile.
+- [ ] **F03-AC4** The panel is focus-trapped on mobile, closes with Esc or the back gesture, and focus returns to the structure.
+- [ ] **F03-AC5** URL `?y=&d=` is deep-linkable. `story_open` fires once per open.
 
 ## Copy rules
 Concrete, no "genius" clichés, active voice about methods, and credit shared where credit was shared (e.g. Johan Ham, Valverde). Each story names at least one thing the protagonist got *wrong* where the record supports it.

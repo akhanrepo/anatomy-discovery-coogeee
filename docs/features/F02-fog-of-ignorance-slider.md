@@ -42,11 +42,11 @@ activeMisbeliefs(year):
 - Default landing year is **Today** (most beautiful), with a nudge to drag back.
 
 ## Acceptance criteria
-- [ ] `stateAt` and `activeMisbeliefs` are pure, with fixture tests at every anchor for every structure.
-- [ ] The slider is keyboard operable (arrows = years, PageUp/PageDown = anchors). `aria-valuetext` announces the year + era caption + count.
-- [ ] Ink-in ≤ 900ms; erasure ≤ 700ms; instant under reduced motion.
-- [ ] 60fps while dragging on a mid-range phone with all layers visible.
-- [ ] Deep link `?y=` restores the state exactly.
+- [ ] **F02-AC1** `stateAt` and `activeMisbeliefs` are pure, with fixture tests at every anchor for every structure.
+- [ ] **F02-AC2** The slider is keyboard operable (arrows = years, PageUp/PageDown = anchors). `aria-valuetext` announces the year + era caption + count.
+- [ ] **F02-AC3** Ink-in ≤ 900ms; erasure ≤ 700ms; instant under reduced motion.
+- [ ] **F02-AC4** 60fps while dragging on a mid-range phone with all layers visible.
+- [ ] **F02-AC5** Deep link `?y=` restores the state exactly.
 
 ## Risks
 - "Understood" is a simplification. The three-state rules are published on the About page so the simplification is honest, not hidden.
