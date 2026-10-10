@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+---
+<Layout title="Support Tabula" description="Sponsorship and our editorial-independence policy.">
+  <article class="prose">
+    <h1>Support {site.name}</h1>
+    <p>{site.name} is free to read. It is funded by classroom packs, the edition and sponsorship from museums, libraries, learned societies and education publishers.</p>
+    <h2 id="policy" data-testid="sponsor-policy">Editorial-independence policy</h2>
+    <ol>
+      <li>Sponsors never review, approve or influence content, before or after publication.</li>
+      <li>A sponsor is credited with one line on the home page footer or on a sponsored tour. There are no logos inside stories.</li>
+      <li>Sponsorship never changes which discoveries are told, how they are framed, or what status they are given.</li>
+      <li>We do not accept sponsorship from pharmaceutical or medical-device companies.</li>
+      <li>Corrections follow the same public process whoever reports them.</li>
+    </ol>
+    <p>Interested in sponsoring a tour? <a href={`mailto:${site.contactEmail}?subject=Sponsorship`}>Get in touch</a>.</p>
+  </article>
+</Layout>

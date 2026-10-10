@@ -11,6 +11,7 @@ import { site } from '../config/site';
 import { analyticsSnippet } from '../lib/analytics';
 import { LIGHT, DARK } from '../styles/tokens';
 import Subscribe from '../components/Subscribe.astro';
+import { sponsorsVisible } from '../lib/sponsors';
 
 interface Props { title?: string; description?: string; ogImage?: string; canonical?: string; paper?: string; bodyClass?: string }
 const { title, description = site.description, ogImage = '/og/default.png', canonical, paper = 'ivory', bodyClass = '' } = Astro.props;
@@ -78,7 +79,7 @@ const url = canonical ?? `${siteUrl}${Astro.url.pathname}`;
       </nav>
       <Subscribe compact />
       <p>The modern body here is an artful schematic, not a reference atlas. Tabula is a history of how the body came to be understood, not medical advice.</p>
-      {site.sponsors.filter((s) => s.scope === 'site').map((s) => <p>Supported by <a href={s.url}>{s.name}</a>. Sponsors never review or influence content.</p>)}
+      {sponsorsVisible().filter((s) => s.scope === 'site').map((s) => <p>Supported by <a href={s.url}>{s.name}</a>. Sponsors never review or influence content.</p>)}
     </footer>
   </body>
 </html>

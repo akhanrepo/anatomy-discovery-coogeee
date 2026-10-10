@@ -5,7 +5,7 @@ export function getStaticPaths() { return corpus().threads.map((t) => ({ params:
 const c = corpus();
 const t = c.threads.find((x) => x.id === Astro.params.id)!;
 const ds = t.discoveries.map((id) => c.discoveries.find((d) => d.id === id)!);
-const sponsor = (await import('../../config/site')).site.sponsors.find((s) => s.scope === t.id);
+const sponsor = (await import('../../lib/sponsors')).sponsorsVisible().find((s) => s.scope === t.id);
 ---
 <Layout title={t.title} description={t.intro}>
   <article class="prose">
