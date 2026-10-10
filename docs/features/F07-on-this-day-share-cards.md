@@ -1,51 +1,33 @@
-# F07 — "On this day in anatomy" share cards & deep links
+# F07 — "This week / on this day in anatomy" share cards & deep links
 
-**Priority:** MVP · **Type:** Growth · **Depends on:** F02, F03, F04, F06 · **Used by:** F15
+**Release:** v1 · **Type:** Growth · **Depends on:** F02, F03, F04, F06, F16 · **Used by:** F15
 
 ## Summary
-Every discovery and every app state is shareable via a URL that reopens the body at the right year with the right story. A daily "On this day in anatomy" card (an image + caption + link) gives a reason to share and a ready-made social post. This is the main acquisition loop for a free product.
+Every state of the app is a shareable URL, and every discovery has a beautiful **plate-style share card**: engraved border, plate number, historical image, a one-line hook and a mini fog render of the body at that year. A rotating **"This week in anatomy"** card (with **"On this day"** when a verified date exists) gives a steady stream of posts.
 
-## User problem / job
-- Reader: "This is fascinating, I want to show someone *exactly this*."
-- Ali (distribution): "I need a steady stream of good-looking, accurate posts without writing each one by hand."
+## Decision from the accuracy review
+Verified day-month dates are scarce: only **22 May 1954** so far. So **"This week in anatomy" is the lead format**, and "On this day" is a bonus whenever a verified date falls in the week. Births and deaths count only if the date itself is sourced. We don't invent precision to fill the calendar. That rigour is part of what makes the product different.
 
 ## User stories
-- As a reader, I can share the current view (year + story) and the link opens to the same view.
-- As a reader, shared links render a rich preview (image, title, description) on social platforms and messaging apps.
-- As a visitor, the home page shows today's card when one exists.
-- As Ali, I can download or copy the card image and caption for any date to post manually.
+- As a reader, I can share the current view, and the link restores the year, figure, lens, flap and story.
+- As a reader, shared links show a rich preview on social media and in messaging apps.
+- As a visitor, `/today` always shows a card.
+- As Ali, I can download any card (1200×630 and 1080×1350) with a ready-made caption.
 
 ## Scope
-**In**
-- URL state: `/?y={year}&d={discoveryId}` (also `/d/{discoveryId}` canonical pages for SEO and previews).
-- Per-discovery pre-rendered page with Open Graph/Twitter meta + build-time OG image (Satori → PNG, 1200×630): historical image, title, year, "On this day" if applicable, brand.
-- `ShareDate` records: `{ discoveryId, month, day, basis: publication|demonstration|birth|death|letter, citation }`.
-- `/today` page: today's card, or the nearest upcoming one if none falls today ("This week in anatomy").
-- Native Web Share API on mobile and copy link on desktop.
-- An "Editor" view (unlisted) that lists all share dates and downloads card images, for manual posting.
-
-**Out**
-- Automated posting to social platforms (later, maybe).
-- Email/RSS subscription (F15).
-- User-generated cards.
-
-## Behaviour & UX notes
-- **Coverage problem:** many discoveries have no defensible day-month. Rules:
-  1. Use only cited dates. A publication year alone ≠ a day.
-  2. Allowed bases include a person's birth or death date ("Born on this day: Ibn al-Nafis"), but only when the date itself is sourced. Many medieval dates aren't known to the day.
-  3. When the calendar has gaps, fall back to "This week in anatomy".
-- Julian vs Gregorian: pre-1582 (and in Britain pre-1752) dates must state which calendar. Harvey-era English dates are Julian. Store `calendar` on the ShareDate.
+- URL state: `/?y=&d=&fig=&lens=&layer=` plus canonical `/tab/{plate}-{slug}` pages for SEO and previews.
+- Build-time OG images (Satori → PNG) in plate style (F16), including a **mini body render** at the discovery year.
+- `ShareDate { discoveryId, month, day, calendar: julian|gregorian, basis: publication|demonstration|letter|birth|death, citation }`.
+- `/today`: on-this-day if available, else this week's card. Each ISO week is mapped to a curated discovery: 52 slots, 26 discoveries + misbeliefs + tradition concepts.
+- Web Share API on mobile; copy link and download on desktop.
+- An unlisted `/editor/cards` page lists the year's schedule with downloadable images and captions.
 
 ## Acceptance criteria
-- [ ] Opening any shared URL restores the slider year and open story.
-- [ ] Every discovery page has a valid OG image and passes the Facebook, LinkedIn and X card validators.
-- [ ] `/today` never 404s or shows an empty state. It falls back to the week or the nearest card.
-- [ ] Every ShareDate has a citation and a `calendar` field. CI fails if not.
-- [ ] A `share_click` analytics event fires (F08).
+- [ ] Any shared URL restores the full view state.
+- [ ] Every tab page passes the Facebook, LinkedIn and X card validators.
+- [ ] `/today` never shows an empty state.
+- [ ] Every ShareDate has a calendar and citation (CI).
+- [ ] `share_click` fires (F08).
 
-## Risks & accuracy notes
-- "On this day" content online is notoriously sloppy. The cited-date rule *is* the differentiator, so don't relax it to fill the calendar.
-
-## Open questions
-- Is the MVP distribution manual posting by Ali, or a scheduled post (Buffer etc.)?
-- Should the card show the fog state at that year as a mini visual? It's very on-brand, but adds build complexity.
+## Research backlog
+Verify candidate dates: the *Fabrica* colophon (June 1543, month only?); the German *Epitome* (9 Aug 1543?); the Louveau *Nature* online date; Leeuwenhoek's letter (November 1677, the day?); and the birth/death dates of Vesalius, Harvey and Cajal.

@@ -4,3 +4,4 @@ An interactive body where every part carries the story of who figured it out, ho
 
 - [PRD](docs/PRD.md)
 - [Feature briefs](docs/features/README.md)
+- [Accuracy review](docs/research/accuracy-review-2026-10.md)

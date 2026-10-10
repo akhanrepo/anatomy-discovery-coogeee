@@ -1,43 +1,32 @@
 # F06 — Historical image library & rights provenance
 
-**Priority:** MVP · **Type:** Content system · **Depends on:** — · **Used by:** F01, F03, F07
+**Release:** v1 · **Type:** Content system · **Used by:** F01, F03, F07, F10, F12, F14, F16
 
 ## Summary
-A curated library of public-domain anatomical plates, manuscript pages and portraits, each with recorded source, licence, credit and authenticity notes. This is the visual identity and a cheap moat: freely available art is plentiful, but choosing and contextualising it well is the hard part.
-
-## User problem / job
-"Show me what they actually saw and drew." Readers love primary sources. Teachers later need images they're allowed to reuse.
-
-## User stories
-- As a reader, every story has a striking historical image with a clear credit line.
-- As a reader, I can tap the image to view it full screen and zoom in.
-- As a reader, I'm told when a portrait is a later imagined likeness.
-- As the editor, I can't ship an image without a licence and source.
+A curated library of historical plates, manuscript pages and portraits for stories, the traditions lens, share cards, packs and the edition. Every image records its source, licence, credit and authenticity. It complements the **commissioned** body art (F16): the body is our own drawing, and the stories show what *they* drew.
 
 ## Scope
-**In**
-- `Asset` records: `{ id, title, creator, date, sourceInstitution, sourceUrl, licence, credit, kind: plate|manuscript|portrait|photo, authenticity: contemporary|later-depiction|unknown, altText, focalPoint }`.
-- Allowed licences: Public Domain, CC0, CC BY (with attribution). **No** CC BY-NC (blocks paid classroom packs, F12) and **no** CC BY-SA (share-alike complicates the premium edition, F14) unless a decision says otherwise.
-- Preferred sources: Wellcome Collection, US National Library of Medicine Digital Collections, Wikimedia Commons (verify the underlying rights, don't trust the tag blindly), Biodiversity Heritage Library, Internet Archive, Europeana, and national libraries.
-- Image pipeline: originals stored outside the repo (or Git LFS), responsive derivatives (AVIF/WebP) generated at build time.
-- Lightbox with zoom.
+- `Asset { id, title, creator, date, sourceInstitution, sourceUrl, recordUrl, licence, credit, kind: plate|manuscript|portrait|photo|commissioned, authenticity: contemporary|later-depiction|unknown, altText, focalPoint, crops[] }`.
+- **Allowed licences:** Public Domain / PDM, CC0, CC BY. **Not allowed:** CC BY-NC (blocks paid packs and the edition) and CC BY-SA (complicates the edition). **The licence is checked on each individual record**, never assumed per institution. Wellcome, for example, mixes PDM, CC BY and CC BY-NC.
+- Preferred sources: Wellcome Collection, US National Library of Medicine, Royal Collection Trust (check its terms: often *not* open), Biodiversity Heritage Library, Internet Archive, Cambridge Digital Library, national libraries, Wikimedia Commons (verify the underlying record).
+- **Commissioned art** (F16) uses `kind: commissioned` and a contract that assigns rights to Ali, including commercial use, print and derivatives.
+- Pipeline: originals in Cloudflare R2 (or Git LFS), with responsive AVIF/WebP derivatives built at deploy. Deep-zoom (IIIF) for manuscript pages where the source offers a IIIF manifest.
+- Lightbox with zoom. A credits page lists every asset.
 
-**Out**
-- Commissioned new art (except the base body, F01 option A).
-- IIIF deep-zoom viewer (later, nice for manuscripts).
+## Known-needed assets (from the accuracy review)
+| Use | Asset | Licence status |
+|---|---|---|
+| Body pose reference | Vesalius *Epitome* male and female nudes (1543) | PD (pre-1900); check scan terms |
+| Islamic lens | *Tashrīḥ-i Manṣūrī* (NLM copy, 1488) | Check NLM record |
+| Ayurveda lens | "Ayurvedic Man", Wellcome 574912i | **Check: PDM or CC BY?** |
+| Chinese lens | "Bronze Man" acupuncture woodcuts, 1537 edition, Wellcome | Check per record |
+| Panorama reference | *Fabrica* muscle-men landscape backgrounds | PD |
 
 ## Acceptance criteria
-- [ ] Build fails if an Asset is missing `licence`, `sourceUrl`, `credit` or `altText`.
-- [ ] Build fails on a disallowed licence.
-- [ ] Portraits with `authenticity: later-depiction` render a visible "Later depiction, {date}" label.
-- [ ] A credits page lists every asset used.
-- [ ] Each story image is ≤ 200KB at mobile size.
+- [ ] Build fails on a missing `licence`, `recordUrl`, `credit` or `altText`, or on a disallowed licence.
+- [ ] Later depictions show a "Later depiction, {date}" label.
+- [ ] Story images are ≤ 200KB at mobile size.
 
-## Risks & accuracy notes
-- "Public domain" scans sometimes carry institutional terms. Check each institution's reuse policy, especially for commercial use (F12/F14).
-- Portraits of medieval Islamic and ancient figures are almost always imaginative. Prefer manuscript pages for those stories.
-- Some historical plates are graphic or include racist/colonial framing (e.g. 19th-century comparative anatomy). Exclude these or contextualise them, and never use them decoratively.
-
-## Open questions
-- Should originals live in Git LFS or a bucket (Cloudflare R2)? R2 is cheaper at scale, while LFS is simpler.
-- Should we pin a single "house" palette/treatment (e.g. duotone sepia) for consistency, or show plates as-is?
+## Risks
+- Royal Collection (Leonardo) images are often *not* openly licensed. Use PD scans from elsewhere, or link out.
+- Some historical plates contain racist or colonial framing (e.g. 19th-century comparative anatomy). Exclude them, or contextualise them explicitly. Never use them decoratively.

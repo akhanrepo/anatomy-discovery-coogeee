@@ -1,16 +1,17 @@
-# F15 — Daily card subscription (email / RSS)
+# F15 — Subscription: RSS + weekly email
 
-**Priority:** Later · **Depends on:** F07
+**Release:** v1 · **Depends on:** F07
 
 ## Summary
-Let readers receive "On this day in anatomy" (or a weekly digest) by email or RSS. It's the retention loop that a free, account-less product otherwise lacks.
+Readers can get **"This week in anatomy"** by RSS or weekly email. This is the retention loop that an account-less product otherwise lacks. It's weekly (not daily) because verified dates are scarce (F07), and because a weekly digest is something people actually read.
 
-## Why not MVP
-It only makes sense once share cards show pull (shares per card, `/today` visits). Email adds a list provider, privacy obligations (AU Spam Act, GDPR) and a calendar coverage problem: daily cadence needs ~365 defensible dates, and the MVP will have far fewer. A weekly digest is more realistic.
+## Scope
+- `/feed.xml`: one item per week + on-this-day items when verified.
+- A weekly email via Buttondown (or similar), auto-drafted from the week's card + a featured thread + one corrections-log entry. Ali approves each issue (a one-click send).
+- Signup in the footer, after the 3rd story ("Want one of these every week?") and on `/today`.
+- Double opt-in. Compliant with the AU Spam Act and GDPR. One-click unsubscribe.
 
-## Scope (when built)
-- RSS feed for `/today` (near-free, ship first).
-- Weekly email via Buttondown / Beehiiv, generated from ShareDates + featured story.
-
-## Trigger to build
-≥ 15% of `/today` visitors come back within 7 days, *or* unprompted requests for a newsletter.
+## Acceptance criteria
+- [ ] The feed validates (W3C).
+- [ ] Email issues render well in Gmail, Apple Mail and Outlook (plate-style header image, live text).
+- [ ] The `subscribe` event fires (F08).

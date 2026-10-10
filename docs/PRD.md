@@ -1,142 +1,186 @@
 # PRD — Anatomy Discovery (working title)
 
-> An interactive body where every part carries the story of who figured it out, how, and what they got wrong first. A "fog of ignorance" slider dims everything that wasn't yet understood in a given year, so you watch knowledge of the body fill in over the centuries.
+> An interactive body where every part carries the story of who figured it out, how, and what they got wrong first. A slider sets the year, and the body is drawn only as far as knowledge had reached. You watch it being *written in* over the centuries.
 
-Status: Draft v0.1 · Owner: Ali · Last updated: 2026-10-10
-Feature briefs: [`docs/features/`](features/README.md)
+Status: **v0.2: single-release scope** · Owner: Ali · Last updated: 2026-10-10
+Feature briefs: [`docs/features/`](features/README.md) · Accuracy review: [`docs/research/accuracy-review-2026-10.md`](research/accuracy-review-2026-10.md)
+
+### Decisions locked in v0.2
+| Decision | Outcome |
+|---|---|
+| Framing | **The fog measures past knowledge against modern anatomy**, and we say so openly ("About the fog"). Past models appear as red-ink beliefs in their own right, not as blanks (F09, F16). |
+| Accuracy | **Claude verifies every claim** using the documented method in F05: two-source rule, adversarial myth check, verification log. A first-pass review of the candidate list is done ([review](research/accuracy-review-2026-10.md)). |
+| Art | **"The Unwritten Body"** (F16): one commissioned engraving-style master figure (male and female, after Vesalius's *Epitome*). Knowledge is shown as ink states (outline → hatching → hand-colour), and misbeliefs are written in vermilion and scraped away. Beauty is the main selling point, so art is the critical path. |
+| Release | **Everything ships in v1.** There's no MVP/later split. The order of work is set by dependencies, not by staged releases. |
 
 ---
 
 ## Problem
 
-The history of how we came to understand the body is popular (Bryson's *The Body*, history-of-medicine podcasts, Wellcome Collection), but it only exists as linear narrative in books, audio and video. Nobody lays that history onto the body itself, so readers can't see *where* knowledge arrived, *when*, or how it built on (or overturned) what came before. Anatomy atlases ignore history entirely. Museum sites and Wikipedia are accurate but scattered and non-spatial. Popular retellings are full of myths and contested "firsts" that are rarely flagged as such.
+The history of how we came to understand the body is popular (Bryson's *The Body*, history-of-medicine podcasts, Wellcome Collection), but it only exists as linear narrative in books, audio and video. Nobody lays that history onto the body itself, so readers can't see *where* knowledge arrived, *when*, or what it overturned. Anatomy atlases ignore history entirely. Museum sites and Wikipedia are accurate but scattered and non-spatial. Popular retellings repeat myths and contested "firsts" without flagging them.
 
 ## Target user (ICP)
 
-**Primary (MVP):** curious, literate adults (roughly 25–65) who already consume history-of-science content for pleasure. They read long-form non-fiction, listen to history podcasts on commutes and click through on interesting links shared on social media or in newsletters. They aren't medical professionals and they'll spot a lazy myth.
+**Primary: curious, literate adults** (roughly 25–65) who consume history-of-science content for pleasure. They read long-form non-fiction, listen to history podcasts and click well-made links in newsletters and social feeds. They aren't medical professionals, and they *will* notice a lazy myth. You find them among readers of Bryson's *The Body* and Mukherjee, subscribers to *The Public Domain Review*, Wellcome Collection's online audience, and r/AskHistorians.
 
-Recognisable examples of where they already are:
-- Readers of Bill Bryson's *The Body* or Siddhartha Mukherjee's *The Gene*
-- Subscribers to *The Public Domain Review* and visitors to the Wellcome Collection's online stories
-- r/AskHistorians and r/HistoryofScience readers; history-podcast audiences
-
-**Secondary (post-MVP, paying):** high-school biology and history teachers (e.g. NSW Stage 5–6 Science and Modern History, IB History of Science/TOK). After them, museums (Wellcome Collection, Powerhouse, Science Museum) and education publishers as sponsors or licensees.
-
-The MVP is designed for the primary user only. Teacher needs are recorded so early decisions don't block them later.
+**Secondary (paying from v1):**
+- **High-school teachers.** UK GCSE History "Medicine in Britain / through time" (the closest syllabus fit), NSW Stage 5–6 Science and Modern History, IB TOK/History. They buy classroom packs (F12).
+- **Readers wanting more depth.** They buy the premium edition (F14).
+- **Museums, libraries and education publishers** as sponsors (F14).
 
 ## Core value proposition
 
-See, on one body, who figured out each part, how they did it and what they got wrong first, with sources you can check.
+See, on one beautiful body, who figured out each part, how they did it and what they got wrong first, with sources you can check.
 
-## MVP scope: must have
+## v1 scope
 
-1. **Interactive 2D body map** ([F01](features/F01-interactive-body-map.md)): an illustrated body with ~25 clickable structures across key systems.
-2. **"Fog of ignorance" timeline slider** ([F02](features/F02-fog-of-ignorance-slider.md)): dims or reveals structures by year of understanding, snapping to anchor eras (c. 200, 1242, 1543, 1628, 1950, today).
-3. **Discovery story panel** ([F03](features/F03-discovery-story-panel.md)): person, method, error corrected, a portrait or primary-source image, and citations.
-4. **25 landmark discoveries, sourced and contest-aware** ([F04](features/F04-landmark-discovery-content-set.md) + [F05](features/F05-citations-and-contested-claims.md)): includes non-European contributors where the record supports it. Every claim is cited, contested claims are labelled, and there's a "suggest a correction" route.
-5. **Public-domain image library with provenance** ([F06](features/F06-historical-image-library.md)): historical plates and portraits with source, licence and credit recorded.
-6. **Shareable "on this day in anatomy" cards + deep links** ([F07](features/F07-on-this-day-share-cards.md)): a daily card with a social preview image that links into the body at the right year and structure.
-7. **Minimal privacy-friendly analytics** ([F08](features/F08-analytics-and-success-measurement.md)): just enough to measure the success metric. It's plumbing, not a feature users see.
+Ordered by dependency (see **Build sequence** below). All ship together.
+
+| # | Feature | Brief |
+|---|---|---|
+| 1 | **Art direction & visual system**: "The Unwritten Body" | [F16](features/F16-art-direction-and-visual-system.md) |
+| 2 | **Interactive body**: male and female figures, ~40 structures | [F01](features/F01-interactive-body-map.md) |
+| 3 | **Layered dissection**: fugitive-sheet flaps (skin → muscle → organs → skeleton) | [F13](features/F13-layered-dissection.md) |
+| 4 | **Timeline slider** (the "fog"): ink states by year, engraved-panorama track | [F02](features/F02-fog-of-ignorance-slider.md) |
+| 5 | **Discovery story panel** | [F03](features/F03-discovery-story-panel.md) |
+| 6 | **Content: ~25 landmark discoveries**, balanced across eras and traditions | [F04](features/F04-landmark-discovery-content-set.md) |
+| 7 | **Citations, contested claims, Claude verification & corrections** | [F05](features/F05-citations-and-contested-claims.md) |
+| 8 | **Historical image library & rights provenance** | [F06](features/F06-historical-image-library.md) |
+| 9 | **Misbelief overlay**: "what they got wrong", in red ink | [F09](features/F09-misconception-overlay.md) |
+| 10 | **Traditions lens**: Islamic-world, Chinese and Ayurvedic bodies, each on its own historical plate | [F10](features/F10-traditions-lens.md) |
+| 11 | **Browse**: timeline, people, threads (guided tours) | [F11](features/F11-timeline-and-people-browse.md) |
+| 12 | **"On this day / this week in anatomy" share cards & deep links** | [F07](features/F07-on-this-day-share-cards.md) |
+| 13 | **Subscription**: RSS + weekly email | [F15](features/F15-daily-card-subscription.md) |
+| 14 | **Classroom packs** (A$15–30), 3 at launch | [F12](features/F12-classroom-packs.md) |
+| 15 | **Premium edition + sponsorship** | [F14](features/F14-sponsorship-and-premium-edition.md) |
+| 16 | **Analytics** | [F08](features/F08-analytics-and-success-measurement.md) |
+
+**One honest warning about shipping everything at once:** it delays the first real signal until everything's done. Mitigation: a **closed preview** to about 50 readers once F16 art + F01–F05 are complete (content can still be landing). This isn't a staged release, just a feedback checkpoint before the public launch.
 
 ## Explicit non-goals
 
-| Not building (yet) | Why |
+| Not building | Why |
 |---|---|
-| 3D body ([F13](features/F13-3d-body.md)) | Expensive and asset-led. 2D is enough to test whether the idea is compelling, and historical plates are 2D anyway. |
-| User accounts, saved progress, comments | No evidence yet that people come back for state. Accounts add auth, privacy and moderation costs. |
-| Classroom packs / payments ([F12](features/F12-classroom-packs.md)) | The secondary ICP. Validate the free audience first. |
-| Full "what they got wrong" visual overlay ([F09](features/F09-misconception-overlay.md)) | Strongest later differentiator, but the MVP covers the error in text within the story panel. |
-| Parallel "traditions" lens ([F10](features/F10-traditions-lens.md)) | Mapping TCM channels or Ayurvedic *marma* onto a modern body is historiographically fraught. Non-European contributors appear in the MVP as discoveries. A dedicated lens needs scholarly input. |
-| Comprehensive anatomy (hundreds of structures) | It's content-led. 25 excellent, sourced stories beat 300 thin ones. |
-| Clinical, medical or educational-accuracy claims about modern anatomy | This is a history product. Modern anatomy is shown schematically and isn't a reference atlas. |
-| CMS / admin UI | Content lives in the repo as structured files. PR review is the editorial workflow. |
-| Newsletter / email capture ([F15](features/F15-daily-card-subscription.md)) | Only after share cards show pull. |
-| Native apps | The web covers both share-link traffic and classrooms. |
+| **True 3D body** | Replaced by layered dissection (F13). A 3D mesh would abandon the engraved art, which is the main selling point, and it's heavy on mobile and hard to make accessible. Fugitive sheets give depth *in period style*. |
+| User accounts, saved progress, comments, UGC | No evidence they're needed. They bring auth, privacy and moderation cost. Purchases are handled by the merchant of record without accounts. |
+| Comprehensive anatomy (hundreds of structures) | It's content-led: 25 excellent stories beat 300 thin ones. |
+| Clinical or reference-atlas accuracy for modern anatomy | This is a history product. The modern body is a schematic, artful backdrop. |
+| CMS / admin UI | Content is files in the repo, and PR review is the editorial workflow. |
+| Native apps | The web covers share traffic, classrooms and purchases. |
+| AI-generated artwork | Licensing uncertainty blocks paid products, it's hard to keep consistent across layers, and it undercuts an authenticity-led brand (F16). |
+| Automated social posting | Manual or scheduled via a third-party tool is enough. |
 
 ## Success metric
 
-**Share of sessions that open 3 or more discovery stories.** Target: **≥ 25%** across the first 1,000 sessions after launch.
+**Share of sessions that open 3 or more discovery stories.** Target: **≥ 25%** across the first 1,000 public sessions.
 
-Why this metric: it measures the core bet, that spatial plus temporal plus story is compelling enough to make people explore beyond the first click. Shares and traffic are lagging and depend on distribution luck. Time-on-site rewards confusion. If people don't open a third story, the wedge isn't working, however many people arrive.
-
-(Leading diagnostic, not the success metric: slider interaction rate. If people don't touch the slider, the "fog" concept isn't landing.)
+This measures the core bet: that the spatial, temporal and story combination makes people explore. Revenue (packs, edition) and shares are tracked but are downstream. If people don't open a third story, nothing else will work.
+*Leading diagnostic:* slider interaction rate.
 
 ## Key user flows
 
-### 1. Curious reader explores from cold (happy path)
-1. The reader lands on the home page. The body is shown at **"Today"**, fully lit.
-2. A one-line prompt invites them to drag the slider back in time. They drag to **c. 200 AD**.
-3. Most of the body dims into fog. A few structures stay lit (e.g. the brain's ventricles and the distinction between arteries and veins), plus Galen's beliefs, which are marked as beliefs.
-4. They step forward through the anchors (1242 → 1543 → 1628). Structures light up as each era arrives, with a short caption per era.
-5. They tap the newly lit **lungs/pulmonary circulation** at 1242.
-6. The story panel opens: **Ibn al-Nafis**, the method (textual and reasoned critique of Galen and Ibn Sina; whether he dissected is contested), the error corrected (Galen's invisible pores in the heart's septum), a primary-source image and citations. A "Contested" badge explains the debate over transmission to Europe.
-7. They follow "Next in this story" to Servetus/Colombo, then Harvey at 1628. That's 3+ stories opened.
+### 1. Curious reader explores from cold
+1. The reader lands on the home page. The body is shown at **Today**: fully inked and hand-coloured, on ivory paper.
+2. A manicule (☞) beside the slider says *"Drag back in time."* They drag to **c. 200**.
+3. The colour drains and the hatching lifts. Most structures fade back to blank paper. Galen's knowledge stays inked (arteries carry blood, the recurrent laryngeal nerve), and **vermilion** lines appear: veins rising from the liver, pores in the heart's septum. The paper becomes papyrus-toned and a Greek-styled caption appears in the margin.
+4. They step forward: **c. 1242**. The paper turns to vellum, the lungs ink in as an outline and the red septal pores are **scraped away** with an erasure, leaving a ghost.
+5. They tap the lungs. The story panel opens: **Ibn al-Nafis** (ابن النفيس), the method, the belief he overturned, a manuscript page, citations, and a *Contested* badge on transmission to Europe.
+6. They follow the thread to Colombo, then Harvey (1628). That's 3+ stories.
 
 ### 2. Social visitor arrives from a share card
-1. The visitor sees a card on social media: "On this day in 1628, William Harvey's *De motu cordis* ..." with a Vesalius-style plate.
-2. They tap through to a deep link. The body opens with the slider at **1628** and Harvey's story already open.
-3. They close the panel, see the fog state for 1628 and start exploring (flow 1, from step 4).
+1. They see a card styled as an engraved plate: *"Tab. XXI · 22 May 1954: two unrelated Huxleys explain how muscle contracts"*.
+2. Tapping it opens the body at **1954** with the story open.
+3. They close the panel and explore (flow 1, step 4).
 
-### 3. Sceptical reader checks a claim
-1. In a story, the reader taps a footnote marker beside a claim.
-2. The citation expands to show the primary/secondary source, the page or folio locator and a link where one exists.
-3. They think the claim is wrong and tap **"Suggest a correction"**.
-4. A prefilled form or issue captures the story ID, the claim and their source. Ali reviews it.
+### 3. Reader explores another tradition
+1. They switch the **lens** to *Ayurveda*. The figure is replaced by the 18th-century Nepalese "Ayurvedic Man" painting, with hotspots.
+2. They tap a vessel. The panel explains the concept *in its own terms* and how it relates (or doesn't) to modern structures.
+3. They switch back to the modern body.
 
-### 4. Editor (Ali) adds a discovery
-1. Create a discovery file from the template: structures, year, people, method, error corrected, claims with citations, image refs.
-2. Add or reuse a Person and an Asset (with licence and provenance).
-3. Open a PR. CI validates the schema: no uncited claim, every asset licensed, every structure ID exists in the SVG.
-4. Merge, and the site rebuilds.
+### 4. Sceptical reader checks a claim
+1. They tap a footnote, which shows the source with a page or folio locator, a link and the verification date.
+2. They tap **Suggest a correction**. The form is prefilled with the story and claim IDs.
+3. The correction is triaged. If it's accepted, it's published in the public corrections log.
+
+### 5. Teacher buys a pack
+1. A teacher arrives via the "For teachers" page (or the free sample pack).
+2. They pick *"The circulation of the blood: Galen to Malpighi"* (A$19), and checkout goes through the merchant of record (GST/VAT handled).
+3. They receive a PDF: printable plates (fog at 4 years), story cards, primary-source extracts, a "spot the myth" activity and an answer key with sources.
+
+### 6. Editor (Ali + Claude) adds a discovery
+1. Claude drafts the discovery file from the template and runs the F05 verification workflow, attaching a verification log.
+2. Claude adds or reuses Person and Asset records (licence checked per record).
+3. A PR is opened. CI validates the schema, citations, licences, structure IDs and balance targets. A deploy preview is generated.
+4. Ali reviews the preview and merges.
 
 ## Data model (rough sketch)
 
 ```
 Structure ──< DiscoveryStructure >── Discovery ──< DiscoveryPerson >── Person
-   │                                    │  │                             │
-   │ svgRegionId, system, parent         │  └──< Claim ──< Citation >── Source
-   │                                    │                               (primary|secondary)
-   └── (fog state is DERIVED,           ├── kind: morphology | function | microscopic | molecular
-        not stored)                     ├── yearStart, yearEnd, yearPrecision, displayDate
-                                         ├── tradition / region
-                                         ├── status: established | contested | revised
-                                         ├── priorBelief (the "error corrected", itself a Claim)
-                                         ├── assets[] ── Asset (licence, source, credit, url)
-                                         └── shareDates[] ── ShareDate (month, day, basis, Citation)
+  id, name, system, layer(F13),        │                                 name, nameOriginal, script,
+  sex: both|male|female, svgRegionId   │                                 dates, place, tradition,
+                                        │                                 portraitAssetId?
+                                        ├── kind: morphology|function|microscopic|molecular
+                                        ├── yearStart, yearEnd, yearPrecision, displayDate
+                                        ├── tradition, status: established|contested|revised
+                                        ├── claims[] ── Claim ──< Citation >── Source
+                                        ├── corrects[] ── Misbelief
+                                        ├── assets[] ── Asset (licence, source, credit, authenticity)
+                                        ├── shareDates[] ── ShareDate (month, day, calendar, basis, citation)
+                                        └── verification ── VerificationLog
 
-Era (anchor): year, label, caption        Person: name, dates, place, tradition, portraitAsset
+Misbelief   { id, title, heldBy[] (Person), yearStart, correctedBy (Discovery), structures[], svgOverlayId, claims[] }
+Era         { id, yearStart, label, caption, paperTexture, inkTone, marginScript }
+Tradition   { id, name, plateAssetId, hotspots[] ── TraditionConcept { id, name, nameOriginal, story, claims[], relatesTo[] (Structure, typed: "corresponds"|"partially"|"no modern equivalent") } }
+Thread      { id, title, intro, discoveries[] (ordered) }      // tours, packs, edition chapters
+Pack        { id, threadId, price, sku, generatedPdf }
+Edition     { chapters[] ── Thread + essay }
+VerificationLog { discoveryId, date, reviewer: "claude"|human, sourcesConsulted[], mythChecks[], verdict, notes }
 ```
 
-Key relationships and rules:
-- **Discovery ↔ Structure is many-to-many.** Harvey touches heart, arteries, veins and venous valves. The heart has many discoveries.
-- **"Understood" is not one thing.** A structure can be *seen* (morphology) centuries before its *function* is understood. Fog state for a structure in year Y is **derived** from the discoveries with `yearStart ≤ Y`, which gives graded states: `unknown → described → function understood`, plus an orthogonal `misbelief` flag where a then-dominant wrong model applies (e.g. septal pores before 1242/1628).
-- **Claims are first-class.** Each factual sentence that matters is a Claim with ≥ 1 Citation and its own status, so a story can be "established" overall while one sub-claim is contested.
-- **Dates are fuzzy.** `yearStart/yearEnd/precision` handles "c. 1600 BCE", "fl. 3rd c. BCE" and "1242?". The slider uses `yearStart`. The UI shows `displayDate`.
-- **"On this day" needs a real day-month.** Many discoveries have none, so `ShareDate` is optional and can be based on a publication date, a birth or death, or a documented demonstration, and it's cited.
-- **Assets carry rights.** No asset ships without licence, source institution and credit.
+Key rules:
+- **Discovery ↔ Structure is many-to-many.** Fog state is **derived**, never stored: `stateAt(structure, year)` → `UNKNOWN | DESCRIBED | UNDERSTOOD`, plus active `Misbelief`s.
+- **Claims are first-class.** Each has ≥ 1 citation and its own status.
+- **Dates are fuzzy** (`yearPrecision`: exact | circa | range | century) and **calendar-aware** for day-month dates (Julian/Gregorian).
+- **Traditions don't map 1:1.** A `TraditionConcept` links to modern structures only with a typed relation, including "no modern equivalent".
+- **Assets carry rights.** PD / CC0 / CC BY only, checked per record.
 
 ## Tech constraints
 
-- **Solo, bootstrapped, near-zero running cost.** Static site with no backend for the MVP.
-- **Stack (proposed):** Astro (or Next.js static export) + TypeScript; body as a hand-authored **inline SVG** with stable structure IDs; slider and panel as small islands of interactivity.
-- **Content as code:** discoveries, people, sources and assets as Markdown/MDX + YAML/JSON in the repo, validated at build time with a schema (e.g. Zod). **The build fails on an uncited claim, an unlicensed asset or an unknown structure ID.** This turns the main risk (accuracy) into a CI gate.
-- **Hosting:** Netlify or Cloudflare Pages, with deploy previews per PR for editorial review.
-- **Share images:** generated at build time (e.g. Satori → PNG), one per discovery and share date. No runtime image service.
-- **Analytics:** cookieless and privacy-friendly (Plausible / Umami / Cloudflare Web Analytics), with custom events for story opens and slider use.
-- **Mobile-first:** most share traffic lands on phones. The body plus slider must work one-handed on a 375px screen.
-- **Accessibility:** the slider works by keyboard and screen reader, `prefers-reduced-motion` is respected, and every structure is reachable from a non-visual list. Teachers and schools will need this later, so it can't be retrofitted.
-- **Images:** public domain or CC0/CC BY only (Wellcome Collection, NLM Digital Collections, Wikimedia Commons, BHL). Provenance is recorded per asset.
-- **Future-proofing (not MVP):** keep IDs stable and content portable (plain files), so printable classroom packs, a 3D view or a licensing feed can be generated from the same data later.
+- **Solo, bootstrapped, near-zero running cost.** Static site, no custom backend. Commerce and email go through hosted services.
+- **Stack:** Astro + TypeScript, with small interactive islands (Preact or Solid) for the body, slider and panel. SVG for line art and hit regions, aligned AVIF/WebP rasters for hatching and washes (F16).
+- **Content as code:** Markdown/MDX + YAML in the repo, with Zod schemas. **CI fails** on an uncited claim, a missing verification log, an unlicensed asset, an unknown structure ID, a ShareDate without calendar and citation, or missed balance targets.
+- **Hosting:** Netlify or Cloudflare Pages, with deploy previews per PR.
+- **Build-time generation:** OG/share images (Satori), RSS, classroom-pack PDFs and edition EPUB/PDF (Paged.js via headless Chromium; pandoc for EPUB).
+- **Commerce:** Lemon Squeezy or Paddle as **merchant of record** (handles AU GST, EU VAT and invoicing for schools) with hosted checkout and file delivery. No accounts.
+- **Email:** Buttondown (or similar), generated from ShareDates.
+- **Analytics:** cookieless (Plausible / Umami).
+- **Performance:** first meaningful paint < 2.5s on 4G mid-range phone; initial art payload ≤ 1.5MB; flap layers lazy-load.
+- **Accessibility:** WCAG 2.2 AA. The slider and flaps are keyboard and screen-reader operable, with a full non-visual structure list and `prefers-reduced-motion` support. Schools require this.
+- **i18n-ready:** English only at launch, but strings are externalised and original-script names are supported (Arabic RTL, CJK, Devanagari).
+
+## Build sequence (one release, ordered by dependency)
+
+| Step | Work | Notes |
+|---|---|---|
+| 0 | **Art spec → illustrator commission** (F16) | Longest lead time, so it starts on day 1 |
+| 0 | **Content verification and writing** (F04/F05), in parallel | Second-longest. Claude drafts and verifies, Ali reviews |
+| 1 | Data schemas + CI validation (F05, F06) | Everything else builds on these |
+| 2 | Body + flaps + slider + state engine on **placeholder art** (F01, F13, F02) | The art drops in by structure ID later |
+| 3 | Story panel, misbeliefs, browse (F03, F09, F11) | |
+| 4 | Traditions lens (F10) | Needs its own plates and verification |
+| 5 | Share cards, RSS, email, analytics (F07, F15, F08) | |
+| 6 | Packs, edition, commerce, sponsor page (F12, F14) | Generated from the same content |
+| 7 | Final art integration → **closed preview (~50 readers)** → fixes → public launch | |
 
 ## Open questions
 
-1. **Historiography and framing.** The "fog" metaphor measures the past against modern anatomy (a Whiggish frame). Is that acceptable if we say so openly, or should the fog represent "what *this tradition* understood" instead? This affects F02 and F10.
-2. **How is the fog keyed?** Is one global fog per year enough, or should users pick a lens (morphology vs function)? MVP proposal: one fog, graded states.
-3. **Which non-European claims meet the bar?** The *Huangdi Neijing* "circulation" passages and Sushruta's anatomy are often overclaimed in popular sources. Do we include them as contested stories, or leave them out until a specialist reviews them?
-4. **Who reviews accuracy?** Is self-review against cited sources enough for launch, or should we recruit one historian of medicine as a paid or credited reviewer before going public?
-5. **Body illustration style.** Commission a new neutral 2D body, or compose from public-domain plates (Vesalius/Gray's)? Plates give identity but make clean clickable regions harder.
-6. **Is 25 the right number, and which 25?** The candidate list in F04 is longer than 25 and needs cutting.
-7. **"On this day" coverage.** How many of the 25 have a defensible day-month date? If it's fewer than ~12, the daily-card mechanic needs supplementing (birth/death dates, "this week" cards).
-8. **Domain/brand name.**
-9. **Is the success metric target right?** 25% opening 3+ stories is a guess. It needs recalibrating after the first 200 sessions.
-10. **Distribution.** Which channel seeds the first 1,000 sessions: Reddit, Hacker News, history-podcast hosts or *Public Domain Review*-adjacent newsletters?
+1. **Illustrator budget ceiling.** It sets the structure count drawn in full and the number of misbelief drawings (F16).
+2. **Domain and brand name.** The "Unwritten Body" concept suggests names like *The Unwritten Body*, *Palimpsest*, *Fabrica Nova*. Check domains.
+3. **"On this day" coverage.** Only 22 May 1954 is verified so far. If fewer than about 15 defensible dates exist, lead with **"This week in anatomy"** and use dates as a bonus (F07).
+4. **Traditions lens licensing.** The licence for the Ayurvedic Man and Bronze Man plates must be confirmed on each Wellcome record (PD or CC BY is OK; NC is not).
+5. **First teacher market.** UK GCSE (best syllabus fit) or Australia (home)? This affects pack themes and currency.
+6. **Premium edition format:** web-only (cheapest), EPUB/PDF, or print-on-demand too?
+7. **Sponsor policy.** Are pharma or medical-device sponsors excluded? (Recommendation: yes.)
+8. **Is the success-metric target right?** 25% is a guess, so recalibrate after the closed preview.
+9. **Distribution** for the first 1,000 sessions: Reddit, Hacker News, *Public Domain Review*-adjacent newsletters, history podcasters.

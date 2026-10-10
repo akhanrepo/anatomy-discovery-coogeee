@@ -1,105 +1,85 @@
-# F04 — Landmark discovery content set (~25)
+# F04 — Landmark discovery content set
 
-**Priority:** MVP · **Type:** Content · **Depends on:** F05 (sourcing rules), F06 (images) · **Used by:** F01, F02, F03, F07
+**Release:** v1 · **Type:** Content · **Depends on:** F05 (verification), F06 (images) · **Used by:** F01, F02, F03, F07, F09, F11, F12, F14
 
 ## Summary
-The product *is* its content. This brief defines the selection criteria, the authoring template and a candidate longlist from which ~25 landmark discoveries ship at launch. It includes non-European contributors where the historical record supports it, and flags contested ones honestly.
+The product *is* its content. v1 ships **26 discoveries**, chosen against the criteria below and **pre-verified** in the [October 2026 accuracy review](../research/accuracy-review-2026-10.md). The list deliberately includes one **myth-correcting story** (status `revised`) and treats contested "firsts" as part of the story rather than hiding them.
 
-## User problem / job
-"Give me the discoveries that actually changed how we understood the body, not trivia, and not the same five European names."
+## Selection criteria (qualifies on ≥ 3)
+1. **Spatial**: it maps to an identifiable structure.
+2. **Turning point**: it overturned or revised a belief (the "wrong first" beat).
+3. **Methodological story**: the *how* is interesting.
+4. **Sourceable**: a primary source where one exists + ≥ 1 scholarly secondary.
+5. **Breadth**: it improves era, system or tradition coverage.
+6. **Shareable**: it has a hook or a defensible day-month date.
 
-## Selection criteria (a discovery qualifies if it scores on ≥ 3)
-1. **Spatial**: it maps to an identifiable structure on the body.
-2. **Turning point**: it overturned or substantially revised a prior belief (gives the "what they got wrong first" beat).
-3. **Methodological story**: the *how* is interesting (vivisection, quantitative reasoning, microscopy, staining, imaging).
-4. **Sourceable**: a primary source exists, plus ≥ 1 reputable secondary source (scholarly history of medicine).
-5. **Breadth**: it improves coverage of era, body system or tradition.
-6. **Shareable**: it has a defensible day-month date (useful for F07), or a strong hook.
+**Balance targets (CI-checked):** ≥ 8 pre-1500 · ≥ 5 non-European/non-Latin traditions · ≥ 4 post-1900 · ≥ 6 contested or revised · ≥ 7 body systems.
 
-Balance targets for the final 25: **≥ 5 pre-1500**, **≥ 4 non-European/non-Latin traditions**, **≥ 4 post-1900**, **≥ 3 explicitly contested**, and coverage of ≥ 6 body systems.
+## The v1 list
+Verdicts come from the accuracy review: ✅ confirmed · ⚠️ confirmed with a copy rule · 🔁 reframed. **Display dates are as the review set them.**
 
-## Candidate longlist (to be cut to ~25)
-All dates and attributions are **unverified** until sourced under F05. "⚠" marks claims known to be contested or commonly overclaimed in popular sources. These are good candidates *because* the product handles contestation, but each needs careful framing.
+| Tab. | Display date | Who / source | Structure(s) | Story hook | Tradition | Status | Review |
+|---|---|---|---|---|---|---|---|
+| I | c. 1600 BCE (copy of an older text) | Edwin Smith Papyrus | Brain, meninges, skull sutures | The first written word for "brain", in a surgeon's case notes | Egyptian | established | ⚠️ |
+| II | c. 500 BCE | Alcmaeon of Croton | Brain, optic nerves | The brain, not the heart, is the seat of understanding. Did he really dissect an eye? | Greek | contested (dissection) | ⚠️ |
+| III | c. 300–250 BCE | Herophilus & Erasistratus | Nerves, cranial nerves | Nerves told apart from tendons and vessels; motor vs sensory. Accused of vivisecting humans | Hellenistic Alexandria | contested (vivisection) | ⚠️ |
+| IV | c. 2nd–1st c. BCE (compilation) | *Huangdi Neijing* | Heart, vessels | **"The circulation that wasn't"**: how a 1685 European claim and a contested translation made China "anticipate Harvey", and what the text actually describes (*qi* in channels) | Chinese | **revised** | 🔁 |
+| V | Compiled over centuries, from c. last centuries BCE | *Suśruta Saṃhitā* | Skin, muscle layers | A method for dissection: the body is softened in running water and examined layer by layer | Indian | contested (dating) | ⚠️ |
+| VI | c. 160s–190s | Galen | Arteries | Ligating an artery proves it holds blood, not *pneuma* | Greco-Roman | established | ✅ |
+| VII | c. 160s–190s | Galen | Recurrent laryngeal nerve | A squealing pig falls silent before Rome's elite | Greco-Roman | established | ✅ |
+| VIII | 1011–1021 | Ibn al-Haytham, *Kitāb al-Manāẓir* | Eye (function) | Light enters the eye. The eye doesn't send out rays. (Optics, **not** new eye anatomy) | Islamic world | established | ⚠️ |
+| IX | c. 1242 | Ibn al-Nafis, *Sharḥ Tashrīḥ al-Qānūn* | Lungs, pulmonary vessels, septum | No pores in the septum: blood goes through the lungs. Lost until 1924 | Islamic world | contested (transmission) | ⚠️ |
+| X | c. 1512–13 | Leonardo da Vinci | Aortic valve | Vortices close the valve, confirmed by MRI five centuries later. Unpublished, so no influence. Glass model disputed | Renaissance | contested (model) | ⚠️ |
+| XI | 1543 | Andreas Vesalius, *Fabrica* | Mandible, base of brain (*rete mirabile*) | Galen's "human" anatomy was partly animal anatomy | Renaissance | established | ✅ |
+| XII | 1553 · 1556 · 1559 | Servetus · Valverde · Colombo | Pulmonary circulation | Three Europeans, one suppressed book and a priority fight | Renaissance | contested (priority) | ⚠️ |
+| XIII | 1561 | Gabriele Falloppio, *Observationes anatomicae* | Uterine tubes (female figure) | Naming the tubes; correcting Vesalius | Renaissance | established | to verify |
+| XIV | 1603 | Fabricius ab Aquapendente | Venous valves | Described them perfectly and misread them completely | Renaissance | established | ✅ |
+| XV | 1622 (seen) / 1627 (published) | Gaspare Aselli | Lacteals | "Milky veins" in a fed dog, wrongly sent to the liver | Early modern | established | ✅ |
+| XVI | 1628 | William Harvey, *De motu cordis* | Heart, arteries, veins | Arithmetic kills the liver-made-blood model | Early modern | established | ✅ |
+| XVII | 1661 | Marcello Malpighi, *De pulmonibus* | Capillaries, lungs | The missing link Harvey never saw | Early modern | established | ✅ |
+| XVIII | 1664 | Thomas Willis (plates by Christopher Wren) | Arterial circle at the base of the brain | The first complete description *and* function. An architect drew it | Early modern | established | ⚠️ |
+| XIX | Aug–Nov 1677 | Johan Ham & Antonie van Leeuwenhoek | Spermatozoa (male figure) | A student saw them first, and Leeuwenhoek said so | Early modern | established | ⚠️ |
+| XX | 1800 | Xavier Bichat, *Traité des membranes* | Tissues (whole body) | 21 tissues, identified without a microscope | Modern | established | ✅ |
+| XXI | 1869 | Paul Langerhans | Pancreatic islets | Seen in 1869, understood in 1921 | Modern | established | ✅ |
+| XXII | 1888–89 | Santiago Ramón y Cajal | Neurons, cerebellum, retina | Used Golgi's own stain to refute him, then shared a Nobel with him | Modern | established | ✅ |
+| XXIII | 1921–22 | Banting, Best, Collip, Macleod | Pancreas (insulin) | The islets' function, and a bitter credit fight | Modern | contested (credit) | ⚠️ |
+| XXIV | **22 May 1954** | A. F. Huxley & Niedergerke; H. E. Huxley & Hanson | Skeletal muscle | Two unrelated Huxleys, one issue of *Nature*: filaments slide | Modern | established | ✅ |
+| XXV | 2015 (and 1787) | Louveau et al.; Aspelund et al.; Mascagni | Meningeal lymphatic vessels | "Discovered" in 2015, first described in 1787 | Contemporary | contested ("first") | ⚠️ |
+| XXVI | 2018 | Benias et al. | Interstitium | A "new organ"? What counts as an organ | Contemporary | contested | ⚠️ |
 
-| # | Date (display) | Who / source | Structure(s) | Hook / what it overturned | Tradition | Flag |
-|---|---|---|---|---|---|---|
-| 1 | c. 1600 BCE (copy of older text) | Edwin Smith Papyrus | Brain, meninges, spinal cord | Earliest written description of the brain's surface and of injury affecting the limbs | Egyptian | ⚠ authorship/date of original |
-| 2 | c. 500 BCE | Alcmaeon of Croton | Optic nerves, brain | Brain (not heart) as the seat of sensation | Greek | ⚠ whether he dissected |
-| 3 | c. 300–250 BCE | Herophilus & Erasistratus (Alexandria) | Nerves, brain ventricles, heart valves | Nerves distinguished from tendons; systematic human dissection | Hellenistic | ⚠ human vivisection accounts (Celsus) |
-| 4 | c. 2nd–1st c. BCE (compilation) | *Huangdi Neijing* | Heart, vessels | Statements on continuous circulation of blood and qi | Chinese | ⚠ often overclaimed as "anticipating Harvey" |
-| 5 | c. early 1st millennium CE (layered text) | *Sushruta Samhita* | Skin layers, *marma* points, surgical anatomy | Dissection method (body softened in water); surgical anatomy | Indian | ⚠ dating; *marma* ≠ modern structures |
-| 6 | c. 160s–190s CE | Galen | Arteries | Arteries carry blood, not air (vs Erasistratus) | Greco-Roman | |
-| 7 | c. 160s–190s CE | Galen | Recurrent laryngeal nerve | Pig-squeal demonstration: voice controlled by brain via nerves | Greco-Roman | |
-| 8 | c. 1011–1021 | Ibn al-Haytham, *Kitāb al-Manāẓir* | Eye | Intromission theory of vision; anatomy of the eye | Islamic world | |
-| 9 | c. 1025 | Ibn Sina, *al-Qānūn fī al-Ṭibb* | (synthesis) | The standard text Galenism reached Europe through; a target of later critique | Islamic world | — maybe context, not a "discovery" |
-| 10 | c. 1242 | Ibn al-Nafis, *Sharḥ Tashrīḥ al-Qānūn* | Lungs, pulmonary circulation, interventricular septum | Denied Galen's septal pores; blood passes via the lungs | Islamic world | ⚠ transmission to Europe; dissection or not |
-| 11 | 1316 | Mondino de Luzzi, *Anathomia* | (whole body) | Public dissection returns to European teaching | Latin European | — context |
-| 12 | c. 1510–1513 | Leonardo da Vinci | Aortic valve, heart | Vortex flow in the aortic sinuses; unpublished, so no influence for centuries | Renaissance | ⚠ "influence" myth |
-| 13 | 1543 | Vesalius, *De humani corporis fabrica* | Mandible, rete mirabile, sternum, skeleton | Galen's anatomy was largely animal, not human | Renaissance | |
-| 14 | 1553 / 1559 | Servetus; Realdo Colombo | Pulmonary circulation | Independent European statements of pulmonary transit | Renaissance | ⚠ priority |
-| 15 | 1561 | Gabriele Falloppio, *Observationes anatomicae* | Uterine tubes, inner ear | Detailed description of the tubes that bear his name | Renaissance | |
-| 16 | 1603 | Hieronymus Fabricius, *De venarum ostiolis* | Venous valves | Described the valves; misread their function (Harvey's teacher) | Renaissance | great "wrong first" |
-| 17 | 1627 | Gaspare Aselli (posthumous) | Lacteals / lymphatics | "Milky veins": a whole new vessel system | Early modern | |
-| 18 | 1628 | William Harvey, *De motu cordis* | Heart, arteries, veins | Systemic circulation via quantitative argument; overturned Galen's liver-made blood | Early modern | |
-| 19 | 1661 | Marcello Malpighi, *De pulmonibus* | Capillaries, lung alveoli | Microscopy closes Harvey's missing link | Early modern | |
-| 20 | 1664 | Thomas Willis, *Cerebri anatome* | Arterial circle at the base of the brain | Brain anatomy and function by region | Early modern | |
-| 21 | 1677 | Antonie van Leeuwenhoek | Spermatozoa | Microscopy reveals cells in fluids | Early modern | |
-| 22 | 1800 | Xavier Bichat, *Traité des membranes* | Tissues (general) | Organs are made of tissues, a new level of analysis | Modern | |
-| 23 | 1838–1839 | Schleiden & Schwann | Cells (general) | Cell theory | Modern | ⚠ credit (Remak, Virchow) |
-| 24 | 1869 | Paul Langerhans | Pancreatic islets | Islet cells described, function unknown until 1921 | Modern | good "seen ≠ understood" |
-| 25 | 1888 onward | Santiago Ramón y Cajal (using Golgi's stain) | Neurons, synapse gap | Neuron doctrine vs reticular theory | Modern | ⚠ Golgi vs Cajal |
-| 26 | 1902 | Bayliss & Starling | Duodenum, secretin | Chemical messengers: hormones | Modern | |
-| 27 | 1921–1922 | Banting, Best, Collip, Macleod | Pancreas (insulin) | Islet function understood | Modern | ⚠ Nobel credit dispute |
-| 28 | 1954 | H. E. Huxley & Hanson; A. F. Huxley & Niedergerke | Skeletal muscle | Sliding-filament theory of contraction | Modern (1950 anchor) | |
-| 29 | 2012 | Iliff, Nedergaard et al. | Brain ("glymphatic" clearance) | Brain waste clearance pathway | Contemporary | ⚠ actively debated |
-| 30 | 2015 | Louveau et al.; Aspelund et al. | Meningeal lymphatic vessels | "Rediscovered" (Mascagni 18th c. described something similar) | Contemporary | ⚠ "first" framing |
-| 31 | 2016–2017 | J. Calvin Coffey | Mesentery | Reframed as a single continuous organ | Contemporary | ⚠ "new organ" headlines |
-| 32 | 2018 | Benias et al. | Interstitium | Fluid-filled spaces proposed as an organ | Contemporary | ⚠ contested |
-| 33 | 2020 | Valstar et al. | Tubarial salivary glands | Possible new glands found by PSMA PET/CT | Contemporary | ⚠ contested |
+**Context figures, not separate tabs:** Ibn Sina (*Canon*, c. 1025) and Mondino (1316) appear inside Tabs. VI, IX and XI. Mansur ibn Ilyas (*Tashrīḥ-i Manṣūrī*, c. 1390s) anchors the Islamic-world lens (F10).
 
-### Suggested cut to 25 (starting position, revisit after sourcing)
-Keep 1–8, 10, 12–20, 22, 24–25, 27–28, 30, 32. Fold 9 (Ibn Sina) and 11 (Mondino) into others' stories as context. Drop 21, 23, 26, 29, 31, 33 to a v1.1 queue.
+**Coverage check:** pre-1500 = 9 · non-European/non-Latin = 5 (Egyptian, Chinese, Indian, 2× Islamic world) + Alexandria · post-1900 = 4 · contested/revised = 11 · systems = nervous, circulatory, respiratory, lymphatic, musculoskeletal, reproductive, endocrine, sensory, integumentary.
 
-This yields: pre-1500 = 9 · non-European = 5 (Egyptian, Chinese, Indian, 2× Islamic world) + Hellenistic Alexandria · post-1900 = 4 · contested ≥ 8 · systems: nervous, circulatory, respiratory, lymphatic, musculoskeletal, reproductive, endocrine, sensory.
+**Dropped after review:** Herophilus naming the duodenum and Erasistratus's heart valves (couldn't verify); "Vesalius corrected 200 errors" (popular figure, no scholarly source).
 
-## Authoring template (per discovery)
+## Authoring template
 ```yaml
 id: ibn-al-nafis-pulmonary-circulation
-title: "Blood passes through the lungs"
+plate: IX
+title: "No pores in the septum"
 structures: [lungs, pulmonary-artery, pulmonary-vein, interventricular-septum]
-kind: function            # morphology | function | microscopic | molecular
+kind: function
 yearStart: 1242
-yearEnd: 1260
 yearPrecision: circa
 displayDate: "c. 1242"
-people: [ibn-al-nafis]
+people: [ibn-al-nafis]          # Person carries nameOriginal: "ابن النفيس", script: arab
 tradition: islamic-world
-status: contested         # established | contested | revised
-method: "Textual and reasoned critique of Galen and Ibn Sina; whether he dissected is debated."
-priorBelief:
-  text: "Blood seeps from the right to the left ventricle through invisible pores in the septum."
-  heldBy: [galen, ibn-sina]
-  claim: c1
+status: contested
+contestNote: "Whether his work reached 16th-century Europe is debated."
+method: "Reasoned critique of Galen and Ibn Sina's anatomy; whether he dissected is debated."
+corrects: [septal-pores]        # Misbelief (F09)
 claims:
-  c1: { text: "...", citations: [src-x:p12], status: established }
-  c2: { text: "Influence on Servetus/Colombo is unproven.", citations: [...], status: contested }
-assets: [nafis-commentary-ms-page]
-shareDates: []            # none defensible -> excluded from daily cards
-next: [colombo-pulmonary-transit, harvey-circulation]
+  c1: { text: "...", citations: ["src-nafis-sharh:<folio>"], status: established }
+assets: [nafis-sharh-ms-berlin]
+shareDates: []
+threads: [circulation]
+verification: logs/ibn-al-nafis-pulmonary-circulation.md
 ```
-Body copy: Markdown, 120–250 words, with `[^c1]` claim refs.
+Body copy: Markdown, 150–300 words, with `[^c1]` claim references.
 
 ## Acceptance criteria
-- [ ] 25 discoveries published, each passing F05 validation (≥ 1 primary + ≥ 1 secondary source where a primary exists).
-- [ ] Balance targets above are met, as checked by a script.
-- [ ] Every discovery has `method`, `priorBelief` and `status`.
-- [ ] Every non-European entry has been checked against ≥ 1 specialist secondary source (not a general popular history).
-
-## Risks & accuracy notes
-- Popular "firsts" are the minefield. Typical myths to *debunk rather than repeat*: "the Church banned dissection"; "Harvey discovered circulation from nothing"; "Chinese medicine described circulation 2,000 years before Harvey"; "Leonardo advanced anatomy" (his notes were unpublished); "the interstitium is a newly discovered organ."
-- Tokenism risk: don't stretch weak claims to hit the diversity target. The rule is "where the record supports it". If a candidate fails sourcing, it's dropped or shipped as an honest "contested" story.
-
-## Open questions
-- Is #9 (Ibn Sina) a discovery or context? Many readers will expect him by name.
-- Is there budget for a paid specialist review of the Chinese and Indian entries before launch?
-- Which entries have defensible day-month dates for F07? (Initial guess: 13, 18, 19 or fewer. This needs research.)
+- [ ] All 26 published, each with a passing verification log (F05).
+- [ ] Balance targets pass in CI.
+- [ ] Every discovery has `method`, `corrects` (or an explicit `corrects: none` + reason), `status`, ≥ 1 image.
+- [ ] Every non-European entry cites ≥ 1 specialist scholarly work (not a general popular history), with a page locator.

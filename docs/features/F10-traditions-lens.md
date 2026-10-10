@@ -1,24 +1,36 @@
 # F10 — Traditions lens
 
-**Priority:** Later · **Depends on:** F02, F04, F05; needs specialist review
+**Release:** v1 · **Depends on:** F05 (verification), F06 (plates), F16 (frame styling)
 
 ## Summary
-A lens selector that shows how a *specific tradition* understood the body in its own terms. Lenses could include Hippocratic/Galenic humoral anatomy, medieval Islamic medicine, classical Chinese medicine (*zang-fu* organs, channels) and Ayurveda (*doshas*, *marma*, *srotas*), alongside the modern-reference fog.
+A lens selector swaps the modern figure for **a tradition's own historical body diagram**, with hotspots that explain its concepts *in its own terms*. Each concept is explicitly linked, or explicitly not linked, to modern structures. This complements the modern-reference fog (F02): the fog asks "how much of *today's* anatomy was known?", and the lens asks "how did *they* see the body?"
 
-## Why it matters
-- It answers the strongest scholarly critique of the core mechanic: that measuring every culture against modern anatomy makes non-European traditions look like "fog with a few lights". Their models had different aims and categories.
-- It supports the brief's commitment to non-European contributors with substance, not tokens.
-- It would be a strong draw for teachers (Modern History, TOK) and museums.
+## Why its own plate (not an overlay on our body)
+Drawing acupuncture channels or *marma* points on a modern anatomical figure implies an equivalence (or a clinical validation) that isn't there. Using each tradition's own historical image is more honest, more beautiful, and needs no new illustration.
 
-## Why not MVP
-- Mapping is hard and easy to get wrong. A TCM channel or a *marma* point isn't a modern anatomical structure, so drawing one on the modern body risks implying an equivalence (or a validation) that isn't there.
-- It needs a historian of Chinese and of Indian medicine to review it. The MVP includes those traditions only where a specific, sourceable *anatomical* claim exists (F04 #4, #5), and labels them as contested where appropriate.
+## v1 lenses
+| Lens | Plate (from accuracy review) | Concepts (≈ 6–10 hotspots each) |
+|---|---|---|
+| **Islamic world (Galenic)** | *Tashrīḥ-i Manṣūrī*, Mansur ibn Ilyas, c. 1390s; the NLM copy (1488) shows five systems: bones, nerves, muscles, veins, arteries | One page per system, with the five-system scheme itself as the lesson |
+| **Classical Chinese** | "Bronze Man" acupuncture woodcuts, 1537 edition (Wellcome) | *zang-fu* organs, channels (*jingluo*), *qi*, xue; ties to Tab. IV ("The circulation that wasn't") |
+| **Ayurveda** | "Ayurvedic Man", Nepal, 18th c. (Wellcome 574912i), with text from the *Bhāvaprakāśa* | *doṣa*, *dhātu*, *srotas*, *marma*; ties to Tab. V |
+| **Modern** (default) | Our figure (F16) | — |
 
-## Scope (when built)
-- `Tradition { id, name, era, description, sources[] }`, with a `TraditionModel` per tradition that holds its own body diagram (ideally a historical one, e.g. a Chinese acupuncture chart or an Islamic anatomical manuscript like the *Tashrīḥ-i Manṣūrī*) instead of forcing the modern body.
-- Side-by-side or toggle view: "their body" vs the modern schematic.
-- Clear framing copy: description, not endorsement of clinical efficacy.
+(A Greco-Roman/Galenic lens is effectively covered by the misbelief layer, F09.)
 
-## Open questions
-- Should each lens use its own historical diagram (more honest, more work) or overlay the shared body (cheaper, more distortion)? The recommendation is its own diagram.
-- Which tradition goes first? Islamic-world medicine is closest to the Galenic thread already in the MVP, so it's lowest risk.
+## User stories
+- As a reader, I switch the lens and see a tradition's own body picture with its own vocabulary (original script + transliteration).
+- As a reader, each concept says how it relates to modern anatomy: **corresponds**, **partially corresponds**, or **no modern equivalent**.
+- As a reader, I'm told clearly that this is history, not health advice.
+
+## Data
+`Tradition { id, name, plateAssetId, era, intro, sources[] }` · `TraditionConcept { id, traditionId, name, nameOriginal, script, story, claims[], hotspot (polygon on plate), relatesTo[]: { structureId, relation } }`
+
+## Acceptance criteria
+- [ ] Each lens has ≥ 6 concepts, each verified (F05) with ≥ 1 **specialist** scholarly source (e.g. Unschuld, Wujastyk, Meulenbeld, Savage-Smith) and a page locator.
+- [ ] Every concept has an explicit `relatesTo` (which may be empty, with "no modern equivalent").
+- [ ] Plate licences are confirmed on each record (F06). If one is NC, swap in an alternative plate before launch.
+- [ ] A disclaimer appears on every non-modern lens: "Historical description, not medical advice."
+
+## Risks
+- This is the highest-risk content for misrepresentation. Verification uses specialist sources only, and if a concept can't be verified to that standard it's cut, not softened.

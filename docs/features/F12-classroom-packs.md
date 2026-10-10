@@ -1,25 +1,28 @@
-# F12 — Printable classroom packs
+# F12 — Classroom packs
 
-**Priority:** Later (first revenue experiment) · **Price:** A$15–30 per pack · **Depends on:** F04, F05, F06, F11 (threads)
+**Release:** v1 (3 paid packs + 1 free sample) · **Price:** A$15–30 · **Depends on:** F04, F05, F06, F11, F16
 
 ## Summary
-Downloadable PDF packs for high-school teachers, built around a thread (e.g. "The circulation of the blood", "Seeing the invisible: microscopy"). Each includes printable body diagrams with the fog at key years, story cards, primary-source extracts, a "spot the myth" activity, discussion questions and a teacher's answer key with sources.
+Printable PDF packs for high-school teachers, each built from a thread: plates showing the body at 4 key years, story cards, primary-source extracts, a "spot the myth" activity, discussion questions and an answer key with full sources. They're **generated from the same content**, with no hand-built PDFs.
 
-## Target user
-Biology and history teachers: Australian Curriculum / NSW Stage 5–6 Science (nature and development of science), Modern History, IB TOK / History, UK KS4 History "Medicine through time" (GCSE thematic study, a near-perfect fit).
+## Launch packs
+| Pack | Thread | Syllabus fit |
+|---|---|---|
+| Free sample: "Galen vs Vesalius" | subset | lead magnet |
+| The circulation of the blood | circulation | GCSE History "Medicine through time"; NSW Science (nature of science) |
+| Myths and "firsts" in medicine | myths | IB TOK, Modern History (source analysis) |
+| Seeing the invisible | microscopy | Biology (cells, tissues), nature of science |
 
-## Why not MVP
-It's the secondary ICP. The free audience first proves the content is good and accurate. Packs need the citation rigour (F05) and image rights (F06, no NC licences) to already be in place, and those MVP decisions are what keep this option open.
+## Scope
+- Print templates (Paged.js via headless Chromium at build): A4 *and* US Letter, black-and-white friendly, with **black-line versions of the plates** that students can hand-colour as they "write in" knowledge (the F16 metaphor works on paper too).
+- Commerce: Lemon Squeezy or Paddle as merchant of record (GST/VAT, invoices for schools), hosted checkout, file delivery. **School licence** option (unlimited copies within one school) at 3× the single price.
+- `/teachers` landing page with sample spreads.
 
-## Scope (when built)
-- Pack generator from repo content (same data, print templates). No hand-built PDFs.
-- Storefront: Gumroad / Lemon Squeezy / Stripe Payment Links. No accounts.
-- One free sample pack as a lead magnet.
-
-## Validation before building
-- 10 teacher conversations. Pre-sell a single pack via a landing page before generating the series.
-- Check fit against the actual syllabus dot points (GCSE "Medicine through time"; NSW syllabus outcomes).
+## Acceptance criteria
+- [ ] Packs regenerate automatically when the underlying content changes, with a version number on the cover.
+- [ ] Every claim in a pack is traceable to a verified Claim (same IDs).
+- [ ] Purchase → delivery works without accounts. Invoices are school-friendly.
 
 ## Open questions
-- Which is the first market: UK GCSE (largest, clearest syllabus fit) or Australia (home market)?
-- Should pricing be per pack, or a school licence?
+- First market: UK (best fit) or Australia (home)? This sets the currency display and syllabus mapping order.
+- Is the school-licence price right? Test it at 3×.

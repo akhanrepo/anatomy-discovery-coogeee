@@ -1,21 +1,27 @@
-# F11 — Timeline & people browse views
+# F11 — Timeline, people & threads
 
-**Priority:** Later (a minimal accessible list ships in F01) · **Depends on:** F04
+**Release:** v1 · **Depends on:** F04 · **Used by:** F12 (packs), F14 (edition)
 
 ## Summary
-Non-spatial ways in: a horizontal timeline of all discoveries, a "People" index (with tradition, era and what they got right or wrong), and "threads" (e.g. *The circulation of the blood: Galen → Ibn al-Nafis → Colombo → Fabricius → Harvey → Malpighi*).
+Non-spatial ways in, generated from existing content: a **timeline** of all discoveries and misbeliefs, a **people** index, and **threads**, which are curated guided tours that play as a sequence on the body.
 
-## Why it matters
-- Some readers think in people and narratives, not anatomy.
-- Threads are the natural unit for teachers (F12) and for long-form premium content (F14).
-- They're good for SEO: people pages rank for names.
+## v1 threads
+| Thread | Tabs |
+|---|---|
+| The circulation of the blood | VI → IX → XII → XIV → XVI → XVII |
+| The brain and nerves | I → II → III → VII → XVIII → XXII |
+| Seeing the invisible (microscopy) | XVII → XIX → XX → XXI → XXII |
+| Myths and "firsts" | IV → X → XII → XIX → XXV → XXVI |
+| Beyond Europe | I → IV → V → VIII → IX (+ lenses) |
+| The hidden vessels (lymph) | XV → XXV |
 
-## Why not MVP
-The body plus slider must prove the spatial concept first. A basic list (F01) covers accessibility.
+## Scope
+- `/timeline`: an engraved horizontal timeline (shares the panorama art).
+- `/people`, `/people/{id}`: name in original script, dates, tradition, what they got right and wrong.
+- `/threads/{id}`: intro + **"Play this tour"**, which drives the body: the slider moves and stories open in sequence, with next/prev controls.
+- Thread intros (≈ 150 words) are verified like everything else.
 
-## Scope (when built)
-- `/timeline`, `/people`, `/people/{id}`, `/threads/{id}` as static pages generated from existing data. No new content is needed except thread intros.
-- `Thread { id, title, intro, discoveries[] (ordered) }`.
-
-## Open questions
-- Should threads be the default *onboarding* (a guided tour) instead of free exploration? This could be tested in v1.1 against the success metric.
+## Acceptance criteria
+- [ ] All pages are statically generated with no new data beyond `Thread` records.
+- [ ] Tours are keyboard operable, with pause/resume.
+- [ ] Every person page links to every discovery and misbelief they're part of.

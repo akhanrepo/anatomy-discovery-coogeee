@@ -1,67 +1,53 @@
-# F02 — "Fog of ignorance" timeline slider
+# F02 — Timeline slider ("the fog")
 
-**Priority:** MVP (core mechanic) · **Depends on:** F01, F04 · **Used by:** F03, F07
+**Release:** v1 (core mechanic) · **Depends on:** F01, F04, F16 · **Used by:** F03, F07, F09
 
 ## Summary
-A timeline slider that sets the "current year". Every structure is rendered according to what was understood about it by that year: fogged, partly revealed or fully lit. Dragging forward shows knowledge filling in over centuries. This is the product's signature interaction and the leading diagnostic for whether the concept works.
+A slider sets the year, and every structure is drawn according to what was understood by then. Not yet known means blank paper. Seen but not understood means an engraved outline. Understood means full hatching and hand-colour. Misbeliefs current at that year are written in vermilion (F09). Dragging forward, you watch the body being **written in**. This is the signature interaction.
 
-## User problem / job
-"I want to *feel* how little was known, and when it changed." No book or video can show the accumulation spatially.
+## Framing (decided)
+The fog **measures past knowledge against modern anatomy**. We accept that and say so plainly in an "About the fog" note: *"This view asks: how much of today's anatomy was known in a given year? It's a deliberately modern question. Past physicians had complete, coherent models of their own. You can see those in red ink (beliefs) and in the Traditions lens."*
 
 ## User stories
-- As a reader, I can drag a slider from antiquity to today and watch structures reveal.
-- As a reader, I can jump between anchor eras with one tap: **c. 200 (Galen) · 1242 (Ibn al-Nafis) · 1543 (Vesalius) · 1628 (Harvey) · 1950 · Today**.
-- As a reader, I see a short caption for the current era ("1543: Vesalius publishes the *Fabrica* ...").
-- As a reader, I can tell the difference between "not known", "seen but not understood" and "believed wrongly".
+- As a reader, I can drag from antiquity to today and watch structures ink in.
+- As a reader, I can jump between anchor eras with one tap: **c. 1600 BCE · c. 200 · c. 1242 · 1543 · 1628 · 1800 · 1950 · Today**.
+- As a reader, I see a margin caption for the current era, in a period-appropriate script (F16).
+- As a reader, I can tell "unknown", "described" and "understood" apart without relying on colour.
+- As a reader, I can press **Play history** and watch the whole sequence animate (about 60s).
 
 ## Scope
 **In**
-- Continuous slider (range c. 1600 BCE to the current year) with snap points at the anchors.
-- Non-linear scale. Most action is 1500–1900, so a linear scale would waste most of the track on antiquity. Use a piecewise scale with anchors evenly spaced.
-- Derived per-structure state (see below), rendered as opacity, desaturation and a texture/hatch.
-- Era caption + "N structures revealed" counter.
-- Prev/next anchor buttons and keyboard arrows.
-- Optional autoplay ("Play history") that steps through the anchors (respects reduced motion).
+- Range c. 1600 BCE → current year. A **piecewise scale** gives each anchor era equal track width. Otherwise 1500–2000, where most of the action is, would be squeezed into a sliver.
+- **Track = engraved panorama** (F16) of the places where knowledge was made. The thumb is a reading glass that shows the year.
+- Pure `stateAt(structure, year)` engine + `activeMisbeliefs(year)`.
+- Era treatments: paper texture, ink tone, marginal script (F16).
+- Counter: "14 of 40 structures known".
+- Prev/next anchor buttons, keyboard and autoplay.
+- Year in the URL (`?y=1628`).
 
-**Out**
-- Multiple lenses (morphology-only vs function-only) — later, see open questions.
-- Per-tradition fog (F10).
-
-## Behaviour & UX notes
-**State derivation** (pure function, unit-tested):
-
+## State engine (pure, unit-tested)
 ```
 stateAt(structure, year):
   ds = discoveries touching structure with yearStart <= year
-  if none                     -> UNKNOWN          (full fog)
-  if any kind=function         -> UNDERSTOOD       (fully lit)
-  else                         -> DESCRIBED        (half-lit: seen, purpose unclear)
-  misbelief = an active priorBelief applies at year and isn't yet corrected
-                               -> overlay marker (e.g. dashed outline + "belief" tag)
-```
+  none                    -> UNKNOWN      (blank paper + plate-mark contour)
+  any kind != morphology  -> UNDERSTOOD   (line + hatch + wash)
+  else                    -> DESCRIBED    (line only)
 
-- **Fog ≠ darkness everywhere at 200 AD.** Egyptian, Alexandrian and Galenic knowledge mean several structures are already DESCRIBED or UNDERSTOOD. That's the point: the fog is uneven.
-- Contested-date discoveries (F05) reveal at `yearStart` but show a "date contested" marker.
-- Default landing year is **Today** (fully lit, pretty). The onboarding nudge asks people to drag back. Alternative: land at 200 AD and push forward. A/B later.
+activeMisbeliefs(year):
+  misbeliefs with yearStart <= year and (correctedBy.yearStart > year)
+  -> drawn in vermilion; on crossing correctedBy year -> erasure animation, ghost remains
+```
+- The body isn't blank at c. 200. Egyptian, Alexandrian and Galenic knowledge are already inked. The unevenness is the point.
+- Contested-date discoveries reveal at `yearStart`, with a "date contested" mark in the margin.
+- Default landing year is **Today** (most beautiful), with a nudge to drag back.
 
 ## Acceptance criteria
-- [ ] `stateAt` is a pure function with unit tests covering the anchor years for every structure in the content set.
-- [ ] Snapping to each anchor shows the expected state for a hand-checked fixture of ≥ 10 structures.
-- [ ] The slider is operable by keyboard (arrows step years, PageUp/PageDown step anchors) and announces the year and era caption to screen readers (`aria-valuetext`).
-- [ ] Fog transitions animate in ≤ 300ms, and changes are instant under `prefers-reduced-motion`.
-- [ ] The current year is reflected in the URL (`?y=1628`) for deep links (F07).
-- [ ] 60fps on a mid-range phone while dragging, with ~25 regions.
+- [ ] `stateAt` and `activeMisbeliefs` are pure, with fixture tests at every anchor for every structure.
+- [ ] The slider is keyboard operable (arrows = years, PageUp/PageDown = anchors). `aria-valuetext` announces the year + era caption + count.
+- [ ] Ink-in ≤ 900ms; erasure ≤ 700ms; instant under reduced motion.
+- [ ] 60fps while dragging on a mid-range phone with all layers visible.
+- [ ] Deep link `?y=` restores the state exactly.
 
-## Data & dependencies
-- `Discovery.yearStart`, `kind`, `priorBelief`, `status`.
-- `Era { year, label, caption }`, about 6 records.
-
-## Risks & accuracy notes
-- **Whig-history critique (PRD OQ1).** The fog measures the past against modern anatomy. Mitigation: an "About the fog" note says this plainly, and misbelief markers make clear that past models were coherent systems, not just blanks.
-- "Understood" is fuzzy. The three-state model is a deliberate simplification. Document the rules publicly so it's honest, not hidden.
-- Dates before ~1500 are often approximate (c., fl.). Never show false precision.
-
-## Open questions
-- Is the slider range anchored at c. 1600 BCE (Edwin Smith Papyrus) or does it start at 500 BCE to keep the track readable?
-- Should the anchors be fixed or content-driven (e.g. auto-add 1661 Malpighi)?
-- Should there be a "lens" toggle (structure vs function) in v1.1?
+## Risks
+- "Understood" is a simplification. The three-state rules are published on the About page so the simplification is honest, not hidden.
+- Pre-1500 dates are approximate (c., fl., ranges). Never show false precision.
