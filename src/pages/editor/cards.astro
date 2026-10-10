@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { corpus } from '../../lib/content/load';
+import { cardView } from '../../lib/cards';
+import { site } from '../../config/site';
+const c = corpus();
+const rows = c.calendar.map((s, i) => ({ week: i + 1, ...cardView(s) }));
+const base = Astro.site?.toString().replace(/\/$/, '') ?? '';
+---
+<Layout title="Card schedule (editor)" description="Unlisted: weekly card schedule.">
+  <meta name="robots" content="noindex" slot="head" />
+  <article class="prose">
+    <h1>Card schedule</h1>
+    <p class="small">Unlisted. Copy a caption and download the image to post manually.</p>
+    <h2>On this day</h2>
+    <ul>{c.shareDates.map((s) => <li>{s.day}/{s.month} ({s.calendar}, {s.basis}): {s.caption} <a href={`/og/${s.discovery}.png`} download>image</a></li>)}</ul>
+    <h2>Weekly</h2>
+    <ol>{rows.map((r) => (
+      <li><strong>Week {r.week}</strong>: {r.title}
+        <br /><textarea readonly rows="3" cols="60">{`${r.title}. ${r.text} ${base}${r.href} #${site.name}`}</textarea>
+        {r.image && <a href={r.image} download>Download image</a>}
+      </li>
+    ))}</ol>
+  </article>
+</Layout>

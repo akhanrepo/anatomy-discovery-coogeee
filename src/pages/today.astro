@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Subscribe from '../components/Subscribe.astro';
+import { corpus } from '../lib/content/load';
+import { cardFor, isoWeek } from '../lib/week';
+import { cardView } from '../lib/cards';
+const c = corpus();
+const cards = c.calendar.map((s, i) => ({ week: i + 1, ...cardView(s) }));
+const onThisDay = c.shareDates.map((s) => ({ ...s, view: cardView(s.discovery) }));
+const fallback = cardFor(new Date(), c.calendar, c.shareDates);
+const fallbackWeek = Math.min(c.calendar.length, isoWeek(new Date()));
+---
+<Layout title="This week in anatomy" description="One plate a week from the history of the body.">
+  <article class="prose">
+    <h1 data-today-heading>This week in anatomy</h1>
+    <div data-cards>
+      {onThisDay.map((s) => (
+        <section class="card" data-otd={`${s.month}-${s.day}`} hidden={!(fallback.kind === 'on-this-day' && fallback.subject === s.discovery)}>
+          <p class="smallcaps plate-no">On this day · {s.day}/{s.month}/{s.year} ({s.calendar})</p>
+          <h2><a href={s.view.href}>{s.view.title}</a></h2>
+          <p>{s.caption}</p>
+          {s.view.image && <img src={s.view.image} alt="" width="600" height="315" loading="lazy" />}
+        </section>
+      ))}
+      {cards.map((k) => (
+        <section class="card" data-week={k.week} hidden={!(fallback.kind === 'this-week' && k.week === fallbackWeek)}>
+          <p class="smallcaps plate-no">This week · week {k.week}</p>
+          <h2><a href={k.href}>{k.title}</a></h2>
+          <p>{k.text}</p>
+          {k.image && <img src={k.image} alt="" width="600" height="315" loading="lazy" />}
+        </section>
+      ))}
+    </div>
+    <Subscribe />
+  </article>
+  <script is:inline define:vars={{ calendarLen: c.calendar.length }}>
+    (function () {
+      var now = new Date();
+      var d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+      var day = d.getUTCDay() || 7; d.setUTCDate(d.getUTCDate() + 4 - day);
+      var y0 = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      var week = Math.min(calendarLen, Math.ceil(((d - y0) / 86400000 + 1) / 7));
+      var cards = document.querySelectorAll('[data-cards] .card');
+      var otd = document.querySelector('[data-otd="' + (now.getMonth() + 1) + '-' + now.getDate() + '"]');
+      var pick = otd || document.querySelector('[data-week="' + week + '"]');
+      if (!pick) return;
+      cards.forEach(function (c) { c.hidden = c !== pick; });
+      if (otd) document.querySelector('[data-today-heading]').textContent = 'On this day in anatomy';
+    })();
+  </script>
+</Layout>
+<style>
+  .card img { width: 100%; height: auto; border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); }
+</style>

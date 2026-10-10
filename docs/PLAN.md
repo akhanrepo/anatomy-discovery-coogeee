@@ -16,10 +16,10 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 | 6 | Fog engine + slider + panorama | F02 | ✅ done | [F02](plans/F02.md) |
 | 7 | Story panel + misbeliefs | F03, F09 | ✅ done | [F03-F09](plans/F03-F09.md) |
 | 8 | Timeline / people / threads + tours | F11 | ✅ done | [F11](plans/F11.md) |
-| 9 | Traditions lens | F10 | 🔨 building | [F10](plans/F10.md) |
-| 10 | Share cards, /today, OG images, RSS, email signup | F07, F15 | ⏳ | [F07-F15](plans/F07-F15.md) |
-| 11 | Analytics | F08 | ⏳ | [F08](plans/F08.md) |
-| 12 | Classroom packs, edition, sponsorship, commerce links | F12, F14 | ⏳ | [F12-F14](plans/F12-F14.md) |
+| 9 | Traditions lens | F10 | ✅ done | [F10](plans/F10.md) |
+| 10 | Share cards, /today, OG images, RSS, email signup | F07, F15 | ✅ done | [F07-F15](plans/F07-F15.md) |
+| 11 | Analytics | F08 | ✅ done | [F08](plans/F08.md) |
+| 12 | Classroom packs, edition, sponsorship, commerce links | F12, F14 | 🔨 building | [F12-F14](plans/F12-F14.md) |
 | 13 | Full regression (all suites), `/done` review, Netlify project | — | ⏳ | — |
 
 ## Test strategy

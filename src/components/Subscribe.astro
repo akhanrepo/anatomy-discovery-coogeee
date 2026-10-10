@@ -1,0 +1,21 @@
+---
+import { site } from '../config/site';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+const user = site.email.buttondownUser;
+---
+<div class={`subscribe ${compact ? 'compact' : ''}`} data-subscribe>
+  <p class="smallcaps">This week in anatomy</p>
+  {user
+    ? <form action={`https://buttondown.com/api/emails/embed-subscribe/${user}`} method="post" target="_blank" data-subscribe-form>
+        <label>Email <input type="email" name="email" required autocomplete="email" /></label>
+        <button class="btn" type="submit">Subscribe</button>
+        <span class="small">One plate a week. Double opt-in, one-click unsubscribe.</span>
+      </form>
+    : <p class="small">Email digest coming soon.</p>}
+  <p class="small">Or follow by <a href="/feed.xml" data-subscribe-rss>RSS</a>.</p>
+</div>
+<script>
+  document.querySelectorAll('[data-subscribe-form]').forEach((f) => f.addEventListener('submit', () => (window as any).tabulaTrack?.('subscribe', { channel: 'email' })));
+  document.querySelectorAll('[data-subscribe-rss]').forEach((a) => a.addEventListener('click', () => (window as any).tabulaTrack?.('subscribe', { channel: 'rss' })));
+</script>

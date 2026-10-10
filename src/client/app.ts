@@ -220,7 +220,7 @@ export function start() {
       if (!opened.has(id)) {
         opened.add(id);
         try { sessionStorage.setItem('tabula-opened', JSON.stringify([...opened])); } catch { /* private mode */ }
-        if (opened.size === 3) track('stories_3plus');
+        if (opened.size === 3) { track('stories_3plus'); const n = $('[data-subscribe-nudge]'); if (n) n.hidden = false; }
       }
     });
   }

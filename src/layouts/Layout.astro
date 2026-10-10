@@ -10,6 +10,7 @@ import '../styles/global.css';
 import { site } from '../config/site';
 import { analyticsSnippet } from '../lib/analytics';
 import { LIGHT, DARK } from '../styles/tokens';
+import Subscribe from '../components/Subscribe.astro';
 
 interface Props { title?: string; description?: string; ogImage?: string; canonical?: string; paper?: string; bodyClass?: string }
 const { title, description = site.description, ogImage = '/og/default.png', canonical, paper = 'ivory', bodyClass = '' } = Astro.props;
@@ -46,6 +47,7 @@ const url = canonical ?? `${siteUrl}${Astro.url.pathname}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogAbs} />
     <Fragment set:html={analyticsSnippet()} />
+    <slot name="head" />
   </head>
   <body class={`paper ${bodyClass}`} data-paper={paper}>
     <a class="visually-hidden" href="#main">Skip to content</a>
@@ -74,6 +76,7 @@ const url = canonical ?? `${siteUrl}${Astro.url.pathname}`;
         <a href="/support/">Support Tabula</a>
         <a href="/feed.xml">RSS</a>
       </nav>
+      <Subscribe compact />
       <p>The modern body here is an artful schematic, not a reference atlas. Tabula is a history of how the body came to be understood, not medical advice.</p>
       {site.sponsors.filter((s) => s.scope === 'site').map((s) => <p>Supported by <a href={s.url}>{s.name}</a>. Sponsors never review or influence content.</p>)}
     </footer>
