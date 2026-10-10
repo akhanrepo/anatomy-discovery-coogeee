@@ -15,7 +15,7 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 | 5 | Body (male/female, ~40 structures) + flaps | F01, F13 | ✅ done | [F01-F13](plans/F01-F13.md) |
 | 6 | Fog engine + slider + panorama | F02 | ✅ done | [F02](plans/F02.md) |
 | 7 | Story panel + misbeliefs | F03, F09 | ✅ done | [F03-F09](plans/F03-F09.md) |
-| 8 | Timeline / people / threads + tours | F11 | ⏳ | [F11](plans/F11.md) |
+| 8 | Timeline / people / threads + tours | F11 | 🔨 building | [F11](plans/F11.md) |
 | 9 | Traditions lens | F10 | ⏳ | [F10](plans/F10.md) |
 | 10 | Share cards, /today, OG images, RSS, email signup | F07, F15 | ⏳ | [F07-F15](plans/F07-F15.md) |
 | 11 | Analytics | F08 | ⏳ | [F08](plans/F08.md) |

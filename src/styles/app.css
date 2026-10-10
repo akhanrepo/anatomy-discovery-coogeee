@@ -13,7 +13,7 @@
 .misbelief-note { color: var(--vermilion); }
 
 /* Stage: stacked flap layers */
-.stage { position: relative; aspect-ratio: 400 / 1000; height: min(calc(100vh - 290px), 980px); min-height: 420px; max-width: 100%; margin: 0 auto; perspective: 1600px; touch-action: pan-y pinch-zoom; }
+.stage { position: relative; aspect-ratio: 400 / 1000; height: min(calc(100vh - 400px), 980px); min-height: 380px; max-width: 100%; margin: 0 auto; perspective: 1600px; touch-action: pan-y pinch-zoom; }
 .figure-stage { position: absolute; inset: 0; }
 .figure-stage > svg, .flap { position: absolute; inset: 0; width: 100%; height: 100%; }
 .flap svg { width: 100%; height: 100%; display: block; }
