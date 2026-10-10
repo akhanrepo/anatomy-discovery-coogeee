@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { corpus } from '../lib/content/load';
+import { formatYear } from '../lib/scale';
+import { panoramaSvg } from '../art/panorama';
+const c = corpus();
+type Item = { year: number; kind: 'plate' | 'belief'; label: string; title: string; href: string; id: string; status?: string };
+const items: Item[] = [
+  ...c.discoveries.map((d) => ({ year: d.yearStart, kind: 'plate' as const, label: `Tab. ${d.plate} · ${d.displayDate}`, title: d.title, href: `/tab/${d.id}/`, id: d.id, status: d.status })),
+  ...c.misbeliefs.map((m) => ({ year: m.yearStart, kind: 'belief' as const, label: `Belief from ${formatYear(m.yearStart)}`, title: m.title, href: `/?m=${m.id}`, id: m.id })),
+].sort((a, b) => a.year - b.year);
+---
+<Layout title="Timeline" description="Every plate and every belief, in the order they arrived.">
+  <article class="prose wide">
+    <h1>Timeline</h1>
+    <p>Twenty-six plates and nine beliefs of their time, in order. Beliefs are in <span class="misbelief-word">red ink</span>.</p>
+    <svg class="panorama static" viewBox="0 0 1000 60" aria-hidden="true"><Fragment set:html={panoramaSvg()} /></svg>
+    <ol class="timeline-list">
+      {items.map((it) => (
+        <li data-timeline-item class={`tl-${it.kind}`}>
+          <span class="tl-date smallcaps">{it.label}</span>
+          <a href={it.href} data-misbelief-link={it.kind === 'belief' ? it.id : undefined}>{it.title}</a>
+          {it.status && it.status !== 'established' && <span class={`badge badge-${it.status}`}>{it.status}</span>}
+        </li>
+      ))}
+    </ol>
+  </article>
+</Layout>
+<style>
+  .wide { max-width: 52rem; }
+  .panorama.static { width: 100%; height: 60px; }
+  .timeline-list { list-style: none; padding: 0; border-left: 2px solid var(--ink); margin-left: 8px; }
+  .timeline-list li { position: relative; padding: 6px 0 10px 20px; }
+  .timeline-list li::before { content: ''; position: absolute; left: -7px; top: 14px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
+  .tl-belief::before { border-color: var(--vermilion) !important; } /* misbelief marker */
+  .tl-belief a { color: var(--vermilion); } /* misbelief link */
+  .tl-date { display: block; color: var(--gold); font-size: .85rem; }
+  .badge { margin-left: 8px; }
+</style>

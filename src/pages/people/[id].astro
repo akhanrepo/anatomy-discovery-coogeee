@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { corpus } from '../../lib/content/load';
+import { personName } from '../../lib/format';
+export function getStaticPaths() { return corpus().people.map((p) => ({ params: { id: p.id } })); }
+const c = corpus();
+const p = c.people.find((x) => x.id === Astro.params.id)!;
+const ds = c.discoveries.filter((d) => d.people.includes(p.id));
+const mbs = c.misbeliefs.filter((m) => m.heldBy.includes(p.id));
+---
+<Layout title={p.name} description={`${p.name} (${p.dates}) on Tabula: what they found, and what they got wrong.`}>
+  <article class="prose">
+    <p class="smallcaps plate-no">{p.tradition.replace(/-/g, ' ')} · {p.place}</p>
+    <h1 set:html={personName(p)} />
+    <p>{p.dates}</p>
+    {ds.length > 0 && <><h2>Plates</h2><ul>{ds.map((d) => <li><a href={`/tab/${d.id}/`}>Tab. {d.plate}: {d.title}</a> <span class="small">({d.displayDate})</span><br /><span class="small">{d.hook}</span></li>)}</ul></>}
+    {mbs.length > 0 && <><h2>What they got wrong</h2><ul>{mbs.map((m) => <li><a href={`/?m=${m.id}`} data-misbelief-link={m.id} class="misbelief-word">{m.title}</a> <span class="small">{m.belief}</span></li>)}</ul></>}
+    {ds.length === 0 && mbs.length === 0 && <p><em>Appears in the sources and context of other plates.</em></p>}
+  </article>
+</Layout>

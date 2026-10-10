@@ -211,7 +211,7 @@ export function start() {
     if (!stay && source !== 'deeplink') afterPaint(() => setYear(d.yearStart, { quiet: true }));
     highlight(d.structures);
     updateNotYet();
-    openPanel(source === 'deeplink' ? 'load' : 'user');
+    openPanel(source === 'deeplink' || source === 'tour' ? 'load' : 'user');
     const h = $('h2', art) as HTMLElement | null;
     h?.setAttribute('tabindex', '-1');
     if (source !== 'deeplink') afterPaint(() => h?.focus({ preventScroll: mobile() }));
@@ -349,12 +349,58 @@ export function start() {
     } catch { /* user cancelled */ }
   }
 
+  // ── Guided tours (F11) ─────────────────────────────────────────────
+  const bar = $('[data-tour-bar]')!;
+  const pauseBtn = $('[data-tour-pause]')!;
+  let tour: { id: string; title: string; discoveries: string[] } | undefined;
+  let tourIdx = 0;
+  let tourTimer: number | undefined;
+  let tourPaused = false;
+  const TOUR_STEP_MS = 12000;
+  function tourGo(i: number) {
+    if (!tour) return;
+    tourIdx = Math.max(0, Math.min(tour.discoveries.length - 1, i));
+    openStory(tour.discoveries[tourIdx], 'tour');
+    $('[data-tour-pos]')!.textContent = `${tourIdx + 1} of ${tour.discoveries.length}`;
+    scheduleTour();
+  }
+  function scheduleTour() {
+    clearTimeout(tourTimer);
+    if (!tour || tourPaused) return;
+    tourTimer = window.setTimeout(() => { if (tour && tourIdx < tour.discoveries.length - 1) tourGo(tourIdx + 1); else setTourPaused(true); }, TOUR_STEP_MS);
+  }
+  function setTourPaused(p: boolean) {
+    tourPaused = p;
+    pauseBtn.setAttribute('aria-pressed', String(p));
+    pauseBtn.textContent = p ? 'Resume' : 'Pause';
+    if (p) clearTimeout(tourTimer); else scheduleTour();
+  }
+  function startTour(id: string) {
+    tour = model.threads.find((t) => t.id === id);
+    if (!tour) return;
+    bar.hidden = false;
+    $('[data-tour-title]')!.textContent = tour.title;
+    setTourPaused(false);
+    tourGo(0);
+  }
+  function exitTour() {
+    tour = undefined; clearTimeout(tourTimer); bar.hidden = true;
+    history.replaceState(history.state, '', currentUrl());
+  }
+  $('[data-tour-next]')!.addEventListener('click', () => tourGo(tourIdx + 1));
+  $('[data-tour-prev]')!.addEventListener('click', () => tourGo(tourIdx - 1));
+  pauseBtn.addEventListener('click', () => setTourPaused(!tourPaused));
+  $('[data-tour-exit]')!.addEventListener('click', exitTour);
+  panel.addEventListener('pointerdown', () => tour && setTourPaused(true));
+
   // ── Initial state from URL (F02-AC5, F07-AC1) ──────────────────────
   const v = parseView(location.search);
   if (v.fig) setFig(v.fig); else setFig(view.fig);
   if (v.layer) setLayer(v.layer); else refreshFocusable();
   if (v.lens) setLens(v.lens);
-  if (v.d && model.discoveries.some((d) => d.id === v.d)) openStory(v.d, 'deeplink');
+  if (v.tour) startTour(v.tour);
+  else if (v.d && model.discoveries.some((d) => d.id === v.d)) openStory(v.d, 'deeplink');
+  else if (v.m && model.misbeliefs.some((m) => m.id === v.m)) openMisbelief(v.m);
   else if (view.d) openStory(view.d, 'deeplink');
   setYear(v.y ?? view.y, { quiet: true });
   document.documentElement.classList.add('js');

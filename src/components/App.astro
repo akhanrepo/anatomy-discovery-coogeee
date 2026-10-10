@@ -51,6 +51,13 @@ const layerNames: Record<string, string> = { surface: 'Skin', muscles: 'Muscles'
       <FigureStage states={states} phases={phases} names={names} layer={layer} fig={fig} />
       <div class="lens-layer" data-lens-layer hidden><LensView /></div>
     </div>
+    <div class="tour-bar" data-tour-bar hidden role="region" aria-label="Guided tour">
+      <span class="smallcaps" data-tour-title></span> <span class="small" data-tour-pos></span>
+      <button type="button" class="btn" data-tour-prev>Previous</button>
+      <button type="button" class="btn" data-tour-pause aria-pressed="false">Pause</button>
+      <button type="button" class="btn" data-tour-next>Next</button>
+      <button type="button" class="btn" data-tour-exit>Exit tour</button>
+    </div>
     <Timeline model={model} year={year} />
     <details class="struct-list" data-struct-list>
       <summary>All structures (list view)</summary>

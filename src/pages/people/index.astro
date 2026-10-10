@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { corpus } from '../../lib/content/load';
+import { personName } from '../../lib/format';
+const c = corpus();
+const people = [...c.people].sort((a, b) => a.name.localeCompare(b.name));
+---
+<Layout title="People" description="The people behind each plate, and what they got right and wrong.">
+  <article class="prose">
+    <h1>People</h1>
+    <ul class="people-list">
+      {people.map((p) => <li><a href={`/people/${p.id}/`} set:html={personName(p)} /> <span class="small">· {p.dates} · {p.place}</span></li>)}
+    </ul>
+  </article>
+</Layout>

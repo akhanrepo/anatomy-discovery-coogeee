@@ -135,3 +135,5 @@ sup.fn a { text-decoration: none; color: var(--gold); padding: 0 2px; }
 }
 /* Skip layout of below-the-fold story sections until needed (tap→story latency, F01-AC2) */
 .story .sources, .story .story-nav { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+.tour-bar { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; margin-top: var(--s2); padding: var(--s2) var(--s3); border: 1px solid var(--gold); background: color-mix(in srgb, var(--gold) 10%, var(--paper)); }
+.tour-bar[hidden] { display: none; }

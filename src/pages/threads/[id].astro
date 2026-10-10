@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { corpus } from '../../lib/content/load';
+export function getStaticPaths() { return corpus().threads.map((t) => ({ params: { id: t.id } })); }
+const c = corpus();
+const t = c.threads.find((x) => x.id === Astro.params.id)!;
+const ds = t.discoveries.map((id) => c.discoveries.find((d) => d.id === id)!);
+const sponsor = (await import('../../config/site')).site.sponsors.find((s) => s.scope === t.id);
+---
+<Layout title={t.title} description={t.intro}>
+  <article class="prose">
+    <p class="smallcaps plate-no">A tour · {ds.length} plates</p>
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+    <p><a class="btn" href={`/?tour=${t.id}`}>▶ Play this tour</a> <a class="btn" href={`/edition/#${t.id}`}>Read the long version</a></p>
+    <ol>{ds.map((d) => <li><a href={`/tab/${d.id}/`}>Tab. {d.plate}: {d.title}</a> <span class="small">({d.displayDate})</span></li>)}</ol>
+    {sponsor && <p class="small">This tour is supported by <a href={sponsor.url}>{sponsor.name}</a>. Sponsors never review or influence content.</p>}
+  </article>
+</Layout>
