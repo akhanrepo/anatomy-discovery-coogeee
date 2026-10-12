@@ -25,3 +25,4 @@ Non-spatial ways in, generated from existing content: a **timeline** of all disc
 - [ ] **F11-AC1** All pages are statically generated with no new data beyond `Thread` records.
 - [ ] **F11-AC2** Tours are keyboard operable, with pause/resume.
 - [ ] **F11-AC3** Every person page links to every discovery and misbelief they're part of.
+- [ ] **F11-AC4** Every tour intro is 120–180 words, and every factual sentence is footnoted to a verified thread claim (same F05 gates as stories). Lists and meta descriptions use a separate one-line `summary`.
