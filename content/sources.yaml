@@ -742,3 +742,110 @@
   title: Location of the Four Flower Points, Chinese woodcut, 1443
   year: 1443
   url: https://identity.wellcomecollection.org/works/zypye54v
+
+# ── Added for the edition essays (2026-10-12) ───────────────────────────
+- id: ambrose-2006
+  type: secondary
+  scholarly: true
+  author: Charles T. Ambrose
+  title: "[Account of the 17th-century Rudbeck–Bartholin priority dispute over the lymphatic system]"
+  year: 2006
+  publisher: Cellular Immunology
+  url: https://works.bepress.com/charles_ambrose/45/
+  detailsPending: true
+- id: hom-rudbeck
+  type: secondary
+  author: Jeremy M. Norman (HistoryofMedicine.com, Garrison-Morton)
+  title: Rudbeck, Nova exercitatio anatomica (1653)
+  year: n.d.
+  url: https://www.historyofmedicine.com/id/1045
+- id: rudbeck-1653
+  type: primary
+  author: Olof Rudbeck
+  title: Nova exercitatio anatomica, exhibens ductus hepaticos aquosos et vasa glandularum serosa
+  year: 1653
+  publisher: Västerås
+- id: bartholin-1653
+  type: primary
+  author: Thomas Bartholin
+  title: Vasa lymphatica
+  year: 1653
+  publisher: Copenhagen
+- id: park-2006
+  type: secondary
+  scholarly: true
+  author: Katharine Park
+  title: "Secrets of Women: Gender, Generation, and the Origins of Human Dissection"
+  year: 2006
+  publisher: Zone Books, New York
+- id: harvard-gazette-park
+  type: secondary
+  author: Harvard Gazette
+  title: "[Report on Katharine Park's research overturning the myth that the Church prohibited dissection]"
+  year: n.d.
+  url: https://news.harvard.edu/gazette/?p=78442
+  detailsPending: true
+- id: boniface-de-sepulturis
+  type: primary
+  author: Pope Boniface VIII
+  title: Detestande feritatis (De sepulturis)
+  year: 1299/1300
+- id: pmc-cellular-theory
+  type: secondary
+  scholarly: true
+  author: (article, PubMed Central)
+  title: The Cellular Theory
+  year: n.d.
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6108677/
+  detailsPending: true
+- id: hektoen-cell-theory
+  type: secondary
+  author: Hektoen International
+  title: "The beginnings of cell theory: Schleiden, Schwann, and Virchow"
+  year: 2022
+  url: https://hekint.org/2022/07/15/the-beginnings-of-cell-theory-schleiden-schwann-and-virchow/
+- id: virchow-1858
+  type: primary
+  author: Rudolf Virchow
+  title: Die Cellularpathologie
+  year: 1858
+  publisher: Berlin
+- id: kelsey-canon
+  type: secondary
+  scholarly: true
+  author: Kelsey Museum of Archaeology, University of Michigan
+  title: "The Art and Science of Healing: From Antiquity to the Renaissance (exhibition: the Canon)"
+  year: n.d.
+  url: https://exhibitions.kelsey.lsa.umich.edu/art-science-healing/canonical.php
+- id: hom-gerard-cremona
+  type: secondary
+  author: Jeremy M. Norman (HistoryofMedicine.com, Garrison-Morton)
+  title: Gerardus Cremonensis (Gerard of Cremona)
+  year: n.d.
+  url: https://www.historyofmedicine.com/author/d/gerardus-cremonensis-gerard-of-cremona
+- id: ibn-sina-canon
+  type: primary
+  author: Ibn Sina (Avicenna)
+  title: al-Qānūn fī al-Ṭibb (The Canon of Medicine)
+  year: c. 1025
+- id: iliff-2012
+  type: primary
+  author: J. J. Iliff, M. Nedergaard et al.
+  title: A paravascular pathway facilitates CSF flow through the brain parenchyma and the clearance of interstitial solutes, including amyloid β
+  year: 2012
+  publisher: Science Translational Medicine 4
+- id: frontiers-2017-glymphatic
+  type: secondary
+  scholarly: true
+  author: Frontiers in Neuroanatomy (review)
+  title: "The Paravascular Pathway for Brain Waste Clearance: Current Understanding, Significance and Controversy"
+  year: 2017
+  doi: 10.3389/fnana.2017.00101
+- id: pmc-neurosurgery-glymphatic
+  type: secondary
+  scholarly: true
+  author: (review, PubMed Central)
+  title: Neurosurgery and the glymphatic system
+  year: 2024
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11192689/
+  detailsPending: true

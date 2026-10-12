@@ -7,6 +7,10 @@ import { renderStory } from '../../lib/format';
 const c = corpus();
 const e = buildEdition(c);
 const preview = e.chapters.find((ch) => ch.id === 'circulation')!;
+const essay = c.essays.find((x) => x.thread === 'circulation');
+// Free preview: the essay's opening paragraphs (before its first subheading) and the first plate.
+const essayOpening = essay ? essay.body.split(/\n## /)[0] : '';
+const firstStory = preview.sections.map((s) => c.discoveries.find((x) => x.id === s.ref)).find(Boolean);
 ---
 <Layout title="The edition" description="The long version: every tour as an illustrated chapter, with full sources.">
   <article class="prose">
@@ -17,7 +21,8 @@ const preview = e.chapters.find((ch) => ch.id === 'circulation')!;
     <ol>{e.chapters.map((ch) => <li id={ch.id}><strong>{ch.title}</strong>: {ch.sections.length} sections<br /><span class="small">{ch.intro}</span></li>)}</ol>
     <h2>Free preview: {preview.title}</h2>
     <p><em>{preview.intro}</em></p>
-    {preview.sections.slice(0, 2).map((s) => { const d = c.discoveries.find((x) => x.id === s.ref); return d ? <section><h3>{s.title}</h3><div set:html={renderStory(d.body, d.id).html} /></section> : null; })}
-    <p class="small">The full chapter continues with {preview.sections.length - 2} more sections and its sources.</p>
+    {essay && <section data-testid="edition-essay-preview"><h3>{essay.title}</h3><div set:html={renderStory(essayOpening, `essay-${essay.thread}`).html} /><p class="small">…</p></section>}
+    {firstStory && <section><h3>Tab. {firstStory.plate}: {firstStory.title}</h3><div set:html={renderStory(firstStory.body, firstStory.id).html} /></section>}
+    <p class="small">The full chapter continues with the rest of the essay, {preview.sections.length - 2} more sections and its sources.</p>
   </article>
 </Layout>

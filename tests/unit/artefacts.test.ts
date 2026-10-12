@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { loadCorpus } from '../../src/lib/content/load';
 import { PACKS, buildPack } from '../../src/lib/packs';
-import { buildEdition } from '../../src/lib/edition';
+import { buildEdition, editionMarkdown } from '../../src/lib/edition';
 import { contentVersion } from '../../src/lib/version';
-import { runGates } from '../../src/lib/content/gates';
+import { runGates, wordCount } from '../../src/lib/content/gates';
 import { sponsorsVisible } from '../../src/lib/sponsors';
 import { LICENCES } from '../../src/lib/content/schema';
 
@@ -12,7 +12,7 @@ const c = loadCorpus();
 const verified = new Set(c.logs.map((l) => l.subject));
 const resolves = (ref: string) => {
   const [subj, key] = ref.split('#');
-  const owner = c.discoveries.find((d) => d.id === subj) ?? c.misbeliefs.find((m) => m.id === subj);
+  const owner = c.discoveries.find((d) => d.id === subj) ?? c.misbeliefs.find((m) => m.id === subj) ?? c.essays.find((e) => `essay-${e.thread}` === subj);
   return !!owner && !!owner.claims[key] && verified.has(subj);
 };
 
@@ -52,6 +52,20 @@ describe('F14 edition and sponsorship', () => {
       expect((LICENCES as readonly string[]).includes(a.licence), id).toBe(true);
       expect(a.licence).not.toMatch(/NC|SA/);
     }
+  });
+  it('F14-AC5 every thread has a long-view essay and every chapter is 2,500–4,000 words', () => {
+    expect(c.essays.map((x) => x.thread).sort()).toEqual(c.threads.map((t) => t.id).sort());
+    for (const ch of e.chapters) {
+      expect(ch.sections[0].ref, ch.id).toBe(`essay-${ch.id}`);
+      const words = wordCount(ch.intro) + ch.sections.reduce((n, s) => n + wordCount(s.body), 0);
+      expect(words, ch.id).toBeGreaterThanOrEqual(2500);
+      expect(words, ch.id).toBeLessThanOrEqual(4000);
+    }
+  });
+  it('F14-AC5 essay footnotes become chapter footnotes with their sources in the edition markdown', () => {
+    const md = editionMarkdown(e);
+    for (const x of c.essays) for (const k of Object.keys(x.claims)) expect(md, `${x.thread} ${k}`).toContain(`[^essay-${x.thread}-${k}]: `);
+    expect(md).not.toMatch(/\[\^e\d+\]/);
   });
   it('F14-AC4 sponsors render only once the editorial-independence policy page exists', () => {
     expect(existsSync('src/pages/support.astro')).toBe(true);

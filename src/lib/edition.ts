@@ -1,4 +1,4 @@
-/** F14: the premium edition, generated from content: one chapter per thread (intro, stories, beliefs, sources). */
+/** F14: the premium edition, generated from content: one chapter per thread (intro, long-view essay, stories, beliefs, sources). */
 import type { Corpus } from './content/schema';
 import { contentVersion } from './version';
 import { sourceIdOf, locatorOf } from './content/gates';
@@ -12,13 +12,17 @@ export function buildEdition(c: Corpus): Edition {
   const chapters = c.threads.map((t) => {
     const ds = t.discoveries.map((id) => c.discoveries.find((d) => d.id === id)!);
     const mbs = c.misbeliefs.filter((m) => ds.some((d) => d.corrects.includes(m.id)));
+    const essay = c.essays?.find((x) => x.thread === t.id);
+    const essayId = `essay-${t.id}`;
     return {
       id: t.id, title: t.title, intro: t.intro,
       sections: [
+        ...(essay ? [{ title: essay.title, ref: essayId, date: '', body: essay.body.replace(/^## /gm, '### ').replace(/\[\^([^\]]+)\]/g, (_, k) => `[^${essayId}-${k}]`) }] : []),
         ...ds.map((d) => ({ title: `Tab. ${d.plate}: ${d.title}`, ref: d.id, date: d.displayDate, body: d.body.replace(/\[\^([^\]]+)\]/g, (_, k) => `[^${d.id}-${k}]`) + `\n\n*How they knew.* ${d.method}\n\n*What it overturned.* ${d.overturned}` })),
         ...mbs.map((m) => ({ title: `A belief of its time: ${m.title}`, ref: m.id, date: '', body: m.belief })),
       ],
       claims: [
+        ...(essay ? Object.entries(essay.claims).map(([k, cl]) => ({ ref: `${essayId}#${k}`, text: cl.text, sources: cl.citations.map(cite) })) : []),
         ...ds.flatMap((d) => Object.entries(d.claims).map(([k, cl]) => ({ ref: `${d.id}#${k}`, text: cl.text, sources: cl.citations.map(cite) }))),
         ...mbs.flatMap((m) => Object.entries(m.claims).map(([k, cl]) => ({ ref: `${m.id}#${k}`, text: cl.text, sources: cl.citations.map(cite) }))),
       ],

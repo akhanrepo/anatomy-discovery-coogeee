@@ -28,4 +28,5 @@ test('pack preview and edition pages render with a version', async ({ page }) =>
   await expect(page.getByTestId('pack-version')).toContainText(/Edition [0-9a-f]{8}/);
   await page.goto('/edition/');
   await expect(page.getByTestId('edition-version')).toHaveText(/^[0-9a-f]{8}$/);
+  await expect(page.getByTestId('edition-essay-preview')).toContainText('The long view');
 });

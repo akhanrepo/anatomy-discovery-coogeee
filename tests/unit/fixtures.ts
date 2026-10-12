@@ -56,5 +56,6 @@ export function miniCorpus(): Corpus {
     ],
     corrections: [],
     calendar: [],
+    essays: [],
   };
 }

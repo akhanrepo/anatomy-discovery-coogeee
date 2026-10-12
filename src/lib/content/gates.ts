@@ -98,6 +98,15 @@ export function runGates(c: Corpus): GateError[] {
     if (Object.keys(t.claims).length) checkLog(t.id, t.claims);
   }
 
+  // F14: edition essays (same rules as stories; subject id = essay-<thread>)
+  for (const e of c.essays ?? []) {
+    const subject = `essay-${e.thread}`;
+    if (!threads.has(e.thread)) err('ref', subject, `unknown thread "${e.thread}"`);
+    for (const m of e.body.matchAll(/\[\^([^\]]+)\]/g)) if (!e.claims[m[1]]) err('dangling-footnote', subject, `footnote [^${m[1]}] has no claim`);
+    checkClaims(subject, e.claims);
+    checkLog(subject, e.claims);
+  }
+
   // F10: traditions
   for (const t of c.traditions) {
     if (!assets.has(t.plateAsset)) err('ref', t.id, `unknown plate asset "${t.plateAsset}"`);
@@ -130,7 +139,7 @@ export function runGates(c: Corpus): GateError[] {
   if (c.calendar.length && c.calendar.length !== 52) err('calendar', 'calendar', `needs 52 weekly slots, has ${c.calendar.length}`);
 
   // logs must point at something real
-  const subjects = new Set([...discoveries, ...misbeliefs, ...threads, ...concepts.map((k) => k.id)]);
+  const subjects = new Set([...discoveries, ...misbeliefs, ...threads, ...concepts.map((k) => k.id), ...(c.essays ?? []).map((e) => `essay-${e.thread}`)]);
   for (const l of c.logs) if (!subjects.has(l.subject)) err('ref', `log:${l.subject}`, 'log for unknown subject');
 
   // F04: balance targets

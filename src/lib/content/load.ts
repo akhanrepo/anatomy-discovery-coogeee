@@ -49,7 +49,12 @@ export function loadCorpus(root = resolve(process.cwd(), 'content')): Corpus {
     const { data, content } = matter(readFileSync(join(root, 'logs', f), 'utf8'));
     return parse(S.VerificationLog, { ...data, notes: content.trim() }, `logs/${f}`);
   });
+  const essays = mdFiles(join(root, 'essays')).map((f) => {
+    const { data, content } = matter(readFileSync(join(root, 'essays', f), 'utf8'));
+    return parse(S.Essay, { ...data, body: content.trim() }, `essays/${f}`);
+  });
   return {
+    essays,
     structures: list(S.Structure, readYaml(root, 'structures.yaml'), 'structures.yaml'),
     people: list(S.Person, readYaml(root, 'people.yaml'), 'people.yaml'),
     sources: list(S.Source, readYaml(root, 'sources.yaml'), 'sources.yaml'),

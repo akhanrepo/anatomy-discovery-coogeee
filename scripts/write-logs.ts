@@ -37,6 +37,12 @@ const MYTH: Record<string, string[]> = {
   'sliding-filaments': ['Same issue of Nature (22 May 1954)', 'The two Huxleys unrelated'],
   'meningeal-lymphatics': ['"Discovered in 2015" vs Mascagni 1787', 'Which paper in which journal (Louveau: Nature; Aspelund: JEM)'],
   'interstitium-organ': ['"New organ" framing vs critics', 'Artefact explanation'],
+  'essay-circulation': ['Translator of the Canon (Gerard of Cremona, traditional; marked contested)', 'Harvey at Padua under Fabricius'],
+  'essay-brain-and-nerves': ['Galen\'s pig and the voice: which nerve', 'Waldeyer named the neuron doctrine, not Cajal'],
+  'essay-microscopy': ['Remak/Virchow dates and credit (marked contested)', 'Bichat used no microscope', 'Ham saw spermatozoa before Leeuwenhoek'],
+  'essay-myths-and-firsts': ['"The Church banned dissection" (rejected; Park 2006; Boniface VIII bull misread)', 'Count of contested/revised plates checked against content (10)'],
+  'essay-beyond-europe': ['Suśruta date (cautious dating used)', 'Huangdi Neijing circulation claim (revised)', 'Ibn al-Nafis transmission (contested)'],
+  'essay-hidden-vessels': ['Rudbeck vs Bartholin priority (contested)', 'Glymphatic mechanism and human relevance (contested)', 'Mascagni 1787 vs 2015 "discovery"', 'Ancient sightings of lacteals: not claimed either way (no source in hand)'],
 };
 
 const c = loadCorpus();
@@ -45,6 +51,7 @@ const subjects: { id: string; claims: Record<string, Claim>; myth: string[] }[] 
   ...c.discoveries.map((d) => ({ id: d.id, claims: d.claims, myth: MYTH[d.id] ?? [] })),
   ...c.misbeliefs.map((m) => ({ id: m.id, claims: m.claims, myth: ['Belief attributed to the right people, from a primary source', 'Correction dated to first vs mainstream acceptance'] })),
   ...c.traditions.flatMap((t) => t.concepts.map((k) => ({ id: k.id, claims: k.claims, myth: ['Concept described in its own terms, not mapped onto modern anatomy beyond the stated relation', 'Checked for conflicting dates and counts across sources'] }))),
+  ...c.essays.map((e) => ({ id: `essay-${e.thread}`, claims: e.claims, myth: [...(MYTH[`essay-${e.thread}`] ?? []), 'Every factual sentence footnoted or cut; interpretation phrased as interpretation', 'Dates and priority claims reconciled with the plates and the October 2026 review'] })),
 ];
 
 const signId = process.argv.includes('--sign') ? process.argv[process.argv.indexOf('--sign') + 1] : undefined;

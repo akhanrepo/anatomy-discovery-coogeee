@@ -6,6 +6,7 @@ export function contentVersion(c: Corpus): string {
     ...c.discoveries.map((d) => [d.id, d.claims] as const),
     ...c.misbeliefs.map((m) => [m.id, m.claims] as const),
     ...c.traditions.flatMap((t) => t.concepts.map((k) => [k.id, k.claims] as const)),
+    ...(c.essays ?? []).map((e) => [`essay-${e.thread}`, e.claims] as const),
   ].map(([id, cl]) => `${id}:${JSON.stringify(Object.entries(cl).sort())}`).join('\n');
   return createHash('sha256').update(all).digest('hex').slice(0, 8);
 }

@@ -7,7 +7,7 @@
 2. **Sponsorship**: a tasteful sponsor slot for museums, libraries, learned societies or education publishers, at site level or per thread, under a published editorial-independence policy.
 
 ## Premium edition scope
-- Chapters are generated from threads + long-form essays (MDX), and use the same Claim/Citation system. Essays are verified under F05 like everything else.
+- Chapters are generated from threads + long-form essays (Markdown with claim frontmatter, in `content/essays/`), and use the same Claim/Citation system. Essays are verified under F05 like everything else.
 - Formats: the web edition (unlocked by a licence key from the merchant of record, checked client-side; low-stakes content, so no accounts), EPUB (pandoc) and print-quality PDF (Paged.js).
 - "Read the long version" links from each story (F03).
 - Print-on-demand: **open question** (cost and fulfilment).
@@ -22,6 +22,7 @@
 - [ ] **F14-AC2** Every edition claim traces to a verified Claim.
 - [ ] **F14-AC3** Edition and pack images are all commercially licensed (CI, F06).
 - [ ] **F14-AC4** The sponsor policy is published before any sponsor appears.
+- [ ] **F14-AC5** Every thread has a long-view essay (`content/essays/<thread>.md`), and each chapter (thread intro + essay + stories + beliefs) is 2,500–4,000 words. Essays pass the same F05 gates as stories.
 
 ## Open questions
 - Print-on-demand in v1, or digital only?

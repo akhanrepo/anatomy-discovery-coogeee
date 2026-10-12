@@ -191,6 +191,13 @@ export const VerificationLog = z.strictObject({
   notes: z.string(),
 });
 
+export const Essay = z.strictObject({
+  thread: id,
+  title: z.string(),
+  claims: z.record(z.string(), Claim),
+  body: z.string(),
+});
+
 export const Correction = z.strictObject({
   date: z.string(),
   subject: id,
@@ -212,6 +219,7 @@ export type TraditionConcept = z.infer<typeof TraditionConcept>;
 export type ShareDate = z.infer<typeof ShareDate>;
 export type VerificationLog = z.infer<typeof VerificationLog>;
 export type Correction = z.infer<typeof Correction>;
+export type Essay = z.infer<typeof Essay>;
 
 export interface Corpus {
   structures: Structure[];
@@ -227,4 +235,5 @@ export interface Corpus {
   logs: VerificationLog[];
   corrections: Correction[];
   calendar: string[];
+  essays: Essay[];
 }

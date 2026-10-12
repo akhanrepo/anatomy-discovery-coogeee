@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { runGates, type GateError } from '../../src/lib/content/gates';
-import { loadCorpus } from '../../src/lib/content/load';
+import { loadCorpus, claimsHash } from '../../src/lib/content/load';
 import { miniCorpus } from './fixtures';
 
 const gates = (errs: GateError[]) => [...new Set(errs.filter((e) => e.gate !== 'balance').map((e) => e.gate))];
@@ -61,6 +61,35 @@ describe('content gates (F05, F06)', () => {
       c.misbeliefs[0].claims.belief.citations = ['scholar-a', 'harvey-1628'];
       c.misbeliefs[0].claims.belief.citations = ['scholar-a'];
       expect(gates(runGates(c))).toContain('misbelief-primary');
+    });
+  });
+
+  describe('F14-AC5 essays pass the same gates as stories', () => {
+    const withEssay = () => {
+      const c = miniCorpus();
+      const claims = { e1: { text: 'Harvey published De motu cordis in 1628.', citations: ['harvey-1628', 'scholar-a'], status: 'established' as const } };
+      c.threads = [{ id: 'circulation', title: 'Circulation', intro: 'i', discoveries: ['harvey-circulation'], claims: {} } as never];
+      c.essays = [{ thread: 'circulation', title: 'The long view', claims, body: 'Text.[^e1]' }];
+      c.logs.push({ subject: 'essay-circulation', date: '2026-10-12', reviewer: 'claude', claimsHash: claimsHash(claims), sourcesConsulted: ['x'], mythChecks: ['y'], verdict: 'pass', notes: '' });
+      return c;
+    };
+    it('F14-AC5 a well-formed essay passes', () => {
+      expect(gates(runGates(withEssay()))).toEqual([]);
+    });
+    it('F14-AC5 essay with an uncited claim fails', () => {
+      const c = withEssay();
+      c.essays[0].claims.e1.citations = [];
+      expect(gates(runGates(c))).toContain('uncited-claim');
+    });
+    it('F14-AC5 essay with a dangling footnote fails', () => {
+      const c = withEssay();
+      c.essays[0].body += ' More.[^e9]';
+      expect(gates(runGates(c))).toContain('dangling-footnote');
+    });
+    it('F14-AC5 essay with a stale verification log fails', () => {
+      const c = withEssay();
+      c.essays[0].claims.e1.text += ' Edited.';
+      expect(gates(runGates(c))).toContain('stale-verification-log');
     });
   });
 
