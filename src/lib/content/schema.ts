@@ -123,6 +123,9 @@ export const Era = z.strictObject({
 export const Thread = z.strictObject({
   id,
   title: z.string(),
+  /** One line for lists and meta descriptions (plain text). */
+  summary: z.string(),
+  /** ~150 words of Markdown; every factual sentence footnoted to `claims` (F11-AC4). */
   intro: z.string(),
   discoveries: z.array(id).min(2),
   claims: z.record(z.string(), Claim).default({}),

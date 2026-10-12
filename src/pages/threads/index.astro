@@ -6,6 +6,6 @@ const c = corpus();
 <Layout title="Tours" description="Guided tours through the history of the body.">
   <article class="prose">
     <h1>Tours</h1>
-    <ul>{c.threads.map((t) => <li><a href={`/threads/${t.id}/`}>{t.title}</a> <span class="small">· {t.discoveries.length} plates</span><br /><span class="small">{t.intro}</span></li>)}</ul>
+    <ul>{c.threads.map((t) => <li><a href={`/threads/${t.id}/`}>{t.title}</a> <span class="small">· {t.discoveries.length} plates</span><br /><span class="small">{t.summary}</span></li>)}</ul>
   </article>
 </Layout>

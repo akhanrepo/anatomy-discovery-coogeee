@@ -95,6 +95,8 @@ docs/                    PRD, feature briefs, per-feature plans, PLAN.md, resear
 
 Content IDs are kebab-case and **permanent**, because URLs, share cards and tests depend on them. Never invent page numbers, dates or quotes. If something can't be verified, cut it or mark it `contested` or `secondary-summary`. Red ink (`--vermilion`) is reserved for misbeliefs.
 
+Tour intros live in `content/threads.yaml`: `summary` is the one-liner for lists, and `intro` is about 150 words of footnoted Markdown backed by the thread's own `claims` (120–180 words, enforced by the build).
+
 Edition essays are written from a JSON spec with `python3 scripts/write-essay.py <spec.json>`, which writes `content/essays/<thread>.md` with safely quoted frontmatter.
 
 ## Configuration

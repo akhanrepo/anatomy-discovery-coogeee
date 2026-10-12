@@ -29,7 +29,7 @@ claims:
     text: "On 22 May 1954 Nature published two independent papers, by A. F. Huxley and Niedergerke and by H. E. Huxley and Hanson, showing that muscle filaments keep their length and slide past each other during contraction."
     citations: ["huxley-niedergerke-1954", "huxley-hanson-1954", "jgp-2004-sliding"]
 ---
-Every plate in this chapter turns on an instrument or a technique: a lens, a stain, a new way of preparing tissue. And almost every plate carries the same lesson, which is the reason the fog on this site treats microscopic observation as *described* rather than *understood*. To see something is not yet to know what it is for.
+Almost every plate in this chapter turns on an instrument or a technique: a lens, a stain, a new way of preparing tissue. And they carry the same lesson, which is the reason the fog on this site treats microscopic observation as *described* rather than *understood*. To see something is not yet to know what it is for.
 
 ## A closed circuit
 
@@ -65,11 +65,11 @@ If you want one demonstration of why this site draws knowledge in two stages, dr
 
 ## A stain that answered back
 
-The nervous system was the hardest tissue to see clearly, because its cells are tangled together. Camillo Golgi's silver stain solved that by blackening only a few cells, whole, against a pale background. Santiago Ramón y Cajal improved the method and used it, in 1888 and 1889, to show that nerve cells are separate units rather than a continuous net.[^e7] The neurons chapter tells that story. What matters here is the instrument: a chemical trick that made a structure visible, which then settled an argument about function.
+The nervous system was the hardest tissue to see clearly, because its cells are tangled together. Camillo Golgi's silver stain solved that by blackening only a few cells, whole, against a pale background. Santiago Ramón y Cajal improved the method and used it, in 1888 and 1889, to show that nerve cells are separate units rather than a continuous net.[^e7] The brain and nerves chapter tells that story. What matters here is the instrument: a chemical trick that made a structure visible, which then settled an argument about function.
 
 ## Molecules in motion
 
-The last plate in this chapter reaches below the cell. On 22 May 1954, *Nature* published two papers side by side. Andrew Huxley and Rolf Niedergerke had used interference microscopy on living muscle fibres; Hugh Huxley and Jean Hanson had studied isolated myofibrils. Working independently, they reached the same conclusion: during contraction the filaments in muscle keep their length and slide past each other.[^e8]
+One more plate belongs with this chapter, although it is not on this tour, because it reaches below the cell. On 22 May 1954, *Nature* published two papers side by side. Andrew Huxley and Rolf Niedergerke had used interference microscopy on living muscle fibres; Hugh Huxley and Jean Hanson had studied isolated myofibrils. Working independently, they reached the same conclusion: during contraction the filaments in muscle keep their length and slide past each other.[^e8]
 
 Muscle had been described for millennia. On this site it inks in as an outline from Suśruta's text onwards and fills with colour only in 1954, because only then was its working explained.
 

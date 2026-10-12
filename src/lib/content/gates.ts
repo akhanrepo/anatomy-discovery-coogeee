@@ -16,6 +16,7 @@ const isScholarly = (s: Source | undefined) => !!s && s.type === 'secondary' && 
 
 export const BALANCE = { pre1500: 8, nonEuropean: 5, post1900: 4, contestedOrRevised: 6, systems: 7 } as const;
 export const WORDS = { min: 150, max: 300 } as const;
+export const INTRO_WORDS = { min: 120, max: 180 } as const;
 
 export function wordCount(md: string): number {
   return md.replace(/\[\^[^\]]+\]/g, '').split(/\s+/).filter((w) => /[A-Za-zÀ-ɏ]/.test(w)).length;
@@ -94,8 +95,11 @@ export function runGates(c: Corpus): GateError[] {
   // F11: threads
   for (const t of c.threads) {
     t.discoveries.forEach((d) => discoveries.has(d) || err('ref', t.id, `unknown discovery "${d}"`));
+    for (const m of t.intro.matchAll(/\[\^([^\]]+)\]/g)) if (!t.claims[m[1]]) err('dangling-footnote', t.id, `footnote [^${m[1]}] has no claim`);
+    const words = wordCount(t.intro);
+    if (words < INTRO_WORDS.min || words > INTRO_WORDS.max) err('intro-length', t.id, `intro is ${words} words (want ${INTRO_WORDS.min}–${INTRO_WORDS.max})`);
     checkClaims(t.id, t.claims);
-    if (Object.keys(t.claims).length) checkLog(t.id, t.claims);
+    checkLog(t.id, t.claims);
   }
 
   // F14: edition essays (same rules as stories; subject id = essay-<thread>)

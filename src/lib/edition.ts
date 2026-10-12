@@ -15,13 +15,14 @@ export function buildEdition(c: Corpus): Edition {
     const essay = c.essays?.find((x) => x.thread === t.id);
     const essayId = `essay-${t.id}`;
     return {
-      id: t.id, title: t.title, intro: t.intro,
+      id: t.id, title: t.title, intro: t.intro.replace(/\[\^([^\]]+)\]/g, (_, k) => `[^${t.id}-${k}]`),
       sections: [
         ...(essay ? [{ title: essay.title, ref: essayId, date: '', body: essay.body.replace(/^## /gm, '### ').replace(/\[\^([^\]]+)\]/g, (_, k) => `[^${essayId}-${k}]`) }] : []),
         ...ds.map((d) => ({ title: `Tab. ${d.plate}: ${d.title}`, ref: d.id, date: d.displayDate, body: d.body.replace(/\[\^([^\]]+)\]/g, (_, k) => `[^${d.id}-${k}]`) + `\n\n*How they knew.* ${d.method}\n\n*What it overturned.* ${d.overturned}` })),
         ...mbs.map((m) => ({ title: `A belief of its time: ${m.title}`, ref: m.id, date: '', body: m.belief })),
       ],
       claims: [
+        ...Object.entries(t.claims).map(([k, cl]) => ({ ref: `${t.id}#${k}`, text: cl.text, sources: cl.citations.map(cite) })),
         ...(essay ? Object.entries(essay.claims).map(([k, cl]) => ({ ref: `${essayId}#${k}`, text: cl.text, sources: cl.citations.map(cite) })) : []),
         ...ds.flatMap((d) => Object.entries(d.claims).map(([k, cl]) => ({ ref: `${d.id}#${k}`, text: cl.text, sources: cl.citations.map(cite) }))),
         ...mbs.flatMap((m) => Object.entries(m.claims).map(([k, cl]) => ({ ref: `${m.id}#${k}`, text: cl.text, sources: cl.citations.map(cite) }))),
@@ -38,7 +39,7 @@ export function editionMarkdown(e: Edition): string {
     out.push(`# ${ch.title}\n\n${ch.intro}\n`);
     for (const s of ch.sections) out.push(`## ${s.title}${s.date ? ` (${s.date})` : ''}\n\n${s.body}\n`);
     out.push(`### Sources for this chapter\n\n${ch.claims.map((k) => `- **${k.ref}**: ${k.text} ${k.sources.join('; ')}`).join('\n')}\n`);
-    for (const s of ch.sections) for (const m of s.body.matchAll(/\[\^([^\]]+)\]/g)) {
+    for (const body of [ch.intro, ...ch.sections.map((s) => s.body)]) for (const m of body.matchAll(/\[\^([^\]]+)\]/g)) {
       const [subj, key] = [m[1].slice(0, m[1].lastIndexOf('-')), m[1].slice(m[1].lastIndexOf('-') + 1)];
       const k = ch.claims.find((x) => x.ref === `${subj}#${key}`);
       if (k) out.push(`[^${m[1]}]: ${k.text} ${k.sources.join('; ')}`);

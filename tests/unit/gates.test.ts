@@ -5,6 +5,14 @@ import { miniCorpus } from './fixtures';
 
 const gates = (errs: GateError[]) => [...new Set(errs.filter((e) => e.gate !== 'balance').map((e) => e.gate))];
 
+/** Adds a well-formed tour (≈150-word intro, one verified claim) to a corpus. */
+function addThread(c: ReturnType<typeof miniCorpus>) {
+  const claims = { t1: { text: 'Harvey published De motu cordis in 1628.', citations: ['harvey-1628', 'scholar-a'], status: 'established' as const } };
+  c.threads = [{ id: 'circulation', title: 'Circulation', summary: 's', intro: `${Array.from({ length: 150 }, () => 'word').join(' ')}[^t1]`, discoveries: ['harvey-circulation'], claims }];
+  c.logs.push({ subject: 'circulation', date: '2026-10-12', reviewer: 'claude', claimsHash: claimsHash(claims), sourcesConsulted: ['x'], mythChecks: ['y'], verdict: 'pass', notes: '' });
+  return c;
+}
+
 describe('content gates (F05, F06)', () => {
   it('passes a well-formed mini corpus (except balance, which needs the full set)', () => {
     expect(gates(runGates(miniCorpus()))).toEqual([]);
@@ -64,11 +72,34 @@ describe('content gates (F05, F06)', () => {
     });
   });
 
+  describe('F11-AC4 tour intros pass the same gates as stories', () => {
+    it('F11-AC4 a well-formed tour intro passes', () => {
+      expect(gates(runGates(addThread(miniCorpus())))).toEqual([]);
+    });
+    it('F11-AC4 intro with a dangling footnote fails', () => {
+      const c = addThread(miniCorpus());
+      c.threads[0].intro += ' More.[^t9]';
+      expect(gates(runGates(c))).toContain('dangling-footnote');
+    });
+    it('F11-AC4 intro outside 120–180 words fails', () => {
+      const c = addThread(miniCorpus());
+      c.threads[0].intro = 'Too short.[^t1]';
+      expect(gates(runGates(c))).toContain('intro-length');
+      c.threads[0].intro = `${Array.from({ length: 200 }, () => 'word').join(' ')}[^t1]`;
+      expect(gates(runGates(c))).toContain('intro-length');
+    });
+    it('F11-AC4 intro claims need a current verification log', () => {
+      const c = addThread(miniCorpus());
+      c.threads[0].claims.t1.text += ' Edited.';
+      expect(gates(runGates(c))).toContain('stale-verification-log');
+    });
+  });
+
   describe('F14-AC5 essays pass the same gates as stories', () => {
     const withEssay = () => {
       const c = miniCorpus();
       const claims = { e1: { text: 'Harvey published De motu cordis in 1628.', citations: ['harvey-1628', 'scholar-a'], status: 'established' as const } };
-      c.threads = [{ id: 'circulation', title: 'Circulation', intro: 'i', discoveries: ['harvey-circulation'], claims: {} } as never];
+      addThread(c);
       c.essays = [{ thread: 'circulation', title: 'The long view', claims, body: 'Text.[^e1]' }];
       c.logs.push({ subject: 'essay-circulation', date: '2026-10-12', reviewer: 'claude', claimsHash: claimsHash(claims), sourcesConsulted: ['x'], mythChecks: ['y'], verdict: 'pass', notes: '' });
       return c;

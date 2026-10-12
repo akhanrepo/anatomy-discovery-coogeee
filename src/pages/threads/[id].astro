@@ -1,19 +1,37 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { corpus } from '../../lib/content/load';
+import { renderStory, formatCitations } from '../../lib/format';
 export function getStaticPaths() { return corpus().threads.map((t) => ({ params: { id: t.id } })); }
 const c = corpus();
 const t = c.threads.find((x) => x.id === Astro.params.id)!;
 const ds = t.discoveries.map((id) => c.discoveries.find((d) => d.id === id)!);
+const sources = new Map(c.sources.map((s) => [s.id, s]));
+const { html, order } = renderStory(t.intro, t.id);
 const sponsor = (await import('../../lib/sponsors')).sponsorsVisible().find((s) => s.scope === t.id);
 ---
-<Layout title={t.title} description={t.intro}>
+<Layout title={t.title} description={t.summary}>
   <article class="prose">
     <p class="smallcaps plate-no">A tour · {ds.length} plates</p>
     <h1>{t.title}</h1>
-    <p>{t.intro}</p>
+    <div data-testid="tour-intro" set:html={html} />
     <p><a class="btn" href={`/?tour=${t.id}`}>▶ Play this tour</a> <a class="btn" href={`/edition/#${t.id}`}>Read the long version</a></p>
     <ol>{ds.map((d) => <li><a href={`/tab/${d.id}/`}>Tab. {d.plate}: {d.title}</a> <span class="small">({d.displayDate})</span></li>)}</ol>
+    <section class="sources" aria-label="Sources for this introduction">
+      <h2 class="smallcaps">Sources for this introduction</h2>
+      <ol class="footnotes" data-testid="tour-sources">
+        {order.map((k) => {
+          const cl = t.claims[k];
+          return (
+            <li id={`fn-${t.id}-${k}`}>
+              <p class="claim">{cl.text}{cl.status !== 'established' && <span class={`badge badge-${cl.status}`}>{cl.status}</span>}{cl.secondarySummary && <span class="src-tag">read via summaries</span>}</p>
+              {cl.contestNote && <p class="contest-note">{cl.contestNote}</p>}
+              <ul class="cites">{formatCitations(cl, sources).map((h) => <li set:html={h} />)}</ul>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
     {sponsor && <p class="small">This tour is supported by <a href={sponsor.url}>{sponsor.name}</a>. Sponsors never review or influence content.</p>}
   </article>
 </Layout>

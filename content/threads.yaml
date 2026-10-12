@@ -1,25 +1,147 @@
 # Guided tours (F11): each plays as a sequence on the body; also the basis for packs (F12) and edition chapters (F14).
+# summary: one line for lists and meta descriptions. intro: ~150 words of Markdown, every factual sentence footnoted to `claims` (F11-AC4).
 - id: circulation
-  title: The circulation of the blood
-  intro: From Galen's arteries to Malpighi's capillaries, the long argument about where blood goes. It moves through Rome, Cairo, Padua and London, and it is full of half-right answers.
+  title: "The circulation of the blood"
+  summary: "From Galen's arteries to Malpighi's capillaries, the long argument about where blood goes. It moves through Rome, Cairo, Padua and London, and it is full of half-right answers."
+  intro: "In Galen's physiology, blood was made continuously in the liver from digested food, carried outwards by the veins and consumed by the body, and some of it passed from the right side of the heart to the left through pores in the septum. Ibn Sina's *Canon* repeated the teaching.[^t1] This tour follows the long argument that took the picture apart. In Cairo, Ibn al-Nafis rejected the pores and sent the blood through the lungs.[^t2] In the 1550s three Europeans described the same route, and who deserves the credit is still argued over.[^t3] Fabricius described the valves of the veins but thought they were brakes; his student Harvey turned them into evidence and argued in 1628 that the blood must circulate.[^t4] The last missing link, the vessels between arteries and veins, was seen by Malpighi in 1661.[^t5] Almost everyone on this tour was partly right. Watch the red ink of the septal pores fade as the heart fills in."
   discoveries: [galen-arteries-blood, ibn-al-nafis-pulmonary-circulation, pulmonary-circulation-europe, fabricius-venous-valves, harvey-circulation, malpighi-capillaries]
+  claims:
+    t1:
+      text: "In Galenic physiology blood was made continuously in the liver from digested food, carried outwards by the veins and consumed by the body; Galen taught that blood passes from the right to the left side of the heart through pores in the septum, and Ibn Sina's Canon repeated the teaching."
+      citations: ["galen-usu-partium", "neuss-2018", "stanford-harvey", "akmal-2010"]
+    t2:
+      text: "Ibn al-Nafis rejected the septal pores and described blood passing from the right ventricle through the lungs to the left."
+      citations: ["nafis-sharh", "akmal-2010", "hektoen-nafis"]
+    t3:
+      text: "In Europe the lung route was described by Servetus in a suppressed theological book of 1553, by Valverde in print in 1556, and by Colombo in 1559."
+      citations: ["servetus-1553", "hoi-pulmonary", "museo-galileo-colombo"]
+      status: "contested"
+      contestNote: "Priority among the three, and any link to Ibn al-Nafis, is debated."
+    t4:
+      text: "Fabricius described the valves of the veins in 1603 but believed they slowed blood flowing away from the heart; his student William Harvey reinterpreted them as evidence that venous blood flows towards the heart, and argued in De motu cordis (1628) that the blood circulates."
+      citations: ["fabricius-1603", "harvey-1628", "mizzou-fabricius", "hom-fabricius"]
+    t5:
+      text: "Harvey inferred but never saw the connection between arteries and veins; in 1661 Malpighi, with Carlo Fracassati, observed blood in minute vessels of the frog lung."
+      citations: ["malpighi-1661", "tonetti-2015", "unibo-malpighi"]
 - id: brain-and-nerves
-  title: The brain and nerves
-  intro: How the head became the seat of thought, how nerves were told apart from everything else, and how the nervous system turned out to be made of separate cells.
+  title: "The brain and nerves"
+  summary: "How the head became the seat of thought, how nerves were told apart from everything else, and how the nervous system turned out to be made of separate cells."
+  intro: "Where does thinking happen? The answer now seems obvious, but it had to be argued for, and the argument took more than three thousand years. This tour starts with an Egyptian surgical papyrus, copied around 1700–1600 BCE, which holds the earliest known written descriptions of the brain's surface, its coverings and the fluid around it.[^t1] In the Greek world, Alcmaeon of Croton held the brain to be the seat of understanding.[^t2] In Alexandria, Herophilus told nerves apart from blood vessels and tendons and separated sensory from motor nerves.[^t3] In Rome, Galen cut a nerve in a squealing pig and silenced it.[^t4] Thomas Willis gave the first complete description of the ring of arteries beneath the brain in 1664.[^t5] And in 1888–89, Cajal showed that the nervous system is built from separate cells.[^t6] Each step answered one question by asking a sharper one: not just whether the brain matters, but how its parts are connected."
   discoveries: [edwin-smith-papyrus, alcmaeon-brain-sensation, herophilus-nerves, galen-recurrent-laryngeal, willis-arterial-circle, cajal-neurons]
+  claims:
+    t1:
+      text: "The Edwin Smith Papyrus, a copy made around 1700–1600 BCE from older material, contains the earliest known written descriptions of the brain's surface, the meninges and the cerebrospinal fluid."
+      citations: ["kamp-2012:abstract", "chudler-papyrus", "breasted-1930"]
+    t2:
+      text: "Alcmaeon identified the brain as the seat of understanding and distinguished understanding from perception."
+      citations: ["huffman-sep-alcmaeon", "hektoen-alcmaeon", "theophrastus-de-sensibus"]
+    t3:
+      text: "Herophilus distinguished nerves from blood vessels and tendons, separated sensory from motor nerves, and described several pairs of cranial nerves."
+      citations: ["pearce-2013", "bibalex-herophilus"]
+    t4:
+      text: "Galen demonstrated before an audience in Rome that cutting the recurrent laryngeal nerves silenced a squealing pig."
+      citations: ["kaplan-2009", "bubb-pig-voice"]
+    t5:
+      text: "Thomas Willis's Cerebri anatome (1664) gave the first complete description of the ring of arteries at the base of the brain."
+      citations: ["willis-1664", "rcp-willis", "rbn-willis"]
+    t6:
+      text: "Using a modified version of Golgi's stain, Cajal showed in 1888–89 that nerve cells are separate units rather than a continuous network."
+      citations: ["cajal-1888", "csic-cajal", "scientifica-cajal"]
 - id: microscopy
-  title: Seeing the invisible
-  intro: What changed when anatomists could see below the naked eye, and why seeing a structure is not the same as understanding it.
+  title: "Seeing the invisible"
+  summary: "What changed when anatomists could see below the naked eye, and why seeing a structure is not the same as understanding it."
+  intro: "This tour is about what changed when anatomists could see below the naked eye, and about a gap that the fog on this site is built to show: the gap between seeing a structure and understanding it. In 1661 Malpighi's lens found the vessels between arteries and veins that Harvey had predicted.[^t1] In 1677 a medical student, Johan Ham, showed Leeuwenhoek moving cells in semen, and Leeuwenhoek said so.[^t2] In 1800 Bichat argued that organs are built from a limited set of tissues, and he did it without a microscope.[^t3] In 1869 Langerhans described clusters of cells in the pancreas, but their role in making insulin was established only in the twentieth century.[^t4] Cajal used a silver stain to show that nerve cells are separate units.[^t5] Watch the outlines on the body: on this tour, colour usually arrives later than the line. Sometimes the wait was half a century."
   discoveries: [malpighi-capillaries, ham-leeuwenhoek-spermatozoa, bichat-tissues, langerhans-islets, insulin-islets-function, cajal-neurons]
+  claims:
+    t1:
+      text: "Harvey inferred but never saw the connection between arteries and veins; in 1661 Malpighi, with Carlo Fracassati, observed blood in minute vessels of the frog lung."
+      citations: ["malpighi-1661", "tonetti-2015", "unibo-malpighi"]
+    t2:
+      text: "In August 1677 the medical student Johan Ham showed Antonie van Leeuwenhoek moving 'animalcules' in semen; Leeuwenhoek reported them to the Royal Society that November and recorded that Ham had seen them first."
+      citations: ["leeuwenhoek-brieven", "royalsoc-el-l3-7", "leeuwenhoek-1677"]
+    t3:
+      text: "In his Traité des membranes (1800), Xavier Bichat argued that organs are built from a limited set of tissues, distinguished 21 kinds, and worked without a microscope."
+      citations: ["bichat-1800", "pmc-bichat", "heirs-bichat"]
+    t4:
+      text: "In 1869 Paul Langerhans described distinct clusters of cells in the pancreas, later named the islets of Langerhans, whose role in producing insulin was established only in the twentieth century."
+      citations: ["langerhans-1869", "rsb-insulin", "endocrine-insulin-100"]
+    t5:
+      text: "Cajal used an improved version of Golgi's stain, which blackens a few whole nerve cells, to show in 1888–89 that nerve cells are separate units."
+      citations: ["cajal-1888", "csic-cajal", "scientifica-cajal"]
 - id: myths-and-firsts
-  title: Myths and "firsts"
-  intro: Six plates where the popular story is wrong, contested or more interesting than the legend. A tour for sceptics.
+  title: "Myths and \"firsts\""
+  summary: "Six plates where the popular story is wrong, contested or more interesting than the legend. A tour for sceptics."
+  intro: "A tour for sceptics: six plates where the popular story is wrong, contested or less interesting than what really happened. Did ancient China know the circulation of the blood? The claim was being made in Europe by 1685, by Isaac Vossius, and specialist translators do not find it in the text.[^t1] Leonardo explained how the aortic valve closes, and modern imaging agrees with him, but his notes went unpublished for centuries.[^t2] The pulmonary circulation has three European claimants within six years.[^t3] The man usually credited with discovering sperm said himself that a student saw them first.[^t4] Lymphatic vessels around the brain were reported in 2015, and had been described in 1787.[^t5] And a \"new organ\" announced in 2018 started an argument about what the word means.[^t6] None of this makes the history smaller. It shows how a \"first\" gets made: by who wrote, who printed, who was read, and who told the story afterwards."
   discoveries: [huangdi-circulation-myth, leonardo-aortic-valve, pulmonary-circulation-europe, ham-leeuwenhoek-spermatozoa, meningeal-lymphatics, interstitium-organ]
+  claims:
+    t1:
+      text: "Isaac Vossius, in a book published in London in 1685, was among the first Europeans to claim that the Chinese had known the circulation of the blood; Paul Unschuld translates the relevant passages of the Huangdi Neijing as describing neither blood circulation nor a pumping heart."
+      citations: ["vossius-1685", "hom-vossius", "unschuld-1985", "wujastyk-indology-1999"]
+      status: "contested"
+      contestNote: "Needham's reading has defenders in popular literature; specialist translators largely follow Unschuld."
+      secondarySummary: true
+    t2:
+      text: "In drawings of about 1512–13, Leonardo proposed that eddies forming in the sinuses behind the aortic valve cusps help close the valve, a mechanism later confirmed by modern studies including MRI; his anatomical notes went unpublished for centuries."
+      citations: ["rct-919082", "boon-2009"]
+    t3:
+      text: "Michael Servetus described the pulmonary circulation in a suppressed theological book of 1553; Valverde put it in an anatomy book in 1556, crediting Colombo, whose own book appeared in 1559."
+      citations: ["servetus-1553", "valverde-1556", "colombo-1559", "hoi-pulmonary", "museo-galileo-colombo"]
+    t4:
+      text: "In August 1677 the medical student Johan Ham showed Antonie van Leeuwenhoek moving 'animalcules' in semen; Leeuwenhoek reported them to the Royal Society that November and recorded that Ham had seen them first."
+      citations: ["leeuwenhoek-brieven", "royalsoc-el-l3-7", "leeuwenhoek-1677"]
+    t5:
+      text: "Paolo Mascagni described lymphatics in the cerebral dura mater in his 1787 atlas; two independent groups reported meningeal lymphatic vessels again in 2015."
+      citations: ["mascagni-1787", "louveau-2015", "aspelund-2015", "pmc-cns-lymph-history"]
+    t6:
+      text: "In 2018 Benias, Theise and colleagues reported fluid-filled spaces in connective tissue throughout the body; press coverage called it a 'new organ', a label other anatomists disputed."
+      citations: ["benias-2018", "hytiroglou-wanless-2018", "nyunews-interstitium"]
+      status: "contested"
+      contestNote: "Supporters see a newly recognised body-wide system; critics see a better view of tissue already known as connective tissue or fascia."
 - id: beyond-europe
-  title: Beyond Europe
-  intro: Egyptian, Indian, Chinese and Islamic-world contributions, told carefully, including one popular claim that does not survive scrutiny. Pair this tour with the Traditions lens.
+  title: "Beyond Europe"
+  summary: "Egyptian, Indian, Chinese and Islamic-world contributions, told carefully, including one popular claim that does not survive scrutiny. Pair this tour with the Traditions lens."
+  intro: "Knowledge of the body was not made in Europe alone, and this tour follows five contributions from Egypt, India, China and the Islamic world. It tells them carefully, because the popular versions are often wrong in both directions. An Egyptian surgical papyrus holds the earliest known written descriptions of the brain's surface and coverings.[^t1] The Sanskrit *Suśrutasaṃhitā* describes softening a body in water and removing its layers one by one, though it is younger than popular accounts claim.[^t2] The claim that the *Huangdi Neijing* describes Harvey's circulation does not survive a close reading, and its plate never inks in.[^t3] Ibn al-Haytham argued that vision happens when light enters the eye.[^t4] Ibn al-Nafis described blood passing through the lungs three centuries before any European did.[^t5] Pair this tour with the Traditions lens, which shows Islamic-Galenic, Chinese and Ayurvedic maps of the body on their own terms rather than as early drafts of a modern atlas."
   discoveries: [edwin-smith-papyrus, huangdi-circulation-myth, sushruta-dissection, ibn-al-haytham-vision, ibn-al-nafis-pulmonary-circulation]
+  claims:
+    t1:
+      text: "The Edwin Smith Papyrus, a copy made around 1700–1600 BCE from older material, contains the earliest known written descriptions of the brain's surface, the meninges and the cerebrospinal fluid."
+      citations: ["kamp-2012:abstract", "chudler-papyrus", "buffalo-papyrus"]
+    t2:
+      text: "The Suśrutasaṃhitā describes preparing a body for study by leaving it in water for several days and then removing its layers one by one; specialist scholarship treats it as a layered text whose composition may have begun in the last centuries BCE, not as a 6th-century BCE work."
+      citations: ["sushruta-samhita", "pmc-sushruta-review:abstract", "meulenbeld-1999", "wjoud-sushruta"]
+      status: "contested"
+      contestNote: "Secondary accounts differ on the details of the method and on the dating of the text."
+    t3:
+      text: "In the Huangdi Neijing the vessels carry qi and only sometimes blood, and specialist translators read it as describing neither blood circulation nor a pumping heart."
+      citations: ["unschuld-1985", "nature-2000-circulation-letter:letter text", "wujastyk-indology-1999"]
+      secondarySummary: true
+    t4:
+      text: "Ibn al-Haytham wrote the Book of Optics between about 1011 and 1021 and argued for intromission, in which light from every point of an object enters the eye."
+      citations: ["sabra-1989", "smith-2001-alhacen", "muslimheritage-haytham"]
+      secondarySummary: true
+    t5:
+      text: "In the thirteenth century Ibn al-Nafis rejected the septal pores and described blood passing from the right ventricle through the lungs to the left; in Europe the route was described in the 1550s."
+      citations: ["nafis-sharh", "akmal-2010", "hektoen-nafis", "hoi-pulmonary"]
 - id: hidden-vessels
-  title: The hidden vessels
-  intro: The lymphatic system was found twice, in the gut in 1622 and around the brain in 1787 and again in 2015.
+  title: "The hidden vessels"
+  summary: "The lymphatic system was found twice, in the gut in 1622 and around the brain in 1787 and again in 2015."
+  intro: "Some parts of the body are hard to miss. The lymphatic system is easy to miss: its vessels are thin, usually carry clear fluid and collapse after death. This short tour follows how it was found, and found again. In 1622 Gaspare Aselli opened a dog that had just eaten and saw white vessels full of chyle running from the gut. He assumed they led to the liver, as Galen's system required.[^t1] Jean Pecquet showed in 1651 that they do not.[^t2] In 1787 Paolo Mascagni described lymphatic vessels in the dura mater, the tough outer covering of the brain, but the observation was largely overlooked.[^t3] Later work fed a consensus that the brain has no lymphatics at all.[^t4] In 2015 two groups reported the vessels again, and the news spread as a discovery.[^t5] Two plates, almost four centuries apart: one structure hidden physically, and one hidden by what everyone was sure of."
   discoveries: [aselli-lacteals, meningeal-lymphatics]
+  claims:
+    t1:
+      text: "Aselli saw the lacteals in 1622 while vivisecting a dog that had been fed shortly before, and believed they carried chyle to the liver."
+      citations: ["aselli-1627", "rcs-aselli", "hom-aselli"]
+    t2:
+      text: "Jean Pecquet's discovery of the thoracic duct, published in his Experimenta nova anatomica (1651), showed that the lacteals do not lead to the liver."
+      citations: ["pecquet-1651", "hom-aselli", "rcs-aselli"]
+    t3:
+      text: "Paolo Mascagni's atlas of the lymphatic system, published in 1787, described lymphatics in the cerebral dura mater; it was written in Latin and largely overlooked."
+      citations: ["mascagni-1787", "pmc-cns-lymph-history", "frontiers-2019-lymph"]
+    t4:
+      text: "Later nineteenth-century work, notably by Key and Retzius, influenced the long-standing view that the brain lacks lymphatic drainage."
+      citations: ["retzius-key-1875", "pmc-cns-lymph-history"]
+      status: "contested"
+      contestNote: "Historians differ on how much one work shaped the textbook consensus."
+    t5:
+      text: "In 2015 two independent groups, Louveau and colleagues in Nature and Aspelund and colleagues in the Journal of Experimental Medicine, reported lymphatic vessels in the meninges."
+      citations: ["louveau-2015", "aspelund-2015", "pmc-cns-lymph-history"]

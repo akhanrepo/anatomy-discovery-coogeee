@@ -39,7 +39,7 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 ## Open items after the v1 build (from the `/done` review)
 Not met, and recorded rather than papered over:
 1. ~~**Edition chapter length (F14 scope)**~~ **Resolved 2026-10-12:** each thread now has a verified long-view essay (`content/essays/`). Chapters are 2,560–2,660 words, enforced by F14-AC5.
-2. **Tour intros (F11 scope):** about 25 words against about 150. They need expanding with cited claims and logs.
+2. ~~**Tour intros (F11 scope)**~~ **Resolved 2026-10-12:** each tour has a verified intro of about 150 words (145–165), footnoted to 5–6 thread claims and logged. A separate one-line `summary` is used for lists and meta descriptions. Enforced by F11-AC4 ([plan](plans/F11-tour-intros.md)).
 3. **Commissioned art (F16):** the figure is Tabula's schematic stand-in, in anatomical position, not the *Epitome* pose.
 4. **Primary-source images (F03/F06):** story images are generated plates. Scans can't be fetched from this sandbox; drop them into `public/plates/` with `licenceVerified`.
 5. **Lens plate licences (F10-AC3):** not yet confirmed on the Wellcome/NLM records, so the originals are deliberately not displayed.
@@ -48,6 +48,7 @@ Not met, and recorded rather than papered over:
 8. **Config needed from Ali:** the Plausible domain, the Buttondown user, the Lemon Squeezy checkout URLs, and the site URL/domain.
 
 ## Changelog
+- 2026-10-12: F11 tour intros expanded to about 150 words with 32 verified claims, 6 logs and a sources list on each tour page (new F11-AC4). Also corrected the microscopy essay, which had placed the 1954 muscle plate on that tour.
 - 2026-10-12: F14 edition essays. Six long-view essays (about 1,200–2,100 words each, 61 cited claims, 16 new sources, 6 verification logs), now part of the edition and the content version. New F14-AC5 enforces 2,500–4,000 words per chapter and the same gates as stories. README written.
 - 2026-10-10: all features built. 63 unit + 119 e2e + 8 perf passing. `/done` review added zoom and edge-case tests and listed the open items above.
 - 2026-10-10: core experience done (F16, F17, F01, F13, F02, F03, F09). Unit 45 ✓, e2e + perf 45 ✓. Bugs caught by tests and fixed: heart unclickable under the aorta's hit stroke; back gesture leaving the page after Esc; tap→story 121ms → < 100ms (panel first, ink after paint; content-visibility on footnotes).

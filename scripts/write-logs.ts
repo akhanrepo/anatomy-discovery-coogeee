@@ -51,6 +51,7 @@ const subjects: { id: string; claims: Record<string, Claim>; myth: string[] }[] 
   ...c.discoveries.map((d) => ({ id: d.id, claims: d.claims, myth: MYTH[d.id] ?? [] })),
   ...c.misbeliefs.map((m) => ({ id: m.id, claims: m.claims, myth: ['Belief attributed to the right people, from a primary source', 'Correction dated to first vs mainstream acceptance'] })),
   ...c.traditions.flatMap((t) => t.concepts.map((k) => ({ id: k.id, claims: k.claims, myth: ['Concept described in its own terms, not mapped onto modern anatomy beyond the stated relation', 'Checked for conflicting dates and counts across sources'] }))),
+  ...c.threads.map((t) => ({ id: t.id, claims: t.claims, myth: ['Intro restates only claims already verified on the plates and essays, with the same sources', 'Tour order and dates checked against the plates'] })),
   ...c.essays.map((e) => ({ id: `essay-${e.thread}`, claims: e.claims, myth: [...(MYTH[`essay-${e.thread}`] ?? []), 'Every factual sentence footnoted or cut; interpretation phrased as interpretation', 'Dates and priority claims reconciled with the plates and the October 2026 review'] })),
 ];
 

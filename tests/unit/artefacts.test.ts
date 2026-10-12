@@ -12,7 +12,7 @@ const c = loadCorpus();
 const verified = new Set(c.logs.map((l) => l.subject));
 const resolves = (ref: string) => {
   const [subj, key] = ref.split('#');
-  const owner = c.discoveries.find((d) => d.id === subj) ?? c.misbeliefs.find((m) => m.id === subj) ?? c.essays.find((e) => `essay-${e.thread}` === subj);
+  const owner = c.discoveries.find((d) => d.id === subj) ?? c.misbeliefs.find((m) => m.id === subj) ?? c.essays.find((e) => `essay-${e.thread}` === subj) ?? c.threads.find((t) => t.id === subj);
   return !!owner && !!owner.claims[key] && verified.has(subj);
 };
 

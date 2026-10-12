@@ -41,3 +41,17 @@ test('timeline lists every plate and belief in date order', async ({ page }) => 
   await page.goto('/timeline/');
   await expect(page.locator('[data-timeline-item]')).toHaveCount(c.discoveries.length + c.misbeliefs.length);
 });
+
+test('F11-AC4 the tour page shows the ~150-word intro with numbered sources, and lists use the one-line summary', async ({ page }) => {
+  const t = c.threads.find((x) => x.id === 'hidden-vessels')!;
+  await page.goto(`/threads/${t.id}/`);
+  await expect(page.getByTestId('tour-intro')).toContainText('Aselli');
+  const notes = page.locator('[data-testid="tour-intro"] sup.fn');
+  await expect(notes).toHaveCount([...t.intro.matchAll(/\[\^/g)].length);
+  await expect(page.getByTestId('tour-sources').locator('> li')).toHaveCount(Object.keys(t.claims).length);
+  await notes.first().locator('a').click();
+  await expect(page).toHaveURL(/#fn-hidden-vessels-t1$/);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', t.summary);
+  await page.goto('/threads/');
+  await expect(page.locator('main')).toContainText(t.summary);
+});
