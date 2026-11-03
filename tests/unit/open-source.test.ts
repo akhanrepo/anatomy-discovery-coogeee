@@ -103,7 +103,8 @@ describe('F18 open-source release', () => {
     expect(read('.github/workflows/codeql.yml')).toMatch(/javascript-typescript/);
     expect(read('CODE_OF_CONDUCT.md')).toContain('Contributor Covenant, version 2.1');
     expect(read('SECURITY.md')).toContain(`${REPO}/security/advisories/new`);
-    expect(read('CHANGELOG.md')).toMatch(new RegExp(`^## \\[${JSON.parse(read('package.json')).version.replace(/\./g, '\\.')}\\]`, 'm'));
+    const version = JSON.parse(read('package.json')).version as string;
+    expect(read('CHANGELOG.md').split('\n').some((l) => l.startsWith(`## [${version}]`)), `CHANGELOG has a ## [${version}] section`).toBe(true);
   });
 
   it('F18-AC5 no placeholder emails or stale repository links ship', () => {
