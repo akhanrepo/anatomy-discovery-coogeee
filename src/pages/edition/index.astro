@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import BuyButton from '../../components/BuyButton.astro';
+import DownloadLink from '../../components/DownloadLink.astro';
+import { EDITION_FILES } from '../../lib/downloads';
+import { site } from '../../config/site';
 import { corpus } from '../../lib/content/load';
 import { buildEdition } from '../../lib/edition';
 import { renderStory } from '../../lib/format';
@@ -12,17 +14,18 @@ const essay = c.essays.find((x) => x.thread === 'circulation');
 const essayOpening = essay ? essay.body.split(/\n## /)[0] : '';
 const firstStory = preview.sections.map((s) => c.discoveries.find((x) => x.id === s.ref)).find(Boolean);
 ---
-<Layout title="The edition" description="The long version: every tour as an illustrated chapter, with full sources.">
+<Layout title="The edition" description="The long version, free: every tour as an illustrated chapter, with full sources.">
   <article class="prose">
     <h1>The edition</h1>
-    <p>Every tour as an illustrated chapter, with the plates, the beliefs they overturned and a full bibliography. You get EPUB and PDF in one purchase. Edition <span data-testid="edition-version">{e.version}</span>, generated from the same verified content as the site.</p>
-    <p><BuyButton product="edition" label="Buy the edition" /></p>
+    <p>Every tour as an illustrated chapter, with the plates, the beliefs they overturned and a full bibliography. Free, as EPUB or PDF. Edition <span data-testid="edition-version">{e.version}</span>, generated from the same verified content as the site.</p>
+    <p><DownloadLink file={EDITION_FILES.epub} label="Download EPUB" /> <DownloadLink file={EDITION_FILES.pdf} label="Download PDF" /></p>
+    <p class="small" data-testid="edition-licence">Licensed <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>: share it, translate it and adapt it, with credit to Tabula, on the same terms.</p>
     <h2>Contents</h2>
     <ol>{e.chapters.map((ch) => <li id={ch.id}><strong>{ch.title}</strong>: {ch.sections.length} sections<br /><span class="small">{c.threads.find((t) => t.id === ch.id)!.summary}</span></li>)}</ol>
-    <h2>Free preview: {preview.title}</h2>
+    <h2>A taste: {preview.title}</h2>
     <p><em>{c.threads.find((t) => t.id === 'circulation')!.summary}</em></p>
     {essay && <section data-testid="edition-essay-preview"><h3>{essay.title}</h3><div set:html={renderStory(essayOpening, `essay-${essay.thread}`).html} /><p class="small">…</p></section>}
     {firstStory && <section><h3>Tab. {firstStory.plate}: {firstStory.title}</h3><div set:html={renderStory(firstStory.body, firstStory.id).html} /></section>}
-    <p class="small">The full chapter continues with the rest of the essay, {preview.sections.length - 2} more sections and its sources.</p>
+    <p class="small">The full chapter, in the download, continues with the rest of the essay, {preview.sections.length - 2} more sections and its sources.</p>
   </article>
 </Layout>

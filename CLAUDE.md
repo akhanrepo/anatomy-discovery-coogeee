@@ -2,14 +2,15 @@
 
 ## What this is
 **Tabula**: an interactive, engraved human body where every part carries the story of who figured it out, how, and what they got wrong first. A timeline slider "writes in" the body as knowledge arrived over 3,600 years.
-See `docs/PRD.md` for full context. Feature specs live in `docs/features/` (F01–F17). The build plan and status are in `docs/PLAN.md`. Per-feature plans are in `docs/plans/`.
+It is **open source**: code MIT, written content CC BY-SA 4.0, plates CC BY 4.0 (F18). Contributors are strangers, so keep `README.md`, `CONTRIBUTING.md` and `docs/architecture.md` accurate when you change how things work.
+See `docs/PRD.md` for full context. Feature specs live in `docs/features/` (F01–F18). The build plan and status are in `docs/PLAN.md`. Per-feature plans are in `docs/plans/`.
 
 ## Stack
 - **Astro 7 + TypeScript (strict)**, static output (`dist/`). Everything is server-rendered: every structure, story panel and misbelief is in the HTML. A small **vanilla TypeScript** controller (`src/client/`) adds the slider, flaps, panel and lens behaviour. No UI framework and no custom backend.
 - **Content as code:** YAML + Markdown in `content/`, loaded and validated with **Zod** (`src/lib/content/`). The same loader serves Astro pages, scripts and tests.
-- **Art:** inline SVG (line art, hit regions, hatching patterns) + CSS paper textures. Design tokens are in `src/styles/tokens.css`.
-- **Build-time generation:** OG/share images (satori + resvg), RSS, classroom-pack PDFs (Playwright `page.pdf`), edition EPUB (pandoc).
-- **Hosting:** Netlify (static). Commerce: Lemon Squeezy (merchant of record, hosted checkout). Email: Buttondown. Analytics: Plausible (cookieless). All three are **config-driven and disabled until configured** in `src/config/site.ts`.
+- **Art:** inline SVG (line art, hit regions, hatching patterns) + CSS paper textures. Design tokens are CSS custom properties in `src/styles/global.css`, mirrored in `src/styles/tokens.ts`.
+- **Build-time generation:** OG/share images (satori + resvg), RSS, classroom-pack PDFs (Playwright `page.pdf`), edition EPUB (pandoc). Packs and the edition are free downloads, published as GitHub Release assets by `.github/workflows/release.yml` on a `vX.Y.Z` tag. `src/lib/downloads.ts` is the one list of their file names.
+- **Hosting:** Netlify (static). CI: GitHub Actions (`ci.yml`, `codeql.yml`, `release.yml`). Email: Buttondown. Analytics: Plausible (cookieless). Contact email and donate link are optional too. All are **config-driven and disabled until configured** in `src/config/site.ts`. There is no commerce (removed in F18).
 
 ## Commands
 - Install: `npm ci`
@@ -23,10 +24,10 @@ See `docs/PRD.md` for full context. Feature specs live in `docs/features/` (F01�
 - Validate content only: `npm run validate`
 - Generate packs/edition artefacts: `npm run artefacts`
 
-Playwright uses the preinstalled Chromium (`PLAYWRIGHT_CHROMIUM_PATH` or `/opt/pw-browsers/...`). Never run `playwright install`.
+Playwright finds Chromium via `scripts/chromium.mjs`: `PLAYWRIGHT_CHROMIUM_PATH`, then `/opt/pw-browsers/chromium`, then Playwright's own install. In this sandbox, never run `playwright install` (CI does).
 
 ## Scope (v1, everything ships together)
-F16 visual system · F17 name/icon · F04 26 discoveries · F05 citations/verification · F06 image provenance · F01 body (male/female) · F13 flaps · F02 slider/fog · F03 story panel · F09 misbeliefs · F11 timeline/people/threads · F10 traditions lens · F07 share cards · F15 RSS/email · F08 analytics · F12 classroom packs · F14 edition + sponsorship.
+F16 visual system · F17 name/icon · F04 26 discoveries · F05 citations/verification · F06 image provenance · F01 body (male/female) · F13 flaps · F02 slider/fog · F03 story panel · F09 misbeliefs · F11 timeline/people/threads · F10 traditions lens · F07 share cards · F15 RSS/email · F08 analytics · F12 classroom packs · F14 edition + sponsorship · F18 open-source release.
 
 ## Explicit non-goals (say no, even if it's tempting)
 True 3D body · user accounts/comments/UGC · comprehensive anatomy (stay at ~40 structures) · clinical or reference-atlas accuracy · a CMS/admin UI · native apps · AI-generated artwork · automated social posting · anything that needs a custom server.
@@ -38,7 +39,7 @@ True 3D body · user accounts/comments/UGC · comprehensive anatomy (stay at ~40
 4. **Keep `docs/PLAN.md` current.** Update the status table when a feature starts or finishes.
 5. **Run `/done` before calling a feature finished.**
 6. **Accuracy is a gate, not a nicety.** Never add a historical claim without a citation and a verification-log entry (F05 method). Never invent page numbers, dates or quotes. If you can't verify something, cut it or mark it `contested`/`secondary-summary`. Red ink (`--vermilion`) is only for misbeliefs.
-7. **Push to `main`** after each feature, once tests are green.
+7. **Ship through a pull request** to `main` once tests are green. CI must pass.
 
 ## Conventions
 - `content/` holds data only: `discoveries/*.md` (frontmatter + story body), `*.yaml` registries (structures, people, sources, misbeliefs, eras, threads, traditions, assets, share-dates), `logs/*.md` (verification logs). IDs are kebab-case and stable forever (URLs and tests depend on them).
@@ -47,12 +48,14 @@ True 3D body · user accounts/comments/UGC · comprehensive anatomy (stay at ~40
 - `src/art/` holds SVG geometry for figures, flaps, misbeliefs and the panorama, as TypeScript data. Structure IDs here must match `content/structures.yaml`.
 - `src/pages/` uses file-based routes; kebab-case.
 - Tests: `tests/unit/*.test.ts` (Vitest), `tests/e2e/{smoke,functional}/*.spec.ts` and `tests/perf/*.spec.ts` (Playwright).
-- Colours, type and spacing only come from tokens in `src/styles/tokens.css`. No raw hex values in components (the lint enforces this).
+- Colours, type and spacing only come from tokens in `src/styles/global.css` (mirrored in `src/styles/tokens.ts`). No raw hex values in components (the lint enforces this).
 - Respect `prefers-reduced-motion` in every animation.
 - Commit messages are imperative and reference the feature ID (`F02: add piecewise slider scale`).
+- User-visible changes get a line in `CHANGELOG.md` under **Unreleased**.
 
 ## Don't touch without asking
-- Commerce config and checkout flow (`src/config/site.ts` commerce block, `src/components/Buy*.astro`)
+- The licences: `LICENSE`, `LICENSE-CONTENT`, `site.licences`, and the licence map in the README (relicensing has legal consequences)
+- Reintroducing commerce or any paywall (F18 decided against it)
 - Analytics/email provider configuration and anything that sends data off-site
 - Licences and credits in `content/assets.yaml` (changing a licence has legal consequences)
 - Deleting or renaming content IDs (it breaks shared URLs)

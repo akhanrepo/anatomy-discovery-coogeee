@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Lint, the fast suite (logic, content gates, AC traceability), the build (which re-runs
+  # the content gates) and the browser suites. This is what must be green to merge.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Lint (astro check + design-token lint)
+        run: npm run lint
+      - name: Unit, content and traceability tests
+        run: npm test
+      - name: Build (content validation runs first)
+        run: npm run build
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Smoke and functional tests
+        run: npm run test:e2e
+      - name: Upload Playwright results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: test-results/
+          retention-days: 7
+
+  # Performance budgets (payload, LCP, tap-to-panel, frame time under CPU throttling).
+  # They're calibrated for a dedicated machine, and shared runners are noisy enough to miss
+  # millisecond budgets at random, so here they report without blocking. Locally,
+  # `npm run test:all` runs them as a hard gate.
+  perf:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Performance budgets
+        run: npm run test:perf

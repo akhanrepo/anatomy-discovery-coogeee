@@ -1,0 +1,47 @@
+name: Bug report
+description: Something on the site doesn't work or looks broken.
+labels: ["bug"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Page
+      description: The address where it happened. The URL keeps the year, figure, layer and lens, so copy all of it.
+      placeholder: https://tabula-anatomy.netlify.app/?y=1628&layer=viscera
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Drag the slider to 1543
+        2. Open the muscles flap
+        3. …
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Safari 19, iPhone 15 / Firefox 140, Windows 11
+    validations:
+      required: true
+  - type: dropdown
+    id: input
+    attributes:
+      label: How were you using it?
+      options:
+        - Mouse
+        - Touch
+        - Keyboard only
+        - Screen reader
+        - Other
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or console errors

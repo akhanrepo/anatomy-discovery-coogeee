@@ -1,6 +1,17 @@
 {
   "name": "tabula",
   "version": "1.0.0",
+  "description": "An engraved human body where every part carries the story of who worked it out, how, and what they got wrong first.",
+  "license": "MIT",
+  "homepage": "https://tabula-anatomy.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhanrepo/tabula.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akhanrepo/tabula/issues"
+  },
+  "author": "Ali Khan",
   "private": true,
   "type": "module",
   "engines": {

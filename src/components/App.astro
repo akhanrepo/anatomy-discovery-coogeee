@@ -7,7 +7,6 @@ import Timeline from './Timeline.astro';
 import StoryPanel from './StoryPanel.astro';
 import MisbeliefPanel from './MisbeliefPanel.astro';
 import LensView from './LensView.astro';
-import { TRACK_JS } from '../lib/analytics';
 import { LAYERS } from '../art/figure';
 import { site } from '../config/site';
 import '../styles/app.css';
@@ -29,7 +28,6 @@ const layerNames: Record<string, string> = { surface: 'Skin', muscles: 'Muscles'
 ---
 <div class="app" data-app data-site-name={site.name} data-year={year} data-open={openD?.id ?? ''}>
   <script type="application/json" id="tabula-model" set:html={JSON.stringify(model)} />
-  <script is:inline set:html={TRACK_JS} />
   <div class="stage-col">
     <div class="stage-controls">
       <div class="seg" role="group" aria-label="Figure">

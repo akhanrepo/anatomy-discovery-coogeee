@@ -19,7 +19,7 @@ Turns Tabula from a private repository into a public, openly licensed project th
 - [ ] **F18-AC1** No commerce remains: no buy buttons, prices, checkout URLs, merchant-of-record copy or `checkout_start` event in `src/`, and no `commerce` block in the site config.
 - [ ] **F18-AC2** Every classroom pack (A4 and US Letter) and the edition (EPUB and PDF) is offered as a free download without an account. The site's download links, the files `npm run artefacts` writes, and the files the release workflow publishes all come from one list.
 - [ ] **F18-AC3** The licences are explicit and consistent: `LICENSE` (MIT), `LICENSE-CONTENT` (the CC BY-SA 4.0 legal code), the `license` field in `package.json`, a licence section in the README, a licence line in the site footer, and CC BY-SA on the pack cover and the edition.
-- [ ] **F18-AC4** The repository has a README (what it is, why, features, accuracy gate, quick start, layout, contributing, licence), CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CHANGELOG, THIRD_PARTY_NOTICES, an architecture document, issue forms (bug, correction, feature) with a config, a pull request template, CODEOWNERS, Dependabot and CodeQL.
+- [ ] **F18-AC4** The repository has a README (what it is, why, features, accuracy gate, quick start, layout, contributing, licence), CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CHANGELOG, THIRD_PARTY_NOTICES, an architecture document, issue forms (bug, correction, discovery, feature) with a config, a pull request template, CODEOWNERS, Dependabot and CodeQL.
 - [ ] **F18-AC5** No placeholder or stale identity ships: no `.example` email addresses, and every repository link points at `akhanrepo/tabula`.
 - [ ] **F18-AC6** "Suggest a correction" opens the correction issue form with the story and claim prefilled, and the form applies the `correction` label.
 - [ ] **F18-AC7** CI runs lint, unit tests, the build and the e2e suites on every push to `main` and every pull request. A `vX.Y.Z` tag whose version matches `package.json` publishes a GitHub Release with the packs and the edition.
@@ -34,7 +34,7 @@ Turns Tabula from a private repository into a public, openly licensed project th
 ## Manual steps for the maintainer
 1. Merge, then rename the repository to `tabula` (Settings → General). Make it public.
 2. Push the tag `v1.0.0` so the first release publishes the downloads that `/teachers` and `/edition` link to.
-3. Set the description, topics (`history-of-medicine`, `anatomy`, `astro`, `education`, `open-content`) and social preview. Enable Discussions and private vulnerability reporting, and protect `main` (require CI).
+3. Create the `correction` and `discovery` labels (the issue forms apply them). Set the description, topics (`history-of-medicine`, `anatomy`, `astro`, `education`, `open-content`) and social preview. Enable Discussions and private vulnerability reporting, and protect `main` (require CI).
 4. In Netlify: update the linked repository after the rename, and decide whether deploy previews build for fork pull requests.
 5. Optional: set `PUBLIC_CONTACT_EMAIL` and `PUBLIC_DONATE_URL` in Netlify, and add `.github/FUNDING.yml` if you set up GitHub Sponsors.
 6. Delete the unused Lemon Squeezy products and any `PUBLIC_CHECKOUT_*` variables.

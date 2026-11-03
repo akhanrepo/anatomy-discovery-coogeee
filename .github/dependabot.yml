@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      astro:
+        patterns: ["astro", "@astrojs/*"]
+      fonts:
+        patterns: ["@fontsource/*"]
+      og-images:
+        # satori and resvg render the share cards together.
+        patterns: ["satori", "@resvg/*"]
+      test:
+        patterns: ["vitest", "@playwright/test", "playwright"]
+      tooling:
+        patterns: ["typescript", "tsx", "@types/*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

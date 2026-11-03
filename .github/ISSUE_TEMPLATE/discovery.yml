@@ -1,0 +1,43 @@
+name: Propose a discovery
+description: Suggest a discovery, belief or tradition concept that Tabula should tell.
+title: "Discovery: "
+labels: ["discovery"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tabula deliberately stays small (about 40 structures, a few dozen plates), so not every good story fits. Proposals that fill a gap in the balance targets (before 1500, outside Europe, after 1900, contested) are the most likely to be taken up.
+        Every claim must eventually meet the [F05 method](https://github.com/akhanrepo/tabula/blob/main/docs/features/F05-citations-and-contested-claims.md): at least two sources, one of them scholarly.
+  - type: input
+    id: what
+    attributes:
+      label: The discovery
+      placeholder: "e.g. Ibn al-Nafis describes the pulmonary transit of blood"
+    validations:
+      required: true
+  - type: input
+    id: who-when
+    attributes:
+      label: Who, when and where
+      placeholder: "e.g. Ibn al-Nafis, c. 1242, Damascus/Cairo"
+    validations:
+      required: true
+  - type: input
+    id: structures
+    attributes:
+      label: Which part of the body?
+      description: Use IDs from content/structures.yaml if you know them.
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs
+      description: What did it overturn? What gap does it fill?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: At least two, with at least one scholarly. Note any priority disputes or myths you know of.
+    validations:
+      required: true

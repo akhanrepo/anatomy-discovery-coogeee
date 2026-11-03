@@ -18,7 +18,7 @@ for (const d of c.discoveries) {
     creator: 'Tabula (drawn for this site)',
     date: '2026',
     sourceInstitution: best ? best.author : 'Tabula',
-    recordUrl: best?.url ?? 'https://github.com/akhanrepo/anatomy-discovery-coogeee',
+    recordUrl: best?.url ?? 'https://github.com/akhanrepo/tabula',
     licence: 'CC-BY',
     licenceVerified: true,
     credit: 'Tabula, CC BY 4.0',

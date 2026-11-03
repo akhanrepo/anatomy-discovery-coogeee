@@ -3,7 +3,7 @@
 **Release:** v1 (enabling) · **Depends on:** F02, F03, F07, F12, F14
 
 ## Summary
-Cookieless analytics with a few custom events. They compute the success metric (**% of sessions opening ≥ 3 stories**) and the leading diagnostic (slider use), and they track the revenue funnels without personal data.
+Cookieless analytics with a few custom events. They compute the success metric (**% of sessions opening ≥ 3 stories**) and the leading diagnostic (slider use), and they track downloads without personal data.
 
 ## Scope
 - Tool: Plausible (zero ops) or self-hosted Umami. Cookieless, so no consent banner.
@@ -19,8 +19,8 @@ Cookieless analytics with a few custom events. They compute the success metric (
   | `share_click` | `discoveryId`, `channel` |
   | `citation_open`, `correction_start` | `discoveryId` |
   | `subscribe` | `channel` (email / rss) |
-  | `checkout_start` | `product` (pack id / edition) |
-- Sales themselves are read from the merchant-of-record dashboard. We don't track them client-side.
+  | `download` | `file` (pack or edition file name) |
+- Download totals can also be read from the GitHub Release asset counts.
 - `docs/metrics.md`: how to read the success metric.
 
 ## Acceptance criteria

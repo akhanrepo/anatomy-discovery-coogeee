@@ -28,7 +28,7 @@ const plates = p.plateYears.map((y) => { const d = p.discoveries.find((x) => x.y
     <p>{p.def.subtitle}</p>
     <p class="meta" data-testid="pack-version">Edition {p.version} · generated from Tabula content · {p.discoveries.length} plates</p>
     <p class="meta">Fits: {p.def.syllabus}</p>
-    <p class="small">Licence: photocopiable for classroom use by the purchaser (single teacher), or across one school with a school licence.</p>
+    <p class="small" data-testid="pack-licence">Licence: {site.licences.content.name} ({site.licences.content.url}). Copy, share and adapt freely, with credit to {site.name} ({site.repo}), and share adaptations on the same terms.</p>
   </section>
   <section class="plates">
     {plates.map((pl) => <figure><Fragment set:html={pl.svg} /><figcaption>The body as known in {pl.label}. Colour what was <em>understood</em>; outline what was only <em>described</em>.</figcaption></figure>)}

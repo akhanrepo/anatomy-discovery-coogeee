@@ -18,8 +18,9 @@ One brief per feature. The [PRD](../PRD.md) is the source of truth for scope. If
 | [F07](F07-on-this-day-share-cards.md) | "This week / on this day" share cards & deep links | Growth |
 | [F15](F15-daily-card-subscription.md) | RSS + weekly email | Retention |
 | [F08](F08-analytics-and-success-measurement.md) | Analytics & success measurement | Enabling |
-| [F12](F12-classroom-packs.md) | Classroom packs (A$15–30) | Revenue |
-| [F14](F14-sponsorship-and-premium-edition.md) | Premium edition & sponsorship | Revenue |
+| [F12](F12-classroom-packs.md) | Classroom packs (free) | Reach |
+| [F14](F14-sponsorship-and-premium-edition.md) | Edition (free) & sponsorship | Reach, funding |
+| [F18](F18-open-source-release.md) | Open-source release: licences, free downloads, contributor docs, CI | Foundation |
 
 Supporting research: [accuracy review, October 2026](../research/accuracy-review-2026-10.md).
 

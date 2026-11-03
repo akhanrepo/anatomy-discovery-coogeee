@@ -21,7 +21,7 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 | 11 | Analytics | F08 | ✅ done | [F08](plans/F08.md) |
 | 12 | Classroom packs, edition, sponsorship, commerce links | F12, F14 | ✅ done | [F12-F14](plans/F12-F14.md) |
 | 13 | Full regression (all suites), `/done` review, Netlify project | — | ✅ done | — |
-| 14 | Open-source release: licences, free packs and edition, repo files, CI and releases | F18 | 🔨 in progress | [F18](plans/F18.md) |
+| 14 | Open-source release: licences, free packs and edition, repo files, CI and releases | F18 | ✅ done | [F18](plans/F18.md) |
 
 ## Test strategy
 | Suite | Tool | Runs | What it covers |
@@ -46,9 +46,11 @@ Not met, and recorded rather than papered over:
 5. **Lens plate licences (F10-AC3):** not yet confirmed on the Wellcome/NLM records, so the originals are deliberately not displayed.
 6. **Proxy-tested criteria:** F07-AC2 (social validators → tag/size checks), F15-AC1 (W3C validator → structural checks), F15-AC2 (email clients → markup rules), F12-AC3 (purchase → delivery needs the Lemon Squeezy store), F13-AC4 (inline art, so no lazy load is needed).
 7. **Not built from scope notes:** dragging a flap edge (the tabs work); the overlapping-structure chooser; a 44px minimum hit target for tiny structures (mitigated by 1×/2×/4× zoom and the list view); a facing-page two-figure desktop view (optional); sound (optional, "cut first").
-8. **Config needed from Ali:** the Plausible domain, the Buttondown user, the Lemon Squeezy checkout URLs, and the site URL/domain.
+8. **Config needed from Ali:** the Plausible domain, the Buttondown user, the site URL/domain, and optionally a contact email and donate link. (The Lemon Squeezy checkout was removed in F18.)
+9. **After the F18 merge (Ali):** rename the repo to `tabula`, make it public, push `v1.0.0` so the download links resolve, create the `correction` and `discovery` labels, enable Discussions and private vulnerability reporting, protect `main`, and re-link Netlify. See the [F18 brief](features/F18-open-source-release.md#manual-steps-for-the-maintainer).
 
 ## Changelog
+- 2026-11-03: F18 open-source release. Code MIT, content CC BY-SA 4.0. Commerce removed: packs and the edition are free downloads published by a release workflow. Added README, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CHANGELOG, THIRD_PARTY_NOTICES, architecture doc, issue forms, PR template, CI, CodeQL and Dependabot. Fixed analytics events being dropped outside the body page, and version-pinned Chromium paths. 83 unit + 122 e2e + 8 perf passing.
 - 2026-10-12: F11 tour intros expanded to about 150 words with 32 verified claims, 6 logs and a sources list on each tour page (new F11-AC4). Also corrected the microscopy essay, which had placed the 1954 muscle plate on that tour.
 - 2026-10-12: F14 edition essays. Six long-view essays (about 1,200–2,100 words each, 61 cited claims, 16 new sources, 6 verification logs), now part of the edition and the content version. New F14-AC5 enforces 2,500–4,000 words per chapter and the same gates as stories. README written.
 - 2026-10-10: all features built. 63 unit + 119 e2e + 8 perf passing. `/done` review added zoom and edge-case tests and listed the open items above.

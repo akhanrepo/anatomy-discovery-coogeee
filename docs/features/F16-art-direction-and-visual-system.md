@@ -82,7 +82,7 @@ Quill scratch on ink-in and a page-turn on era change. Muted by default, with on
 1. **Art spec** (this doc + reference board) → **commission an engraving-style scientific illustrator.** Get 3 quotes. Deliverables: male and female master figures; 4 flap layers each; ~40 structures as separate aligned layers in 3 states (line / hatch / wash); 6–8 misbelief drawings in red line; the panorama strip; 7 paper textures.
 2. **Format:** line art as **SVG paths** (for stroke-draw animation and crisp zoom). Hatching and washes as **aligned raster layers** (AVIF/WebP, 2×) revealed through SVG masks. Hit regions as simplified SVG polygons.
 3. **Placeholder track:** development uses a schematic placeholder body with the same structure IDs, so code and content proceed in parallel with the commission. The art drops in by ID.
-4. **Why not AI-generated art:** the licensing is uncertain (it blocks paid packs and the edition), it's hard to keep consistent across ~120 aligned layers, and it undercuts a brand built on authenticity and sourcing.
+4. **Why not AI-generated art:** the licensing is uncertain (it blocks open licensing of the packs and the edition), it's hard to keep consistent across ~120 aligned layers, and it undercuts a brand built on authenticity and sourcing.
 
 ## Acceptance criteria
 - [ ] **F16-AC1** Reveal, misbelief and erasure animations run at 60fps on a mid-range phone.

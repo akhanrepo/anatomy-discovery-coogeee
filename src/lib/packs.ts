@@ -2,12 +2,12 @@
 import type { Corpus, Discovery, Claim } from './content/schema';
 import { contentVersion } from './version';
 
-export interface PackDef { id: string; title: string; subtitle: string; discoveries: string[]; product?: string; free?: boolean; syllabus: string }
+export interface PackDef { id: string; title: string; subtitle: string; discoveries: string[]; syllabus: string }
 export const PACKS: PackDef[] = [
-  { id: 'sample', title: 'Galen vs Vesalius', subtitle: 'Free sample pack', discoveries: ['galen-arteries-blood', 'galen-recurrent-laryngeal', 'vesalius-fabrica'], free: true, syllabus: 'Any history of medicine unit' },
-  { id: 'circulation', title: 'The circulation of the blood', subtitle: 'Galen to Malpighi', discoveries: [], product: 'pack-circulation', syllabus: 'GCSE History "Medicine through time"; NSW Science (nature of science)' },
-  { id: 'myths', title: 'Myths and "firsts" in medicine', subtitle: 'Source analysis for sceptics', discoveries: [], product: 'pack-myths', syllabus: 'IB TOK; Modern History (source analysis)' },
-  { id: 'microscopy', title: 'Seeing the invisible', subtitle: 'Microscopy, tissues and cells', discoveries: [], product: 'pack-microscopy', syllabus: 'Biology (cells, tissues); nature of science' },
+  { id: 'sample', title: 'Galen vs Vesalius', subtitle: 'A short sample pack', discoveries: ['galen-arteries-blood', 'galen-recurrent-laryngeal', 'vesalius-fabrica'], syllabus: 'Any history of medicine unit' },
+  { id: 'circulation', title: 'The circulation of the blood', subtitle: 'Galen to Malpighi', discoveries: [], syllabus: 'GCSE History "Medicine through time"; NSW Science (nature of science)' },
+  { id: 'myths', title: 'Myths and "firsts" in medicine', subtitle: 'Source analysis for sceptics', discoveries: [], syllabus: 'IB TOK; Modern History (source analysis)' },
+  { id: 'microscopy', title: 'Seeing the invisible', subtitle: 'Microscopy, tissues and cells', discoveries: [], syllabus: 'Biology (cells, tissues); nature of science' },
 ];
 const THREAD_OF: Record<string, string> = { circulation: 'circulation', myths: 'myths-and-firsts', microscopy: 'microscopy' };
 

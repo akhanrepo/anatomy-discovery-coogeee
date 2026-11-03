@@ -1,22 +1,24 @@
 import { site } from '../config/site';
 
-/** F05: prefilled correction report. GitHub issue (public, triaged with the `correction` label) plus an email fallback for readers without an account. */
-export function buildCorrectionUrl(o: { discoveryId: string; claimId?: string; title?: string }): string {
+/** The GitHub issue form for corrections (`.github/ISSUE_TEMPLATE/correction.yml`). It applies the `correction` label. */
+export const CORRECTION_FORM = 'correction.yml';
+
+/** F05/F18: prefilled correction report. Opens the correction issue form with the story and claim IDs filled in
+ * (issue forms take field values from query parameters named after the field ids). */
+export function buildCorrectionUrl(o: { discoveryId: string; claimId?: string; title?: string }, repo: string = site.repo): string {
   const ref = o.claimId ? `${o.discoveryId}#${o.claimId}` : o.discoveryId;
-  const body = [
-    `**Story:** ${o.discoveryId}`,
-    `**Claim:** ${o.claimId ?? '(whole story)'}`,
-    '',
-    '**What looks wrong?**',
-    '',
-    '**Your source (author, title, page or link):**',
-    '',
-  ].join('\n');
-  const q = new URLSearchParams({ title: `Correction: ${ref}${o.title ? ` (${o.title})` : ''}`, body, labels: 'correction' });
-  return `${site.repo}/issues/new?${q.toString()}`;
+  const q = new URLSearchParams({
+    template: CORRECTION_FORM,
+    title: `Correction: ${ref}${o.title ? ` (${o.title})` : ''}`,
+    story: o.discoveryId,
+    claim: o.claimId ?? '(whole story)',
+  });
+  return `${repo}/issues/new?${q.toString()}`;
 }
 
-export function buildCorrectionMailto(o: { discoveryId: string; claimId?: string }): string {
+/** Account-free fallback. Null when no contact email is configured (no placeholder address ever ships). */
+export function buildCorrectionMailto(o: { discoveryId: string; claimId?: string }, email: string = site.contactEmail): string | null {
+  if (!email) return null;
   const ref = o.claimId ? `${o.discoveryId}#${o.claimId}` : o.discoveryId;
-  return `mailto:${site.contactEmail}?subject=${encodeURIComponent(`Correction: ${ref}`)}`;
+  return `mailto:${email}?subject=${encodeURIComponent(`Correction: ${ref}`)}`;
 }

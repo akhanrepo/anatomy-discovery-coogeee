@@ -1,4 +1,4 @@
-/** Design tokens (F16). Historical pigments; vermilion is reserved for misbeliefs. Mirrored in tokens.css. */
+/** Design tokens (F16). Historical pigments; vermilion is reserved for misbeliefs. Mirrored in global.css (:root custom properties). */
 export const LIGHT = {
   paper: '#f2e9d8', 'paper-shade': '#ece1cb', 'paper-deep': '#e2d4b8', ink: '#2a2017', 'ink-soft': '#5c4a38', ghost: '#bba987',
   madder: '#9e2b3a', rose: '#b9605f', indigo: '#2c4777', orpiment: '#b9851c', verdigris: '#2f7563', ochre: '#a26a22', bone: '#cdbb95', umber: '#7a5a3c',

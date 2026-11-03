@@ -2,7 +2,9 @@
 
 > An interactive body where every part carries the story of who figured it out, how, and what they got wrong first. A slider sets the year, and the body is drawn only as far as knowledge had reached. You watch it being *written in* over the centuries.
 
-Status: **v0.2: single-release scope** · Owner: Ali · Last updated: 2026-10-10
+Status: **v0.2: single-release scope** · Owner: Ali · Last updated: 2026-11-03
+
+> **Status note (2026-11-03): open source.** Tabula is now an open-source project ([F18](features/F18-open-source-release.md)). Code is MIT and written content is CC BY-SA 4.0. The classroom packs and the edition are **free downloads**, and the Lemon Squeezy commerce described in earlier versions of this PRD was removed (it remains in git history). Funding comes from sponsorship (F14) and donations. Where this document still mentions prices or purchases, F18 supersedes it.
 Feature briefs: [`docs/features/`](features/README.md) · Accuracy review: [`docs/research/accuracy-review-2026-10.md`](research/accuracy-review-2026-10.md)
 
 ### Decisions locked in v0.2
@@ -23,9 +25,9 @@ The history of how we came to understand the body is popular (Bryson's *The Body
 
 **Primary: curious, literate adults** (roughly 25–65) who consume history-of-science content for pleasure. They read long-form non-fiction, listen to history podcasts and click well-made links in newsletters and social feeds. They aren't medical professionals, and they *will* notice a lazy myth. You find them among readers of Bryson's *The Body* and Mukherjee, subscribers to *The Public Domain Review*, Wellcome Collection's online audience, and r/AskHistorians.
 
-**Secondary (paying from v1):**
-- **High-school teachers.** UK GCSE History "Medicine in Britain / through time" (the closest syllabus fit), NSW Stage 5–6 Science and Modern History, IB TOK/History. They buy classroom packs (F12).
-- **Readers wanting more depth.** They buy the premium edition (F14).
+**Secondary:**
+- **High-school teachers.** UK GCSE History "Medicine in Britain / through time" (the closest syllabus fit), NSW Stage 5–6 Science and Modern History, IB TOK/History. They download the free classroom packs (F12).
+- **Readers wanting more depth.** They download the free edition (F14).
 - **Museums, libraries and education publishers** as sponsors (F14).
 
 ## Core value proposition
@@ -51,9 +53,10 @@ Ordered by dependency (see **Build sequence** below). All ship together.
 | 11 | **Browse**: timeline, people, threads (guided tours) | [F11](features/F11-timeline-and-people-browse.md) |
 | 12 | **"On this day / this week in anatomy" share cards & deep links** | [F07](features/F07-on-this-day-share-cards.md) |
 | 13 | **Subscription**: RSS + weekly email | [F15](features/F15-daily-card-subscription.md) |
-| 14 | **Classroom packs** (A$15–30), 3 at launch | [F12](features/F12-classroom-packs.md) |
-| 15 | **Premium edition + sponsorship** | [F14](features/F14-sponsorship-and-premium-edition.md) |
+| 14 | **Classroom packs** (free), 3 at launch plus a sample | [F12](features/F12-classroom-packs.md) |
+| 15 | **Edition (free) + sponsorship** | [F14](features/F14-sponsorship-and-premium-edition.md) |
 | 16 | **Analytics** | [F08](features/F08-analytics-and-success-measurement.md) |
+| 17 | **Open-source release**: licences, free downloads, contributor docs, CI | [F18](features/F18-open-source-release.md) |
 
 **One honest warning about shipping everything at once:** it delays the first real signal until everything's done. Mitigation: a **closed preview** to about 50 readers once F16 art + F01–F05 are complete (content can still be landing). This isn't a staged release, just a feedback checkpoint before the public launch.
 
@@ -62,12 +65,12 @@ Ordered by dependency (see **Build sequence** below). All ship together.
 | Not building | Why |
 |---|---|
 | **True 3D body** | Replaced by layered dissection (F13). A 3D mesh would abandon the engraved art, which is the main selling point, and it's heavy on mobile and hard to make accessible. Fugitive sheets give depth *in period style*. |
-| User accounts, saved progress, comments, UGC | No evidence they're needed. They bring auth, privacy and moderation cost. Purchases are handled by the merchant of record without accounts. |
+| User accounts, saved progress, comments, UGC | No evidence they're needed. They bring auth, privacy and moderation cost. Downloads need no account. |
 | Comprehensive anatomy (hundreds of structures) | It's content-led: 25 excellent stories beat 300 thin ones. |
 | Clinical or reference-atlas accuracy for modern anatomy | This is a history product. The modern body is a schematic, artful backdrop. |
 | CMS / admin UI | Content is files in the repo, and PR review is the editorial workflow. |
-| Native apps | The web covers share traffic, classrooms and purchases. |
-| AI-generated artwork | Licensing uncertainty blocks paid products, it's hard to keep consistent across layers, and it undercuts an authenticity-led brand (F16). |
+| Native apps | The web covers share traffic and classrooms. |
+| AI-generated artwork | Licensing uncertainty blocks open licensing and reuse, it's hard to keep consistent across layers, and it undercuts an authenticity-led brand (F16). |
 | Automated social posting | Manual or scheduled via a third-party tool is enough. |
 
 ## Success metric
@@ -102,10 +105,10 @@ This measures the core bet: that the spatial, temporal and story combination mak
 2. They tap **Suggest a correction**. The form is prefilled with the story and claim IDs.
 3. The correction is triaged. If it's accepted, it's published in the public corrections log.
 
-### 5. Teacher buys a pack
-1. A teacher arrives via the "For teachers" page (or the free sample pack).
-2. They pick *"The circulation of the blood: Galen to Malpighi"* (A$19), and checkout goes through the merchant of record (GST/VAT handled).
-3. They receive a PDF: printable plates (fog at 4 years), story cards, primary-source extracts, a "spot the myth" activity and an answer key with sources.
+### 5. Teacher downloads a pack
+1. A teacher arrives via the "For teachers" page.
+2. They pick *"The circulation of the blood: Galen to Malpighi"* and download it free, in A4 or US Letter, with no account.
+3. They get a PDF (CC BY-SA, so they can copy and adapt it): printable plates (fog at 4 years), story cards, primary-source extracts, a "spot the myth" activity and an answer key with sources.
 
 ### 6. Editor (Ali + Claude) adds a discovery
 1. Claude drafts the discovery file from the template and runs the F05 verification workflow, attaching a verification log.
@@ -133,7 +136,7 @@ Misbelief   { id, title, heldBy[] (Person), yearStart, correctedBy (Discovery), 
 Era         { id, yearStart, label, caption, paperTexture, inkTone, marginScript }
 Tradition   { id, name, plateAssetId, hotspots[] ── TraditionConcept { id, name, nameOriginal, story, claims[], relatesTo[] (Structure, typed: "corresponds"|"partially"|"no modern equivalent") } }
 Thread      { id, title, intro, discoveries[] (ordered) }      // tours, packs, edition chapters
-Pack        { id, threadId, price, sku, generatedPdf }
+Pack        { id, threadId, generatedPdf }
 Edition     { chapters[] ── Thread + essay }
 VerificationLog { discoveryId, date, reviewer: "claude"|human, sourcesConsulted[], mythChecks[], verdict, notes }
 ```
@@ -147,12 +150,13 @@ Key rules:
 
 ## Tech constraints
 
-- **Solo, bootstrapped, near-zero running cost.** Static site, no custom backend. Commerce and email go through hosted services.
+- **Solo, bootstrapped, near-zero running cost.** Static site, no custom backend. Email goes through a hosted service. Downloads are GitHub Release assets.
 - **Stack:** Astro + TypeScript, with small interactive islands (Preact or Solid) for the body, slider and panel. SVG for line art and hit regions, aligned AVIF/WebP rasters for hatching and washes (F16).
 - **Content as code:** Markdown/MDX + YAML in the repo, with Zod schemas. **CI fails** on an uncited claim, a missing verification log, an unlicensed asset, an unknown structure ID, a ShareDate without calendar and citation, or missed balance targets.
 - **Hosting:** Netlify or Cloudflare Pages, with deploy previews per PR.
 - **Build-time generation:** OG/share images (Satori), RSS, classroom-pack PDFs and edition EPUB/PDF (Paged.js via headless Chromium; pandoc for EPUB).
-- **Commerce:** Lemon Squeezy or Paddle as **merchant of record** (handles AU GST, EU VAT and invoicing for schools) with hosted checkout and file delivery. No accounts.
+- **Downloads:** packs and the edition are built by the release workflow and published as GitHub Release assets (F18). No accounts, no commerce.
+- **Licences:** code MIT; written content CC BY-SA 4.0; plates CC BY 4.0 (F18).
 - **Email:** Buttondown (or similar), generated from ShareDates.
 - **Analytics:** cookieless (Plausible / Umami).
 - **Performance:** first meaningful paint < 2.5s on 4G mid-range phone; initial art payload ≤ 1.5MB; flap layers lazy-load.
@@ -170,7 +174,7 @@ Key rules:
 | 3 | Story panel, misbeliefs, browse (F03, F09, F11) | |
 | 4 | Traditions lens (F10) | Needs its own plates and verification |
 | 5 | Share cards, RSS, email, analytics (F07, F15, F08) | |
-| 6 | Packs, edition, commerce, sponsor page (F12, F14) | Generated from the same content |
+| 6 | Packs, edition, sponsor page (F12, F14) | Generated from the same content |
 | 7 | Final art integration → **closed preview (~50 readers)** → fixes → public launch | |
 
 ## Open questions

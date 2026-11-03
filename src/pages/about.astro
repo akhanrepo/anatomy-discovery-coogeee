@@ -28,5 +28,13 @@ import { site } from '../config/site';
     <p>Knowledge is shown as ink because that is how the history was made: in manuscripts, woodcuts and copperplates. The figure here is Tabula's own schematic engraving, drawn as a stand-in for a commissioned engraving. The paper behind it changes with the era, from papyrus to vellum to laid rag paper to modern stock.</p>
     <h2>Accuracy</h2>
     <p>Every claim is cited and checked. See <a href="/how-we-source/">how we source</a>, the full <a href="/sources/">list of sources</a> and the public <a href="/corrections/">corrections log</a>.</p>
+    <h2 id="open-source">Open source</h2>
+    <p>{site.name} is built in the open, on <a href={site.repo}>GitHub</a>. You are welcome to reuse it:</p>
+    <ul data-testid="licence-map">
+      <li><strong>The writing</strong> (stories, essays, tour intros, beliefs, verification logs and the data behind them), the <a href="/teachers/">classroom packs</a> and the <a href="/edition/">edition</a>: <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>. Credit "{site.name}" with a link, and share adaptations on the same terms.</li>
+      <li><strong>The plates</strong> drawn for this site: <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</li>
+      <li><strong>The code</strong>: <a href={site.licences.code.url}>{site.licences.code.name}</a>.</li>
+    </ul>
+    <p>Quoted primary sources and the works we cite belong to their authors and publishers. Corrections and contributions are welcome: see the <a href={`${site.repo}/blob/main/CONTRIBUTING.md`}>contributing guide</a>.</p>
   </article>
 </Layout>
