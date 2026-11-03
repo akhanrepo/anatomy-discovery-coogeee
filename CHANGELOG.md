@@ -4,10 +4,6 @@ All notable changes to Tabula are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
-### Added
-- `CITATION.cff`, so GitHub offers "Cite this repository".
-- README: a before-and-after strip of the fog over four eras, a site tour, a roadmap, and sections on citing and acknowledgements; a social preview image (`docs/images/social-preview.png`).
-
 ## [1.0.0] — 2026-11-03
 
 The first public release. Tabula is now open source.
@@ -20,6 +16,7 @@ The first public release. Tabula is now open source.
 - **Accuracy as a build gate.** Every claim has at least two sources, one scholarly, and a hash-locked verification log; the build fails otherwise (F05, F06).
 - **Sharing:** Open Graph cards, `/today` and an RSS feed (F07, F15), plus cookieless analytics that is off until configured (F08).
 - **Classroom packs and the edition**, generated from the same content: four printable packs in A4 and US Letter, and a six-chapter long read as EPUB and PDF (F12, F14).
+- `CITATION.cff`, so GitHub offers "Cite this repository", and a README with a before-and-after strip of the fog, a site tour and a roadmap.
 - **Open-source project files** (F18): MIT licence for the code, CC BY-SA 4.0 for the content, README, contributing guide, code of conduct, security policy, architecture notes, issue forms (bug, correction, discovery, feature), a PR template, CI, CodeQL, Dependabot, and a release workflow that publishes the packs and the edition.
 
 ### Changed

@@ -1,7 +1,9 @@
 name: Release
 
 # Pushing a tag vX.Y.Z (matching package.json) builds the classroom packs and the edition
-# and publishes them as a GitHub Release. The site links to releases/latest/download/<file>,
+# and publishes them as a GitHub Release. Publishing a release with a new vX.Y.Z tag from the
+# GitHub web page also works: creating the tag runs this workflow, which then attaches the
+# files to that release. The site links to releases/latest/download/<file>,
 # so the newest release is what /teachers and /edition serve.
 on:
   push:
@@ -45,7 +47,13 @@ jobs:
         run: |
           node scripts/release-notes.mjs "${GITHUB_REF_NAME#v}" > release-notes.md
           mapfile -t files < <(npx tsx scripts/release-files.ts)
-          gh release create "$GITHUB_REF_NAME" "${files[@]}" \
-            --title "Tabula $GITHUB_REF_NAME" \
-            --notes-file release-notes.md \
-            --verify-tag
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            # created on the web page: attach the files and use the CHANGELOG notes
+            gh release upload "$GITHUB_REF_NAME" "${files[@]}" --clobber
+            gh release edit "$GITHUB_REF_NAME" --title "Tabula $GITHUB_REF_NAME" --notes-file release-notes.md
+          else
+            gh release create "$GITHUB_REF_NAME" "${files[@]}" \
+              --title "Tabula $GITHUB_REF_NAME" \
+              --notes-file release-notes.md \
+              --verify-tag
+          fi
