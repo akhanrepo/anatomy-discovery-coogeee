@@ -21,6 +21,7 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 | 11 | Analytics | F08 | ✅ done | [F08](plans/F08.md) |
 | 12 | Classroom packs, edition, sponsorship, commerce links | F12, F14 | ✅ done | [F12-F14](plans/F12-F14.md) |
 | 13 | Full regression (all suites), `/done` review, Netlify project | — | ✅ done | — |
+| 14 | Open-source release: licences, free packs and edition, repo files, CI and releases | F18 | 🔨 in progress | [F18](plans/F18.md) |
 
 ## Test strategy
 | Suite | Tool | Runs | What it covers |
