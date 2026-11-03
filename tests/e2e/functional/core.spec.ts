@@ -161,11 +161,16 @@ test.describe('F03 story panel', () => {
     await page.goto('/?y=1700&d=fabricius-venous-valves');
     await expect(page.locator('[data-story="fabricius-venous-valves"]')).toBeVisible();
     await expect(page.locator('[data-slider]')).toHaveAttribute('aria-valuenow', '1700');
-    let ev = (await events(page)).filter((e) => e.n === 'story_open');
-    expect(ev).toHaveLength(1);
+    // story_open is sent a frame after the panel paints (F01-AC2), so wait for it, then check it fired exactly once per open.
+    const opens = async () => (await events(page)).filter((e) => e.n === 'story_open').length;
+    const settle = () => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => setTimeout(r, 50))));
+    await expect.poll(opens).toBe(1);
+    await settle();
+    expect(await opens()).toBe(1);
     await page.locator('[data-story="fabricius-venous-valves"] [data-open-story]').first().click();
-    ev = (await events(page)).filter((e) => e.n === 'story_open');
-    expect(ev).toHaveLength(2);
+    await expect.poll(opens).toBe(2);
+    await settle();
+    expect(await opens()).toBe(2);
     await expect(page).toHaveURL(/d=/);
   });
 
