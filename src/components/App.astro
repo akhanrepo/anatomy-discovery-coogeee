@@ -86,7 +86,7 @@ const layerNames: Record<string, string> = { surface: 'Skin', muscles: 'Muscles'
         {c.discoveries.map((d) => <StoryPanel d={d} open={d.id === openD?.id} />)}
         {c.misbeliefs.map((m) => <MisbeliefPanel m={m} />)}
       </div>
-      <div class="subscribe-nudge" data-subscribe-nudge hidden><p><strong>Want one of these every week?</strong> <a href="/today/">This week in anatomy</a> by email or <a href="/feed.xml" data-subscribe-rss>RSS</a>.</p></div>
+      <div class="subscribe-nudge" data-subscribe-nudge hidden><p><strong>Want one of these every week?</strong> <a href="/today/">This week in anatomy</a>, or follow it by <a href="/feed.xml" data-subscribe-rss>RSS</a>.</p></div>
       <div class="context-note" data-context-note hidden><h2 data-context-name></h2><p>No story yet for this structure. Organs visible to the naked eye are shown in outline throughout; this site follows the discoveries in its {c.discoveries.length} plates.</p></div>
     </div>
   </aside>

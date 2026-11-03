@@ -14,7 +14,7 @@ The first public release. Tabula is now open source.
 - **26 discoveries**, Plates I–XXVI, each with a footnoted story, the method used and the belief it overturned (F03, F04), plus beliefs drawn in red ink that are erased when corrected (F09).
 - **Timeline, people and six guided tours**, each with a verified introduction (F11), and the **traditions lens**: Islamic-Galenic, Chinese classical and Ayurvedic maps of the body (F10).
 - **Accuracy as a build gate.** Every claim has at least two sources, one scholarly, and a hash-locked verification log; the build fails otherwise (F05, F06).
-- **Sharing:** Open Graph cards, `/today`, RSS and an email signup (F07, F15), plus cookieless analytics that is off until configured (F08).
+- **Sharing:** Open Graph cards, `/today` and an RSS feed (F07, F15), plus cookieless analytics that is off until configured (F08).
 - **Classroom packs and the edition**, generated from the same content: four printable packs in A4 and US Letter, and a six-chapter long read as EPUB and PDF (F12, F14).
 - **Open-source project files** (F18): MIT licence for the code, CC BY-SA 4.0 for the content, README, contributing guide, code of conduct, security policy, architecture notes, issue forms (bug, correction, discovery, feature), a PR template, CI, CodeQL, Dependabot, and a release workflow that publishes the packs and the edition.
 
@@ -25,10 +25,11 @@ The first public release. Tabula is now open source.
 - Patched `undici` and `zod`.
 
 ### Fixed
-- Analytics events from pages other than the body (downloads, the email signup) were dropped because the tracking helper loaded only on the body page. It now loads on every page.
+- Analytics events from pages other than the body (downloads, the RSS link) were dropped because the tracking helper loaded only on the body page. It now loads on every page.
 
 ### Removed
 - The Lemon Squeezy checkout (buy buttons, prices, school licences and the `checkout_start` event).
+- The weekly email: the Buttondown signup, the generated email issues and `PUBLIC_BUTTONDOWN_USER`. Follow by RSS instead.
 
 [Unreleased]: https://github.com/akhanrepo/tabula/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/akhanrepo/tabula/releases/tag/v1.0.0

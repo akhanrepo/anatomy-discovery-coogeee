@@ -18,7 +18,7 @@ Cookieless analytics with a few custom events. They compute the success metric (
   | `misbelief_view` | `misbeliefId` |
   | `share_click` | `discoveryId`, `channel` |
   | `citation_open`, `correction_start` | `discoveryId` |
-  | `subscribe` | `channel` (email / rss) |
+  | `subscribe` | `channel` (rss) |
   | `download` | `file` (pack or edition file name) |
 - Download totals can also be read from the GitHub Release asset counts.
 - `docs/metrics.md`: how to read the success metric.

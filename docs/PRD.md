@@ -52,7 +52,7 @@ Ordered by dependency (see **Build sequence** below). All ship together.
 | 10 | **Traditions lens**: Islamic-world, Chinese and Ayurvedic bodies, each on its own historical plate | [F10](features/F10-traditions-lens.md) |
 | 11 | **Browse**: timeline, people, threads (guided tours) | [F11](features/F11-timeline-and-people-browse.md) |
 | 12 | **"On this day / this week in anatomy" share cards & deep links** | [F07](features/F07-on-this-day-share-cards.md) |
-| 13 | **Subscription**: RSS + weekly email | [F15](features/F15-daily-card-subscription.md) |
+| 13 | **Subscription**: RSS (weekly email removed 2026-11-03) | [F15](features/F15-daily-card-subscription.md) |
 | 14 | **Classroom packs** (free), 3 at launch plus a sample | [F12](features/F12-classroom-packs.md) |
 | 15 | **Edition (free) + sponsorship** | [F14](features/F14-sponsorship-and-premium-edition.md) |
 | 16 | **Analytics** | [F08](features/F08-analytics-and-success-measurement.md) |
@@ -150,14 +150,13 @@ Key rules:
 
 ## Tech constraints
 
-- **Solo, bootstrapped, near-zero running cost.** Static site, no custom backend. Email goes through a hosted service. Downloads are GitHub Release assets.
+- **Solo, bootstrapped, near-zero running cost.** Static site, no custom backend, no mailing list. Downloads are GitHub Release assets.
 - **Stack:** Astro + TypeScript, with small interactive islands (Preact or Solid) for the body, slider and panel. SVG for line art and hit regions, aligned AVIF/WebP rasters for hatching and washes (F16).
 - **Content as code:** Markdown/MDX + YAML in the repo, with Zod schemas. **CI fails** on an uncited claim, a missing verification log, an unlicensed asset, an unknown structure ID, a ShareDate without calendar and citation, or missed balance targets.
 - **Hosting:** Netlify or Cloudflare Pages, with deploy previews per PR.
 - **Build-time generation:** OG/share images (Satori), RSS, classroom-pack PDFs and edition EPUB/PDF (Paged.js via headless Chromium; pandoc for EPUB).
 - **Downloads:** packs and the edition are built by the release workflow and published as GitHub Release assets (F18). No accounts, no commerce.
 - **Licences:** code MIT; written content CC BY-SA 4.0; plates CC BY 4.0 (F18).
-- **Email:** Buttondown (or similar), generated from ShareDates.
 - **Analytics:** cookieless (Plausible / Umami).
 - **Performance:** first meaningful paint < 2.5s on 4G mid-range phone; initial art payload ≤ 1.5MB; flap layers lazy-load.
 - **Accessibility:** WCAG 2.2 AA. The slider and flaps are keyboard and screen-reader operable, with a full non-visual structure list and `prefers-reduced-motion` support. Schools require this.
@@ -173,7 +172,7 @@ Key rules:
 | 2 | Body + flaps + slider + state engine on **placeholder art** (F01, F13, F02) | The art drops in by structure ID later |
 | 3 | Story panel, misbeliefs, browse (F03, F09, F11) | |
 | 4 | Traditions lens (F10) | Needs its own plates and verification |
-| 5 | Share cards, RSS, email, analytics (F07, F15, F08) | |
+| 5 | Share cards, RSS, analytics (F07, F15, F08) | |
 | 6 | Packs, edition, sponsor page (F12, F14) | Generated from the same content |
 | 7 | Final art integration → **closed preview (~50 readers)** → fixes → public launch | |
 

@@ -14,8 +14,6 @@ export const site = {
   contactEmail: process.env.PUBLIC_CONTACT_EMAIL ?? '',
   /** Analytics (F08): Plausible domain. Empty = disabled. Never active on localhost or deploy previews. */
   analytics: { plausibleDomain: process.env.PUBLIC_PLAUSIBLE_DOMAIN ?? '', productionHost: process.env.PUBLIC_PRODUCTION_HOST ?? '' },
-  /** Email (F15): Buttondown username. Empty = signup shows RSS only. */
-  email: { buttondownUser: process.env.PUBLIC_BUTTONDOWN_USER ?? '' },
   /** Donations (F18): any donation page (GitHub Sponsors, Ko-fi, …). Empty = hidden. */
   donateUrl: process.env.PUBLIC_DONATE_URL ?? '',
   /** Sponsorship (F14): empty until a sponsor exists AND the policy page is live. */

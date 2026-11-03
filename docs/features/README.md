@@ -16,7 +16,7 @@ One brief per feature. The [PRD](../PRD.md) is the source of truth for scope. If
 | [F11](F11-timeline-and-people-browse.md) | Timeline, people & threads (guided tours) | Product |
 | [F10](F10-traditions-lens.md) | Traditions lens (Islamic world, Chinese, Ayurveda) | Product + content |
 | [F07](F07-on-this-day-share-cards.md) | "This week / on this day" share cards & deep links | Growth |
-| [F15](F15-daily-card-subscription.md) | RSS + weekly email | Retention |
+| [F15](F15-daily-card-subscription.md) | RSS | Retention |
 | [F08](F08-analytics-and-success-measurement.md) | Analytics & success measurement | Enabling |
 | [F12](F12-classroom-packs.md) | Classroom packs (free) | Reach |
 | [F14](F14-sponsorship-and-premium-edition.md) | Edition (free) & sponsorship | Reach, funding |

@@ -7,7 +7,7 @@ content/ (YAML + Markdown) ──► src/lib/content (Zod schema → loader → 
                                                                                   │
           ┌──────────────────────────────┬──────────────────────────┬────────────┴───────────────┐
           ▼                              ▼                          ▼                            ▼
-   Astro pages (src/pages)      model.ts → fog model JSON     og.ts, feed.ts, email.ts      packs.ts, edition.ts
+   Astro pages (src/pages)      model.ts → fog model JSON     og.ts, feed.ts               packs.ts, edition.ts
    server-render all HTML       embedded in the page          share cards, RSS, issues      print pages → PDFs/EPUB
           │                              │                                                       │
           ▼                              ▼                                                       ▼
@@ -40,7 +40,6 @@ content/ (YAML + Markdown) ──► src/lib/content (Zod schema → loader → 
 | RSS | `src/lib/feed.ts` via `src/pages/feed.xml.ts` | `npm run build` |
 | Classroom packs (PDF, A4 + Letter) | `src/lib/packs.ts` → `/packs/<id>/print/` → Chromium `page.pdf` | `npm run artefacts` |
 | Edition (EPUB + PDF) | `src/lib/edition.ts` → Markdown → pandoc / Chromium | `npm run artefacts` |
-| Weekly email issues | `src/lib/email.ts` | `npm run artefacts` |
 
 Packs and the edition carry a **content version** (`src/lib/version.ts`), a hash of every claim, so a printed copy can be traced to the content it came from.
 
@@ -53,7 +52,6 @@ All are configured in `src/config/site.ts` from `PUBLIC_*` environment variables
 | Integration | Variable | Off means |
 |---|---|---|
 | Plausible analytics (cookieless) | `PUBLIC_PLAUSIBLE_DOMAIN`, `PUBLIC_PRODUCTION_HOST` | no script loads. When set, the script runs only on the production host, never on localhost or deploy previews |
-| Buttondown email | `PUBLIC_BUTTONDOWN_USER` | the signup offers RSS only |
 | Contact email | `PUBLIC_CONTACT_EMAIL` | corrections and sponsorship go through GitHub only |
 | Donations | `PUBLIC_DONATE_URL` | no donate button |
 

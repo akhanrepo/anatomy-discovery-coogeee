@@ -10,7 +10,7 @@ See `docs/PRD.md` for full context. Feature specs live in `docs/features/` (F01�
 - **Content as code:** YAML + Markdown in `content/`, loaded and validated with **Zod** (`src/lib/content/`). The same loader serves Astro pages, scripts and tests.
 - **Art:** inline SVG (line art, hit regions, hatching patterns) + CSS paper textures. Design tokens are CSS custom properties in `src/styles/global.css`, mirrored in `src/styles/tokens.ts`.
 - **Build-time generation:** OG/share images (satori + resvg), RSS, classroom-pack PDFs (Playwright `page.pdf`), edition EPUB (pandoc). Packs and the edition are free downloads, published as GitHub Release assets by `.github/workflows/release.yml` on a `vX.Y.Z` tag. `src/lib/downloads.ts` is the one list of their file names.
-- **Hosting:** Netlify (static). CI: GitHub Actions (`ci.yml`, `codeql.yml`, `release.yml`). Email: Buttondown. Analytics: Plausible (cookieless). Contact email and donate link are optional too. All are **config-driven and disabled until configured** in `src/config/site.ts`. There is no commerce (removed in F18).
+- **Hosting:** Netlify (static). CI: GitHub Actions (`ci.yml`, `codeql.yml`, `release.yml`). Analytics: Plausible (cookieless). Contact email and donate link are optional too. All are **config-driven and disabled until configured** in `src/config/site.ts`. There is no commerce (removed in F18).
 
 ## Commands
 - Install: `npm ci`
@@ -27,7 +27,7 @@ See `docs/PRD.md` for full context. Feature specs live in `docs/features/` (F01�
 Playwright finds Chromium via `scripts/chromium.mjs`: `PLAYWRIGHT_CHROMIUM_PATH`, then `/opt/pw-browsers/chromium`, then Playwright's own install. In this sandbox, never run `playwright install` (CI does).
 
 ## Scope (v1, everything ships together)
-F16 visual system · F17 name/icon · F04 26 discoveries · F05 citations/verification · F06 image provenance · F01 body (male/female) · F13 flaps · F02 slider/fog · F03 story panel · F09 misbeliefs · F11 timeline/people/threads · F10 traditions lens · F07 share cards · F15 RSS/email · F08 analytics · F12 classroom packs · F14 edition + sponsorship · F18 open-source release.
+F16 visual system · F17 name/icon · F04 26 discoveries · F05 citations/verification · F06 image provenance · F01 body (male/female) · F13 flaps · F02 slider/fog · F03 story panel · F09 misbeliefs · F11 timeline/people/threads · F10 traditions lens · F07 share cards · F15 RSS · F08 analytics · F12 classroom packs · F14 edition + sponsorship · F18 open-source release.
 
 ## Explicit non-goals (say no, even if it's tempting)
 True 3D body · user accounts/comments/UGC · comprehensive anatomy (stay at ~40 structures) · clinical or reference-atlas accuracy · a CMS/admin UI · native apps · AI-generated artwork · automated social posting · anything that needs a custom server.
@@ -56,7 +56,7 @@ True 3D body · user accounts/comments/UGC · comprehensive anatomy (stay at ~40
 ## Don't touch without asking
 - The licences: `LICENSE`, `LICENSE-CONTENT`, `site.licences`, and the licence map in the README (relicensing has legal consequences)
 - Reintroducing commerce or any paywall (F18 decided against it)
-- Analytics/email provider configuration and anything that sends data off-site
+- Analytics provider configuration and anything that sends data off-site (there is no mailing list; F15 removed it)
 - Licences and credits in `content/assets.yaml` (changing a licence has legal consequences)
 - Deleting or renaming content IDs (it breaks shared URLs)
 - Netlify site settings

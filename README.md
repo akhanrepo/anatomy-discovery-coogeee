@@ -49,7 +49,7 @@ Tabula puts the history on the body. Drag a slider from 1600 BCE to today and wa
 | 🖍️ **Misbeliefs** | Beliefs drawn in red ink that fade when challenged and are erased when corrected |
 | 🧭 **Timeline, people and tours** | Six guided tours: circulation, brain and nerves, microscopy, myths and firsts, beyond Europe, hidden vessels |
 | 🌏 **Traditions lens** | Islamic-Galenic, Chinese classical and Ayurvedic maps of the body, on their own terms |
-| 🔗 **Sharing** | Every view is a link; Open Graph cards, a weekly `/today`, RSS and an optional email |
+| 🔗 **Sharing** | Every view is a link; Open Graph cards, a weekly `/today` and an RSS feed |
 | 🍎 **Classroom packs** | Four free printable packs (A4 and US Letter): black-line plates to colour, story cards, "spot the myth", discussion questions and a sourced answer key |
 | 📖 **The edition** | A free long read: one chapter of about 2,500–4,000 words per tour, with a long-view essay, the plates and a full bibliography (EPUB and PDF) |
 
@@ -130,7 +130,6 @@ Integrations are off until their environment variables are set (on Netlify: Site
 | Variable | Enables |
 |---|---|
 | `PUBLIC_PLAUSIBLE_DOMAIN`, `PUBLIC_PRODUCTION_HOST` | Plausible analytics (cookieless; production host only) |
-| `PUBLIC_BUTTONDOWN_USER` | Email signup (otherwise the page offers RSS only) |
 | `PUBLIC_CONTACT_EMAIL` | An email option for corrections and sponsorship (otherwise GitHub only) |
 | `PUBLIC_DONATE_URL` | A donate button on `/support` |
 | `SITE_URL` (optional) | Canonical URL, if not `https://tabula-anatomy.netlify.app` |

@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 import { buildFeed } from '../../src/lib/feed';
-import { emailIssue } from '../../src/lib/email';
+import { site } from '../../src/config/site';
 
 const SITE = 'https://tabula.example';
 
@@ -22,16 +24,12 @@ describe('F15 subscription', () => {
     const guids = [...xml.matchAll(/<guid[^>]*>(.+?)<\/guid>/g)].map((m) => m[1]);
     expect(new Set(guids).size).toBe(guids.length);
   });
-  it('F15-AC2 [proxy] email issues are table-based, inline-styled, with a plate header image and live text, under Gmail\'s clip limit', () => {
-    for (const w of [1, 21, 52]) {
-      const { subject, html } = emailIssue(w, SITE);
-      expect(subject).toMatch(/^Tabula: /);
-      expect(html).toMatch(/<table role="presentation"/);
-      expect(html).not.toMatch(/<style|<link rel="stylesheet"|class="/);
-      expect(html).toMatch(/<img src="https:\/\/tabula.example\/og\/[a-z0-9-]+\.png" width="552" alt="[^"]+"/);
-      expect(html).toMatch(/<a href="https:\/\/tabula.example\/[^"]+"[^>]*>[^<]{4,}<\/a>/);
-      expect(html).toMatch(/unsubscribe_url/);
-      expect(Buffer.byteLength(html)).toBeLessThan(100 * 1024);
-    }
+  it('subscription is RSS only: no email signup, Buttondown config or email issues remain', () => {
+    expect(site).not.toHaveProperty('email');
+    expect(existsSync('src/lib/email.ts')).toBe(false);
+    const walk = (d: string): string[] => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
+    const offenders = [...walk('src'), ...walk('scripts')].filter((f) => /buttondown|type="email"|emailIssue|BUTTONDOWN/i.test(readFileSync(f, 'utf8')));
+    expect(offenders).toEqual([]);
+    expect(readFileSync('src/components/Subscribe.astro', 'utf8')).toMatch(/href="\/feed\.xml" data-subscribe-rss/);
   });
 });
