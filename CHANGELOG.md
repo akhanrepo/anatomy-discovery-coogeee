@@ -26,6 +26,7 @@ The first public release. Tabula is now open source.
 
 ### Fixed
 - Analytics events from pages other than the body (downloads, the RSS link) were dropped because the tracking helper loaded only on the body page. It now loads on every page.
+- Opening a story in a guided tour could steal keyboard focus back from the tour controls a moment later (on slower devices). The story now takes focus only if the reader hasn't moved it.
 
 ### Removed
 - The Lemon Squeezy checkout (buy buttons, prices, school licences and the `checkout_start` event).

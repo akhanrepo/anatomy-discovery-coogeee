@@ -29,6 +29,20 @@ test('F11-AC2 tours are keyboard operable with pause and resume', async ({ page 
   await expect(bar).toBeHidden();
 });
 
+test('F11-AC2 opening a tour story never steals focus from a control the reader has moved to', async ({ page }) => {
+  await page.goto('/?tour=circulation');
+  const bar = page.locator('[data-tour-bar]');
+  await expect(bar).toBeVisible();
+  // Next, then focus Pause in the same task: the story's deferred focus (after paint) must not override it.
+  const focused = await page.evaluate(async () => {
+    (document.querySelector('[data-tour-next]') as HTMLElement).click();
+    (document.querySelector('[data-tour-pause]') as HTMLElement).focus();
+    for (let i = 0; i < 4; i++) await new Promise(requestAnimationFrame);
+    return document.activeElement?.hasAttribute('data-tour-pause');
+  });
+  expect(focused).toBe(true);
+});
+
 test('F11-AC3 every person page links to every discovery and misbelief they are part of', async ({ page }) => {
   for (const p of c.people) {
     await page.goto(`/people/${p.id}/`);

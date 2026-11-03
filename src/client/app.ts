@@ -214,7 +214,9 @@ export function start() {
     openPanel(source === 'deeplink' || source === 'tour' ? 'load' : 'user');
     const h = $('h2', art) as HTMLElement | null;
     h?.setAttribute('tabindex', '-1');
-    if (source !== 'deeplink') afterPaint(() => h?.focus({ preventScroll: mobile() }));
+    // Move focus to the story after paint, unless the reader has moved it meanwhile (e.g. on to Pause in a tour).
+    const focusAtOpen = document.activeElement;
+    if (source !== 'deeplink') afterPaint(() => { if (document.activeElement === focusAtOpen) h?.focus({ preventScroll: mobile() }); });
     later(() => {
       track('story_open', { discoveryId: id, source });
       if (!opened.has(id)) {
