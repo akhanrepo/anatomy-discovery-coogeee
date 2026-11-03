@@ -65,7 +65,7 @@ const mailto = buildCorrectionMailto({ discoveryId: d.id });
     {earlier && <a class="btn" href={`/tab/${earlier.id}/`} data-open-story={earlier.id}>← Earlier: {earlier.title}</a>}
     {later && <a class="btn" href={`/tab/${later.id}/`} data-open-story={later.id}>Later: {later.title} →</a>}
     {nextInThread && thread && <a class="btn" href={`/tab/${nextInThread.id}/`} data-open-story={nextInThread.id}>Next in “{thread.title}”: {nextInThread.title}</a>}
-    {thread && <a class="btn" href={`/edition/#${thread.id}`}>Read the long version</a>}
+    {thread && <a class="btn" href={`/edition/${thread.id}/#${d.id}`} data-long-version>Read the long version</a>}
     <button type="button" class="btn" data-share={d.id} data-track="share_click">Share</button>
   </nav>
 </article>

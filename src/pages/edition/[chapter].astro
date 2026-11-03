@@ -1,0 +1,95 @@
+---
+/* F14 web edition: one chapter per tour, rendered from the same buildEdition() chapters as the EPUB and PDF. */
+import Layout from '../../layouts/Layout.astro';
+import DownloadLink from '../../components/DownloadLink.astro';
+import { corpus } from '../../lib/content/load';
+import { buildEdition } from '../../lib/edition';
+import { webChapter, roman } from '../../lib/edition-web';
+import { formatCitations } from '../../lib/format';
+import { buildCorrectionUrl } from '../../lib/corrections';
+import { EDITION_FILES } from '../../lib/downloads';
+import { site } from '../../config/site';
+import '../../styles/edition.css';
+
+export function getStaticPaths() { return corpus().threads.map((t) => ({ params: { chapter: t.id } })); }
+const c = corpus();
+const e = buildEdition(c);
+const ch = webChapter(c, Astro.params.chapter!, e);
+const sources = new Map(c.sources.map((s) => [s.id, s]));
+const assetOf = (id: string) => c.assets.find((a) => a.id === id);
+const statusLabel: Record<string, string> = { contested: 'contested', revised: 'revised' };
+---
+<Layout title={`${ch.title} · The edition`} description={ch.summary}>
+  <article class="edition" data-testid="edition-chapter" data-chapter={ch.id}>
+    <p class="smallcaps edition-kicker"><a href="/edition/">The edition</a> · Chapter {ch.numeral} of {roman(e.chapters.length)}</p>
+    <h1>{ch.title}</h1>
+    <p class="edition-standfirst">{ch.summary}</p>
+    <p class="edition-meta" data-testid="edition-meta">{ch.words.toLocaleString('en')} words · about {ch.minutes} minutes · {ch.notes.length} notes · edition {e.version}</p>
+
+    <div class="edition-intro" set:html={ch.introHtml} />
+
+    <details class="edition-toc" open>
+      <summary>In this chapter</summary>
+      <ol data-testid="edition-toc">
+        {ch.sections.map((s) => <li><a href={`#${s.anchor}`}>{s.title}</a>{s.date && <span class="small"> ({s.date})</span>}</li>)}
+        <li><a href="#notes">Notes and sources</a></li>
+      </ol>
+    </details>
+
+    {ch.sections.map((s) => {
+      if (s.kind === 'plate' && s.discovery) {
+        const d = s.discovery;
+        const a = assetOf(d.assets[0]);
+        return (
+          <section class="edition-section" id={s.anchor} data-kind="plate" aria-labelledby={`h-${s.anchor}`}>
+            <h2 id={`h-${s.anchor}`}>{s.title}</h2>
+            <p class="smallcaps edition-date">{s.date}</p>
+            <figure class="edition-plate">
+              <img src={`/plates/${d.id}.svg`} alt={a?.altText ?? ''} width="200" height="500" loading="lazy" decoding="async" />
+              {a && <figcaption>{a.credit}. <a href={a.recordUrl} rel="noopener">Primary source</a></figcaption>}
+            </figure>
+            <Fragment set:html={s.html} />
+            <p class="edition-onbody"><a href={`/tab/${d.id}/`} data-testid="on-the-body">See Tab. {d.plate} on the body →</a></p>
+          </section>
+        );
+      }
+      if (s.kind === 'belief') {
+        return (
+          <section class="edition-section edition-misbelief" id={s.anchor} data-kind="belief" aria-labelledby={`h-${s.anchor}`}>
+            <h2 id={`h-${s.anchor}`} class="edition-misbelief-head">{s.title}</h2>
+            <Fragment set:html={s.html} />
+          </section>
+        );
+      }
+      return (
+        <section class="edition-section" id={s.anchor} data-kind="essay" data-testid="edition-essay" aria-labelledby={`h-${s.anchor}`}>
+          <h2 id={`h-${s.anchor}`}>{s.title}</h2>
+          <Fragment set:html={s.html} />
+          <p class="edition-rule" aria-hidden="true">· · ·</p>
+        </section>
+      );
+    })}
+
+    <section class="edition-notes" id="notes" aria-labelledby="h-notes">
+      <h2 id="h-notes">Notes and sources</h2>
+      <ol data-testid="edition-notes">
+        {ch.notes.map((n) => (
+          <li id={`note-${n.n}`} value={n.n}>
+            <p class="claim">{n.claim.text}{statusLabel[n.claim.status] && <span class={`badge badge-${n.claim.status}`}>{statusLabel[n.claim.status]}</span>}{n.claim.secondarySummary && <span class="src-tag">read via summaries</span>}</p>
+            {n.claim.contestNote && <p class="contest-note">{n.claim.contestNote}</p>}
+            <ul class="cites">{formatCitations(n.claim, sources).map((h) => <li set:html={h} />)}</ul>
+            <p class="note-tools"><a href={`#ref-${n.n}`} aria-label={`Back to the text for note ${n.n}`}>↩ Back to the text</a> · <a href={buildCorrectionUrl({ discoveryId: n.subject, claimId: n.key })} rel="noopener">Suggest a correction</a></p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <nav class="edition-pager" aria-label="Chapters">
+      {ch.prev && <a class="prev" href={`/edition/${ch.prev.id}/`} rel="prev"><small>← Previous chapter</small>{ch.prev.title}</a>}
+      {ch.next ? <a class="next" href={`/edition/${ch.next.id}/`} rel="next"><small>Next chapter →</small>{ch.next.title}</a> : <a class="next" href="/edition/"><small>The end</small>Back to the contents</a>}
+    </nav>
+
+    <p class="edition-foot">Prefer to read offline? <DownloadLink file={EDITION_FILES.epub} label="EPUB" /> <DownloadLink file={EDITION_FILES.pdf} label="PDF" /><br />
+      Licensed <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>: share it, translate it and adapt it, with credit to {site.name}.</p>
+  </article>
+</Layout>

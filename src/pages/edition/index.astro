@@ -5,27 +5,34 @@ import { EDITION_FILES } from '../../lib/downloads';
 import { site } from '../../config/site';
 import { corpus } from '../../lib/content/load';
 import { buildEdition } from '../../lib/edition';
-import { renderStory } from '../../lib/format';
+import { webChapter } from '../../lib/edition-web';
+import '../../styles/edition.css';
 const c = corpus();
 const e = buildEdition(c);
-const preview = e.chapters.find((ch) => ch.id === 'circulation')!;
-const essay = c.essays.find((x) => x.thread === 'circulation');
-// Free preview: the essay's opening paragraphs (before its first subheading) and the first plate.
-const essayOpening = essay ? essay.body.split(/\n## /)[0] : '';
-const firstStory = preview.sections.map((s) => c.discoveries.find((x) => x.id === s.ref)).find(Boolean);
+const chapters = e.chapters.map((ch) => webChapter(c, ch.id, e));
+const words = chapters.reduce((n, ch) => n + ch.words, 0);
+const minutes = chapters.reduce((n, ch) => n + ch.minutes, 0);
+const plates = new Set(chapters.flatMap((ch) => ch.sections.filter((s) => s.kind === 'plate').map((s) => s.anchor))).size;
 ---
-<Layout title="The edition" description="The long version, free: every tour as an illustrated chapter, with full sources.">
-  <article class="prose">
-    <h1>The edition</h1>
-    <p>Every tour as an illustrated chapter, with the plates, the beliefs they overturned and a full bibliography. Free, as EPUB or PDF. Edition <span data-testid="edition-version">{e.version}</span>, generated from the same verified content as the site.</p>
-    <p><DownloadLink file={EDITION_FILES.epub} label="Download EPUB" /> <DownloadLink file={EDITION_FILES.pdf} label="Download PDF" /></p>
-    <p class="small" data-testid="edition-licence">Licensed <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>: share it, translate it and adapt it, with credit to Tabula, on the same terms.</p>
+<Layout title="The edition" description="The long version, free to read: every tour as an illustrated chapter, with full sources.">
+  <article class="edition">
+    <p class="smallcaps edition-kicker">{site.name} · The edition</p>
+    <h1>{e.title.replace(/^Tabula: /, '')}</h1>
+    <p class="edition-standfirst">The long version. Every tour as an illustrated chapter: a long-view essay, the plates, the beliefs they overturned, and a full bibliography.</p>
+    <p class="edition-meta">{chapters.length} chapters · {plates} plates · {words.toLocaleString('en')} words · about {Math.round(minutes / 60 * 2) / 2} hours · edition <span data-testid="edition-version">{e.version}</span></p>
+    <p><a class="btn" href={`/edition/${chapters[0].id}/`} data-testid="start-reading">Start reading →</a> <DownloadLink file={EDITION_FILES.epub} label="EPUB" /> <DownloadLink file={EDITION_FILES.pdf} label="PDF" /></p>
+
     <h2>Contents</h2>
-    <ol>{e.chapters.map((ch) => <li id={ch.id}><strong>{ch.title}</strong>: {ch.sections.length} sections<br /><span class="small">{c.threads.find((t) => t.id === ch.id)!.summary}</span></li>)}</ol>
-    <h2>A taste: {preview.title}</h2>
-    <p><em>{c.threads.find((t) => t.id === 'circulation')!.summary}</em></p>
-    {essay && <section data-testid="edition-essay-preview"><h3>{essay.title}</h3><div set:html={renderStory(essayOpening, `essay-${essay.thread}`).html} /><p class="small">…</p></section>}
-    {firstStory && <section><h3>Tab. {firstStory.plate}: {firstStory.title}</h3><div set:html={renderStory(firstStory.body, firstStory.id).html} /></section>}
-    <p class="small">The full chapter, in the download, continues with the rest of the essay, {preview.sections.length - 2} more sections and its sources.</p>
+    <ol class="edition-contents" data-testid="edition-contents">
+      {chapters.map((ch) => (
+        <li id={ch.id}>
+          <span class="numeral">{ch.numeral}</span><h3><a href={`/edition/${ch.id}/`}>{ch.title}</a></h3>
+          <p>{ch.summary}</p>
+          <p class="small" data-testid="chapter-stats">{ch.sections.filter((s) => s.kind === 'plate').length} plates · {ch.words.toLocaleString('en')} words · about {ch.minutes} minutes</p>
+        </li>
+      ))}
+    </ol>
+
+    <p class="edition-foot" data-testid="edition-licence">Generated from the same verified content as the site, so every sentence carries its sources. Licensed <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>: share it, translate it and adapt it, with credit to {site.name}, on the same terms.</p>
   </article>
 </Layout>

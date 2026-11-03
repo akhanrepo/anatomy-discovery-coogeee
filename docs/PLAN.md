@@ -22,7 +22,7 @@ Dependencies decide the order. Each step ends with green `npm test` + `npm run t
 | 12 | Classroom packs, edition, sponsorship, commerce links | F12, F14 | ✅ done | [F12-F14](plans/F12-F14.md) |
 | 13 | Full regression (all suites), `/done` review, Netlify project | — | ✅ done | — |
 | 14 | Open-source release: licences, free packs and edition, repo files, CI and releases | F18 | ✅ done | [F18](plans/F18.md) |
-| 15 | Web edition: every chapter readable on the site | F14 | 🔨 in progress | [F14-web-edition](plans/F14-web-edition.md) |
+| 15 | Web edition: every chapter readable on the site | F14 | ✅ done | [F14-web-edition](plans/F14-web-edition.md) |
 
 ## Test strategy
 | Suite | Tool | Runs | What it covers |
@@ -51,6 +51,7 @@ Not met, and recorded rather than papered over:
 9. **After the F18 merge (Ali):** rename the repo to `tabula`, make it public, push `v1.0.0` so the download links resolve, create the `correction` and `discovery` labels, enable Discussions and private vulnerability reporting, protect `main`, and re-link Netlify. See the [F18 brief](features/F18-open-source-release.md#manual-steps-for-the-maintainer).
 
 ## Changelog
+- 2026-11-03: F14 web edition. Six chapter pages at `/edition/<tour>/` rendered from the same `buildEdition()` chapters as the EPUB/PDF, with chapter-numbered notes, prev/next and print styles. New F14-AC6–AC8. 86 unit + 132 e2e + 8 perf passing.
 - 2026-11-03: F15 weekly email removed at Ali's request (Buttondown signup, email issues, config). RSS stays. F15-AC2 retired.
 - 2026-11-03: F18 open-source release. Code MIT, content CC BY-SA 4.0. Commerce removed: packs and the edition are free downloads published by a release workflow. Added README, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, CHANGELOG, THIRD_PARTY_NOTICES, architecture doc, issue forms, PR template, CI, CodeQL and Dependabot. Fixed analytics events being dropped outside the body page, and version-pinned Chromium paths. 83 unit + 122 e2e + 8 perf passing.
 - 2026-10-12: F11 tour intros expanded to about 150 words with 32 verified claims, 6 logs and a sources list on each tour page (new F11-AC4). Also corrected the microscopy essay, which had placed the 1954 muscle plate on that tour.

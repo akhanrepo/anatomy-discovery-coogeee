@@ -71,7 +71,7 @@ The history of how we came to understand the body is a great story, but it is to
 | 🌏 **Traditions lens** | Islamic-Galenic, Chinese classical and Ayurvedic maps of the body, on their own terms |
 | 🔗 **Sharing** | Every view is a link, with Open Graph cards, a weekly `/today` and an RSS feed |
 | 🍎 **Classroom packs** | Four free printable packs (A4 and US Letter): black-line plates to colour, story cards, "spot the myth", discussion questions and a sourced answer key |
-| 📖 **The edition** | A free long read: one chapter of about 2,500–4,000 words per tour, with a long-view essay, the plates and a full bibliography (EPUB and PDF) |
+| 📖 **The edition** | A free long read: one chapter of about 2,500–4,000 words per tour, with a long-view essay, the plates, the beliefs they overturned and numbered notes to every source. Read it on the site, or download the EPUB or PDF |
 
 **Private and light by design.** No accounts, no cookies, no mailing list, and no tracking unless the maintainer turns on cookieless analytics. Every story is in the HTML, so reading works without JavaScript, and the slider, flaps and panel are keyboard and screen-reader operable. Performance budgets (payload, LCP on throttled 4G, tap-to-story under 100ms, frame time) are part of the test suite.
 
@@ -84,7 +84,7 @@ The history of how we came to understand the body is a great story, but it is to
 | [`/threads`](https://tabula-anatomy.netlify.app/threads/) | The six guided tours |
 | [`/people`](https://tabula-anatomy.netlify.app/people/) | The anatomists, physicians and scholars, with their discoveries |
 | [`/today`](https://tabula-anatomy.netlify.app/today/) | This week in anatomy |
-| [`/teachers`](https://tabula-anatomy.netlify.app/teachers/) · [`/edition`](https://tabula-anatomy.netlify.app/edition/) | Free classroom packs and the long read |
+| [`/teachers`](https://tabula-anatomy.netlify.app/teachers/) · [`/edition`](https://tabula-anatomy.netlify.app/edition/) | Free classroom packs, and the long read in six chapters |
 | [`/sources`](https://tabula-anatomy.netlify.app/sources/) · [`/how-we-source`](https://tabula-anatomy.netlify.app/how-we-source/) · [`/corrections`](https://tabula-anatomy.netlify.app/corrections/) | The bibliography, the method, and the public corrections log |
 
 ## Accuracy is a build gate
@@ -179,7 +179,6 @@ Tabula v1 is complete. These are the known gaps and the most wanted next steps:
 - [ ] **Commissioned art.** The figure is Tabula's own schematic engraving, standing in for a commissioned engraving after Vesalius's *Epitome*. It's keyed by structure ID, so the art can be replaced one structure at a time.
 - [ ] **Primary-source scans.** Each story's plate is generated from our figure and links to the primary-source record. Licensed scans dropped into `public/plates/` are used automatically.
 - [ ] **Traditions lens plates.** The historical plates appear once each record's licence is confirmed; a labelled schematic stands in until then.
-- [ ] **A full web edition**, with every chapter readable on the site as well as in the EPUB and PDF.
 - [ ] **More discoveries** that fill the balance targets: before 1500, outside Europe, after 1900, and contested. [Propose one.](https://github.com/akhanrepo/tabula/issues/new?template=discovery.yml)
 
 Smaller open items are tracked in [docs/PLAN.md](docs/PLAN.md#open-items-after-the-v1-build-from-the-done-review), and the deliberate non-goals (no 3D body, accounts, comprehensive anatomy, CMS or AI-generated art) are in [CLAUDE.md](CLAUDE.md#explicit-non-goals-say-no-even-if-its-tempting).

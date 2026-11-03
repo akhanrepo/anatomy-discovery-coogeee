@@ -4,6 +4,9 @@ All notable changes to Tabula are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+### Added
+- **The web edition.** Every chapter of the edition is readable on the site at `/edition/<tour>/`: the tour intro, the long-view essay, every plate (with its image and a link to it on the body) and the beliefs it overturned, with numbered notes to every source, previous/next chapters and print styles. `/edition` is now its contents page. "Read the long version" on a story opens its section in the chapter (F14).
+
 ## [1.0.0] — 2026-11-03
 
 The first public release. Tabula is now open source.

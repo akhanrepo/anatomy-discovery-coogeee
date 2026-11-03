@@ -28,7 +28,6 @@ test('F18-AC2 [browser] the edition downloads free as EPUB and PDF, and a click 
   await expect(page.locator(NO_ACCOUNTS)).toHaveCount(0);
   await expect(page.getByTestId('edition-version')).toHaveText(/^[0-9a-f]{8}$/);
   await expect(page.getByTestId('edition-licence')).toContainText('CC BY-SA 4.0');
-  await expect(page.getByTestId('edition-essay-preview')).toContainText('The long view');
   for (const file of [EDITION_FILES.epub, EDITION_FILES.pdf]) await expect(page.locator(`a[href="${downloadUrl(file)}"]`)).toHaveCount(1);
   // don't follow the link off-site; just check the analytics event
   await page.evaluate(() => document.addEventListener('click', (e) => e.preventDefault()));
