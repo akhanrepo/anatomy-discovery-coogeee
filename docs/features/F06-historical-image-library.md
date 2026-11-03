@@ -7,7 +7,7 @@ A curated library of historical plates, manuscript pages and portraits for stori
 
 ## Scope
 - `Asset { id, title, creator, date, sourceInstitution, sourceUrl, recordUrl, licence, credit, kind: plate|manuscript|portrait|photo|commissioned, authenticity: contemporary|later-depiction|unknown, altText, focalPoint, crops[] }`.
-- **Allowed licences:** Public Domain / PDM, CC0, CC BY. **Not allowed:** CC BY-NC (blocks paid packs and the edition) and CC BY-SA (complicates the edition). **The licence is checked on each individual record**, never assumed per institution. Wellcome, for example, mixes PDM, CC BY and CC BY-NC.
+- **Allowed licences:** Public Domain / PDM, CC0, CC BY. **Not allowed:** CC BY-NC (blocks reuse of the CC BY-SA packs and edition, which allow commercial use) and CC BY-SA (complicates the edition). **The licence is checked on each individual record**, never assumed per institution. Wellcome, for example, mixes PDM, CC BY and CC BY-NC.
 - Preferred sources: Wellcome Collection, US National Library of Medicine, Royal Collection Trust (check its terms: often *not* open), Biodiversity Heritage Library, Internet Archive, Cambridge Digital Library, national libraries, Wikimedia Commons (verify the underlying record).
 - **Commissioned art** (F16) uses `kind: commissioned` and a contract that assigns rights to Ali, including commercial use, print and derivatives.
 - Pipeline: originals in Cloudflare R2 (or Git LFS), with responsive AVIF/WebP derivatives built at deploy. Deep-zoom (IIIF) for manuscript pages where the source offers a IIIF manifest.

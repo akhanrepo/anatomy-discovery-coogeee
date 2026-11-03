@@ -25,6 +25,7 @@ const thread = c.threads.find((t) => t.discoveries.includes(d.id));
 const nextInThread = thread ? c.discoveries.find((x) => x.id === thread.discoveries[thread.discoveries.indexOf(d.id) + 1]) : undefined;
 const statusLabel = { established: 'Established', contested: 'Contested', revised: 'Revised' }[d.status];
 const layer = layerOf(c, d.structures);
+const mailto = buildCorrectionMailto({ discoveryId: d.id });
 ---
 <article class="story" id={`story-${d.id}`} data-story={d.id} data-year={d.yearStart} data-layer={layer} data-structures={d.structures.join(' ')} hidden={!open} aria-labelledby={`h-${d.id}`} tabindex="-1">
   <header class="story-head">
@@ -58,7 +59,7 @@ const layer = layerOf(c, d.structures);
         );
       })}
     </ol>
-    <p class="verified" data-testid="verified">Verified {log.date} by Claude (AI-assisted, see <a href="/how-we-source/">how we source</a>). No account? <a href={buildCorrectionMailto({ discoveryId: d.id })}>Email a correction</a>.</p>
+    <p class="verified" data-testid="verified">Verified {log.date} by Claude (AI-assisted, see <a href="/how-we-source/">how we source</a>).{mailto && <> No account? <a href={mailto}>Email a correction</a>.</>}</p>
   </section>
   <nav class="story-nav" aria-label="More stories">
     {earlier && <a class="btn" href={`/tab/${earlier.id}/`} data-open-story={earlier.id}>← Earlier: {earlier.title}</a>}

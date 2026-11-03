@@ -1,0 +1,14 @@
+---
+/* F18: a free download from the latest GitHub Release (file names come from src/lib/downloads.ts). */
+import { downloadUrl } from '../lib/downloads';
+interface Props { file: string; label: string }
+const { file, label } = Astro.props;
+---
+<a class="btn" href={downloadUrl(file)} data-download={file}>{label}</a>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-download]').forEach((a) => {
+    if (a.dataset.tracked) return;
+    a.dataset.tracked = '1';
+    a.addEventListener('click', () => window.tabulaTrack?.('download', { file: a.dataset.download }));
+  });
+</script>

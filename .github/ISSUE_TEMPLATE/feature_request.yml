@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest an improvement to the site, the packs or the edition.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check the **explicit non-goals** first (in [CLAUDE.md](https://github.com/akhanrepo/tabula/blob/main/CLAUDE.md) and the [PRD](https://github.com/akhanrepo/tabula/blob/main/docs/PRD.md)): no 3D body, accounts, comments, comprehensive anatomy, CMS, native apps, AI-generated artwork or custom server. Larger features get a written brief in `docs/features/` before any code.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do, and what gets in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered

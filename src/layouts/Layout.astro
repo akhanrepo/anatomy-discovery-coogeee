@@ -8,7 +8,7 @@ import '@fontsource/noto-serif-sc/400.css';
 import '@fontsource/noto-serif-devanagari/400.css';
 import '../styles/global.css';
 import { site } from '../config/site';
-import { analyticsSnippet } from '../lib/analytics';
+import { analyticsSnippet, TRACK_JS } from '../lib/analytics';
 import { LIGHT, DARK } from '../styles/tokens';
 import Subscribe from '../components/Subscribe.astro';
 import { sponsorsVisible } from '../lib/sponsors';
@@ -47,6 +47,7 @@ const url = canonical ?? `${siteUrl}${Astro.url.pathname}`;
     <meta name="twitter:title" content={title ?? `${site.name}: ${site.tagline}`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogAbs} />
+    <script is:inline set:html={TRACK_JS} />
     <Fragment set:html={analyticsSnippet()} />
     <slot name="head" />
   </head>
@@ -76,9 +77,11 @@ const url = canonical ?? `${siteUrl}${Astro.url.pathname}`;
         <a href="/edition/">The edition</a>
         <a href="/support/">Support Tabula</a>
         <a href="/feed.xml">RSS</a>
+        <a href={site.repo}>Source code</a>
       </nav>
       <Subscribe compact />
       <p>The modern body here is an artful schematic, not a reference atlas. Tabula is a history of how the body came to be understood, not medical advice.</p>
+      <p class="licence" data-testid="licence">{site.name} is open source. Text <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>, plates CC BY 4.0, code <a href={site.licences.code.url}>{site.licences.code.name}</a>. <a href="/about/#open-source">Reuse it</a>.</p>
       {sponsorsVisible().filter((s) => s.scope === 'site').map((s) => <p>Supported by <a href={s.url}>{s.name}</a>. Sponsors never review or influence content.</p>)}
     </footer>
   </body>

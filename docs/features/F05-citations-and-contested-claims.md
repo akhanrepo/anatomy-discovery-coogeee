@@ -36,7 +36,7 @@ The first pass is already done for the candidate list: [accuracy-review-2026-10.
 - Entities: `Claim`, `Citation`, `Source`, `VerificationLog` (see PRD).
 - Status vocabulary with public definitions.
 - CI gates: an uncited claim; a contested claim without a note; a dangling citation; no scholarly source; a **missing or stale verification log**; a ShareDate without calendar and citation; a tradition concept without a specialist source.
-- "Suggest a correction" form (Tally or Formspree) → webhook → GitHub issue labelled `correction`, with story and claim IDs prefilled.
+- "Suggest a correction" link → the GitHub correction issue form (labelled `correction`) with story and claim IDs prefilled ([F18](F18-open-source-release.md)), plus an email fallback when a contact address is configured.
 - `/sources` (full bibliography), `/how-we-source`, `/corrections` pages.
 - Archive.org snapshot URL stored for every web source.
 

@@ -33,8 +33,11 @@ export function buildEdition(c: Corpus): Edition {
   return { version: contentVersion(c), title: 'Tabula: The Body, as It Was Written', chapters, images: [...new Set(images)] };
 }
 
+/** F18: the edition is free and openly licensed; the notice goes in the EPUB metadata and on the first page. */
+export const EDITION_RIGHTS = 'Text licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Plates CC BY 4.0. Free to share and adapt with credit to Tabula (https://github.com/akhanrepo/tabula).';
+
 export function editionMarkdown(e: Edition): string {
-  const out = [`---\ntitle: "${e.title}"\nsubtitle: "Edition ${e.version}"\nlang: en\n---\n`];
+  const out = [`---\ntitle: "${e.title}"\nsubtitle: "Edition ${e.version}"\nlang: en\nrights: "${EDITION_RIGHTS}"\n---\n`, `*${EDITION_RIGHTS}*\n`];
   for (const ch of e.chapters) {
     out.push(`# ${ch.title}\n\n${ch.intro}\n`);
     for (const s of ch.sections) out.push(`## ${s.title}${s.date ? ` (${s.date})` : ''}\n\n${s.body}\n`);

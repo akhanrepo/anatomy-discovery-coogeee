@@ -1,17 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
-import { existsSync } from 'node:fs';
+import { chromiumExecutable } from './scripts/chromium.mjs';
 
-const candidates = [
-  process.env.PLAYWRIGHT_CHROMIUM_PATH,
-  '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
-].filter(Boolean) as string[];
-const executablePath = candidates.find((p) => existsSync(p));
+const executablePath = chromiumExecutable();
 const launchOptions = executablePath ? { executablePath } : {};
 
 export default defineConfig({
   timeout: 30_000,
   retries: 0,
-  reporter: [['list']],
+  forbidOnly: !!process.env.CI,
+  reporter: process.env.CI ? [['list'], ['github']] : [['list']],
   use: { baseURL: 'http://127.0.0.1:4321', launchOptions },
   webServer: {
     command: 'node scripts/serve.mjs',

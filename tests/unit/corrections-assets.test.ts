@@ -6,12 +6,14 @@ describe('corrections (F05)', () => {
   it('F05-AC3 a correction link arrives with the story and claim IDs prefilled', () => {
     const url = new URL(buildCorrectionUrl({ discoveryId: 'ibn-al-nafis-pulmonary-circulation', claimId: 'c2' }));
     expect(url.pathname).toMatch(/\/issues\/new$/);
+    expect(url.searchParams.get('template')).toBe('correction.yml');
     expect(url.searchParams.get('title')).toContain('ibn-al-nafis-pulmonary-circulation#c2');
-    expect(url.searchParams.get('body')).toContain('**Claim:** c2');
-    expect(url.searchParams.get('labels')).toBe('correction');
+    expect(url.searchParams.get('story')).toBe('ibn-al-nafis-pulmonary-circulation');
+    expect(url.searchParams.get('claim')).toBe('c2');
   });
-  it('F05-AC3 offers an account-free email fallback with the IDs', () => {
-    expect(decodeURIComponent(buildCorrectionMailto({ discoveryId: 'harvey', claimId: 'c1' }))).toContain('harvey#c1');
+  it('F05-AC3 offers an account-free email fallback with the IDs, only when an address is configured', () => {
+    expect(decodeURIComponent(buildCorrectionMailto({ discoveryId: 'harvey', claimId: 'c1' }, 'fix@example.org')!)).toContain('harvey#c1');
+    expect(buildCorrectionMailto({ discoveryId: 'harvey' }, '')).toBeNull();
   });
 });
 

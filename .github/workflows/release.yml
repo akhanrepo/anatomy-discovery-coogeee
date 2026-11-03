@@ -1,0 +1,51 @@
+name: Release
+
+# Pushing a tag vX.Y.Z (matching package.json) builds the classroom packs and the edition
+# and publishes them as a GitHub Release. The site links to releases/latest/download/<file>,
+# so the newest release is what /teachers and /edition serve.
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Check the tag matches package.json
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          if [ "$tag" != "$pkg" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $pkg"
+            exit 1
+          fi
+      - run: npm ci
+      - name: Unit, content and traceability tests
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Install pandoc and Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+          npx playwright install --with-deps chromium
+      - name: Build the packs and the edition
+        run: npm run artefacts
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/release-notes.mjs "${GITHUB_REF_NAME#v}" > release-notes.md
+          mapfile -t files < <(npx tsx scripts/release-files.ts)
+          gh release create "$GITHUB_REF_NAME" "${files[@]}" \
+            --title "Tabula $GITHUB_REF_NAME" \
+            --notes-file release-notes.md \
+            --verify-tag

@@ -5,7 +5,9 @@ import { site } from '../config/site';
 <Layout title="Support Tabula" description="Sponsorship and our editorial-independence policy.">
   <article class="prose">
     <h1>Support {site.name}</h1>
-    <p>{site.name} is free to read. It is funded by classroom packs, the edition and sponsorship from museums, libraries, learned societies and education publishers.</p>
+    <p>{site.name} is free and open source: the site, the classroom packs and the edition. It is funded by sponsorship from museums, libraries, learned societies and education publishers{site.donateUrl ? ', and by readers' : ''}.</p>
+    {site.donateUrl && <p data-testid="donate"><a class="btn" href={site.donateUrl} rel="noopener">Make a donation</a></p>}
+    <p>You can also help by <a href={`${site.repo}/issues/new/choose`}>reporting a correction</a> or <a href={`${site.repo}/blob/main/CONTRIBUTING.md`}>contributing</a> on GitHub.</p>
     <h2 id="policy" data-testid="sponsor-policy">Editorial-independence policy</h2>
     <ol>
       <li>Sponsors never review, approve or influence content, before or after publication.</li>
@@ -14,6 +16,8 @@ import { site } from '../config/site';
       <li>We do not accept sponsorship from pharmaceutical or medical-device companies.</li>
       <li>Corrections follow the same public process whoever reports them.</li>
     </ol>
-    <p>Interested in sponsoring a tour? <a href={`mailto:${site.contactEmail}?subject=Sponsorship`}>Get in touch</a>.</p>
+    <p>Interested in sponsoring a tour? {site.contactEmail
+      ? <a href={`mailto:${site.contactEmail}?subject=Sponsorship`}>Get in touch</a>
+      : <a href={`${site.repo}/discussions`}>Get in touch on GitHub</a>}.</p>
   </article>
 </Layout>

@@ -1,26 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BuyButton from '../components/BuyButton.astro';
+import DownloadLink from '../components/DownloadLink.astro';
 import { corpus } from '../lib/content/load';
 import { PACKS, buildPack } from '../lib/packs';
+import { packFile } from '../lib/downloads';
+import { site } from '../config/site';
 const c = corpus();
 const packs = PACKS.map((p) => buildPack(c, p.id));
 ---
-<Layout title="For teachers" description="Printable classroom packs on the history of the body, with every claim sourced.">
+<Layout title="For teachers" description="Free printable classroom packs on the history of the body, with every claim sourced.">
   <article class="prose">
     <h1>For teachers</h1>
-    <p>Printable packs built from Tabula's sourced plates. Each pack has black-line plates for students to hand-colour as knowledge "writes in", story cards, a <em>spot the myth</em> activity, discussion questions and an answer key in which every claim is traced to its sources.</p>
-    <p class="small">A4 and US Letter. Checkout is handled by our merchant of record, which issues school-friendly tax invoices (GST/VAT) and delivers the files by email. No account is needed.</p>
+    <p>Free printable packs built from Tabula's sourced plates. Each pack has black-line plates for students to hand-colour as knowledge "writes in", story cards, a <em>spot the myth</em> activity, discussion questions and an answer key in which every claim is traced to its sources.</p>
+    <p class="small" data-testid="pack-terms">A4 and US Letter. Free, with no account needed. The packs are licensed <a href={site.licences.content.url} rel="license noopener">{site.licences.content.name}</a>, so you can photocopy them for any class, share them with colleagues and adapt them, as long as you credit Tabula and share your adaptations on the same terms.</p>
     <ul class="packs">
       {packs.map((p) => (
         <li data-pack={p.def.id}>
           <h2>{p.def.title} <span class="small">· {p.def.subtitle}</span></h2>
           <p class="small">{p.discoveries.length} plates · fits: {p.def.syllabus} · edition {p.version}</p>
-          {p.def.free
-            ? <p><a class="btn" href="/packs/sample.pdf" download>Download the free sample (PDF)</a> <a class="btn" href={`/packs/${p.def.id}/print/`}>Preview</a></p>
-            : <p><BuyButton product={p.def.product!} /> <BuyButton product={p.def.product!} school /> <a class="btn" href={`/packs/${p.def.id}/print/`}>Preview</a></p>}
+          <p><DownloadLink file={packFile(p.def.id, 'A4')} label="Download (A4, PDF)" /> <DownloadLink file={packFile(p.def.id, 'Letter')} label="Download (US Letter, PDF)" /> <a class="btn" href={`/packs/${p.def.id}/print/`}>Preview</a></p>
         </li>
       ))}
     </ul>
+    <p class="small">Found a mistake, or want a pack for another tour? <a href={`${site.repo}/issues/new/choose`}>Open an issue</a>. Packs are regenerated from the same verified content as the site, so a correction reaches them at the next release.</p>
   </article>
 </Layout>

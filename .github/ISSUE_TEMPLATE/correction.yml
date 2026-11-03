@@ -1,0 +1,44 @@
+name: Suggest a correction
+description: Something in a story, essay, belief or source looks wrong. Corrections are published in the public log.
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Tabula is about people correcting errors, so we publish our own: accepted corrections go into the [corrections log](https://tabula-anatomy.netlify.app/corrections/).
+        The most useful reports name a source we can check. See [how we source](https://tabula-anatomy.netlify.app/how-we-source/) for what counts.
+  - type: input
+    id: story
+    attributes:
+      label: Story or page
+      description: The story ID (prefilled when you use "Suggest a correction" on a note), or the page's address.
+      placeholder: harvey-circulation
+    validations:
+      required: true
+  - type: input
+    id: claim
+    attributes:
+      label: Claim
+      description: The claim ID (c1, c2, …), or "(whole story)".
+      placeholder: c2
+  - type: textarea
+    id: problem
+    attributes:
+      label: What looks wrong?
+      description: Quote the sentence if you can, and say what you think is correct.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Your source
+      description: Author, title, year, and a page or folio, or a link. Scholarly sources (peer-reviewed history of medicine, university presses, major libraries and museums) carry the most weight. Encyclopaedias and popular books help us find sources but don't count as one.
+    validations:
+      required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username in the corrections log if this is accepted.
