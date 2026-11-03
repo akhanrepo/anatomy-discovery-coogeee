@@ -4,6 +4,10 @@ All notable changes to Tabula are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+### Added
+- `CITATION.cff`, so GitHub offers "Cite this repository".
+- README: a before-and-after strip of the fog over four eras, a site tour, a roadmap, and sections on citing and acknowledgements; a social preview image (`docs/images/social-preview.png`).
+
 ## [1.0.0] — 2026-11-03
 
 The first public release. Tabula is now open source.

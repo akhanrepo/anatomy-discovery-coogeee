@@ -81,7 +81,7 @@ describe('F18 open-source release', () => {
   it('F18-AC4 the repository has the open-source project files', () => {
     const files = [
       'README.md', 'LICENSE', 'LICENSE-CONTENT', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'CHANGELOG.md',
-      'THIRD_PARTY_NOTICES.md', 'docs/architecture.md', '.editorconfig', '.nvmrc',
+      'THIRD_PARTY_NOTICES.md', 'CITATION.cff', 'docs/architecture.md', '.editorconfig', '.nvmrc',
       '.github/ISSUE_TEMPLATE/config.yml', '.github/ISSUE_TEMPLATE/bug_report.yml', '.github/ISSUE_TEMPLATE/correction.yml',
       '.github/ISSUE_TEMPLATE/discovery.yml', '.github/ISSUE_TEMPLATE/feature_request.yml', '.github/pull_request_template.md',
       '.github/CODEOWNERS', '.github/dependabot.yml', '.github/workflows/ci.yml', '.github/workflows/codeql.yml', '.github/workflows/release.yml',
@@ -98,6 +98,13 @@ describe('F18 open-source release', () => {
       expect(Array.isArray(form.body) && form.body.length > 0, f).toBe(true);
     }
     expect(YAML.parse(read('.github/ISSUE_TEMPLATE/config.yml')).blank_issues_enabled).toBe(false);
+    const citation = YAML.parse(read('CITATION.cff'));
+    expect(citation['cff-version']).toBe('1.2.0');
+    expect(citation.version).toBe(JSON.parse(read('package.json')).version);
+    expect(citation['repository-code']).toBe(REPO);
+    expect(citation.license).toEqual(['MIT', 'CC-BY-SA-4.0']);
+    // every image the README shows exists
+    for (const m of read('README.md').matchAll(/<img src="(docs\/[^"]+|public\/[^"]+)"/g)) expect(existsSync(m[1]), m[1]).toBe(true);
     const dependabot = YAML.parse(read('.github/dependabot.yml'));
     expect(dependabot.updates.map((u: { 'package-ecosystem': string }) => u['package-ecosystem']).sort()).toEqual(['github-actions', 'npm']);
     expect(read('.github/workflows/codeql.yml')).toMatch(/javascript-typescript/);

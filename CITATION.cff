@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use Tabula in teaching, research or writing, please cite it as below."
+title: "Tabula: The Body, as It Was Written"
+abstract: >-
+  An interactive, engraved human body in which every part carries the story of
+  who worked it out, how they did it, and what they got wrong first, across
+  3,600 years. Every historical claim is cited to at least two sources, one of
+  them scholarly, and checked against a published verification method.
+type: software
+authors:
+  - given-names: Ali
+    family-names: Khan
+repository-code: "https://github.com/akhanrepo/tabula"
+url: "https://tabula-anatomy.netlify.app"
+license:
+  - MIT
+  - CC-BY-SA-4.0
+version: 1.0.0
+keywords:
+  - history of medicine
+  - history of anatomy
+  - history of science
+  - digital humanities
+  - education
+  - open educational resources
