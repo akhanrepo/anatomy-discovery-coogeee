@@ -114,7 +114,7 @@ Much of Tabula was built with Claude, and the claim verification is AI-assisted,
 
 ## Releasing (maintainers)
 
-Bump `version` in `package.json`, move the **Unreleased** notes in `CHANGELOG.md` under the new version, merge, then tag `vX.Y.Z` on `main`. The release workflow tests, builds the packs and the edition, and publishes them as a GitHub Release, which `/teachers` and `/edition` link to.
+Bump `version` in `package.json`, move the **Unreleased** notes in `CHANGELOG.md` under the new version, merge, then tag `vX.Y.Z` on `main` (or, on GitHub, **Releases → Draft a new release**, type the new tag `vX.Y.Z`, target `main`, and publish). The release workflow tests, builds the packs and the edition, and publishes them as a GitHub Release, which `/teachers` and `/edition` link to.
 
 ## Licence of contributions
 
