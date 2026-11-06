@@ -1,0 +1,61 @@
+/* F14 web edition: reading-first typography. Tokens only (see global.css). */
+.edition { max-width: 40rem; margin: 0 auto; padding: var(--s5) var(--s4) var(--s7); font-size: 1.08rem; line-height: 1.65; hyphens: auto; }
+.edition p { margin: 0 0 var(--s4); }
+.edition-kicker { color: var(--gold); margin: var(--s4) 0 0; }
+.edition h1 { font-size: 2.6rem; margin: var(--s2) 0 var(--s3); }
+.edition-standfirst { font-style: italic; color: var(--ink-soft); font-size: 1.15rem; }
+.edition-meta { color: var(--ink-soft); font-size: .9rem; margin-bottom: var(--s5); }
+.edition-toc { border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); padding: var(--s3) 0; margin: var(--s5) 0; font-size: .95rem; }
+.edition-toc summary { cursor: pointer; color: var(--ink-soft); }
+.edition-toc ol { margin: var(--s2) 0 0; padding-left: var(--s5); }
+.edition-toc li { margin: 2px 0; }
+.edition-toc a { text-decoration: none; }
+.edition-intro > p:first-child::first-letter { font-family: var(--font-display); float: left; font-size: 3.4em; line-height: .82; padding: 6px 8px 0 0; color: var(--madder); }
+.edition-section { margin-top: var(--s7); scroll-margin-top: var(--s5); }
+.edition-section > h2 { font-size: 1.75rem; margin: 0 0 var(--s1); }
+.edition-section h3 { font-size: 1.25rem; margin: var(--s5) 0 var(--s2); }
+.edition-section .edition-date { color: var(--gold); margin: 0 0 var(--s3); }
+.edition-rule { text-align: center; color: var(--gold); letter-spacing: 1em; margin: var(--s6) 0 0; }
+.edition-plate { float: right; width: 32%; margin: var(--s1) 0 var(--s3) var(--s4); text-align: center; }
+.edition-plate img { width: 100%; height: auto; border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); background: var(--paper); }
+.edition-plate figcaption { font-size: .78rem; color: var(--ink-soft); line-height: 1.35; margin-top: var(--s1); }
+.edition-onbody { clear: both; font-size: .9rem; }
+.edition-misbelief-head { color: var(--vermilion); }
+.edition-misbelief { border-left: 2px solid color-mix(in srgb, var(--vermilion) 55%, transparent); padding-left: var(--s4); }
+.edition sup.fn { line-height: 0; }
+.edition-notes .badge { margin-left: var(--s2); }
+.edition sup.fn a { text-decoration: none; color: var(--gold); padding: 0 2px; font-size: .8em; }
+.edition-notes { margin-top: var(--s7); border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); padding-top: var(--s3); }
+.edition-notes h2 { font-size: 1.5rem; }
+.edition-notes ol { padding-left: var(--s5); font-size: .88rem; line-height: 1.5; }
+.edition-notes li { margin-bottom: var(--s3); scroll-margin-top: var(--s5); }
+.edition-notes li:target { background: color-mix(in srgb, var(--gold) 14%, transparent); }
+.edition-notes .claim { margin: 0 0 var(--s1); }
+.edition-notes .cites { padding-left: var(--s4); color: var(--ink-soft); margin: 0; }
+.edition-notes .note-tools { font-size: .8rem; margin: var(--s1) 0 0; }
+.edition-notes .contest-note { color: var(--ink-soft); }
+.edition-notes .src-tag { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); margin-left: 4px; }
+.edition-pager { display: flex; justify-content: space-between; gap: var(--s4); margin-top: var(--s6); padding-top: var(--s4); border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+.edition-pager a { text-decoration: none; max-width: 48%; }
+.edition-pager .next { text-align: right; margin-left: auto; }
+.edition-pager small { display: block; color: var(--ink-soft); font-variant: small-caps; letter-spacing: .06em; }
+.edition-foot { margin-top: var(--s5); font-size: .9rem; color: var(--ink-soft); }
+.edition-contents { list-style: none; padding: 0; counter-reset: none; }
+.edition-contents li { border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); padding: var(--s4) 0; }
+.edition-contents .numeral { font-family: var(--font-display); color: var(--gold); font-size: 1.2rem; margin-right: var(--s2); }
+.edition-contents h3 { display: inline; font-size: 1.35rem; }
+.edition-contents h3 a { text-decoration: none; }
+.edition-contents p { margin: var(--s1) 0 0; }
+
+@media (max-width: 640px) {
+  .edition { font-size: 1rem; }
+  .edition h1 { font-size: 2rem; }
+  .edition-plate { width: 34%; margin-left: var(--s3); }
+}
+
+@media print {
+  .site-header, .site-footer, .edition-toc, .edition-pager, .edition-onbody, .note-tools, .edition-foot .btn { display: none !important; }
+  .edition { max-width: none; padding: 0; font-size: 11pt; }
+  .edition-section { break-before: auto; }
+  .edition a { text-decoration: none; }
+}

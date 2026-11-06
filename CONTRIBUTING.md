@@ -51,7 +51,7 @@ Content is data in `content/`, loaded and validated with Zod (`src/lib/content/`
 1. **Every claim is atomic and cited.** A discovery's frontmatter has `claims: { c1: { text, citations: [source-id, …] } }`, and the story body points at them with footnotes (`[^c1]`). Every footnote must resolve to a claim, and every citation to a source in `content/sources.yaml`.
 2. **Two sources, one scholarly.** Each claim needs at least two primary or secondary sources, and at least one must be scholarly secondary (peer-reviewed history of medicine, a university press, or a major library or museum). Encyclopaedias and popular books help you find sources but never count as one.
 3. **Check the myths.** For every "first", date and attribution, search for debunkings and priority disputes. Contested claims get `status: contested` and a note naming the positions. Popular claims that are wrong are `revised`.
-4. **Never invent a page number, a date or a quote.** If you can't verify something, cut it, or mark it `contested` and say why in the note.
+4. **Never invent a page number, a date or a quote.** If you can't verify something, cut it, or mark it `contested` and say why in the note. A claim you could only check through summaries of a source (not the source itself) gets `secondarySummary: true`, and the site labels it "read via summaries".
 5. **Re-sign the verification log.** Each subject has a log in `content/logs/<id>.md` with a `claimsHash`. Editing a claim makes the log stale and fails the build. After re-checking the claim against its sources, update the log's notes and run:
 
    ```bash

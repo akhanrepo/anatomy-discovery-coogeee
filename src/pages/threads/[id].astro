@@ -15,7 +15,7 @@ const sponsor = (await import('../../lib/sponsors')).sponsorsVisible().find((s) 
     <p class="smallcaps plate-no">A tour · {ds.length} plates</p>
     <h1>{t.title}</h1>
     <div data-testid="tour-intro" set:html={html} />
-    <p><a class="btn" href={`/?tour=${t.id}`}>▶ Play this tour</a> <a class="btn" href={`/edition/#${t.id}`}>Read the long version</a></p>
+    <p><a class="btn" href={`/?tour=${t.id}`}>▶ Play this tour</a> <a class="btn" href={`/edition/${t.id}/`} data-long-version>Read the long version</a></p>
     <ol>{ds.map((d) => <li><a href={`/tab/${d.id}/`}>Tab. {d.plate}: {d.title}</a> <span class="small">({d.displayDate})</span></li>)}</ol>
     <section class="sources" aria-label="Sources for this introduction">
       <h2 class="smallcaps">Sources for this introduction</h2>

@@ -39,9 +39,10 @@ content/ (YAML + Markdown) ──► src/lib/content (Zod schema → loader → 
 | Plates (SVG) | `src/lib/plate.ts` via `src/pages/plates/[id].svg.ts` | `npm run build` |
 | RSS | `src/lib/feed.ts` via `src/pages/feed.xml.ts` | `npm run build` |
 | Classroom packs (PDF, A4 + Letter) | `src/lib/packs.ts` → `/packs/<id>/print/` → Chromium `page.pdf` | `npm run artefacts` |
+| Web edition (one page per chapter) | `src/lib/edition-web.ts` renders `buildEdition()` chapters via `src/pages/edition/[chapter].astro` | `npm run build` |
 | Edition (EPUB + PDF) | `src/lib/edition.ts` → Markdown → pandoc / Chromium | `npm run artefacts` |
 
-Packs and the edition carry a **content version** (`src/lib/version.ts`), a hash of every claim, so a printed copy can be traced to the content it came from.
+The web edition, the EPUB and the PDF are all built from the same `buildEdition()` chapters, so they can't drift apart. Packs and the edition carry a **content version** (`src/lib/version.ts`), a hash of every claim, so a printed copy can be traced to the content it came from.
 
 **Downloads** (F18): `src/lib/downloads.ts` is the single list of downloadable file names. `scripts/build-artefacts.ts` writes them, `scripts/release-files.ts` checks them, the release workflow publishes them, and `/teachers` and `/edition` link to `releases/latest/download/<file>`.
 
